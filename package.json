@@ -1,0 +1,31 @@
+{
+  "name": "cmcd-validator",
+  "version": "1.0.0",
+  "description": "This is a library created to validate CMCD",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/montevideo-tech/cmcd-validator.git"
+  },
+  "keywords": [
+    "CMCD",
+    "Common Media Client Data"
+  ],
+  "author": "Qualabs",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/montevideo-tech/cmcd-validator/issues"
+  },
+  "homepage": "https://github.com/montevideo-tech/cmcd-validator#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
