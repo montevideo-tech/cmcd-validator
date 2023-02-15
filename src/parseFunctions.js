@@ -1,7 +1,7 @@
 import {keyTypes} from './constants.js'
 
 export const parseQueryToJson=(queryString)=>{
-    const values=decodeURIComponent(queryString).split('CMCD=')[1].split(',');
+    const values=decodeURIComponent(queryString).split('CMCD=')[1].split('&')[0].split(',');
     const obj={};
     let key,val;
     for(const value of values){
