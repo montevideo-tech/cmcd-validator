@@ -1,7 +1,7 @@
-export const createOutput = (error, parsedData, rawData) => {
+export const createOutput = (errors, parsedData, rawData) => {
     const response =  {
-        valid: error.length > 0,
-        error,
+        valid: errors.length === 0,
+        errors,
         parsedData,
         rawData
     }  
