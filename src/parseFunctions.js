@@ -8,11 +8,7 @@ export const parseQueryToJson=(queryString)=>{
         if(keyTypes[key] ==='Integer'){
             obj[key]=parseInt(val);
         }else if(keyTypes[key]==='Boolean'){
-            if(val==='false'){
-                obj[key]=false;
-            }else{
-                obj[key]=true;
-            }
+            val === 'false' ? obj[key] = false : obj[key] = true;
         }else{
             obj[key]=val.replaceAll("\"","");
         }
