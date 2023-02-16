@@ -25,7 +25,7 @@ export const errorTypes = {
   "wrong-type-value": "Value type is incorrect",
   "incorrect-format": "Format is incorrect",
   "parameter-encoding": "Parameter is not encoded",
-  "missing-key": "Key is missed",
+  "missing-key": "Key is missing",
   "invalid-header": "Header is not valid",
   "invalid-json": "Json format is not valid",
 };
