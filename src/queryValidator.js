@@ -7,8 +7,6 @@ export const queryValidator = (queryString) => {
     const query = queryString.split("?").pop()
     console.log("query \n", query)
     
-    
-    
     //Chequear si hay mas de un CMCD= y el & por si se agrega algo mas despues
     const requests = decodeURIComponent(query).split('CMCD=')
     requests.shift()
@@ -40,44 +38,12 @@ export const queryValidator = (queryString) => {
                     console.log("key bool \n", key)
 
                     //chequear en lo que hizo Martu si es un bool, si no reportar error
-                    if ()
-
+                    if (keyTypes[key] != "Boolean"){
+                        error.push(createError("wrong-type-value", key, value))
+                    }
                 }
-
-                
-                
             }
         }
     
         return queryString, error
-    
-
-
-
-    
-    
-    
-
-
 }
-
-
-
-//?CMCD=sid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22
-
-//https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

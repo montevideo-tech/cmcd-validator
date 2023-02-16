@@ -1,6 +1,6 @@
 import express from "express";
 import { PORT } from "./config.js";
-import { queryValidator } from "./controllers/queryValidator.js";
+import { queryValidator } from "./queryValidator.js";
 
 const app = express();
 
