@@ -1,8 +1,8 @@
 import { errorTypes } from "./constants.js";
 
 export const createError = (type, key, value) => {
-  if (typeof type !== "String" || !errorTypes[type]) {
-    console.error("Type not defined");
+  if (!errorTypes[type]) {
+    console.error("Error type not defined");
     return -1;
   }
 
