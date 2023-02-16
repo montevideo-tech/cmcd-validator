@@ -3,10 +3,8 @@ import {keyTypes} from './constants.js'
 export const parseQueryToJson=(queryString)=>{
     const values=decodeURIComponent(queryString).split('CMCD=')[1].split('&')[0].split(',');
     const obj={};
-    let key,val;
     for(const value of values){
-        key=value.split('=')[0];
-        val=value.split('=')[1];
+        const [key,val]=value.split('=');
         if(keyTypes[key] ==='Integer'){
             obj[key]=parseInt(val);
         }else if(keyTypes[key]==='Boolean'){
