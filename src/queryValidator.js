@@ -22,9 +22,12 @@ export const queryValidator = (queryString) => {
 
       // console.log("values\n", values);
 
+      const keys = []
+
       // Check: key/value is separated by =
       for (const val of values) {
         const [key, value] = val.split("=");
+        keys.push(key)
 
         //Check: string require ""
         if (
@@ -47,6 +50,12 @@ export const queryValidator = (queryString) => {
         ) {
           error.push(createError("wrong-type-value", key, value));
         }
+      }
+      // Check if keys are unique
+      console.log("keys\n", keys)
+      console.log((new Set(keys)).size !== keys.length)
+      if ((new Set(keys)).size !== keys.length){
+        error.push(createError("dupliated-key"))
       }
     }
   }
