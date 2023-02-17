@@ -1,4 +1,5 @@
 import {keyTypes} from './constants.js'
+import { createError } from './error.js'; 
 
 export const maxLength=(errors,key,value)=>{
     if(value.length>64){ 
@@ -45,6 +46,6 @@ export const ignoredKey=(errors,key, value,exep)=>{
 export const isReserved=(errors,key)=>{
     if(!(key in keyTypes)){
         console.log('The key \'' + key + '\' is not reserved.');
-        addError(errors,'unknown-key',key,value);
+        errors.push(createError(errors,'unknown-key',key,value));
     }
 }
