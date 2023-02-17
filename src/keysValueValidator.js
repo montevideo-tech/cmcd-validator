@@ -8,7 +8,7 @@ export function keyValValidator(cmcdJson,errors){
     for(var key in cmcdJson){
         isReserved(errors,key);
         if((keyTypes[key]==='Integer') && (cmcdJson[key]<0)){
-            console.log('The value must greater than 0.');
+            console.log('The \''+ key +'\' value must greater than 0.');
             errors.push(createError('invalid-value',key,cmcdJson[key]));
         }
         switch(key){
@@ -29,7 +29,7 @@ export function keyValValidator(cmcdJson,errors){
                 roundToNearest(errors,key,cmcdJson[key],100,'kbps');
                 break;
             case 'nor':
-                isEncoded(errors,cmcdJson[key]);
+                isEncoded(errors,key,cmcdJson[key]);
                 break;
             case 'nrr':
                 validNrrFormat(errors,key,cmcdJson[key]);

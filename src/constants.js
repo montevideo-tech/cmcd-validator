@@ -28,4 +28,5 @@ export const errorTypes = {
   "missing-key": "Key is missing",
   "invalid-header": "Header is not valid",
   "invalid-json": "Json format is not valid",
+  "unnecessary-parameter": "This parameter must not be sent with the current value."
 };

@@ -10,7 +10,7 @@ export const maxLength=(errors,key,value)=>{
 
 export const isEncoded=(errors,key,value)=>{
     if(decodeURIComponent(value)===value){
-        console.log('The \'' + key + '\' value must be encoded.');
+        console.log('The \'' + key + '\' value must be URLencoded.');
         errors.push(createError('parameter-encoding',key,value));
     }
 }
@@ -31,7 +31,7 @@ export const validValue=(errors,key,value,array)=>{
 
 export const roundToNearest=(errors,key,value,num,unit)=>{
     if((value%num)!=0){
-        console.log('\''+key-+'\'' + ' value is not rounded to the nearest 100' + unit + '.');
+        console.log('\''+key+'\'' + ' value is not rounded to the nearest'+ num + unit + '.');
         errors.push(createError('invalid-value',key,value));
     }
 }
