@@ -1,62 +1,56 @@
 
-import { keyTypes } from './constants.js';
-import { createError } from './error.js';
-import {maxLength,isEncoded,validNrrFormat,validValue,roundToNearest, ignoredKey,isReserved} from './validateFunctions.js'
+import {checkMaxLength,isEncoded,checkValidNrrFormat,checkRoundToNearest, checkIgnoredParameter,isReserved, isPositive, checkBlKey, checkCorrectType, checkOtValidValue, checkSfValidValue, checkStValidValue} from './validateFunctions.js'
 
 //keyValValidator takes as a parameter cmcdJson, which is a javascript object. The function iterates through it validating every key value pair.
 export function keyValValidator(cmcdJson,errors){
-    for(var key in cmcdJson){
+    for(const key in cmcdJson){
+        const keyValue = cmcdJson[key];
         isReserved(errors,key);
-        if((keyTypes[key]==='Integer') && (cmcdJson[key]<0)){
-            console.log('The \''+ key +'\' value must greater than 0.');
-            errors.push(createError('invalid-value',key,cmcdJson[key]));
-        }
+        checkCorrectType(errors,key,keyValue);
+        isPositive(errors,key,keyValue);
         switch(key){
             case 'bl':
-                roundToNearest(errors,key,cmcdJson[key],100,'ms');
-                if(!('ot' in cmcdJson)){
-                    console.log('The \'' + key + '\'key should only be sent with the \'ot\' key.');
-                    errors.push(createError('invalid-value',key,cmcdJson[key]));
-                }
+                checkRoundToNearest(errors,key,keyValue,100,'ms');
+                checkBlKey(cmcdJson,errors,key,keyValue);
                 break;
             case 'cid':
-                maxLength(errors,key,cmcdJson[key]);
+                checkMaxLength(errors,key,keyValue);
                 break;
             case 'dl':
-                roundToNearest(errors,key,cmcdJson[key],100,'ms');
+                checkRoundToNearest(errors,key,keyValue,100,'ms');
                 break;
             case 'mtp':
-                roundToNearest(errors,key,cmcdJson[key],100,'kbps');
+                checkRoundToNearest(errors,key,keyValue,100,'kbps');
                 break;
             case 'nor':
-                isEncoded(errors,key,cmcdJson[key]);
+                isEncoded(errors,key,keyValue);
                 break;
             case 'nrr':
-                validNrrFormat(errors,key,cmcdJson[key]);
+                checkValidNrrFormat(errors,key,keyValue);
                 break;
             case 'ot':
-                validValue(errors,key,cmcdJson[key],['m','a','v','av','i','c','tt','k','o']);
+                checkOtValidValue(errors,key,keyValue);
                 break;
             case 'pr':
-                ignoredKey(errors,key,cmcdJson[key],1);
+                checkIgnoredParameter(errors,key,keyValue,1);
                 break;
             case 'rtp':
-                roundToNearest(errors,key,cmcdJson[key],100,'kbps');
+                checkRoundToNearest(errors,key,keyValue,100,'kbps');
                 break;
             case 'sf':
-                validValue(errors,key,cmcdJson[key],['d','h','s','o']);
+                checkSfValidValue(errors,key,keyValue);
                 break;
             case 'sid': 
-                maxLength(errors,key,cmcdJson[key]);
+                checkMaxLength(errors,key,keyValue);
                 break;
             case 'st':
-                validValue(errors,key,cmcdJson[key],['v','l']);
+                checkStValidValue(errors,key,keyValue);
                 break;
             case 'su':
-                ignoredKey(errors,key,cmcdJson[key],false);
+                checkIgnoredParameter(errors,key,keyValue,false);
                 break;
             case 'v':
-                ignoredKey(errors,key,cmcdJson[key],1);
+                checkIgnoredParameter(errors,key,keyValue,1);
                 break;      
         }
     }
