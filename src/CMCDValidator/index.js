@@ -1,6 +1,6 @@
 import { errorTypes } from '../utils/constants.js';
 
-const createError = (type, key, value) => {
+export const createError = (type, key, value) => {
   if (!errorTypes[type]) {
     console.error('Error type not defined');
     return -1;
@@ -14,4 +14,12 @@ const createError = (type, key, value) => {
   };
 };
 
-export default createError;
+export const createOutput = (errors, parsedData, rawData) => {
+  const response = {
+    valid: errors.length === 0,
+    errors,
+    parsedData,
+    rawData,
+  };
+  return JSON.stringify(response);
+};
