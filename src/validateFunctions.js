@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { keyTypes } from './constants.js';
 import { createError } from './error.js';
 
@@ -24,22 +25,22 @@ export const checkValidNrrFormat = (errors, key, value) => {
 
 export const checkValidValue = (errors, key, value, array) => {
   if (!array.includes(value)) {
-    console.log(`'${key}'` + ` value does not meet the necessary requirements. Must be one of the following values: ${array}.`);
+    console.log(`'${key}' value does not meet the necessary requirements. Must be one of the following values: ${array}.`);
     errors.push(createError('invalid-value', key, value));
   }
 };
 
 export const checkRoundToNearest = (errors, key, value, num, unit) => {
   if ((value % num) !== 0) {
-    console.log(`'${key}'` + ` value is not rounded to the nearest${num}${unit}.`);
+    console.log(`'${key}' value is not rounded to the nearest${num}${unit}.`);
     errors.push(createError('invalid-value', key, value));
   }
 };
 
 export const checkIgnoredParameter = (errors, key, value, exep) => {
   if (value === exep) {
-    console.log(`The '${key}' key must not be sent if the value is ${exep}`);
-    errors.push(createError('unnecessary-parameter', key, value));
+    console.log(`The '${key}' key should not be sent if the value is ${exep}`);
+    errors.push(createError('unnecessary-key', key, value));
   }
 };
 
@@ -65,7 +66,7 @@ export const checkBlKey = (cmcdJson, errors, key, value) => {
 };
 
 export const checkCorrectType = (errors, key, value) => {
-  if ((typeof value != keyTypes[key]) && (keyTypes[key] === 'token' && typeof value !== 'string')) {
+  if ((typeof value !== keyTypes[key]) && (keyTypes[key] === 'token' && typeof value !== 'string')) {
     console.log(`'${key}' type is incorrect.`);
     errors.push(createError('wrong-type-value', key, value));
   }

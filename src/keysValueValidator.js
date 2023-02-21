@@ -39,9 +39,6 @@ export const keyValValidator = (cmcdJson, errors) => {
       case 'ot':
         checkOtValidValue(errors, key, keyValue);
         break;
-      case 'pr':
-        checkIgnoredParameter(errors, key, keyValue, 1);
-        break;
       case 'rtp':
         checkRoundToNearest(errors, key, keyValue, 100, 'kbps');
         break;
@@ -56,9 +53,6 @@ export const keyValValidator = (cmcdJson, errors) => {
         break;
       case 'su':
         checkIgnoredParameter(errors, key, keyValue, false);
-        break;
-      case 'v':
-        checkIgnoredParameter(errors, key, keyValue, 1);
         break;
     }
   }
