@@ -1,8 +1,7 @@
-import { errorTypes } from './constants.js';
+import { errorTypes, errorDescription } from './constants.js';
 
 export const createError = (type, key, value) => {
-  if (!errorTypes[type]) {
-    // eslint-disable-next-line no-console
+  if (!(type in errorDescription)) {
     console.error('Error type not defined');
     return -1;
   }
@@ -11,7 +10,7 @@ export const createError = (type, key, value) => {
     type,
     key,
     value,
-    description: errorTypes[type],
+    description: errorDescription[type],
   };
 };
 

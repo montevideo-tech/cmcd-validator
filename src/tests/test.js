@@ -1,9 +1,6 @@
-/* eslint-disable no-console */
-/* eslint-disable eol-last */
-/* eslint-disable import/prefer-default-export */
-import { queryValidator } from '../queryValidator.js';
+import queryValidator from '../queryValidator.js';
 
-export const testQueryValidator = () => {
+const testQueryValidator = () => {
   // This function has been created to test diferent type of error in query validator
 
   // This query is correct
@@ -71,3 +68,5 @@ export const testQueryValidator = () => {
   console.log('Duplicated key');
   console.log(result);
 };
+
+export default testQueryValidator;

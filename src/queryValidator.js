@@ -1,17 +1,14 @@
-/* eslint-disable consistent-return */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable no-console */
-/* eslint-disable import/prefer-default-export */
-import { cmcdTypes, keyTypes } from './constants.js';
+import { cmcdTypes, keyTypes, errorTypes } from './constants.js';
 import { createError } from './error.js';
-import checkQuoutes from './utils/checkQuotes.js';
+import checkQuotes from './utils/checkQuotes.js';
 
-export const queryValidator = (queryString) => {
+const queryValidator = (queryString) => {
   const error = [];
+  let valid = true;
 
   // Check if the URL is encoded
   if (decodeURI(queryString) === queryString) {
-    error.push(createError('parameter-encoding'));
+    error.push(createError(errorTypes.parameterEncoding));
     return {
       valid: false,
       queryString,
@@ -25,7 +22,7 @@ export const queryValidator = (queryString) => {
   requests.shift();
 
   if (requests.length > 1) {
-    error.push(createError('incorrect-format'));
+    error.push(createError(errorTypes.incorrectFormat));
     return {
       valid: false,
       queryString,
@@ -34,7 +31,8 @@ export const queryValidator = (queryString) => {
   }
 
   const values = decodeURIComponent(query).split('CMCD=')[1].split(',');
-  values[values.length - 1] = values[values.length - 1].split('&')[0];
+  const [rightValue] = values[values.length - 1].split('&');
+  values[values.length - 1] = rightValue;
 
   // console.log("values\n", values);
   const keys = [];
@@ -46,15 +44,11 @@ export const queryValidator = (queryString) => {
 
     // Check: string require ""
 
-    if ((keyTypes[key] === cmcdTypes.string && !checkQuoutes(value))
-      || (keyTypes[key] === cmcdTypes.token && checkQuoutes(value))
+    if ((keyTypes[key] === cmcdTypes.string && !checkQuotes(value))
+      || (keyTypes[key] === cmcdTypes.token && checkQuotes(value))
     ) {
-      error.push(createError('invalid-value', key, value));
-      return {
-        valid: false,
-        queryString,
-        error,
-      };
+      valid = false;
+      error.push(createError(errorTypes.invalidValue, key, value));
     }
 
     // Check: if the key does not have value it must be a bool
@@ -62,12 +56,8 @@ export const queryValidator = (queryString) => {
       (typeof value === 'undefined' && keyTypes[key] !== cmcdTypes.boolean)
       || value === 'true'
     ) {
-      error.push(createError('wrong-type-value', key, value));
-      return {
-        valid: false,
-        queryString,
-        error,
-      };
+      valid = false;
+      error.push(createError(errorTypes.wrongTypeValue, key, value));
     }
   });
 
@@ -75,7 +65,7 @@ export const queryValidator = (queryString) => {
   console.log('keys\n', keys);
 
   if ((new Set(keys)).size !== keys.length) {
-    error.push(createError('dupliated-key'));
+    error.push(createError(errorTypes.duplicateKey));
     return {
       valid: false,
       queryString,
@@ -84,8 +74,10 @@ export const queryValidator = (queryString) => {
   }
 
   return {
-    valid: true,
+    valid,
     queryString,
     error,
   };
 };
+
+export default queryValidator;

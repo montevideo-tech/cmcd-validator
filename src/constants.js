@@ -27,6 +27,18 @@ export const keyTypes = {
 };
 
 export const errorTypes = {
+  unknownKey: 'unknown-key',
+  invalidValue: 'invalid-value',
+  wrongTypeValue: 'wrong-type-value',
+  incorrectFormat: 'incorrect-format',
+  parameterEncoding: 'parameter-encoding',
+  missingKey: 'missing-key',
+  invalidHeader: 'invalid-header',
+  invalidJson: 'invalid-json',
+  duplicateKey: 'duplicate-key',
+};
+
+export const errorDescription = {
   'unknown-key': 'Key is not part of reserved keys',
   'invalid-value': 'Value does not meet requirements',
   'wrong-type-value': 'Value type is incorrect',
@@ -35,5 +47,5 @@ export const errorTypes = {
   'missing-key': 'Key is missing',
   'invalid-header': 'Header is not valid',
   'invalid-json': 'Json format is not valid',
-  'dupliated-key': 'Key/Keys are not unique',
+  'duplicate-key': 'Key/Keys are not unique',
 };
