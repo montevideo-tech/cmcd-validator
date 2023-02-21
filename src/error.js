@@ -1,8 +1,8 @@
-import { errorTypes } from "./constants.js";
+import { errorTypes } from './constants.js';
 
-export const createError = (type, key, value) => {
+const createError = (type, key, value) => {
   if (!errorTypes[type]) {
-    console.error("Error type not defined");
+    console.error('Error type not defined');
     return -1;
   }
 
@@ -13,3 +13,5 @@ export const createError = (type, key, value) => {
     description: errorTypes[type],
   };
 };
+
+export default createError;
