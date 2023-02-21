@@ -1,22 +1,29 @@
+export const cmcdTypes = {
+  number: "number",
+  boolean: "boolean",
+  token: "token",
+  string: "string"
+}
+
 export const keyTypes = {
-  br: "Integer",
-  bl: "Integer",
-  bs: "Boolean",
-  cid: "String",
-  d: "Integer",
-  dl: "Integer",
-  mtp: "Integer",
-  nor: "String",
-  nrr: "String",
-  ot: "Token",
-  pr: "Integer",
-  rtp: "Integer",
-  sf: "Token",
-  sid: "String",
-  st: "Token",
-  su: "Boolean",
-  tb: "Integer",
-  v: "Integer",
+  br: cmcdTypes.number,
+  bl: cmcdTypes.number,
+  bs: cmcdTypes.boolean,
+  cid: cmcdTypes.string,
+  d: cmcdTypes.number,
+  dl: cmcdTypes.number,
+  mtp: cmcdTypes.number,
+  nor: cmcdTypes.string,
+  nrr: cmcdTypes.string,
+  ot: cmcdTypes.token,
+  pr: cmcdTypes.number,
+  rtp: cmcdTypes.number,
+  sf: cmcdTypes.token,
+  sid: cmcdTypes.string,
+  st: cmcdTypes.token,
+  su: cmcdTypes.boolean,
+  tb: cmcdTypes.number,
+  v: cmcdTypes.number,
 };
 
 export const errorTypes = {
