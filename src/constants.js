@@ -29,3 +29,5 @@ export const errorTypes = {
   'invalid-header': 'Header is not valid',
   'invalid-json': 'Json format is not valid',
 };
+
+export const CMCDheaders = ['CMCD-Object', 'CMCD-Request', 'CMCD-Session', 'CMCD-Status'];
