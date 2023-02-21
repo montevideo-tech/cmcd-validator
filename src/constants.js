@@ -1,9 +1,9 @@
 export const cmcdTypes = {
-  number: "number",
-  boolean: "boolean",
-  token: "token",
-  string: "string"
-}
+  number: 'number',
+  boolean: 'boolean',
+  token: 'token',
+  string: 'string',
+};
 
 export const keyTypes = {
   br: cmcdTypes.number,
@@ -27,13 +27,13 @@ export const keyTypes = {
 };
 
 export const errorTypes = {
-  "unknown-key": "Key is not part of reserved keys",
-  "invalid-value": "Value does not meet requirements",
-  "wrong-type-value": "Value type is incorrect",
-  "incorrect-format": "Format is incorrect",
-  "parameter-encoding": "Parameter is not encoded",
-  "missing-key": "Key is missing",
-  "invalid-header": "Header is not valid",
-  "invalid-json": "Json format is not valid",
-  "dupliated-key": "Key/Keys are not unique"
+  'unknown-key': 'Key is not part of reserved keys',
+  'invalid-value': 'Value does not meet requirements',
+  'wrong-type-value': 'Value type is incorrect',
+  'incorrect-format': 'Format is incorrect',
+  'parameter-encoding': 'Parameter is not encoded',
+  'missing-key': 'Key is missing',
+  'invalid-header': 'Header is not valid',
+  'invalid-json': 'Json format is not valid',
+  'dupliated-key': 'Key/Keys are not unique',
 };

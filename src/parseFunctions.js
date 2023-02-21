@@ -1,7 +1,7 @@
-import {cmcdTypes, keyTypes} from './constants.js'
-import { keyTypes } from './constants.js';
+/* eslint-disable import/prefer-default-export */
+import { cmcdTypes, keyTypes } from './constants.js';
 
-export const parseQueryToJson = (queryString) => {
+const parseQueryToJson = (queryString) => {
   const values = decodeURIComponent(queryString).split('CMCD=')[1].split('&')[0].split(',');
   const obj = {};
   values.forEach((value) => {
