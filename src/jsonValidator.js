@@ -1,14 +1,21 @@
-import { keyTypes } from './constants.js'
 import { createError } from './error.js';
 
-export const jsonValidator=(jsonString) => {
-  const err = [];
+export const jsonIsValid = (jsonString, errors) => {
 
   try {
     const checkJson = JSON.parse(jsonString);
   } catch (error) {
-    err.push(createError("invalid-json"));
-    return false;
+    errors.push(createError("invalid-json"));
+    return {
+      valid : false,
+      jsonString,
+      errors,
+    };
   }
-  return true;
+
+  return {
+    valid : true,
+    jsonString,
+    errors,
+  };
 }
