@@ -1,4 +1,4 @@
-import { keyTypes } from './constants.js';
+import { keyTypes } from '../utils/constants.js';
 
 const parseQueryToJson = (queryString) => {
   const values = decodeURIComponent(queryString).split('CMCD=')[1].split('&')[0].split(',');
