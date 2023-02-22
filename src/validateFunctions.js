@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { keyTypes } from './constants.js';
 import { createError } from './error.js';
 

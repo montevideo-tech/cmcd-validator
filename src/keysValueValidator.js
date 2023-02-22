@@ -1,7 +1,3 @@
-/* eslint-disable default-case */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable guard-for-in */
-/* eslint-disable import/prefer-default-export */
 import {
   checkMaxLength, isEncoded, checkValidNrrFormat, checkRoundToNearest, checkIgnoredParameter,
   isReserved, isPositive, checkBlKey, checkCorrectType, checkOtValidValue, checkSfValidValue,
@@ -10,8 +6,8 @@ import {
 
 // keyValValidator takes as a parameter cmcdJson, which is a javascript object.
 // The function iterates through it validating every key value pair.
-export const keyValValidator = (cmcdJson, errors) => {
-  for (const key in cmcdJson) {
+const keyValValidator = (cmcdJson, errors) => {
+  cmcdJson.forEach((key) => {
     const keyValue = cmcdJson[key];
     isReserved(errors, key);
     checkCorrectType(errors, key, keyValue);
@@ -54,6 +50,10 @@ export const keyValValidator = (cmcdJson, errors) => {
       case 'su':
         checkIgnoredParameter(errors, key, keyValue, false);
         break;
+      default:
+        break;
     }
-  }
+  });
 };
+
+export default keyValValidator;
