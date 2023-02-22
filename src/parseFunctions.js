@@ -21,7 +21,7 @@ const parseHeaderToJSON = (headerString) => {
   const result = {};
   pairs.forEach((pair) => {
     const [key, value] = pair.split(':');
-    if (CMCDheaders.includes(key)) {
+    if (CMCDheaders[key]) {
       if (value !== undefined) {
         const subPairs = value.split(',');
         subPairs.forEach((subPair) => {
@@ -44,4 +44,4 @@ const parseHeaderToJSON = (headerString) => {
   return result;
 };
 
-export { parseQueryToJson, parseHeaderToJSON };
+export default { parseQueryToJson, parseHeaderToJSON };

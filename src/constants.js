@@ -30,4 +30,9 @@ export const errorTypes = {
   'invalid-json': 'Json format is not valid',
 };
 
-export const CMCDheaders = ['CMCD-Object', 'CMCD-Request', 'CMCD-Session', 'CMCD-Status'];
+export const CMCDheaders = {
+  'CMCD-Object': [],
+  'CMCD-Request': [],
+  'CMCD-Session': [],
+  'CMCD-Status': [],
+};
