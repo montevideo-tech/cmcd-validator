@@ -1,1 +1,0 @@
-import cmcd-validator from './dist/cmcd-validator.cjs.js'
