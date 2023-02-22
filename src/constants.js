@@ -50,4 +50,9 @@ export const errorDescription = {
   duplicateKey: 'Key/Keys are not unique',
 };
 
-export const CMCDheaders = ['CMCD-Object', 'CMCD-Request', 'CMCD-Session', 'CMCD-Status'];
+export const CMCDheaders = {
+  'CMCD-Object': [],
+  'CMCD-Request': [],
+  'CMCD-Session': [],
+  'CMCD-Status': [],
+};
