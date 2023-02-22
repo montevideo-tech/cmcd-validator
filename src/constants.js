@@ -39,13 +39,13 @@ export const errorTypes = {
 };
 
 export const errorDescription = {
-  'unknown-key': 'Key is not part of reserved keys',
-  'invalid-value': 'Value does not meet requirements',
-  'wrong-type-value': 'Value type is incorrect',
-  'incorrect-format': 'Format is incorrect',
-  'parameter-encoding': 'Parameter is not encoded',
-  'missing-key': 'Key is missing',
-  'invalid-header': 'Header is not valid',
-  'invalid-json': 'Json format is not valid',
-  'duplicate-key': 'Key/Keys are not unique',
+  unknownKey: 'Key is not part of reserved keys',
+  invalidValue: 'Value does not meet requirements',
+  wrongTypeValue: 'Value type is incorrect',
+  incorrectFormat: 'Format is incorrect',
+  parameterEncoding: 'Parameter is not encoded',
+  missingKey: 'Key is missing',
+  invalidHeader: 'Header is not valid',
+  invalidJson: 'Json format is not valid',
+  duplicateKey: 'Key/Keys are not unique',
 };

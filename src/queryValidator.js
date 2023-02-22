@@ -2,8 +2,7 @@ import { cmcdTypes, keyTypes, errorTypes } from './constants.js';
 import { createError } from './error.js';
 import checkQuotes from './utils/checkQuotes.js';
 
-const queryValidator = (queryString) => {
-  const error = [];
+const queryValidator = (queryString, error) => {
   let valid = true;
 
   // Check if the URL is encoded
@@ -12,7 +11,6 @@ const queryValidator = (queryString) => {
     return {
       valid: false,
       queryString,
-      error,
     };
   }
 
@@ -26,7 +24,6 @@ const queryValidator = (queryString) => {
     return {
       valid: false,
       queryString,
-      error,
     };
   }
 
@@ -54,7 +51,7 @@ const queryValidator = (queryString) => {
     // Check: if the key does not have value it must be a bool
     if (
       (typeof value === 'undefined' && keyTypes[key] !== cmcdTypes.boolean)
-      || value === 'true'
+      || (value === 'true' && typeof value === 'string')
     ) {
       valid = false;
       error.push(createError(errorTypes.wrongTypeValue, key, value));
@@ -62,21 +59,19 @@ const queryValidator = (queryString) => {
   });
 
   // Check if keys are unique
-  console.log('keys\n', keys);
+  // console.log('keys\n', keys);
 
   if ((new Set(keys)).size !== keys.length) {
     error.push(createError(errorTypes.duplicateKey));
     return {
       valid: false,
       queryString,
-      error,
     };
   }
 
   return {
     valid,
     queryString,
-    error,
   };
 };
 

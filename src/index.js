@@ -1,6 +1,6 @@
 import express from 'express';
 import PORT from './config.js';
-import { testQueryValidator } from './tests/test.js';
+import testQueryValidator from './tests/test.js';
 
 const app = express();
 
