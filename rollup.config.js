@@ -16,7 +16,7 @@ export default [
     plugins: [
       nodeResolve({ browser: true, preferBuiltins: false }),
       commonjs({
-        include: ["./node_modules/*", "./src/*"],
+        include: ['./node_modules/*', './src/*'],
         transformMixedEsModules: true
       }),
       json(),
