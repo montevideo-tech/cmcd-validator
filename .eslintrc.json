@@ -17,6 +17,7 @@
             {
                 "js": "ignorePackages"
             }
-        ]
+        ],
+        "no-console": "off"
     }
 }
