@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { errorTypes } from './constants.js';
 
 export const createError = (type, key, value) => {

@@ -6,7 +6,7 @@ import {
 
 // keyValValidator takes as a parameter cmcdJson, which is a javascript object.
 // The function iterates through it validating every key value pair.
-const keyValValidator = (cmcdJson, errors) => {
+export const keyValValidator = (cmcdJson, errors) => {
   cmcdJson.forEach((key) => {
     const keyValue = cmcdJson[key];
     isReserved(errors, key);
@@ -55,5 +55,3 @@ const keyValValidator = (cmcdJson, errors) => {
     }
   });
 };
-
-export default keyValValidator;
