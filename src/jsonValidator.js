@@ -1,17 +1,12 @@
 import { createError } from './error.js';
 
 export const jsonIsValid = (jsonString, errors) => {
+  const valid= true;
   try {
-    const checkJson = JSON.parse(jsonString);
+    JSON.parse(jsonString);
   } catch (error) {
     errors.push(createError("invalid-json"));
-    return {
-      valid : false,
-      errors
-    }
+    return !valid;
   }
-  return {
-    valid : true,
-    errors
-  }
+  return valid;
 }
