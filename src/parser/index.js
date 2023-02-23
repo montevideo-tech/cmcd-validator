@@ -1,6 +1,6 @@
 import { keyTypes } from '../utils/constants.js';
 
-const parseQueryToJson = (queryString) => {
+export const parseQueryToJson = (queryString) => {
   const values = decodeURIComponent(queryString).split('CMCD=')[1].split('&')[0].split(',');
   const obj = {};
   values.forEach((value) => {
@@ -15,5 +15,3 @@ const parseQueryToJson = (queryString) => {
   });
   return obj;
 };
-
-export default parseQueryToJson;
