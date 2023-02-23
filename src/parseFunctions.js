@@ -1,6 +1,6 @@
 import { cmcdTypes, keyTypes, CMCDheaders } from './constants.js';
 
-const parseQueryToJson = (queryString) => {
+const parseQueryparamToJSON = (queryString) => {
   const values = decodeURIComponent(queryString).split('CMCD=')[1].split('&')[0].split(',');
   const obj = {};
   values.forEach((value) => {
@@ -21,6 +21,7 @@ const parseHeaderToJSON = (headerString) => {
   const result = {};
   pairs.forEach((pair) => {
     const [key, value] = pair.split(':');
+<<<<<<< HEAD
     if (CMCDheaders[key]) {
       if (value !== undefined) {
         const subPairs = value.split(',');
@@ -37,12 +38,26 @@ const parseHeaderToJSON = (headerString) => {
               if (subValue === 'false') subValue = false;
               result[subKey] = subValue;
             }
+    if (CMCDheaders[key] && value) {
+      const subPairs = value.split(',');
+      subPairs.forEach((subPair) => {
+        subPair = subPair.replace(/ /g, '');
+        if (!subPair.includes('=')) {
+          result[subPair] = true;
+        } else {
+          let [subKey, subValue] = subPair.split('=');
+          if (subValue) {
+            subValue = isNaN(subValue) ? subValue.replace(/"/g, '') : Number(subValue);
+            if (subValue === 'true') subValue = true;
+            if (subValue === 'false') subValue = false;
+            result[subKey] = subValue;
+>>>>>>> corrections in the code
           }
-        });
-      }
+        }
+      });
     }
   });
   return result;
 };
 
-export default { parseQueryToJson, parseHeaderToJSON };
+export { parseHeaderToJSON, parseQueryparamToJSON };
