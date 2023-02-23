@@ -1,7 +1,7 @@
 import { createError } from './error.js';
 
 export const jsonIsValid = (jsonString, errors) => {
-  const valid= true;
+  const valid = true;
   try {
     JSON.parse(jsonString);
   } catch (error) {
