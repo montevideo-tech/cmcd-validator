@@ -1,6 +1,6 @@
 import { errorTypes } from './constants.js';
 
-const createError = (type, key, value) => {
+export const createError = (type, key, value) => {
   if (!errorTypes[type]) {
     console.error('Error type not defined');
     return -1;
@@ -13,5 +13,3 @@ const createError = (type, key, value) => {
     description: errorTypes[type],
   };
 };
-
-export default createError;
