@@ -27,11 +27,9 @@ const queryValidator = (queryString, error) => {
     };
   }
 
-  const values = decodeURIComponent(query).split('CMCD=')[1].split(',');
-  const [rightValue] = values[values.length - 1].split('&');
-  values[values.length - 1] = rightValue;
+  const values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
 
-  // console.log("values\n", values);
+  // console.log('values\n', values);
   const keys = [];
 
   // Check: key/value is separated by =
@@ -51,7 +49,7 @@ const queryValidator = (queryString, error) => {
     // Check: if the key does not have value it must be a bool
     if (
       (typeof value === 'undefined' && keyTypes[key] !== cmcdTypes.boolean)
-      || (value === 'true' && typeof value === 'string')
+      || (value === 'true' && typeof value === cmcdTypes.boolean)
     ) {
       valid = false;
       error.push(createError(errorTypes.wrongTypeValue, key, value));
