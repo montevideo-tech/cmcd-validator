@@ -16,5 +16,3 @@ export const createError = (type, key, value) => {
     description: errorDescription[error],
   };
 };
-
-export default createError;
