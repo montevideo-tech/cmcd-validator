@@ -6,6 +6,12 @@
     },
     "extends": "airbnb-base",
     "overrides": [
+        {
+            "files": ["src/test/**/*.js"],
+            "rules": {
+                "no-console": "off"
+            }
+        }
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -17,7 +23,6 @@
             {
                 "js": "ignorePackages"
             }
-        ],
-        "no-console": "off"
+        ]
     }
 }
