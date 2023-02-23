@@ -15,8 +15,11 @@
         "import/extensions": [
             "error",
             {
-                "js": "ignorePackages"
+                "js": "ignorePackages",
+                "default": "false"
             }
-        ]
+        ],
+        "import/prefer-default-export": "off",
+        "valid-typeof": "off"
     }
 }
