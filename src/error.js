@@ -1,15 +1,18 @@
-import { errorTypes } from './constants.js';
+import { errorTypes, errorDescription } from './constants.js';
+import getKeyByValue from './utils/getKeyByValue.js';
 
 export const createError = (type, key, value) => {
-  if (!errorTypes[type]) {
+  if (!Object.values(errorTypes).includes(type)) {
     console.error('Error type not defined');
     return -1;
   }
+
+  const error = getKeyByValue(errorTypes, type);
 
   return {
     type,
     key,
     value,
-    description: errorTypes[type],
+    description: errorDescription[error],
   };
 };
