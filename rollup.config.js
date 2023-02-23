@@ -3,6 +3,7 @@ import nodeResolve from '@rollup/plugin-node-resolve'
 import json from '@rollup/plugin-json'
 import commonjs from '@rollup/plugin-commonjs'
 import babel from '@rollup/plugin-babel'
+import { getBabelOutputPlugin } from '@rollup/plugin-babel';
 
 
 export default [
@@ -21,7 +22,19 @@ export default [
       }),
       json(),
       babel({
-        exclude: './node_modules/**',
+        babelHelpers: 'bundled',
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              targets: {
+                chrome: '100',
+                firefox: '100'
+              }
+            }
+          ]
+        ],
+        exclude: './node_modules/*',
       }),
     ],
   },
@@ -30,6 +43,30 @@ export default [
     output: [
       { file: pkg.main, format: 'cjs' },
       { file: pkg.module, format: 'es' },
+    ],
+    plugins: [
+      nodeResolve({ browser: true, preferBuiltins: false }),
+      commonjs({
+        include: ['./node_modules/*', './src/*'],
+        transformMixedEsModules: true
+      }),
+      json(),
+      babel({
+        babelHelpers: 'bundled',
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              targets: {
+                node: 6,
+                chrome: '100',
+                firefox: '100'
+              }
+            }
+          ]
+        ],
+        exclude: './node_modules/*',
+      }),
     ],
   },
   {
@@ -40,5 +77,28 @@ export default [
       format: 'umd',
       sourcemap: true,
     },
+    plugins: [
+      nodeResolve({ browser: true, preferBuiltins: false }),
+      commonjs({
+        include: ['./node_modules/*', './src/*'],
+        transformMixedEsModules: true
+      }),
+      json(),
+      babel({
+        babelHelpers: 'bundled',
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              targets: {
+                chrome: '100',
+                firefox: '100'
+              }
+            }
+          ]
+        ],
+        exclude: './node_modules/*',
+      }),
+    ],
   },
 ];
