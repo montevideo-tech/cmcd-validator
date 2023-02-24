@@ -1,6 +1,6 @@
-import { cmcdTypes, keyTypes, errorTypes } from './constants.js';
-import { createError } from './error.js';
-import checkQuotes from './utils/checkQuotes.js';
+import { cmcdTypes, keyTypes, errorTypes } from '../utils/constants.js';
+import { createError } from '../utils/error.js';
+import checkQuotes from '../utils/checkQuotes.js';
 
 const queryValidator = (queryString, error) => {
   let valid = true;
@@ -49,7 +49,7 @@ const queryValidator = (queryString, error) => {
     // Check: if the key does not have value it must be a bool
     if (
       (typeof value === 'undefined' && keyTypes[key] !== cmcdTypes.boolean)
-      || (value === 'true' && typeof value === cmcdTypes.boolean)
+      || (value === 'true' && keyTypes[key] === cmcdTypes.boolean)
     ) {
       valid = false;
       error.push(createError(errorTypes.wrongTypeValue, key, value));
