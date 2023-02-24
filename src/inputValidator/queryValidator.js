@@ -3,15 +3,10 @@ import { createError } from '../utils/error.js';
 import checkQuotes from '../utils/checkQuotes.js';
 
 const queryValidator = (queryString, error) => {
-  let valid = true;
-
   // Check if the URL is encoded
   if (decodeURI(queryString) === queryString) {
     error.push(createError(errorTypes.parameterEncoding));
-    return {
-      valid: false,
-      queryString,
-    };
+    return false;
   }
 
   // Check if there is more than one CMCD request
@@ -21,16 +16,14 @@ const queryValidator = (queryString, error) => {
 
   if (requests.length > 1) {
     error.push(createError(errorTypes.incorrectFormat));
-    return {
-      valid: false,
-      queryString,
-    };
+    return false;
   }
 
   const values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
 
   // console.log('values\n', values);
   const keys = [];
+  let valid = true;
 
   // Check: key/value is separated by =
   values.forEach((val) => {
@@ -38,7 +31,6 @@ const queryValidator = (queryString, error) => {
     keys.push(key);
 
     // Check: string require ""
-
     if ((keyTypes[key] === cmcdTypes.string && !checkQuotes(value))
       || (keyTypes[key] === cmcdTypes.token && checkQuotes(value))
     ) {
@@ -61,16 +53,10 @@ const queryValidator = (queryString, error) => {
 
   if ((new Set(keys)).size !== keys.length) {
     error.push(createError(errorTypes.duplicateKey));
-    return {
-      valid: false,
-      queryString,
-    };
+    return false;
   }
 
-  return {
-    valid,
-    queryString,
-  };
+  return valid;
 };
 
 export default queryValidator;
