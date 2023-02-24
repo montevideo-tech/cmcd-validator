@@ -1,5 +1,5 @@
-import { testJsonValidator } from '../tests/testJsonValidator.js';
-import { testQueryValidator } from '../tests/testQueryValidator.js';
+import { testJsonValidator } from './testJsonValidator.js';
+import { testQueryValidator } from './testQueryValidator.js';
 
 console.log('--------- Test queryValidator---------');
 testQueryValidator();

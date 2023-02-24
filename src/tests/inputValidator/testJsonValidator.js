@@ -1,4 +1,4 @@
-import { jsonIsValid } from '../inputValidator/jsonValidator.js';
+import { jsonIsValid } from '../../inputValidator/jsonValidator.js';
 
 export const testJsonValidator = () => {
   const testCases = [

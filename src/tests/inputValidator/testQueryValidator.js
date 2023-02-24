@@ -1,4 +1,4 @@
-import queryValidator from '../inputValidator/queryValidator.js';
+import queryValidator from '../../inputValidator/queryValidator.js';
 
 export const testQueryValidator = () => {
   // This function has been created to test diferent type of error in query validator

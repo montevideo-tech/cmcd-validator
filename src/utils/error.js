@@ -3,7 +3,7 @@ import getKeyByValue from './getKeyByValue.js';
 
 export const createError = (type, key, value) => {
   if (!Object.values(errorTypes).includes(type)) {
-    console.error('Error type not defined');
+    // console.error('Error type not defined');
     return -1;
   }
 
