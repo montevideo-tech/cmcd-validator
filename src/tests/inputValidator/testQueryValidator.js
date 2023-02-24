@@ -1,6 +1,6 @@
-import queryValidator from '../../inputValidator/queryValidator.js';
+import { queryValidator } from '../../inputValidator/index.js';
 
-export const testQueryValidator = () => {
+const testQueryValidator = () => {
   // This function has been created to test diferent type of error in query validator
 
   const testCases = [
@@ -27,3 +27,5 @@ export const testQueryValidator = () => {
     console.log('\n');
   });
 };
+
+export default testQueryValidator;

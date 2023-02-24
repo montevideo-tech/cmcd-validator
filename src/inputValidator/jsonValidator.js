@@ -1,7 +1,7 @@
 import { errorTypes } from '../utils/constants.js';
 import { createError } from '../utils/error.js';
 
-export const jsonIsValid = (jsonString, errors) => {
+const jsonIsValid = (jsonString, errors) => {
   let valid = true;
   try {
     JSON.parse(jsonString);
@@ -11,3 +11,5 @@ export const jsonIsValid = (jsonString, errors) => {
   }
   return valid;
 };
+
+export default jsonIsValid;

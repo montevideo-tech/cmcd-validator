@@ -4,6 +4,7 @@
   "description": "This is a library created to validate CMCD",
   "type": "module",
   "scripts": {
+    "test": "node ./src/tests/index.js",
     "lint": "eslint"
   },
   "repository": {
