@@ -29,4 +29,13 @@ export const errorTypes = {
   'invalid-header': 'Header is not valid',
   'invalid-json': 'Json format is not valid',
   'unnecessary-key': 'This key must not be sent with the current value.',
+  'duplicated-key': 'Key/Keys is not unique.',
+  'duplicated-header': 'Header is duplicted.',
+};
+
+export const cmcdHeader = {
+  'CMCD-Object': ['br', 'd', 'ot', 'tb'],
+  'CMCD-Request': ['bl', 'dl', 'mtp', 'nor', 'nrr', 'su'],
+  'CMCD-Session': ['cid', 'pr', 'sf', 'sid', 'st', 'v'],
+  'CMCD-Status': ['bs', 'rtp'],
 };

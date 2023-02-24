@@ -1,27 +1,32 @@
 /* eslint-disable import/prefer-default-export */
 import { cmcdHeader } from './constants.js';
-import { checkKeyInCorrectHeader } from './formatFunctions.js';
+import {
+  checkKeyInCorrectHeader, isBooleanCorrect, isSeaparetedCorrectly,
+  isStringCorrect, isHeaderRepeated, isKeyRepeated,
+} from './formatFunctions.js';
 
 export const headerVal = (headerString, errors) => {
   const headers = headerString.split('\n');
-  const cmcdHeadersArray = [];
+  const cmcdHeaders = [];
+  const keys = [];
   headers.forEach((element) => {
-    if (element.split(':')[0] in cmcdHeader) {
-      cmcdHeadersArray.push(element);
+    const [header, keysArray] = element.split(': ');
+    if (!(header in cmcdHeader) || isHeaderRepeated(header, cmcdHeaders, errors)) {
+      return;
     }
-  });
-  // If array is empty, then there are no cmcd headers. If it is not empty then validate headers.
-  if (cmcdHeadersArray.length > 0) {
-    // check if keys have the correct header, create the keyValueArray with all the key value pairs.
-    let keyValueArray = [];
-    cmcdHeadersArray.forEach((element) => {
-      const [header, keysArray] = element.split(':');
-      keyValueArray = keyValueArray.concat(keysArray.split(','));
-      checkKeyInCorrectHeader(header, keysArray, errors);
-    });
     // check if each key value pair is valid
-    // keyValueArray.forEach((element) => {
-
-    // })
-  }
+    keysArray.split(',').forEach((keyVal) => {
+      if (isSeaparetedCorrectly(keyVal, errors)) {
+        const [key, value] = keyVal.split('=');
+        if (isKeyRepeated(key, keys, errors)) {
+          return;
+        }
+        checkKeyInCorrectHeader(header, key, errors);
+        isStringCorrect(key, value, errors);
+        isBooleanCorrect(key, value, errors);
+        keys.push(key);
+      }
+    });
+    cmcdHeaders.push(header);
+  });
 };
