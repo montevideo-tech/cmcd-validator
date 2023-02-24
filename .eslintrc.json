@@ -7,7 +7,7 @@
     "extends": "airbnb-base",
     "overrides": [
         {
-            "files": ["src/test/**/*.js"],
+            "files": ["src/tests/**/*.js"],
             "rules": {
                 "no-console": "off"
             }
