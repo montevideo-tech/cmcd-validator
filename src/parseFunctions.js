@@ -1,13 +1,14 @@
-import { keyTypes } from './constants.js';
+/* eslint-disable import/prefer-default-export */
+import { cmcdTypes, keyTypes } from './constants.js';
 
-const parseQueryToJson = (queryString) => {
+export const parseQueryToJson = (queryString) => {
   const values = decodeURIComponent(queryString).split('CMCD=')[1].split('&')[0].split(',');
   const obj = {};
   values.forEach((value) => {
     const [key, val] = value.split('=');
-    if (keyTypes[key] === 'Integer') {
+    if (keyTypes[key] === cmcdTypes.number) {
       obj[key] = parseInt(val, 10);
-    } else if (keyTypes[key] === 'Boolean') {
+    } else if (keyTypes[key] === cmcdTypes.boolean) {
       obj[key] = !(val === 'false');
     } else {
       obj[key] = val.replaceAll('\'', '');
@@ -15,5 +16,3 @@ const parseQueryToJson = (queryString) => {
   });
   return obj;
 };
-
-export default parseQueryToJson;
