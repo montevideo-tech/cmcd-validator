@@ -1,5 +1,5 @@
-import { keyTypes } from './constants.js';
-import { createError } from './error.js';
+import { keyTypes } from '../utils/constants.js';
+import { createError } from '../utils/error.js';
 
 export const checkMaxLength = (errors, key, value) => {
   if (value.length > 64) {
