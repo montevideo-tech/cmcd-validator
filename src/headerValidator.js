@@ -2,7 +2,7 @@
 import { cmcdHeader } from './constants.js';
 import {
   checkKeyInCorrectHeader, isBooleanCorrect, isSeaparetedCorrectly,
-  isStringCorrect, isHeaderRepeated, isKeyRepeated,
+  isStringCorrect, isHeaderRepeated, isKeyRepeated,noHeader, emptyHeader
 } from './formatFunctions.js';
 
 export const headerVal = (headerString, errors) => {
@@ -12,6 +12,9 @@ export const headerVal = (headerString, errors) => {
   headers.forEach((element) => {
     const [header, keysArray] = element.split(': ');
     if (!(header in cmcdHeader) || isHeaderRepeated(header, cmcdHeaders, errors)) {
+      return;
+    }
+    if(emptyHeader(keysArray, errors)){
       return;
     }
     // check if each key value pair is valid
@@ -29,4 +32,5 @@ export const headerVal = (headerString, errors) => {
     });
     cmcdHeaders.push(header);
   });
+  noHeader(cmcdHeaders,errors);
 };

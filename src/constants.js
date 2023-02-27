@@ -31,6 +31,8 @@ export const errorTypes = {
   'unnecessary-key': 'This key must not be sent with the current value.',
   'duplicated-key': 'Key/Keys is not unique.',
   'duplicated-header': 'Header is duplicted.',
+  'no-header': 'There is no cmcd headres.',
+  'empty-header': 'There is a header with no content.'
 };
 
 export const cmcdHeader = {
