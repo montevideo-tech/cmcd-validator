@@ -19,7 +19,14 @@ const queryValidator = (queryString, error) => {
     return false;
   }
 
-  const values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
+  let values;
+
+  try {
+    values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
+  } catch (err) {
+    error.push(createError(errorTypes.noCMCDRequest));
+    return false;
+  }
 
   // console.log('values\n', values);
   const keys = [];
@@ -39,9 +46,11 @@ const queryValidator = (queryString, error) => {
     }
 
     // Check: if the key does not have value it must be a bool
+    // Check: number does not required ""
     if (
       (typeof value === 'undefined' && keyTypes[key] !== cmcdTypes.boolean)
       || (value === 'true' && keyTypes[key] === cmcdTypes.boolean)
+      || (keyTypes[key] === cmcdTypes.number && checkQuotes(value))
     ) {
       valid = false;
       error.push(createError(errorTypes.wrongTypeValue, key, value));

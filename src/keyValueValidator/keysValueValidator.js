@@ -12,6 +12,7 @@ const keyValValidator = (cmcdJson, errors) => {
   // cmcdJson.forEach((key) => {
     const keyValue = cmcdJson[key];
     isReserved(errors, key);
+    // console.log('Check correct type');
     checkCorrectType(errors, key, keyValue);
     isPositive(errors, key, keyValue);
     switch (key) {
