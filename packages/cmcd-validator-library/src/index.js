@@ -1,1 +1,1 @@
-export { testQueryValidator, testJsonValidator } from './tests/index';
+export { default as CMCDQueryValidator } from './CMCDQueryValidator.js';
