@@ -5,9 +5,8 @@ const testCMCDQueryValidator = () => {
   const testCases = queryTestCases;
 
   testCases.forEach((test) => {
-    const error = [];
     console.log(test.description);
-    console.log(CMCDQueryValidator(test.query, error));
+    console.log(CMCDQueryValidator(test.query));
     console.log('\n');
   });
 };
