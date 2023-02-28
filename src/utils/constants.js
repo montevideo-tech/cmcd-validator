@@ -55,3 +55,10 @@ export const errorDescription = {
   unnecessaryKey: 'This key must not be sent with the current value',
   duplicateHeader: 'Header is duplicated',
 };
+
+export const CMCDheaders = {
+  'CMCD-Object': [],
+  'CMCD-Request': [],
+  'CMCD-Session': [],
+  'CMCD-Status': [],
+};
