@@ -27,6 +27,7 @@ export const keyTypes = {
 };
 
 export const errorTypes = {
+  noCMCDRequest: 'no-CMCD-request',
   unknownKey: 'unknown-key',
   invalidValue: 'invalid-value',
   wrongTypeValue: 'wrong-type-value',
@@ -39,9 +40,11 @@ export const errorTypes = {
   duplicatedHeader: 'duplicated-header',
   noHeader: 'no-header',
   emptyHeader: 'empty-header',
+  unnecessaryKey: 'unnecessary-key',
 };
 
 export const errorDescription = {
+  noCMCDRequest: 'No CMCD request found',
   unknownKey: 'Key is not part of reserved keys',
   invalidValue: 'Value does not meet requirements',
   wrongTypeValue: 'Value type is incorrect',
@@ -51,11 +54,12 @@ export const errorDescription = {
   invalidHeader: 'Header is not valid',
   invalidJson: 'Json format is not valid',
   duplicateKey: 'Key/Keys are not unique',
-  duplicatedHeader: 'Header is duplicted',
-  noHeader: 'There is no cmcd headers.',
+  duplicatedHeader: 'Header is duplicated',
+  noHeader: 'There is no CMCD headers.',
   emptyHeader: 'There is a header with no content',
+  unnecessaryKey: 'This key must not be sent with the current value',
+  duplicateHeader: 'Header is duplicated',
 };
-
 export const cmcdHeader = {
   'CMCD-Object': ['br', 'd', 'ot', 'tb'],
   'CMCD-Request': ['bl', 'dl', 'mtp', 'nor', 'nrr', 'su'],

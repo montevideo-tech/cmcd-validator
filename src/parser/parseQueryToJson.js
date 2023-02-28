@@ -10,7 +10,7 @@ const parseQueryToJson = (queryString) => {
     } else if (keyTypes[key] === cmcdTypes.boolean) {
       obj[key] = !(val === 'false');
     } else {
-      obj[key] = val.replaceAll('\'', '');
+      obj[key] = val.replaceAll('"', '');
     }
   });
   return obj;

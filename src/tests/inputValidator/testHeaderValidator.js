@@ -1,13 +1,15 @@
-import { headerVal } from "../../headerValidator.js";
+import { headerValidator } from "../../inputValidator/index.js";
 import { headerTestCases } from "../testCases/headerTestCases.js";
 
 
-export const testHeaderVal = ()=>{
+const testHeaderValidator = ()=>{
   const testCases = headerTestCases; 
   testCases.forEach((test) => {
     const err = [];
     console.log(test.description);
-    headerVal(test.header, err);
+    headerValidator(test.header, err);
     console.log('\n');
   })
 };
+
+export default testHeaderValidator;

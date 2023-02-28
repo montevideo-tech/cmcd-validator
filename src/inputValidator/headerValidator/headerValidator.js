@@ -1,11 +1,11 @@
 /* eslint-disable import/prefer-default-export */
-import { cmcdHeader } from "./utils/constants.js";
+import { cmcdHeader } from "../../utils/constants.js";
 import {
   checkKeyInCorrectHeader, isBooleanCorrect, isSeparetedCorrectly,
   isStringCorrect, isHeaderRepeated, isKeyRepeated, noHeader, isEmptyHeader
 } from './formatFunctions.js';
 
-export const headerVal = (headerString, errors) => {
+const headerValidator = (headerString, errors) => {
   const headers = headerString.split('\n');
   const cmcdHeaders = [];
   const keys = [];
@@ -34,3 +34,5 @@ export const headerVal = (headerString, errors) => {
   });
   noHeader(cmcdHeaders,errors);
 };
+
+export default headerValidator;

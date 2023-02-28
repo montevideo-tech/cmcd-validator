@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
-import checkQuotes from './utils/checkQuotes.js';
-import { cmcdHeader, keyTypes } from './utils/constants.js';
-import { createError } from './utils/error.js';
+import checkQuotes from '../../utils/checkQuotes.js';
+import { cmcdHeader, keyTypes } from '../..//utils/constants.js';
+import { createError } from '../../utils/error.js';
 
 export const checkKeyInCorrectHeader = (header, key, errors) => {
   if (!cmcdHeader[header].includes(key)) {
