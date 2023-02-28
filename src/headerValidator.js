@@ -2,7 +2,7 @@
 import { cmcdHeader } from './constants.js';
 import {
   checkKeyInCorrectHeader, isBooleanCorrect, isSeaparetedCorrectly,
-  isStringCorrect, isHeaderRepeated, isKeyRepeated,noHeader, emptyHeader
+  isStringCorrect, isHeaderRepeated, isKeyRepeated, noHeader, emptyHeader
 } from './formatFunctions.js';
 
 export const headerVal = (headerString, errors) => {
