@@ -49,3 +49,10 @@ export const errorDescription = {
   invalidJson: 'Json format is not valid',
   duplicateKey: 'Key/Keys are not unique',
 };
+
+export const CMCDheaders = {
+  'CMCD-Object': [],
+  'CMCD-Request': [],
+  'CMCD-Session': [],
+  'CMCD-Status': [],
+};
