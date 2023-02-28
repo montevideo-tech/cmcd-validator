@@ -5,3 +5,5 @@ testQueryValidator();
 console.log('\n');
 console.log('--------- Test jsonValidator---------');
 testJsonValidator();
+
+export { testQueryValidator, testJsonValidator };
