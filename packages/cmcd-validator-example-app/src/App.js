@@ -1,30 +1,27 @@
-import logo from './logo.svg';
-import { testQueryValidator } from '@montevideo-tech/cmcd-validator';
+import { useState } from 'react';
+import { CMCDQueryValidator } from '@montevideo-tech/cmcd-validator';
 import './App.css';
 
 function App() {
+
+  const [queryString, setQueryString] = useState('');
+  const [output, setOutput] = useState({});
   
   const test = () => {
-    testQueryValidator();
+    console.log(queryString);
+    setOutput(CMCDQueryValidator(queryString));
+    console.log(output);
   }
+
+  const updateQueryString = (input) =>{
+    setQueryString(input.target.value);
+  } 
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={test()} />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Query validator</h1>
+      <input type='text' value={queryString} onChange={(e) => updateQueryString(e)}/>
+      <button onClick={() => test()}>Query Check</button>
     </div>
   );
 }
