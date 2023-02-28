@@ -27,7 +27,7 @@ export const keyTypes = {
 };
 
 export const errorTypes = {
-  noCMCDRequest: 'no-CMC-request',
+  noCMCDRequest: 'no-CMCD-request',
   unknownKey: 'unknown-key',
   invalidValue: 'invalid-value',
   wrongTypeValue: 'wrong-type-value',

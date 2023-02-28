@@ -57,9 +57,6 @@ const queryValidator = (queryString, error) => {
     }
   });
 
-  // Check if keys are unique
-  // console.log('keys\n', keys);
-
   if ((new Set(keys)).size !== keys.length) {
     error.push(createError(errorTypes.duplicateKey));
     return false;

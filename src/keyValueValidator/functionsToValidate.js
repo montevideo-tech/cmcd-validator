@@ -17,9 +17,6 @@ export const isEncoded = (errors, key, value) => {
 
 export const checkValidNrrFormat = (errors, key, value) => {
   if (!(/^(\d*-\d*)$/.test(value)) && !(/^\d*-$/.test(value)) && !(/^-\d*$/.test(value))) {
-    console.log('/^(d*-d*)$/.test(value)', !(/^(\d*-\d*)$/.test(value)));
-    console.log('(/^d*-$/.test(value))', !(/^\d*-$/.test(value)));
-    console.log('(/^-d*$/.test(value))', !(/^-\d*$/.test(value)));
     errors.push(createError(errorTypes.incorrectFormat, key, value));
   }
 };
