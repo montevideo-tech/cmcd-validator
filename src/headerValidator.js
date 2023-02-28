@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
-import { cmcdHeader } from './constants.js';
+import { cmcdHeader } from "./utils/constants.js";
 import {
-  checkKeyInCorrectHeader, isBooleanCorrect, isSeaparetedCorrectly,
-  isStringCorrect, isHeaderRepeated, isKeyRepeated, noHeader, emptyHeader
+  checkKeyInCorrectHeader, isBooleanCorrect, isSeparetedCorrectly,
+  isStringCorrect, isHeaderRepeated, isKeyRepeated, noHeader, isEmptyHeader
 } from './formatFunctions.js';
 
 export const headerVal = (headerString, errors) => {
@@ -14,12 +14,12 @@ export const headerVal = (headerString, errors) => {
     if (!(header in cmcdHeader) || isHeaderRepeated(header, cmcdHeaders, errors)) {
       return;
     }
-    if(emptyHeader(keysArray, errors)){
+    if(isEmptyHeader(keysArray, errors)){
       return;
     }
     // check if each key value pair is valid
     keysArray.split(',').forEach((keyVal) => {
-      if (isSeaparetedCorrectly(keyVal, errors)) {
+      if (isSeparetedCorrectly(keyVal, errors)) {
         const [key, value] = keyVal.split('=');
         if (isKeyRepeated(key, keys, errors)) {
           return;

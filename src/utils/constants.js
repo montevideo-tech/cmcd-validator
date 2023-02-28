@@ -36,6 +36,9 @@ export const errorTypes = {
   invalidHeader: 'invalid-header',
   invalidJson: 'invalid-json',
   duplicateKey: 'duplicate-key',
+  duplicatedHeader: 'duplicated-header',
+  noHeader: 'no-header',
+  emptyHeader: 'empty-header',
 };
 
 export const errorDescription = {
@@ -48,4 +51,14 @@ export const errorDescription = {
   invalidHeader: 'Header is not valid',
   invalidJson: 'Json format is not valid',
   duplicateKey: 'Key/Keys are not unique',
+  duplicatedHeader: 'Header is duplicted',
+  noHeader: 'There is no cmcd headers.',
+  emptyHeader: 'There is a header with no content',
+};
+
+export const cmcdHeader = {
+  'CMCD-Object': ['br', 'd', 'ot', 'tb'],
+  'CMCD-Request': ['bl', 'dl', 'mtp', 'nor', 'nrr', 'su'],
+  'CMCD-Session': ['cid', 'pr', 'sf', 'sid', 'st', 'v'],
+  'CMCD-Status': ['bs', 'rtp'],
 };
