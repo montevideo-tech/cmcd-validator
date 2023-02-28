@@ -1,0 +1,1 @@
+export { default as testCMCDJsonValidator } from './testCMCDJsonValidator.js';

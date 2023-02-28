@@ -7,7 +7,8 @@ import {
 // keyValValidator takes as a parameter cmcdJson, which is a javascript object.
 // The function iterates through it validating every key value pair.
 const keyValValidator = (cmcdJson, errors) => {
-  cmcdJson.forEach((key) => {
+  //cmcdJson.forEach((key) => {
+    Object.keys(cmcdJson).forEach((key) => {
     const keyValue = cmcdJson[key];
     isReserved(errors, key);
     checkCorrectType(errors, key, keyValue);

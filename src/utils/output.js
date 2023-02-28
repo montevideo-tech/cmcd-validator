@@ -5,5 +5,5 @@ export const createOutput = (errors, parsedData, rawData) => {
     parsedData,
     rawData,
   };
-  return JSON.stringify(response);
+  return response;
 };
