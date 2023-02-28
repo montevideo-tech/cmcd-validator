@@ -27,6 +27,7 @@ export const keyTypes = {
 };
 
 export const errorTypes = {
+  noCMCDRequest: 'no-CMCD-request',
   unknownKey: 'unknown-key',
   invalidValue: 'invalid-value',
   wrongTypeValue: 'wrong-type-value',
@@ -36,9 +37,12 @@ export const errorTypes = {
   invalidHeader: 'invalid-header',
   invalidJson: 'invalid-json',
   duplicateKey: 'duplicate-key',
+  unnecessaryKey: 'unnecessary-key',
+  duplicateHeader: 'duplicate-header',
 };
 
 export const errorDescription = {
+  noCMCDRequest: 'No CMCD request found',
   unknownKey: 'Key is not part of reserved keys',
   invalidValue: 'Value does not meet requirements',
   wrongTypeValue: 'Value type is incorrect',
@@ -48,4 +52,6 @@ export const errorDescription = {
   invalidHeader: 'Header is not valid',
   invalidJson: 'Json format is not valid',
   duplicateKey: 'Key/Keys are not unique',
+  unnecessaryKey: 'This key must not be sent with the current value',
+  duplicateHeader: 'Header is duplicated',
 };
