@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@montevideo-tech/cmcd-validator": "*",
+    "bootstrap": "^5.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-json-pretty": "^2.2.0",
     "shaka-player-react": "^1.1.5"
   },
   "devDependencies": {

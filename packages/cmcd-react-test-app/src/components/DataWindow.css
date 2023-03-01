@@ -1,15 +1,16 @@
 .data-window-wrapper {
-  display: flex;
-  justify-content: space-evenly;
+  overflow: auto;
   height: 100vh;
-  width: 100vh;
 }
 
 .data-window {
-  width: 50%;
-  background-color: antiquewhite;
+  background-color: #1e1e1e;
   color: black;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   padding: 2vh;
   overflow: auto;
+}
+
+.query-url {
+  cursor: pointer;
 }

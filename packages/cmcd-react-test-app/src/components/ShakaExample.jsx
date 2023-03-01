@@ -1,13 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import ShakaPlayer from "shaka-player-react";
 import "shaka-player/dist/controls.css";
-import "./shakaExample.css";
+import "./ShakaExample.css";
 import { DataWindow } from "./DataWindow";
+import { ValidatorView } from "./ValidatorView";
+import { CMCDQueryValidator } from '@montevideo-tech/cmcd-validator'
 
 export function ShakaExample() {
   const controllerRef = useRef(null);
-  const [text, setText] = useState([{}]);
-  const [newText, setNewText] = useState([{}]);
+  const [newData, setNewData] = useState([{}]);
+  const [validatorOutput, setValidatorOutput] = useState("");
+  const [url, setUrl] = useState("https://demo.unified-streaming.com/k8s/live/stable/scte35-no-splicing.isml/.mpd");
+  const handleInput = (input) => {
+    setUrl(input.target.value)
+  }
+
   const onButtonClick = () => {
     const {
       /** @type {shaka.Player} */ player,
@@ -15,57 +22,50 @@ export function ShakaExample() {
       /** @type {HTMLVideoElement} */ videoElement,
     } = controllerRef.current;
 
-    console.log(player);
     player.configure({
       cmcd: {
-        contentId: "TEST",
+        contentId: "testContentId",
         enabled: true,
-        sessionId: "asdfasdfa",
+        sessionId: "testSessionId",
         useHeaders: false,
       },
     });
     const networkEngine = player.getNetworkingEngine();
-    console.log(networkEngine);
     networkEngine.registerRequestFilter((type, request) => {
-      console.log(newText);
       const newUris = [{}];
       const urisToAdd = [...new Set(request.uris)];
       for (const uri of urisToAdd) {
-        if (!text.find((e) => e.url === uri))
-          newUris.push({ url: uri, result: uri });
+          newUris.push({ url: uri, result: CMCDQueryValidator(uri) });
       }
-      console.log("newUris-> ", newUris);
-      setNewText(newUris);
+      setNewData(newUris);
     });
     async function loadAsset() {
       // Load an asset.
       await player.load(
-        "https://demo.unified-streaming.com/k8s/live/stable/scte35-no-splicing.isml/.mpd"
+        url
       );
       // Trigger play.
       videoElement.play();
     }
     loadAsset();
   };
-  useEffect(() => {
-    console.log("newText ->", newText);
-    const aggregateArray = [...text, ...newText];
-    aggregateArray.splice(
-      0,
-      aggregateArray.length - 15 > 0 ? aggregateArray.length - 15 : 0
-    );
-    setText(aggregateArray);
-    console.log(`aggregateArray length : ${aggregateArray.length}`);
-    console.log(text.length);
-  }, [newText]);
+
   return (
     <>
-      <button onClick={onButtonClick}>Start Shaka</button>
-      <div className="shakaPlayerContainer">
-        <div>
-          <ShakaPlayer width="720" height="540" ref={controllerRef} />
+      <div className="mb-4 contet input-group d-flex justify-content-center">
+        <input className="text ms-2" placeholder="Manifest URL" onChange={handleInput}></input>
+        <button className="btn btn-primary" onClick={onButtonClick}>Start Shaka</button>
+      </div>
+      <div className="row">
+        <div className="col-6">
+          <div className="col-12 mb-4">
+            <ShakaPlayer ref={controllerRef} />
+          </div>
+          <ValidatorView output={validatorOutput}/>
+        </div >
+        <div className="col-6">
+          <DataWindow newData={newData} setValidatorOutput={setValidatorOutput}/>
         </div>
-        <DataWindow text={text} />
       </div>
     </>
   );

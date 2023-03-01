@@ -3,6 +3,12 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: transparent;
+}
+
+body {
+  background-color: #2d1674;
+  background-image: url(https://stage.montevideotech.dev/static/media/background.bd8912f09753f045d141.jpg);
 }
 
 .logo {
