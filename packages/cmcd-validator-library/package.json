@@ -1,6 +1,6 @@
 {
   "name": "@montevideo-tech/cmcd-validator",
-  "version": "0.1.1",
+  "version": "0.0.0",
   "description": "This is a library created to validate CMCD",
   "main": "dist/index.js",
   "module": "dist/cmcd-validator.esm.js",
