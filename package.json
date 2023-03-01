@@ -4,6 +4,7 @@
   "scripts": {
     "build" : "lerna run build",
     "start": "lerna run start --parallel",
+    "test": "lerna run test",
     "clean": "lerna clean"
   },
   "workspaces": [
