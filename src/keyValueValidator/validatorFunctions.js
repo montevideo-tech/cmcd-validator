@@ -64,7 +64,7 @@ export const checkBlKey = (cmcdJson, errors, key, value) => {
 };
 
 export const checkCorrectType = (errors, key, value) => {
-   console.log("typeof value:", typeof value," >>>> ","keyTypes[key]:", keyTypes[key])
+  //  console.log("typeof value:", typeof value," >>>> ","keyTypes[key]:", keyTypes[key])
 
    //console.log("keyTypes[key]: ", keyTypes[key])
   if ((typeof value !== keyTypes[key]) && (keyTypes[key] === cmcdTypes.token
