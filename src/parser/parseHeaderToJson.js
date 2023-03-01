@@ -24,4 +24,4 @@ const parseHeaderToJSON = (headerString) => {
   return result;
 };
 
-export default { parseHeaderToJSON };
+export default parseHeaderToJSON;

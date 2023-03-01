@@ -13,10 +13,9 @@ const headerValidator = (headerString, errors) => {
     if (!(header in cmcdHeader) || isHeaderRepeated(header, cmcdHeaders, errors)) {
       return;
     }
-    if(isEmptyHeader(keysArray, errors)){
+    if(isEmptyHeader(keysArray ,header , errors)){
       return;
     }
-    // check if each key value pair is valid
     keysArray.split(',').forEach((keyVal) => {
       if (isSeparetedCorrectly(keyVal, errors)) {
         const [key, value] = keyVal.split('=');
