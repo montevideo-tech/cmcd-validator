@@ -1,6 +1,6 @@
 {
   "name": "cmcd-validator-example-app",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
   "dependencies": {
     "@montevideo-tech/cmcd-validator": "*",
