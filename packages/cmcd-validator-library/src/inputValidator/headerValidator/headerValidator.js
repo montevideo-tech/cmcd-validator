@@ -1,7 +1,7 @@
-import { cmcdHeader } from "../../utils/constants.js";
+import { cmcdHeader } from '../../utils/constants.js';
 import {
   checkKeyInCorrectHeader, isBooleanCorrect, isSeparetedCorrectly,
-  isStringCorrect, isHeaderRepeated, isKeyRepeated, noHeader, isEmptyHeader
+  isStringCorrect, isHeaderRepeated, isKeyRepeated, noHeader, isEmptyHeader,
 } from './formatFunctions.js';
 
 const headerValidator = (headerString, errors) => {
@@ -13,7 +13,7 @@ const headerValidator = (headerString, errors) => {
     if (!(header in cmcdHeader) || isHeaderRepeated(header, cmcdHeaders, errors)) {
       return;
     }
-    if(isEmptyHeader(keysArray ,header , errors)){
+    if (isEmptyHeader(keysArray, header, errors)) {
       return;
     }
     keysArray.split(',').forEach((keyVal) => {
@@ -30,7 +30,7 @@ const headerValidator = (headerString, errors) => {
     });
     cmcdHeaders.push(header);
   });
-  noHeader(cmcdHeaders,errors);
+  noHeader(cmcdHeaders, errors);
 };
 
 export default headerValidator;
