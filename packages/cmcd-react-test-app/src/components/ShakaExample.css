@@ -1,0 +1,5 @@
+.shakaPlayerContainer {
+  display: flex;
+  max-height: 721px;
+  flex-direction: column;
+}
