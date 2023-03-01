@@ -32,5 +32,6 @@
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "rollup": "^2.60.2"
-  }
+  },
+  "gitHead": "87f626afc3e60b208f8f1ef96ccf5149bbac1719"
 }
