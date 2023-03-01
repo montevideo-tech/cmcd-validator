@@ -1,2 +1,3 @@
-export { default as jsonIsValid } from './jsonValidator.js';
-export { default as queryValidator } from './queryValidator.js';
+export { jsonIsValid } from './jsonValidator/index.js';
+export { queryValidator } from './queryValidator/index.js';
+export { headerValidator } from './headerValidator/index.js';

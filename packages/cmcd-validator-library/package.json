@@ -2,14 +2,15 @@
   "name": "@montevideo-tech/cmcd-validator",
   "version": "0.0.0",
   "description": "This is a library created to validate CMCD",
-  "main": "dist/index.js",
+  "main": "dist/cmcd-validator.cjs.js",
   "module": "dist/cmcd-validator.esm.js",
   "maintypes": "dist/cmcd-validator.d.ts",
   "browser": "dist/cmcd-validator.umd.js",
+  "test": "dist/tests.js",
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
-    "test": "node ./src/tests/index.js",
+    "test": "rollup -c && node ./dist/tests.js",
     "lint": "eslint"
   },
   "repository": {

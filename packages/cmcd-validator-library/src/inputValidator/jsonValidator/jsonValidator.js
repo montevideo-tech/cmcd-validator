@@ -1,5 +1,5 @@
-import { errorTypes } from '../utils/constants.js';
-import { createError } from '../utils/error.js';
+import { errorTypes } from '../../utils/constants.js';
+import { createError } from '../../utils/error.js';
 
 const jsonIsValid = (jsonString, errors) => {
   let valid = true;
