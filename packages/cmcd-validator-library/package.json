@@ -20,7 +20,7 @@
     "CMCD",
     "Common Media Client Data"
   ],
-  "author": "Qualabs",
+  "author": "Montevideo Tech",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/montevideo-tech/cmcd-validator/issues"
