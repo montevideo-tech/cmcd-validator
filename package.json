@@ -2,6 +2,8 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "version": "lerna version --no-private",
+    "publish": "lerna publish --no-private",
     "build" : "lerna run build",
     "start": "lerna run start --parallel",
     "clean": "lerna clean"
