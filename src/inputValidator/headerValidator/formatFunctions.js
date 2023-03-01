@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable import/prefer-default-export */
 import checkQuotes from '../../utils/checkQuotes.js';
 import { cmcdHeader, keyTypes } from '../..//utils/constants.js';
 import { createError } from '../../utils/error.js';

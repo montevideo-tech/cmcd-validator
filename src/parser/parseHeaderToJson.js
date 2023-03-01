@@ -4,7 +4,6 @@ const parseHeaderToJSON = (headerString) => {
   const pairs = headerString.split('\n');
   const result = {};
   pairs.forEach((pair) => {
-    // eslint-disable-next-line prefer-const
     let [key, value] = pair.split(':');
     if (!cmcdHeader[key]) {
       return;
@@ -15,7 +14,6 @@ const parseHeaderToJSON = (headerString) => {
       if (!subPair.includes('=')) {
         result[subPair] = true;
       } else {
-        // eslint-disable-next-line prefer-const
         let [subKey, subValue] = subPair.split('=');
         subValue = Number.isNaN(Number(subValue)) ? subValue.replace(/"/g, '') : Number(subValue);
         if (keyTypes[subKey] === 'boolean' && subValue === 'false') subValue = false;

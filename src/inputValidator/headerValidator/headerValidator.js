@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { cmcdHeader } from "../../utils/constants.js";
 import {
   checkKeyInCorrectHeader, isBooleanCorrect, isSeparetedCorrectly,
