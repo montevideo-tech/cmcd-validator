@@ -1,0 +1,37 @@
+{
+  "name": "@montevideo-tech/cmcd-validator",
+  "version": "0.0.0",
+  "description": "This is a library created to validate CMCD",
+  "main": "dist/cmcd-validator.cjs.js",
+  "module": "dist/cmcd-validator.esm.js",
+  "maintypes": "dist/cmcd-validator.d.ts",
+  "browser": "dist/cmcd-validator.umd.js",
+  "test": "dist/tests.js",
+  "scripts": {
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "test": "rollup -c && node ./dist/tests.js",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/montevideo-tech/cmcd-validator.git"
+  },
+  "keywords": [
+    "CMCD",
+    "Common Media Client Data"
+  ],
+  "author": "Qualabs",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/montevideo-tech/cmcd-validator/issues"
+  },
+  "homepage": "https://github.com/montevideo-tech/cmcd-validator#readme",
+  "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "rollup": "^2.60.2"
+  }
+}

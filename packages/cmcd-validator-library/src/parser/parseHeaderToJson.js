@@ -1,4 +1,4 @@
-import { keyTypes, CMCDheaders } from '../utils/constants.js';
+import { keyTypes, cmcdHeader } from '../utils/constants.js';
 
 const parseHeaderToJSON = (headerString) => {
   const pairs = headerString.split('\n');
@@ -6,7 +6,7 @@ const parseHeaderToJSON = (headerString) => {
   pairs.forEach((pair) => {
     // eslint-disable-next-line prefer-const
     let [key, value] = pair.split(':');
-    if (!CMCDheaders[key]) {
+    if (!cmcdHeader[key]) {
       return;
     }
     value = value.replace(/ /g, '');
@@ -26,4 +26,4 @@ const parseHeaderToJSON = (headerString) => {
   return result;
 };
 
-export default parseHeaderToJSON ;
+export default parseHeaderToJSON;

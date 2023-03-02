@@ -1,8 +1,9 @@
-import pkg from './package.json' assert { type: 'json' };
-import nodeResolve from '@rollup/plugin-node-resolve'
-import json from '@rollup/plugin-json'
-import commonjs from '@rollup/plugin-commonjs'
-import babel from '@rollup/plugin-babel'
+import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
+import babel from '@rollup/plugin-babel';
+// eslint-disable-next-line import/extensions
+import pkg from './package.json';
 
 export default [
   {
@@ -16,7 +17,7 @@ export default [
       nodeResolve({ browser: true, preferBuiltins: false }),
       commonjs({
         include: ['./node_modules/*', './src/*'],
-        transformMixedEsModules: true
+        transformMixedEsModules: true,
       }),
       json(),
       babel({
@@ -27,10 +28,10 @@ export default [
             {
               targets: {
                 chrome: '100',
-                firefox: '100'
-              }
-            }
-          ]
+                firefox: '100',
+              },
+            },
+          ],
         ],
         exclude: './node_modules/*',
       }),
@@ -46,7 +47,7 @@ export default [
       nodeResolve({ browser: true, preferBuiltins: false }),
       commonjs({
         include: ['./node_modules/*', './src/*'],
-        transformMixedEsModules: true
+        transformMixedEsModules: true,
       }),
       json(),
       babel({
@@ -58,12 +59,25 @@ export default [
               targets: {
                 node: 6,
                 chrome: '100',
-                firefox: '100'
-              }
-            }
-          ]
+                firefox: '100',
+              },
+            },
+          ],
         ],
         exclude: './node_modules/*',
+      }),
+    ],
+  },
+  {
+    input: './src/tests/index.js',
+    output: [
+      { file: pkg.test, format: 'cjs' },
+    ],
+    plugins: [
+      nodeResolve({ browser: true, preferBuiltins: false }),
+      commonjs({
+        include: ['./node_modules/*', './src/*'],
+        transformMixedEsModules: true,
       }),
     ],
   },
@@ -79,7 +93,7 @@ export default [
       nodeResolve({ browser: true, preferBuiltins: false }),
       commonjs({
         include: ['./node_modules/*', './src/*'],
-        transformMixedEsModules: true
+        transformMixedEsModules: true,
       }),
       json(),
       babel({
@@ -90,10 +104,10 @@ export default [
             {
               targets: {
                 chrome: '100',
-                firefox: '100'
-              }
-            }
-          ]
+                firefox: '100',
+              },
+            },
+          ],
         ],
         exclude: './node_modules/*',
       }),

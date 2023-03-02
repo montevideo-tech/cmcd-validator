@@ -1,6 +1,6 @@
-import { cmcdTypes, keyTypes, errorTypes } from '../utils/constants.js';
-import { createError } from '../utils/error.js';
-import checkQuotes from '../utils/checkQuotes.js';
+import { cmcdTypes, keyTypes, errorTypes } from '../../utils/constants.js';
+import { createError } from '../../utils/error.js';
+import checkQuotes from '../../utils/checkQuotes.js';
 
 const queryValidator = (queryString, error) => {
   // Check if the URL is encoded
