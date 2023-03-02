@@ -1,6 +1,6 @@
 .data-window-wrapper {
   overflow: auto;
-  height: 100vh;
+  height: 76vh;
 }
 
 .data-window {
@@ -9,6 +9,10 @@
   overflow-wrap: break-word;
   padding: 2vh;
   overflow: auto;
+}
+
+.query-url:hover {
+  font-weight: bold;
 }
 
 .query-url {
