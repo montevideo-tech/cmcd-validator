@@ -4,7 +4,8 @@
   "scripts": {
     "build" : "lerna run build",
     "start": "lerna run start --parallel",
-    "clean": "lerna clean"
+    "clean": "lerna clean",
+    "demo": "lerna run dev --scope=cmcd-react-test-app"
   },
   "workspaces": [
     "packages/*"
