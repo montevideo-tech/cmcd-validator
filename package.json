@@ -1,8 +1,9 @@
 {
   "name": "root",
-  "private": true,
   "scripts": {
-    "build" : "lerna run build",
+    "version": "lerna version --no-private",
+    "publish": "lerna publish from-package --no-private",
+    "build": "lerna run build",
     "start": "lerna run start --parallel",
     "test": "lerna run test",
     "clean": "lerna clean"
@@ -11,6 +12,7 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@lerna/publish": "^6.5.1",
     "lerna": "^6.5.1"
   }
 }
