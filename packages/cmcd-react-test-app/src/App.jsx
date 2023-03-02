@@ -11,9 +11,11 @@ function App() {
       <div>
         <a href="https://montevideotech.dev/" target="_blank">
           <img
+            href="https://montevideotech.dev/"
             src="https://montevideotech.dev/wp-content/uploads/2020/09/mvd-tech-1.png"
-            className="logo"
+            className="p-0 m-0 logo"
             alt="MontevideoTech logo"
+            style={{fontSize: '30px'}}
           />
         </a>
       </div>
