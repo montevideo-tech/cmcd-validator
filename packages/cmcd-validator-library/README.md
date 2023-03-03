@@ -22,48 +22,57 @@ You can install the package using npm:
 npm install @montevideo-tech/cmcd-validator
 ```
 
-## Usage
+### Usage
 
-Example with CMCDQueryValidator function:
+Example with **CMCDQueryValidator**, **CMCDHeaderValidator**, **CMCDJsonValidator** functions:
 
 ```javascript
 import { CMCDQueryValidator, CMCDHeaderValidator, CMCDJsonValidator } from "@montevideo-tech/cmcd-validator";
 
-const cmcdQueryString = "https:...CMCD=bl%3D7200...";
 
-const cmcdHeader = `GET ... HTTP/1.1
-...
-CMCD-Object: ...
-CMCD-Request: ...
-CMCD-Session: ...
-CMCD-Status: ...
-...`;
+const cmcdQueryString = 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu';
 
-const cmcdJSON = "{...}";
+const cmcdHeaderString = 'GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1\nAccept: */*\nAccept-Encoding: gzip, deflate, br\nAccept-Language: es-ES,es;q=0.9\nCMCD-Object: br=67,d=4011,ot=a,tb=67\nCMCD-Request: bl=31700,dl=31700,mtp=10600,nor="bbb_a64k_11.m4a"\nCMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v\nCMCD-Status: rtp=100\nConnection: keep-alive\nHost: dash.akamaized.net\nOrigin: https://reference.dashif.org\nReferer: https://reference.dashif.org/\nSec-Fetch-Dest: empty\nSec-Fetch-Mode: cors\nSec-Fetch-Site: cross-site\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36\nsec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"\nsec-ch-ua-mobile: ?0\nsec-ch-ua-platform: "Linux"\n';
 
-const validatorOutput = CMCDQueryValidator(cmcdQueryString);
+const cmcdJSONString = '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}';
+
+
+const queryValidatorOutput = CMCDQueryValidator(cmcdQueryString);
+
+const headerValidatorOutput = CMCDQueryValidator(cmcdHeaderString);
+
+const jsonValidatorOutput = CMCDQueryValidator(cmcdJSONString);
 ```
 
-**validatorOutput:**
+#### **Validator output format:**
 
 ```json
 {
-  "valid": false,
-  "errors": [
+ "valid": <bool>,
+ "errors": [
     {
-      "type": "parameter-encoding",
-      "key": "nor",
-      "value": "bbb_30fps_1280x720_4000k_27.m4v",
-      "description": "Parameter is not encoded"
-    }
-  ],
-  "parsedData": {
-    "bl": 7200,
-    ...
-  },
-  "rawData": "https:...CMCD=bl%3D7200..."
+      "type": <missing-header|parameter-value|parameter-encoding|missing-parameter|invalid-header|unknown-parameter|invalid-header-encoding|invalid-json|etc...>,
+      "key": <string>
+      "value": <any-type>
+      "description": <string>
+    },
+    {...},
+  ]
+  "parsedData": <json>
+  "rawData": <string>
 }
 ```
+
+**Where:**
+
+-   `valid`:  `true`  when there are no errors;  `false`  otherwise.
+-   `errors`: an array of the errors present in the CMCD data that was sent, each object is a different error with the following structure:
+    -   `type`: the type of error encountered. This is a string that describes the error. 
+    -   `key`: the key of the CMCD data that has the error.
+    -   `value`: the value of the CMCD data for that key.
+    -   `description`: a brief description of the error.
+-   `parsedData`: the CMCD data that was sent but in JSON format. 
+-   `rawData`: the library input.
 
 ## Contributing
 
