@@ -17,16 +17,18 @@ const headerValidator = (headerString, errors) => {
     if (isEmptyHeader(keysArray, header, errors)) {
       return false;
     }
-
+    if (header.search(' CMCD') !== -1) { // Checks if header came with starting space.
+      return false;
+    }
     keysArray.split(',').forEach((keyVal) => {
       if (isSeparetedCorrectly(keyVal, errors)) {
         const [key, value] = keyVal.split('=');
         if (isKeyRepeated(key, keys, errors)) {
           return false;
         }
-        if (!(isKeyInCorrectHeader(header, key, errors)
-        && isStringCorrect(key, value, errors)
-        && isBooleanCorrect(key, value, errors))) {
+        if (!isKeyInCorrectHeader(header, key, errors)
+        || !isStringCorrect(key, value, errors)
+        || !isBooleanCorrect(key, value, errors)) {
           return false;
         }
         keys.push(key);
