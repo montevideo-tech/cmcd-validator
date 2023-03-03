@@ -1,4 +1,4 @@
-<h3 align="right">
+<h3 align="left">
 	<b>
 	  <a  href="https://montevideotech.dev/summer-camp-2023/"><img decoding="async" width="300"  src="https://montevideotech.dev/wp-content/uploads/2020/09/mvd-tech-02-1024x653.png" ></a><br>
   </b>
@@ -8,7 +8,7 @@
 
 The cmcd-react-test-app allows you to run an instance of shaka player and see CMCD messages on a display text box.
 
-## before start
+## Before start
 
 Make sure of run the install and build of npm before run the local server:
 
