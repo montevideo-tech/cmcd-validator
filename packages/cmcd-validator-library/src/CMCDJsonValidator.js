@@ -14,7 +14,7 @@ const CMCDJsonValidator = (jsonString) => {
   }
 
   const jsonObj = JSON.parse(jsonString);
-  
+
   // Check key value
   keyValValidator(jsonObj, errors);
 
