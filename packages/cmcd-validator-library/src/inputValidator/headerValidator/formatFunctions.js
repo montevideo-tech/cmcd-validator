@@ -4,11 +4,13 @@ import {
 } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 
-export const checkKeyInCorrectHeader = (header, key, errors) => {
+export const isKeyInCorrectHeader = (header, key, errors) => {
   if (!cmcdHeader[header].includes(key)) {
     // console.log(`The key ${key} does not go under the header ${header}`);
     errors.push(createError(errorTypes.incorrectFormat, key));
+    return false;
   }
+  return true;
 };
 
 export const isStringCorrect = (key, value, errors) => {
@@ -57,11 +59,13 @@ export const isHeaderRepeated = (header, headers, errors) => {
   return false;
 };
 
-export const noHeader = (headers, errors) => {
+export const isHeader = (headers, errors) => {
   if (headers.length === 0) {
     // console.log('No headers detected!');
     errors.push(createError(errorTypes.noCMCDRequest));
+    return false;
   }
+  return true;
 };
 
 export const isEmptyHeader = (keyVal, header, errors) => {
