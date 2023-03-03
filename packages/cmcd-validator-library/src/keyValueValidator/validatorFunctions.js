@@ -32,7 +32,7 @@ export const checkValidValue = (errors, key, value, array) => {
 
 export const checkRoundToNearest = (errors, key, value, num, unit) => {
   if ((value % num) !== 0) {
-    // console.log(`'${key}' value is not rounded to the nearest${num}${unit}.`);
+    console.log(`'${key}' value is not rounded to the nearest${num}${unit}.`);
     errors.push(createError(errorTypes.invalidValue, key, value));
   }
 };
@@ -66,9 +66,6 @@ export const checkBlKey = (cmcdJson, errors, key, value) => {
 };
 
 export const checkCorrectType = (errors, key, value) => {
-  //  console.log("typeof value:", typeof value," >>>> ","keyTypes[key]:", keyTypes[key])
-
-   //console.log("keyTypes[key]: ", keyTypes[key])
   if ((typeof value !== keyTypes[key]) && (keyTypes[key] === cmcdTypes.token
     && typeof value !== cmcdTypes.string)) {
     // console.log(`'${key}' type is incorrect.`);

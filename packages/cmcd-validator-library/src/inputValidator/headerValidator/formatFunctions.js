@@ -18,9 +18,9 @@ export const isStringCorrect = (key, value, errors) => {
   || (keyTypes[key] === cmcdTypes.token && checkQuotes(value))) {
     // console.log('Incorrect format for ', key);
     errors.push(createError(errorTypes.incorrectFormat, key));
-    return true;
+    return false;
   }
-  return false;
+  return true;
 };
 
 export const isBooleanCorrect = (key, value, errors) => {
