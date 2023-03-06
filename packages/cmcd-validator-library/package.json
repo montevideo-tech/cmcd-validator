@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/montevideo-tech/cmcd-validator#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-json": "^6.0.0",
