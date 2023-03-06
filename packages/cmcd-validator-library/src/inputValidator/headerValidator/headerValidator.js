@@ -11,15 +11,11 @@ const headerValidator = (headerString, errors) => {
 
   headers.forEach((element) => {
     const [header, keysArray] = element.split(': ');
-    if (!(header in cmcdHeader) || isHeaderRepeated(header, cmcdHeaders, errors)) {
+    if (!(header in cmcdHeader) || isHeaderRepeated(header, cmcdHeaders, errors)
+      || isEmptyHeader(keysArray, header, errors)) {
       return false;
     }
-    if (isEmptyHeader(keysArray, header, errors)) {
-      return false;
-    }
-    if (header.search(' CMCD') !== -1) { // Checks if header came with starting space.
-      return false;
-    }
+
     keysArray.split(',').forEach((keyVal) => {
       if (isSeparetedCorrectly(keyVal, errors)) {
         const [key, value] = keyVal.split('=');
