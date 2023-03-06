@@ -1,15 +1,20 @@
 {
   "name": "@montevideo-tech/cmcd-validator",
-  "version": "0.0.0",
+  "version": "0.2.1",
   "description": "This is a library created to validate CMCD",
-  "main": "dist/index.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/cmcd-validator.cjs.js",
   "module": "dist/cmcd-validator.esm.js",
   "maintypes": "dist/cmcd-validator.d.ts",
   "browser": "dist/cmcd-validator.umd.js",
+  "test": "dist/tests.js",
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
-    "test": "node ./src/tests/index.js",
+    "test": "rollup -c && node ./dist/tests.js",
     "lint": "eslint"
   },
   "repository": {
@@ -20,17 +25,22 @@
     "CMCD",
     "Common Media Client Data"
   ],
-  "author": "Qualabs",
+  "author": "Montevideo Tech",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/montevideo-tech/cmcd-validator/issues"
   },
   "homepage": "https://github.com/montevideo-tech/cmcd-validator#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
     "@rollup/plugin-babel": "^6.0.3",
-    "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
-    "rollup": "^2.60.2"
+    "rollup": "^2.60.2",
+    "eslint": "^8.34.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
   }
 }
