@@ -3,7 +3,6 @@
   "scripts": {
     "version": "lerna version --no-private",
     "publish": "lerna publish from-package --no-private",
-    "publish-no-push": "lerna publish from-git --no-private --force-publish",
     "build": "lerna run build",
     "start": "lerna run start --parallel",
     "demo": "lerna run dev --scope=cmcd-validator-demo-app",
