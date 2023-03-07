@@ -12,7 +12,9 @@ export const isEncoded = (errors, key, value) => {
   if (decodeURIComponent(value) === value) {
     const description = `The key: '${key}' with its value: ${value} must be URLencoded.`;
     errors.push(createError(errorTypes.parameterEncoding, key, value, description));
+    return false;
   }
+  return true;
 };
 
 export const checkValidNrrFormat = (errors, key, value) => {
