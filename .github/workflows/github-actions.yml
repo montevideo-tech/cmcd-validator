@@ -16,7 +16,7 @@ jobs:
           node-version: '18'
       - run: npm install
       - run: npm run build
-      - run: npm run version --dry-run
+      - run: npm run version
       - name: Publish package to NPM 📦
         run: npm publish --dry-run
         env:
