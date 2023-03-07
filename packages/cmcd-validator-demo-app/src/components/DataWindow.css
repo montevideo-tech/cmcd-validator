@@ -1,0 +1,20 @@
+.data-window-wrapper {
+  overflow: auto;
+  height: 76vh;
+}
+
+.data-window {
+  background-color: #1e1e1e;
+  color: black;
+  overflow-wrap: break-word;
+  padding: 2vh;
+  overflow: auto;
+}
+
+.query-url:hover {
+  font-weight: bold;
+}
+
+.query-url {
+  cursor: pointer;
+}

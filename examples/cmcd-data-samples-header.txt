@@ -1,0 +1,399 @@
+GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=67,d=4011,ot=a,tb=67
+CMCD-Request: bl=31700,dl=31700,mtp=10600,nor="bbb_a64k_11.m4a"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=100
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_11.m4v HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=14931,d=4000,ot=v,tb=14932
+CMCD-Request: bl=35300,dl=35300,mtp=117000,nor="bbb_30fps_3840x2160_12000k_12.m4v"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=8500
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_11.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=67,d=4011,ot=a,tb=67
+CMCD-Request: bl=35200,dl=35200,mtp=9600,nor="bbb_a64k_12.m4a"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=100
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_12.m4v HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=14931,d=4000,ot=v,tb=14932
+CMCD-Request: bl=38800,dl=38800,mtp=133500,nor="bbb_30fps_3840x2160_12000k_13.m4v"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=7700
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_12.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=67,d=4011,ot=a,tb=67
+CMCD-Request: bl=38600,dl=38600,mtp=8800,nor="bbb_a64k_13.m4a"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=100
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_13.m4v HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=14931,d=4000,ot=v,tb=14932
+CMCD-Request: bl=41600,dl=41600,mtp=114000,nor="bbb_30fps_3840x2160_12000k_14.m4v"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=7200
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_13.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=67,d=4011,ot=a,tb=67
+CMCD-Request: bl=41500,dl=41500,mtp=8300,nor="bbb_a64k_14.m4a"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=100
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_14.m4v HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=14931,d=4000,ot=v,tb=14932
+CMCD-Request: bl=43400,dl=43400,mtp=98500,nor="bbb_30fps_3840x2160_12000k_15.m4v"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=6900
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_14.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=67,d=4011,ot=a,tb=67
+CMCD-Request: bl=43100,dl=43100,mtp=8400,nor="bbb_a64k_15.m4a"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=100
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_15.m4v HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=14931,d=4000,ot=v,tb=14932
+CMCD-Request: bl=46900,dl=46900,mtp=93100,nor="bbb_30fps_3840x2160_12000k_16.m4v"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=6400
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_15.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=67,d=4011,ot=a,tb=67
+CMCD-Request: bl=47100,dl=47100,mtp=8100,nor="bbb_a64k_16.m4a"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=100
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_16.m4v HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=14931,d=4000,ot=v,tb=14932
+CMCD-Request: bl=50900,dl=50900,mtp=86600,nor="bbb_30fps_3840x2160_12000k_17.m4v"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=5900
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_16.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=67,d=4011,ot=a,tb=67
+CMCD-Request: bl=51100,dl=51100,mtp=8400,nor="bbb_a64k_17.m4a"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=100
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_17.m4v HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=14931,d=4000,ot=v,tb=14932
+CMCD-Request: bl=54900,dl=54900,mtp=78200,nor="bbb_30fps_3840x2160_12000k_18.m4v"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=5500
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_17.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=67,d=4011,ot=a,tb=67
+CMCD-Request: bl=55100,dl=55100,mtp=10000,nor="bbb_a64k_18.m4a"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=100
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_18.m4v HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=14931,d=4000,ot=v,tb=14932
+CMCD-Request: bl=58900,dl=58900,mtp=67200,nor="bbb_30fps_3840x2160_12000k_19.m4v"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=5100
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_18.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=67,d=4011,ot=a,tb=67
+CMCD-Request: bl=59100,dl=59100,mtp=9400,nor="bbb_a64k_19.m4a"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=100
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_19.m4v HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=14931,d=4000,ot=v,tb=14932
+CMCD-Request: bl=59800,dl=59800,mtp=69100,nor="bbb_30fps_3840x2160_12000k_20.m4v"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=5000
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_20.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=67,d=4011,ot=a,tb=67
+CMCD-Request: bl=63200,dl=63200,mtp=9000,nor="bbb_a64k_21.m4a"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=100
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+
+GET /akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_20.m4v HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Object: br=14931,d=4000,ot=v,tb=14932
+CMCD-Request: bl=59500,dl=59500,mtp=64000,nor="bbb_30fps_3840x2160_12000k_21.m4v"
+CMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v
+CMCD-Status: rtp=5100
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"

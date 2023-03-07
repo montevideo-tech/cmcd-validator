@@ -1,0 +1,19 @@
+{
+  "name": "root",
+  "scripts": {
+    "version": "lerna version --no-private",
+    "publish": "lerna publish from-package --no-private",
+    "build": "lerna run build",
+    "start": "lerna run start --parallel",
+    "demo": "lerna run dev --scope=cmcd-validator-demo-app",
+    "test": "lerna run test",
+    "clean": "lerna clean"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@lerna/publish": "^6.5.1",
+    "lerna": "^6.5.1"
+  }
+}
