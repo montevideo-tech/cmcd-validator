@@ -24,7 +24,7 @@ export const checkValidNrrFormat = (errors, key, value) => {
 
 export const checkValidValue = (errors, key, value, array) => {
   if (!array.includes(value)) {
-    const description = `''${key} value does not meet the necessary requirements. Must be one of the following values: ${array}.`;
+    const description = `${key} value does not meet the necessary requirements. Must be one of the following values: ${array}.`;
     errors.push(createError(errorTypes.invalidValue, key, value, description));
   }
 };

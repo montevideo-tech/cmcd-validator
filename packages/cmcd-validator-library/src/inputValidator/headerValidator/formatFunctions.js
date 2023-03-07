@@ -6,7 +6,7 @@ import { createError } from '../../utils/error.js';
 
 export const checkKeyInCorrectHeader = (header, key, errors) => {
   if (!cmcdHeader[header].includes(key)) {
-    const description =  `The key ${key} does not go under the header ${header}`;
+    const description = `The key ${key} does not go under the header ${header}`;
     errors.push(createError(errorTypes.incorrectFormat, key, description));
   }
 };
