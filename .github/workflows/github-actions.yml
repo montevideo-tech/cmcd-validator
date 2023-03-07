@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  Build with npm:
+  Build-with-npm:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Build Start"
