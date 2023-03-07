@@ -3,7 +3,7 @@ import { createError } from '../../utils/error.js';
 import checkQuotes from '../../utils/checkQuotes.js';
 
 const queryValidator = (queryString, error) => {
-  if (!queryString.includes('CMCD')) {
+  if (!queryString.includes('CMCD=')) {
     error.push(createError(errorTypes.noCMCDRequest));
     return false;
   }
