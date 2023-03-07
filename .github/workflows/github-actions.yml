@@ -1,10 +1,12 @@
-name: Create Release TEST
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: Create Release
+run-name: ${{ github.actor }} Run the Release Build 🚀
+on:
+  push:
+    branches: [ 79-m1-config-github-action-to-create-release ]
+  pull_request:
+    branches: [ main ]
 jobs:
-  Explore-GitHub-Actions:
+  Build with npm:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - run: echo "Build Start"
