@@ -11,7 +11,7 @@ const CMCDQueryValidator = (query, config) => {
   if (config) {
     const checkConfiguration = checkConfig(config);
     if (!checkConfiguration.valid) {
-      return checkConfiguration;
+      return createOutput(checkConfiguration.errors, rawData);
     }
   }
 
