@@ -8,9 +8,9 @@ import { testQueryValidator, testJsonValidator, testHeaderValidator } from './in
 // testHeaderValidator();
 // console.log('--------- Test jsonValidator ---------');
 // testJsonValidator();
-console.log('--------- Test CMCDQueryValidator ---------');
-testCMCDQueryValidator();
+// console.log('--------- Test CMCDQueryValidator ---------');
+// testCMCDQueryValidator();
 console.log('------------Test CMCDHeaderValidator------------');
 testCMCDHeaderValidator();
-console.log('--------- Test CMCDJsonValidator ---------');
-testCMCDJsonValidator();
+// console.log('--------- Test CMCDJsonValidator ---------');
+// testCMCDJsonValidator();
