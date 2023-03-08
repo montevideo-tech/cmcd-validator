@@ -16,6 +16,8 @@ jobs:
           node-version: '18'
       - run: npm install
       - run: npm run build
+      - run: git config --global user.email "automated@automated.com"
+      - run: git config --global user.name "automated"
       - run: npm run version
       - name: Publish package to NPM 📦
         run: npm publish --dry-run
