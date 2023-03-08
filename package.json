@@ -1,6 +1,8 @@
 {
   "name": "root",
   "scripts": {
+    "pre-realese": "lerna version prerelease --preid pre --yes --no-private",
+    "realese": "lerna version --no-private minor --yes ",
     "version": "lerna version --no-private minor --yes --no-push",
     "publish": "lerna publish from-package --no-private",
     "build": "lerna run build",
