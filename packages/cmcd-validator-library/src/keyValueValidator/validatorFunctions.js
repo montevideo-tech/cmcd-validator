@@ -1,5 +1,6 @@
-import { cmcdTypes, errorTypes, keyTypes } from '../utils/constants.js';
+import { cmcdTypes, errorTypes, keyTypes, warningTypes } from '../utils/constants.js';
 import { createError } from '../utils/error.js';
+import { createWarning } from '../utils/warning.js';
 
 export const checkMaxLength = (errors, key, value) => {
   if (value.length > 64) {
@@ -84,4 +85,12 @@ export const checkSfValidValue = (errors, key, value) => {
 
 export const checkStValidValue = (errors, key, value) => {
   checkValidValue(errors, key, value, ['v', 'l']);
+};
+
+export const keysortedAlphabetically = (cmcdJson, warnings) => {
+  const keys = Object.keys(cmcdJson);
+
+  if (JSON.stringify(keys) !== JSON.stringify(keys.sort())) {
+    warnings.push(createWarning(warningTypes.noAlphabeticalOrder));
+  }
 };

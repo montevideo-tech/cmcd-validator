@@ -4,21 +4,22 @@ import { createOutput } from './utils/output.js';
 
 const CMCDJsonValidator = (jsonString) => {
   const errors = [];
+  const warnings = [];
   const rawData = jsonString;
 
   // Check json
   const valid = jsonIsValid(jsonString, errors);
 
   if (!valid) {
-    return createOutput(errors, rawData);
+    return createOutput(errors, warnings, rawData);
   }
 
   const jsonObj = JSON.parse(jsonString);
 
   // Check key value
-  keyValValidator(jsonObj, errors);
+  keyValValidator(jsonObj, errors, warnings);
 
-  return createOutput(errors, rawData, jsonObj);
+  return createOutput(errors, warnings, rawData, jsonObj, warnings);
 };
 
 export default CMCDJsonValidator;
