@@ -16,6 +16,8 @@ jobs:
           node-version: '18'
       - run: npm install
       - run: npm run build
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
       - run: git config user.name "${{ github.actor }}"
       - run: git config user.email "${{ github.actor}}@users.noreply.github.com"
       - run: git status
