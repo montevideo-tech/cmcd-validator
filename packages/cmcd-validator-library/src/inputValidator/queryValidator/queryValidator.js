@@ -2,7 +2,7 @@ import { cmcdTypes, keyTypes, errorTypes } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 import checkQuotes from '../../utils/checkQuotes.js';
 
-const queryValidator = (queryString, error) => {
+const queryValidator = (queryString, error, newkeyTypes) => {
   // Check if the URL is encoded
   if (decodeURI(queryString) === queryString) {
     error.push(createError(errorTypes.parameterEncoding));
@@ -37,23 +37,39 @@ const queryValidator = (queryString, error) => {
     const [key, value] = val.split('=');
     keys.push(key);
 
-    // Check: string require ""
-    if ((keyTypes[key] === cmcdTypes.string && !checkQuotes(value))
-      || (keyTypes[key] === cmcdTypes.token && checkQuotes(value))
-    ) {
-      valid = false;
-      error.push(createError(errorTypes.invalidValue, key, value));
-    }
-
-    // Check: if the key does not have value it must be a bool
-    // Check: number does not require ""
-    if (
-      (typeof value === 'undefined' && keyTypes[key] !== cmcdTypes.boolean)
-      || (value === 'true' && keyTypes[key] === cmcdTypes.boolean)
-      || (keyTypes[key] === cmcdTypes.number && checkQuotes(value))
-    ) {
-      valid = false;
-      error.push(createError(errorTypes.wrongTypeValue, key, value));
+    if (newkeyTypes) {
+      if ((newkeyTypes[key] === cmcdTypes.string && !checkQuotes(value))
+      || (newkeyTypes[key] === cmcdTypes.token && checkQuotes(value))
+      ) {
+        valid = false;
+        error.push(createError(errorTypes.invalidValue, key, value));
+      }
+      if (
+        (typeof value === 'undefined' && newkeyTypes[key] !== cmcdTypes.boolean)
+        || (value === 'true' && newkeyTypes[key] === cmcdTypes.boolean)
+        || (newkeyTypes[key] === cmcdTypes.number && checkQuotes(value))
+      ) {
+        valid = false;
+        error.push(createError(errorTypes.wrongTypeValue, key, value));
+      }
+    } else {
+      // Check: string require ""
+      if ((keyTypes[key] === cmcdTypes.string && !checkQuotes(value))
+        || (keyTypes[key] === cmcdTypes.token && checkQuotes(value))
+      ) {
+        valid = false;
+        error.push(createError(errorTypes.invalidValue, key, value));
+      }
+      // Check: if the key does not have value it must be a bool
+      // Check: number does not require ""
+      if (
+        (typeof value === 'undefined' && keyTypes[key] !== cmcdTypes.boolean)
+        || (value === 'true' && keyTypes[key] === cmcdTypes.boolean)
+        || (keyTypes[key] === cmcdTypes.number && checkQuotes(value))
+      ) {
+        valid = false;
+        error.push(createError(errorTypes.wrongTypeValue, key, value));
+      }
     }
   });
 

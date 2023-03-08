@@ -14,8 +14,10 @@ const CMCDQueryValidator = (query, config) => {
       return checkConfiguration;
     }
   }
+
+  const newkeyTypes = Object.keys(config.keyTypes);
   // Check query
-  const valid = queryValidator(query, errors);
+  const valid = queryValidator(query, errors, newkeyTypes);
 
   if (!valid) {
     return createOutput(errors, rawData);
