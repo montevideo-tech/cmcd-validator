@@ -4,7 +4,7 @@
     "pre-realese": "lerna version prerelease --preid pre --yes --no-private",
     "realese": "lerna version --no-private minor --yes ",
 
-    "publish": "lerna publish from-git --no-private --yes -dry-run",
+    "publish": "lerna publish from-git --no-private --yes dry-run",
     "build": "lerna run build",
     "start": "lerna run start --parallel",
     "demo": "lerna run dev --scope=cmcd-validator-demo-app",
