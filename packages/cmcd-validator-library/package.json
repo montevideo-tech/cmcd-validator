@@ -1,6 +1,6 @@
 {
   "name": "@montevideo-tech/cmcd-validator",
-  "version": "0.2.2-pre.2",
+  "version": "0.2.2-pre.3",
   "description": "This is a library created to validate CMCD",
   "private": false,
   "publishConfig": {
