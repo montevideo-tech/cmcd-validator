@@ -178,4 +178,12 @@ export const jsonTestCases = [
     description: 'Test: st = Qualabs ',
     json: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"qualabs","su":true,"tb":6000}',
   },
+  {
+    description: 'Test: Warning no alphabetical order',
+    json: '{"bl":21300,"bs":true,"br":3200,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}',
+  },
+  {
+    description: 'Test: Warning no alphabetical order',
+    json: '{"bl":21300,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","br":3200,"bs":true,"d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}',
+  },
 ];

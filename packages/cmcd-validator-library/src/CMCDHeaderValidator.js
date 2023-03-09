@@ -3,13 +3,17 @@ import { keyValValidator } from './keyValueValidator/index.js';
 import { parseHeaderToJson } from './parser/index.js';
 import { createOutput } from './utils/output.js';
 
-const CMCDHeaderValidator = (header) => {
+const CMCDHeaderValidator = (header, warningFlag = true) => {
   const errors = [];
-  const warnings = [];
   const rawData = header;
+  let warnings = [];
 
   // Check header
-  const valid = headerValidator(header, errors);
+  const valid = headerValidator(header, errors, warnings);
+
+  if (warningFlag === false) {
+    warnings = [];
+  }
 
   if (!valid) {
     return createOutput(errors, warnings, rawData);
@@ -19,7 +23,7 @@ const CMCDHeaderValidator = (header) => {
   const parsedData = parseHeaderToJson(header);
 
   // Check key value
-  keyValValidator(parsedData, errors, warnings);
+  keyValValidator(parsedData, errors);
 
   return createOutput(errors, warnings, rawData, parsedData);
 };

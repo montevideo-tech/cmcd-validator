@@ -1,4 +1,6 @@
-import { cmcdTypes, errorTypes, keyTypes, warningTypes } from '../utils/constants.js';
+import {
+  cmcdTypes, errorTypes, keyTypes, warningTypes,
+} from '../utils/constants.js';
 import { createError } from '../utils/error.js';
 import { createWarning } from '../utils/warning.js';
 
@@ -87,10 +89,9 @@ export const checkStValidValue = (errors, key, value) => {
   checkValidValue(errors, key, value, ['v', 'l']);
 };
 
-export const keysortedAlphabetically = (cmcdJson, warnings) => {
-  const keys = Object.keys(cmcdJson);
-
-  if (JSON.stringify(keys) !== JSON.stringify(keys.sort())) {
+export const keySortedAlphabetically = (cmcdKeys, warnings) => {
+  // cmcdKeys must be an array
+  if (JSON.stringify(cmcdKeys) !== JSON.stringify(cmcdKeys.sort())) {
     warnings.push(createWarning(warningTypes.noAlphabeticalOrder));
   }
 };

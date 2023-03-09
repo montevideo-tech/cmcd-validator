@@ -1,12 +1,13 @@
 import { queryValidator } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
+import { keySortedAlphabetically } from './keyValueValidator/validatorFunctions.js';
 import { parseQueryToJson } from './parser/index.js';
 import { createOutput } from './utils/output.js';
 
-const CMCDQueryValidator = (query) => {
+const CMCDQueryValidator = (query, warningFlag = true) => {
   const errors = [];
-  const warnings = [];
   const rawData = query;
+  const warnings = [];
 
   // Check query
   const valid = queryValidator(query, errors);
@@ -18,8 +19,12 @@ const CMCDQueryValidator = (query) => {
   // Parsed to json
   const parsedData = parseQueryToJson(query);
 
+  if (warningFlag === true) {
+    keySortedAlphabetically(Object.keys(parsedData), warnings);
+  }
+
   // Check key value
-  keyValValidator(parsedData, errors, warnings);
+  keyValValidator(parsedData, errors);
 
   return createOutput(errors, warnings, rawData, parsedData);
 };
