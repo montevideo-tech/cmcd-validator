@@ -45,8 +45,10 @@ const queryValidator = (queryString, error) => {
     // Check: if the key does not have value it must be a bool
     // Check: number does not require ""
     if (
-      (typeof value === 'undefined' && keyTypes[key] !== cmcdTypes.boolean)
-      || (value === 'true' && keyTypes[key] === cmcdTypes.boolean)
+      (typeof value === undefined && keyTypes[key] !== cmcdTypes.boolean)
+      || ((value === 'true') && keyTypes[key] === cmcdTypes.boolean)
+      || ((typeof value === cmcdTypes.number || typeof value === cmcdTypes.string)
+      && keyTypes[key] === cmcdTypes.boolean)
       || (keyTypes[key] === cmcdTypes.number && checkQuotes(value))
     ) {
       valid = false;
