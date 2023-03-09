@@ -1,8 +1,8 @@
 {
   "name": "root",
   "scripts": {
-    "version": "lerna version --no-private",
-    "publish": "lerna publish from-package --no-private",
+    "version": "lerna version --no-private minor --yes ",
+    "publish": "lerna publish from-git --no-private --yes",
     "build": "lerna run build",
     "start": "lerna run start --parallel",
     "demo": "lerna run dev --scope=cmcd-validator-demo-app",
