@@ -1,28 +1,26 @@
 name: Create Release
-run-name: ${{ github.actor }} Run the Release Build 🚀
+run-name: ${{ github.actor }} Run the Release to NPM 🚀
 on:
-  push:
-    branches: [ 79-m1-config-github-action-to-create-release ]
   pull_request:
-    branches: [ main ]
+    types: [closed]
+    branches:
+      - main
 jobs:
-  Build-with-npm:
+  Release-to-npm:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Build Start"
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - name: "Version and publish" # Interesting step
+      - name: "Version and publish"
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
-          git push --dry-run
-          npm run pre-realese
+          npm run version
           npm run publish
           
 
