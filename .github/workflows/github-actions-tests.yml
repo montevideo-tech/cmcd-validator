@@ -14,12 +14,7 @@ jobs:
         with:
           node-version: '18'
       - name: "Run the tests"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor}}@users.noreply.github.com"
           npm install
           npm run build
           npm run testJest
