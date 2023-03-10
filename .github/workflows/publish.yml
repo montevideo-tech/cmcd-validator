@@ -1,5 +1,5 @@
 name: Create Release
-run-name: ${{ github.actor }} Run the Release to NPM 🚀
+run-name: ${{ github.actor }} launch the release to NPM 🚀
 on:
   pull_request:
     types: [closed]
