@@ -1,19 +1,23 @@
 {
   "name": "root",
   "scripts": {
-    "version": "lerna version --no-private",
-    "publish": "lerna publish from-package --no-private",
+    "version": "lerna version --no-private minor --yes ",
+    "publish": "lerna publish from-git --no-private --yes",
     "build": "lerna run build",
     "start": "lerna run start --parallel",
     "demo": "lerna run dev --scope=cmcd-validator-demo-app",
-    "test": "lerna run test",
-    "clean": "lerna clean"
+    "clean": "lerna clean",
+    "test": "jest --verbose"
   },
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
     "@lerna/publish": "^6.5.1",
+    "babel-jest": "^29.5.0",
+    "jest": "^29.5.0",
     "lerna": "^6.5.1"
   }
 }
