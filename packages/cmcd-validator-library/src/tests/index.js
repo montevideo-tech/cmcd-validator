@@ -1,4 +1,4 @@
-import { testCMCDQueryValidator, testCMCDJsonValidator } from './CMCDValidator/index.js';
+import { testCMCDQueryValidator} from './CMCDValidator/index.js';
 import { testQueryValidator, testJsonValidator, testHeaderValidator } from './inputValidator/index.js';
 
 // console.log('--------- Test queryValidator ---------');
@@ -10,5 +10,3 @@ import { testQueryValidator, testJsonValidator, testHeaderValidator } from './in
 // testJsonValidator();
 // console.log('--------- Test CMCDQueryValidator ---------');
 // testCMCDQueryValidator();
-console.log('--------- Test CMCDJsonValidator ---------');
-testCMCDJsonValidator();
