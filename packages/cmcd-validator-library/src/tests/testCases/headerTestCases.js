@@ -8,7 +8,7 @@ export const headerTestCases = [
       valid: true,
       errors: [],
       parsedData: {
-        br: 67,
+        #br: 67,
         d: 4011,
         ot: 'a',
         tb: 67,
