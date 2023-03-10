@@ -1,23 +1,19 @@
 import { queryValidator } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
 import { parseQueryToJson } from './parser/index.js';
-import { checkConfig } from './utils/checkConfig.js';
+import { checkConfig } from './inputValidator/configValidator/checkConfig.js';
 import { createOutput } from './utils/output.js';
 
 const CMCDQueryValidator = (query, config) => {
   const errors = [];
   const rawData = query;
   // check config
-  if (config) {
-    const checkConfiguration = checkConfig(config);
-    if (!checkConfiguration.valid) {
-      return createOutput(checkConfiguration.errors, rawData);
-    }
+  if (config && !checkConfig(config, errors)) {
+    return createOutput(errors, rawData);
   }
 
-  const newkeyTypes = Object.keys(config.keyTypes);
   // Check query
-  const valid = queryValidator(query, errors, newkeyTypes);
+  const valid = queryValidator(query, errors, config);
 
   if (!valid) {
     return createOutput(errors, rawData);
@@ -27,7 +23,7 @@ const CMCDQueryValidator = (query, config) => {
   const parsedData = parseQueryToJson(query);
 
   // Check key value
-  keyValValidator(parsedData, errors);
+  keyValValidator(parsedData, errors, config);
 
   return createOutput(errors, rawData, parsedData);
 };

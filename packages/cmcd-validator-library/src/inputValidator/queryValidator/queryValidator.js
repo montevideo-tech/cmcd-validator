@@ -2,11 +2,23 @@ import { cmcdTypes, keyTypes, errorTypes } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 import checkQuotes from '../../utils/checkQuotes.js';
 
-const queryValidator = (queryString, error, newkeyTypes) => {
+const queryValidator = (queryString, error, config) => {
   // Check if the URL is encoded
+  const keyTypesModify = keyTypes;
   if (decodeURI(queryString) === queryString) {
     error.push(createError(errorTypes.parameterEncoding));
     return false;
+  }
+  // if (config?.specificKey) {
+  //   keyTypesModify = {};
+  //   config.specificKey.forEach((key) => {
+  //     keyTypesModify[key] = keyTypes[key];
+  //   });
+  // }
+  if (config?.customKey) {
+    config.customKey.forEach((customK) => {
+      keyTypesModify[customK.key] = customK.type;
+    });
   }
 
   // Check if there is more than one CMCD request
@@ -27,7 +39,6 @@ const queryValidator = (queryString, error, newkeyTypes) => {
     error.push(createError(errorTypes.noCMCDRequest));
     return false;
   }
-
   // console.log('values\n', values);
   const keys = [];
   let valid = true;
@@ -36,48 +47,33 @@ const queryValidator = (queryString, error, newkeyTypes) => {
   values.forEach((val) => {
     const [key, value] = val.split('=');
     keys.push(key);
-
-    if (newkeyTypes) {
-      if ((newkeyTypes[key] === cmcdTypes.string && !checkQuotes(value))
-      || (newkeyTypes[key] === cmcdTypes.token && checkQuotes(value))
-      ) {
-        valid = false;
-        error.push(createError(errorTypes.invalidValue, key, value));
-      }
-      if (
-        (typeof value === 'undefined' && newkeyTypes[key] !== cmcdTypes.boolean)
-        || (value === 'true' && newkeyTypes[key] === cmcdTypes.boolean)
-        || (newkeyTypes[key] === cmcdTypes.number && checkQuotes(value))
-      ) {
-        valid = false;
-        error.push(createError(errorTypes.wrongTypeValue, key, value));
-      }
-    } else {
-      // Check: string require ""
-      if ((keyTypes[key] === cmcdTypes.string && !checkQuotes(value))
-        || (keyTypes[key] === cmcdTypes.token && checkQuotes(value))
-      ) {
-        valid = false;
-        error.push(createError(errorTypes.invalidValue, key, value));
-      }
-      // Check: if the key does not have value it must be a bool
-      // Check: number does not require ""
-      if (
-        (typeof value === 'undefined' && keyTypes[key] !== cmcdTypes.boolean)
-        || (value === 'true' && keyTypes[key] === cmcdTypes.boolean)
-        || (keyTypes[key] === cmcdTypes.number && checkQuotes(value))
-      ) {
-        valid = false;
-        error.push(createError(errorTypes.wrongTypeValue, key, value));
-      }
+    // Check only the keys in the configuration
+    // Check: string require ""
+    if (
+      (keyTypesModify[key] === cmcdTypes.string && !checkQuotes(value))
+      || (keyTypesModify[key] === cmcdTypes.token && checkQuotes(value))) {
+      valid = false;
+      error.push(createError(errorTypes.invalidValue, key, value));
     }
+    // Check: if the key does not have value it must be a bool
+    // Check: number does not require ""
+    if (
+      (typeof value === 'undefined' && keyTypesModify[key] !== cmcdTypes.boolean)
+      || ((value === 'true') && keyTypesModify[key] === cmcdTypes.boolean)
+      || ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
+      && keyTypesModify[key] === cmcdTypes.boolean)
+      || (keyTypesModify[key] === cmcdTypes.number && checkQuotes(value))
+    ) {
+      valid = false;
+      error.push(createError(errorTypes.wrongTypeValue, key, value));
+    }
+
+    if ((new Set(keys)).size !== keys.length) {
+      error.push(createError(errorTypes.duplicateKey));
+      return false;
+    }
+    return valid;
   });
-
-  if ((new Set(keys)).size !== keys.length) {
-    error.push(createError(errorTypes.duplicateKey));
-    return false;
-  }
-
   return valid;
 };
 
