@@ -3,6 +3,11 @@ import { createError } from '../../utils/error.js';
 import checkQuotes from '../../utils/checkQuotes.js';
 
 const queryValidator = (queryString, error, config) => {
+  if (!queryString.includes('CMCD=')) {
+    error.push(createError(errorTypes.noCMCDRequest));
+    return false;
+  }
+
   // Check if the URL is encoded
   const keyTypesModify = keyTypes;
   if (decodeURI(queryString) === queryString) {
