@@ -14,12 +14,7 @@ const queryValidator = (queryString, error, config) => {
     error.push(createError(errorTypes.parameterEncoding));
     return false;
   }
-  // if (config?.specificKey) {
-  //   keyTypesModify = {};
-  //   config.specificKey.forEach((key) => {
-  //     keyTypesModify[key] = keyTypes[key];
-  //   });
-  // }
+
   if (config?.customKey) {
     config.customKey.forEach((customK) => {
       keyTypesModify[customK.key] = customK.type;

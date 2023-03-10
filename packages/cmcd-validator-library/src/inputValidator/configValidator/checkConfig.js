@@ -1,17 +1,6 @@
 import { cmcdTypes, keyTypes, errorTypes, cmcdHeader } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 
-// const configuration = {
-//   customKey: [
-//     {
-//       key: 'qualabs-br',
-//       type: 'boolean',
-//       header: 'CMCD-Object',
-//     },
-//   ],
-//   specificKey: ['br', 'sid'],
-// };
-
 export const checkConfig = (config, errors) => {
   const { customKey, specificKey } = config;
   if (customKey) {
@@ -43,6 +32,3 @@ export const checkConfig = (config, errors) => {
   return false;
 };
 
-// const errores = [];
-// console.log(checkConfig(configuration, errores));
-// console.log(errores);

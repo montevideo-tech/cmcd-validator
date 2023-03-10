@@ -1,0 +1,146 @@
+export const queryTestCases = [
+  {
+    description: 'Test: Query su = "Qualabs"',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu%3D%22Qualabs%22',
+    output:
+    {
+      valid: false,
+      errors: [
+        {
+          type: 'wrong-type-value',
+          key: 'su',
+          value: '"Qualabs"',
+          description: 'Value type is incorrect',
+        },
+      ],
+      parsedData: undefined,
+      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu%3D%22Qualabs%22',
+    },
+  },
+  {
+    description: 'Test: Query su = 23',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu%3D23',
+    output:
+    {
+      valid: false,
+      errors: [
+        {
+          type: 'wrong-type-value',
+          key: 'su',
+          value: '23',
+          description: 'Value type is incorrect',
+        },
+      ],
+      parsedData: undefined,
+      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu%3D23',
+    },
+  },
+  {
+    description: 'Test: Correct Query with configuration using customKey and specificKey',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      customKey: [
+        {
+          key: 'qualabs-br',
+          type: 'boolean',
+          header: 'CMCD-Object',
+        },
+      ],
+      specificKey: ['br', 'sid'],
+    },
+  },
+  {
+    description: 'Test: Correct Query with configuration using only customKey',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      customKey: [
+        {
+          key: 'qualabs-br',
+          type: 'boolean',
+        },
+      ],
+    },
+  },
+  {
+    description: 'Test: Correct Query with configuration using only specifickey',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['br', 'sid'],
+    },
+  },
+  {
+    description: 'Test: Correct Query with configuration using only customKey and two keys',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Cqualabs-bs%3D45%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      customKey: [
+        {
+          key: 'qualabs-br',
+          type: 'boolean',
+        },
+        {
+          key: 'qualabs-bs',
+          type: 'number',
+        },
+      ],
+    },
+  },
+  {
+    description: 'Test: Incorrect Query with configuration using specificKey with wrong key',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['brc', 'sid'],
+    },
+  },
+  {
+    description: 'Test: incorrect Query with configuration using only customKey with wrong type value',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      customKey: [
+        {
+          key: 'qualabs-br',
+          type: 'qualabs',
+        },
+      ],
+    },
+  },
+  {
+    description: 'Test: Correct Query with configuration using only specifickey',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['su', 'sid'],
+    },
+  },
+  {
+    description: 'Test: Incorrect Query with configuration using only specifickey with wrong value type',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu%3D23',
+    config: {
+      specificKey: ['su', 'sid'],
+    },
+  },
+  {
+    description: 'Test: Incorrect Query with configuration using only specifickey with wrong value type',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['su', 'sid'],
+    },
+  },
+  {
+    description: 'Test: Correct Query with configuration using only specifickey with wrong value',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dpp%2Csu',
+    config: {
+      specificKey: ['su', 'sid'],
+    },
+  },
+];
