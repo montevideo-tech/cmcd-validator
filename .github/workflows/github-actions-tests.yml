@@ -1,26 +1,24 @@
-name: Create Release
-run-name: ${{ github.actor }} Run the Release to NPM 🚀
+name: Run Jest Tests
+run-name: ${{ github.actor }} Run Jest Tests
 on:
   pull_request:
-    types: [closed]
+  push:
     branches:
-      - main
+      - 77-m1-config-github-action-to-run-test-and-linter
 jobs:
-  Release-to-npm:
+  Run te tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - name: "Version and publish"
+      - name: "Run te tests"
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
-          npm run version
-          npm run publish
-          
-
+          npm install
+          npm run build
