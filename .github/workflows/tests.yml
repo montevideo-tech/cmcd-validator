@@ -1,10 +1,10 @@
-name: Run Jest Tests
-run-name: ${{ github.actor }} Run Jest Tests
+name: Run Tests
+run-name: ${{ github.actor }} launch the Tests 🩺
 on:
   pull_request:
-  push:
     branches:
-      - 77-m1-config-github-action-to-run-test-and-linter
+      - develop
+      - main
 jobs:
   Run-the-tests:
     runs-on: ubuntu-latest
