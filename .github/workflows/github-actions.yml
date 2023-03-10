@@ -1,10 +1,6 @@
 name: Create Release
 run-name: ${{ github.actor }} Run the Release to NPM 🚀
-on:
-  pull_request:
-    types: [push]
-    branches:
-      - 77-m1-config-github-action-to-run-test-and-linter
+on: push
 jobs:
   Release-to-npm:
     runs-on: ubuntu-latest
