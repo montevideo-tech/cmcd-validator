@@ -4,27 +4,29 @@ import {
 } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 
-export const checkKeyInCorrectHeader = (header, key, errors) => {
+export const isKeyInCorrectHeader = (header, key, errors) => {
   if (!cmcdHeader[header].includes(key)) {
-    // console.log(`The key ${key} does not go under the header ${header}`);
-    errors.push(createError(errorTypes.incorrectFormat, key));
+    const description = `The key ${key} does not go under the header ${header}`;
+    errors.push(createError(errorTypes.incorrectFormat, key, description));
+    return false;
   }
+  return true;
 };
 
 export const isStringCorrect = (key, value, errors) => {
   if ((keyTypes[key] === cmcdTypes.string && !checkQuotes(value))
   || (keyTypes[key] === cmcdTypes.token && checkQuotes(value))) {
-    // console.log('Incorrect format for ', key);
-    errors.push(createError(errorTypes.incorrectFormat, key));
-    return true;
+    const description = `Incorrect format for key: ${key}`;
+    errors.push(createError(errorTypes.incorrectFormat, key, value, description));
+    return false;
   }
-  return false;
+  return true;
 };
 
 export const isBooleanCorrect = (key, value, errors) => {
   if ((keyTypes[key] === cmcdTypes.boolean) && value === 'true') {
-    // console.log('If the value is TRUE, the = and the value must be omitted');
-    errors.push(createError(errorTypes.incorrectFormat, key, value));
+    const description = 'If the value is TRUE, the = and the value must be omitted';
+    errors.push(createError(errorTypes.incorrectFormat, key, value, description));
     return false;
   }
   return true;
@@ -32,8 +34,8 @@ export const isBooleanCorrect = (key, value, errors) => {
 
 export const isSeparetedCorrectly = (keyVal, errors) => {
   if ((keyVal.split('=').length > 2) || ((keyVal.split('=').length === 1) && (keyTypes[keyVal] !== cmcdTypes.boolean))) {
-    errors.push(createError(errorTypes.incorrectFormat));
-    // console.log('key-value pair not separated by =.');
+    const description = 'key-value pair not separated by =.';
+    errors.push(createError(errorTypes.incorrectFormat, keyVal, description));
     return false;
   }
   return true;
@@ -41,8 +43,8 @@ export const isSeparetedCorrectly = (keyVal, errors) => {
 
 export const isKeyRepeated = (key, keys, errors) => {
   if (keys.includes(key)) {
-    // console.log(`The key '${key}' is repeated.`);
-    errors.push(createError(errorTypes.duplicateKey, key));
+    const description = `The key '${key}' is repeated.`;
+    errors.push(createError(errorTypes.duplicateKey, key, description));
     return true;
   }
   return false;
@@ -50,24 +52,26 @@ export const isKeyRepeated = (key, keys, errors) => {
 
 export const isHeaderRepeated = (header, headers, errors) => {
   if (headers.includes(header)) {
-    // console.log(`This header '${header}' is repeated.`);
-    errors.push(createError(errorTypes.duplicatedHeader, header));
+    const description = `This header '${header}' is repeated.`;
+    errors.push(createError(errorTypes.duplicatedHeader, header, description));
     return true;
   }
   return false;
 };
 
-export const noHeader = (headers, errors) => {
+export const isHeader = (headers, errors) => {
   if (headers.length === 0) {
-    // console.log('No headers detected!');
-    errors.push(createError(errorTypes.noCMCDRequest));
+    const description = 'No headers detected!';
+    errors.push(createError(errorTypes.noCMCDRequest, description));
+    return false;
   }
+  return true;
 };
 
 export const isEmptyHeader = (keyVal, header, errors) => {
   if (keyVal === '') {
-    // console.log('Empty headers detected!');
-    errors.push(createError(errorTypes.emptyHeader, header));
+    const description = `Empty header detected! Header: ${header}`;
+    errors.push(createError(errorTypes.emptyHeader, header, description));
     return true;
   }
   return false;

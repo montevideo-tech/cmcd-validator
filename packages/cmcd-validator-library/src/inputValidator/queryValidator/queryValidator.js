@@ -3,6 +3,11 @@ import { createError } from '../../utils/error.js';
 import checkQuotes from '../../utils/checkQuotes.js';
 
 const queryValidator = (queryString, error) => {
+  if (!queryString.includes('CMCD=')) {
+    error.push(createError(errorTypes.noCMCDRequest));
+    return false;
+  }
+
   // Check if the URL is encoded
   if (decodeURI(queryString) === queryString) {
     error.push(createError(errorTypes.parameterEncoding));
@@ -19,16 +24,8 @@ const queryValidator = (queryString, error) => {
     return false;
   }
 
-  let values;
+  const values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
 
-  try {
-    values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
-  } catch (err) {
-    error.push(createError(errorTypes.noCMCDRequest));
-    return false;
-  }
-
-  // console.log('values\n', values);
   const keys = [];
   let valid = true;
 
@@ -44,12 +41,13 @@ const queryValidator = (queryString, error) => {
       valid = false;
       error.push(createError(errorTypes.invalidValue, key, value));
     }
-
     // Check: if the key does not have value it must be a bool
     // Check: number does not require ""
     if (
       (typeof value === 'undefined' && keyTypes[key] !== cmcdTypes.boolean)
-      || (value === 'true' && keyTypes[key] === cmcdTypes.boolean)
+      || ((value === 'true') && keyTypes[key] === cmcdTypes.boolean)
+      || ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
+      && keyTypes[key] === cmcdTypes.boolean)
       || (keyTypes[key] === cmcdTypes.number && checkQuotes(value))
     ) {
       valid = false;
@@ -61,7 +59,6 @@ const queryValidator = (queryString, error) => {
     error.push(createError(errorTypes.duplicateKey));
     return false;
   }
-
   return valid;
 };
 
