@@ -69,19 +69,6 @@ export default [
     ],
   },
   {
-    input: './src/tests/index.js',
-    output: [
-      { file: pkg.test, format: 'cjs' },
-    ],
-    plugins: [
-      nodeResolve({ browser: true, preferBuiltins: false }),
-      commonjs({
-        include: ['./node_modules/*', './src/*'],
-        transformMixedEsModules: true,
-      }),
-    ],
-  },
-  {
     input: './src/index.js',
     output: {
       name: 'cmcd-validator-debug',
