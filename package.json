@@ -6,9 +6,8 @@
     "build": "lerna run build",
     "start": "lerna run start --parallel",
     "demo": "lerna run dev --scope=cmcd-validator-demo-app",
-    "test": "lerna run test",
     "clean": "lerna clean",
-    "testJest": "jest --verbose"
+    "test": "jest --verbose"
   },
   "workspaces": [
     "packages/*"
