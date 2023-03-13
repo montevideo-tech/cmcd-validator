@@ -1,6 +1,6 @@
 import { queryValidator } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
-import { keySortedAlphabetically } from './keyValueValidator/validatorFunctions.js';
+import keySortedAlphabetically from './utils/keySortedAlphabetically.js';
 import { parseQueryToJson } from './parser/index.js';
 import { createOutput } from './utils/output.js';
 

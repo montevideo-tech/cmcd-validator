@@ -1,6 +1,6 @@
 import { jsonIsValid } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
-import { keySortedAlphabetically } from './keyValueValidator/validatorFunctions.js';
+import keySortedAlphabetically from './utils/keySortedAlphabetically.js';
 import { createOutput } from './utils/output.js';
 
 const CMCDJsonValidator = (jsonString, warningFlag = true) => {

@@ -1,11 +1,11 @@
-import { keySortedAlphabetically } from '../../keyValueValidator/validatorFunctions.js';
+import keySortedAlphabetically from '../../utils/keySortedAlphabetically.js';
 import { cmcdHeader } from '../../utils/constants.js';
 import {
   isKeyInCorrectHeader, isBooleanCorrect, isSeparetedCorrectly,
   isStringCorrect, isHeaderRepeated, isKeyRepeated, isHeader, isEmptyHeader,
 } from './formatFunctions.js';
 
-const headerValidator = (headerString, errors, warnings) => {
+const headerValidator = (headerString, errors, warnings, warningFlag = true) => {
   const headers = headerString.split('\n');
   const cmcdHeaders = [];
   const keys = [];
@@ -34,8 +34,10 @@ const headerValidator = (headerString, errors, warnings) => {
       }
       return false;
     });
-    keySortedAlphabetically(headerKeys, warnings);
-    headerKeys = [];
+    if (warningFlag === true) {
+      keySortedAlphabetically(headerKeys, warnings);
+      headerKeys = [];
+    }    
     cmcdHeaders.push(header);
   });
 
