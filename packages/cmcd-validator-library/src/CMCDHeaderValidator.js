@@ -19,7 +19,7 @@ const CMCDHeaderValidator = (header, warningFlag = true) => {
   const parsedData = parseHeaderToJson(header);
 
   // Check key value
-  keyValValidator(parsedData, errors, warningFlag, warnings);
+  keyValValidator(parsedData, errors, warnings, warningFlag);
 
   return createOutput(errors, warnings, rawData, parsedData);
 };
