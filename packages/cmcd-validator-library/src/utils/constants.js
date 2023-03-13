@@ -67,9 +67,18 @@ export const errorDescription = {
   unknownSpecificKey: 'The key does not mach with CMCD keys',
   wrongCustomHeader: 'The header does not mach with CMCD headers',
 };
+
 export const cmcdHeader = {
   'CMCD-Object': ['br', 'd', 'ot', 'tb'],
   'CMCD-Request': ['bl', 'dl', 'mtp', 'nor', 'nrr', 'su'],
   'CMCD-Session': ['cid', 'pr', 'sf', 'sid', 'st', 'v'],
   'CMCD-Status': ['bs', 'rtp'],
+};
+
+export const warningTypes = {
+  noAlphabeticalOrder: 'no-alphabetical-order',
+};
+
+export const warningDescription = {
+  noAlphabeticalOrder: 'Keys are not arranged alphabetically',
 };
