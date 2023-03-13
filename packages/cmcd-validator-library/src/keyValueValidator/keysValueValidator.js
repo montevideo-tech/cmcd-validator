@@ -6,7 +6,7 @@ import {
 
 // keyValValidator takes as a parameter cmcdJson, which is a javascript object.
 // The function iterates through it validating every key value pair.
-const keyValValidator = (cmcdJson, errors) => {
+const keyValValidator = (cmcdJson, errors, warnings, warningFlag = true) => {
   Object.keys(cmcdJson).forEach((key) => {
     const keyValue = cmcdJson[key];
     isReserved(errors, key);
@@ -15,7 +15,9 @@ const keyValValidator = (cmcdJson, errors) => {
     switch (key) {
       case 'bl':
         checkRoundToNearest(errors, key, keyValue, 100, 'ms');
-        checkBlKey(cmcdJson, errors, key, keyValue);
+        if (warningFlag == true) {
+          checkBlKey(cmcdJson, warnings, key, keyValue);
+        }
         break;
       case 'cid':
         checkMaxLength(errors, key, keyValue);
