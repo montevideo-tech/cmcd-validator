@@ -1,4 +1,6 @@
-import { cmcdTypes, errorTypes, keyTypes } from '../utils/constants.js';
+import {
+  cmcdTypes, errorTypes, keyTypes,
+} from '../utils/constants.js';
 import { createError } from '../utils/error.js';
 
 export const checkMaxLength = (errors, key, value) => {
@@ -85,3 +87,4 @@ export const checkSfValidValue = (errors, key, value) => {
 export const checkStValidValue = (errors, key, value) => {
   checkValidValue(errors, key, value, ['v', 'l']);
 };
+
