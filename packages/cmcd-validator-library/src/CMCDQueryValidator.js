@@ -29,7 +29,8 @@ const CMCDQueryValidator = (query, config, warningFlag = true) => {
   }
 
   // Check key value
-  keyValValidator(parsedData, errors, config);
+  keyValValidator(parsedData, errors, config, warnings, warningFlag);
+  
 
   return createOutput(errors, warnings, rawData, parsedData);
 };
