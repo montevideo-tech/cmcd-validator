@@ -22,7 +22,7 @@ const CMCDJsonValidator = (jsonString, warningFlag = true) => {
   }
 
   // Check key value
-  keyValValidator(jsonObj, errors);
+  keyValValidator(jsonObj, errors, warningFlag, warnings);
 
   return createOutput(errors, warnings, rawData, jsonObj, warnings);
 };
