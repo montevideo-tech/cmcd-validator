@@ -70,8 +70,10 @@ export const cmcdHeader = {
 
 export const warningTypes = {
   noAlphabeticalOrder: 'no-alphabetical-order',
+  noSidReceived: 'no-sid-received'
 };
 
 export const warningDescription = {
   noAlphabeticalOrder: 'Keys are not arranged alphabetically',
+  noSidReceived: 'No sid received from CMCD message'
 };
