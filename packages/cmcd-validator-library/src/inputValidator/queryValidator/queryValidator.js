@@ -1,4 +1,4 @@
-import { cmcdTypes, keyTypes, errorTypes, warningTypes } from '../../utils/constants.js';
+import { cmcdTypes, keyTypes, errorTypes } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 import checkQuotes from '../../utils/checkQuotes.js';
 import { createWarning } from '../../utils/warning.js';
@@ -9,6 +9,17 @@ const queryValidator = (queryString, error, warnings, config) => {
     return false;
   }
   const keyTypesModify = keyTypes;
+  // Catch if the URL is malformed
+  try {
+    // Check if the URL is encoded
+    if (decodeURI(queryString) === queryString) {
+      error.push(createError(errorTypes.parameterEncoding));
+      return false;
+    }    
+  } catch (err) {
+    error.push(createError(errorTypes.queryMalformed));
+    return false;
+  }
   // Catch if the URL is malformed
   try {
     // Check if the URL is encoded
@@ -31,7 +42,7 @@ const queryValidator = (queryString, error, warnings, config) => {
   
   //Check if there is another query before CMCD query and is missing a '&' separating them
   if ((requests[0].length > 0) && (requests[0][requests[0].length - 1] !== '&')) {
-    error.push(createError(errorTypes.noAmpersandBetweenRequests));
+    warnings.push(createWarning(warningTypes.noAmpersandBetweenRequests));
   }
   
   // Check if there is more than one CMCD request
@@ -43,16 +54,6 @@ const queryValidator = (queryString, error, warnings, config) => {
 
   const values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
 
-<<<<<<< HEAD
-=======
-  // try {
-  values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
-  // } catch (err) {
-  //   error.push(createError(errorTypes.noCMCDRequest));
-  //   return false;
-  // }
-  // console.log('values\n', values);
->>>>>>> 100-m1.5: changed a warning for an error
   const keys = [];
   let valid = true;
 
