@@ -81,18 +81,12 @@ export const cmcdHeader = {
 
 export const warningTypes = {
   noAlphabeticalOrder: 'no-alphabetical-order',
-<<<<<<< HEAD
   noSidReceived: 'no-sid-received',
   blWithWrongOtValue: 'bl-with-wrong-ot-value',
-=======
->>>>>>> 100-m1.5: changed a warning for an error
 };
 
 export const warningDescription = {
   noAlphabeticalOrder: 'Keys are not arranged alphabetically',
-<<<<<<< HEAD
   noSidReceived: 'No sid received from CMCD message',
   blWithWrongOtValue: 'bl key should only be sent with an object type of a, v or av',
-=======
->>>>>>> 100-m1.5: changed a warning for an error
 };
