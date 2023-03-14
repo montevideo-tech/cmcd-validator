@@ -31,7 +31,7 @@ const queryValidator = (queryString, error, warnings, config) => {
   
   //Check if there is another query before CMCD query and is missing a '&' separating them
   if ((requests[0].length > 0) && (requests[0][requests[0].length - 1] !== '&')) {
-    warnings.push(createWarning(warningTypes.noAmpersandBetweenRequests));
+    error.push(createError(errorTypes.noAmpersandBetweenRequests));
   }
   
   // Check if there is more than one CMCD request
@@ -43,6 +43,16 @@ const queryValidator = (queryString, error, warnings, config) => {
 
   const values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
 
+<<<<<<< HEAD
+=======
+  // try {
+  values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
+  // } catch (err) {
+  //   error.push(createError(errorTypes.noCMCDRequest));
+  //   return false;
+  // }
+  // console.log('values\n', values);
+>>>>>>> 100-m1.5: changed a warning for an error
   const keys = [];
   let valid = true;
 
