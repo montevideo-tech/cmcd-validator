@@ -70,8 +70,12 @@ export const cmcdHeader = {
 
 export const warningTypes = {
   noAlphabeticalOrder: 'no-alphabetical-order',
+  valuePR: 'pr-value',
+  valueV: 'v-value',
 };
 
 export const warningDescription = {
   noAlphabeticalOrder: 'Keys are not arranged alphabetically',
+  valuePR: 'SHOULD only be sent if not equal to 1.',
+  valueV: 'Client SHOULD omit this field if the version is 1',
 };

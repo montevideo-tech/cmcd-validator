@@ -2,11 +2,13 @@ import {
   checkMaxLength, isEncoded, checkValidNrrFormat, checkRoundToNearest, checkIgnoredParameter,
   isReserved, isPositive, checkBlKey, checkCorrectType, checkOtValidValue, checkSfValidValue,
   checkStValidValue,
+  checkPRValue,
+  checkVValue,
 } from './validatorFunctions.js';
 
 // keyValValidator takes as a parameter cmcdJson, which is a javascript object.
 // The function iterates through it validating every key value pair.
-const keyValValidator = (cmcdJson, errors) => {
+const keyValValidator = (cmcdJson, errors, warnings, warningFlag = true) => {
   Object.keys(cmcdJson).forEach((key) => {
     const keyValue = cmcdJson[key];
     isReserved(errors, key);
@@ -49,6 +51,16 @@ const keyValValidator = (cmcdJson, errors) => {
         break;
       case 'su':
         checkIgnoredParameter(errors, key, keyValue, false);
+        break;
+      case 'pr':
+        if(warningFlag) {
+          checkPRValue(cmcdJson, warnings, key, keyValue);
+        }
+        break;
+      case 'v':
+        if (warningFlag) {
+          checkVValue(cmcdJson, warnings, key, keyValue);
+        }
         break;
       default:
         break;

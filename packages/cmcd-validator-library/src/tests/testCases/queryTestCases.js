@@ -375,7 +375,14 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -405,7 +412,14 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -435,7 +449,14 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+                {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -472,7 +493,14 @@ export const queryTestCases = [
           description: "'bl' value is not rounded to the nearest100ms.",
         },
       ],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21307,
         br: 3200,
@@ -502,7 +530,14 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -532,7 +567,14 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -562,7 +604,14 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -592,7 +641,14 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -623,7 +679,14 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -654,7 +717,14 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -684,7 +754,14 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        },
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -715,7 +792,14 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -753,7 +837,14 @@ export const queryTestCases = [
           description: 'ot value does not meet the necessary requirements. Must be one of the following values: m,a,v,av,i,c,tt,k,o.',
         },
       ],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -791,7 +882,14 @@ export const queryTestCases = [
           description: "The 'bl'key should only be sent with the 'ot' key.",
         },
       ],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -828,7 +926,14 @@ export const queryTestCases = [
           description: "Invalid value for key 'cid'. Maximum length is 64 characters.",
         },
       ],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -900,7 +1005,14 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -931,7 +1043,14 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -962,7 +1081,14 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -993,7 +1119,14 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1029,9 +1162,16 @@ export const queryTestCases = [
           key: 'sf',
           value: 'Qualabs',
           description: 'sf value does not meet the necessary requirements. Must be one of the following values: d,h,s,o.',
-        },
+        }
       ],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1062,7 +1202,14 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1093,7 +1240,14 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1130,8 +1284,16 @@ export const queryTestCases = [
           value: 'Qualabs',
           description: 'st value does not meet the necessary requirements. Must be one of the following values: v,l.',
         },
+        
       ],
-      warnings: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
+        }
+      ],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1235,6 +1397,12 @@ export const queryTestCases = [
           key: undefined,
           value: undefined,
           description: 'Keys are not arranged alphabetically'
+        },
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'SHOULD only be sent if not equal to 1.'
         }
       ],
       parsedData: {
