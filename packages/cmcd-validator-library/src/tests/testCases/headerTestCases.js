@@ -221,14 +221,15 @@ export const headerTestCases = [
           value: undefined,
           description: "The key '' is not reserved.",
         },
-        {
-          type: 'invalid-value',
-          key: 'bl',
-          value: 31700,
-          description: "The 'bl'key should only be sent with the 'ot' key.",
-        },
       ],
-      warnings: [],
+      warnings: [
+        {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 31700,
+        }
+      ],
       parsedData: {
         '': true,
         bl: 31700,
