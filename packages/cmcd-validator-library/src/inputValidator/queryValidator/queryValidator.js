@@ -33,13 +33,8 @@ const queryValidator = (queryString, error, config) => {
 
   let values;
 
-  try {
-    values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
-  } catch (err) {
-    error.push(createError(errorTypes.noCMCDRequest));
-    return false;
-  }
-  // console.log('values\n', values);
+  values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
+
   const keys = [];
   let valid = true;
 
