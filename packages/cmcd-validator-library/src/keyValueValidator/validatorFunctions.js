@@ -3,6 +3,7 @@ import {
 } from '../utils/constants.js';
 import { createError } from '../utils/error.js';
 import { createWarning } from '../utils/warning.js';
+import { warningTypes } from '../utils/constants.js';
 
 export const checkMaxLength = (errors, key, value) => {
   if (value.length > 64) {
@@ -89,6 +90,9 @@ export const checkStValidValue = (errors, key, value) => {
   checkValidValue(errors, key, value, ['v', 'l']);
 };
 
-
-
+export const checkSidIsPresent = (cmcdJson, warnings) => {
+  if (!('sid' in cmcdJson)) {
+    warnings.push(createWarning(warningTypes.noSidReceived));
+  }
+};
 
