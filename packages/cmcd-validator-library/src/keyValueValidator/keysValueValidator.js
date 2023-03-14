@@ -1,12 +1,17 @@
 import {
   checkMaxLength, isEncoded, checkValidNrrFormat, checkRoundToNearest, checkIgnoredParameter,
   isReserved, isPositive, checkBlKey, checkCorrectType, checkOtValidValue, checkSfValidValue,
-  checkStValidValue,
+  checkStValidValue, checkSidIsPresent,
 } from './validatorFunctions.js';
 
 // keyValValidator takes as a parameter cmcdJson, which is a javascript object.
 // The function iterates through it validating every key value pair.
-const keyValValidator = (cmcdJson, errors, config) => {
+const keyValValidator = (cmcdJson, errors, warnings, warningFlag = true, config) => {
+
+  if (warningFlag === true) {
+    checkSidIsPresent(cmcdJson, warnings);
+  }
+
   Object.keys(cmcdJson).forEach((key) => {
     // Chech if we recived a configuration
     if (config?.specificKey && !config.specificKey?.includes(key)) {
@@ -19,7 +24,9 @@ const keyValValidator = (cmcdJson, errors, config) => {
     switch (key) {
       case 'bl':
         checkRoundToNearest(errors, key, keyValue, 100, 'ms');
-        checkBlKey(cmcdJson, errors, key, keyValue);
+        if (warningFlag == true) {
+          checkBlKey(cmcdJson, warnings, key, keyValue);
+        }
         break;
       case 'cid':
         checkMaxLength(errors, key, keyValue);
