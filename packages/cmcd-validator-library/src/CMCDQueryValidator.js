@@ -15,7 +15,7 @@ const CMCDQueryValidator = (query, config, warningFlag = true) => {
   }
 
   // Check query
-  const valid = queryValidator(query, errors, config);
+  const valid = queryValidator(query, errors, warnings, config);
 
   if (!valid) {
     return createOutput(errors, warnings, rawData);
