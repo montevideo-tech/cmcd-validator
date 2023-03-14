@@ -1,7 +1,8 @@
 import {
-  cmcdTypes, errorTypes, keyTypes,
+  cmcdTypes, errorTypes, keyTypes, warningTypes
 } from '../utils/constants.js';
 import { createError } from '../utils/error.js';
+import { createWarning } from '../utils/warning.js'
 
 export const checkMaxLength = (errors, key, value) => {
   if (value.length > 64) {
@@ -88,3 +89,14 @@ export const checkStValidValue = (errors, key, value) => {
   checkValidValue(errors, key, value, ['v', 'l']);
 };
 
+export const checkPRValue = (cmcdJson, warnings, key, value) => {
+  if ((key === 'pr') && value === 1) {
+    warnings.push(createWarning(warningTypes.valuePR, key, value));
+  }
+};
+
+export const checkVValue = (cmcdJson, warnings, key, value) => {
+  if ((key === 'v') && cmcdJson['v'] === 1) {
+    warnings.push(createWarning(warningTypes.valueV, key, value));
+  }
+};
