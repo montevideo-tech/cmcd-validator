@@ -7,7 +7,7 @@ export const checkConfig = (config, errors) => {
     const types = Object.values(cmcdTypes);
     const headers = Object.keys(cmcdHeader);
     customKey.forEach((customObj) => {
-      if (!(/^.{0,}[^-]-[^-].{0,}$/g.test(customObj.key))) {
+      if (!(/^[a-zA-Z0-9\.]+-[a-zA-Z0-9\.]+$/.test(customObj.key))) {
         errors.push(createError(errorTypes.invalidCustomKey, customObj.key));
       }
       if (!types.includes(customObj.type)) {
