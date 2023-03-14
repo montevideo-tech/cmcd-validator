@@ -63,8 +63,7 @@ export const isPositive = (errors, key, value) => {
 };
 
 export const checkBlKey = (cmcdJson, warnings, key, value) => {
-  if (!('ot' in cmcdJson) || cmcdJson['ot'] !== 'a' && cmcdJson['ot'] !== 'v'
-   && cmcdJson['ot'] !== 'av') {
+  if (!('ot' in cmcdJson) || !['a','v','av'].includes(cmcdJson['ot'])) {
     const description = `The '${key}'key should only be sent with  ot = a, v or av.`;
     warnings.push(createWarning(warningTypes.blWithWrongOtValue, key, value, description));
   }  
