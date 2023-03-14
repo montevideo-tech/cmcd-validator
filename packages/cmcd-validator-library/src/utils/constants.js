@@ -45,6 +45,7 @@ export const errorTypes = {
   invalidCustomKey: 'invalid-custom-key',
   unknownSpecificKey: 'unknown-specific-key',
   wrongCustomHeader: 'wrong-custom-header',
+  queryMalformed: 'query-malformed'
 };
 
 export const errorDescription = {
@@ -66,6 +67,7 @@ export const errorDescription = {
   invalidCustomKey: 'Custom key names MUST carry a hyphenated prefix',
   unknownSpecificKey: 'The key does not mach with CMCD keys',
   wrongCustomHeader: 'The header does not mach with CMCD headers',
+  queryMalformed: 'The query is malformed',
 };
 
 export const cmcdHeader = {
@@ -77,8 +79,10 @@ export const cmcdHeader = {
 
 export const warningTypes = {
   noAlphabeticalOrder: 'no-alphabetical-order',
+  noAmpersandBetweenRequests: 'no-ampersand-between-requests:',
 };
 
 export const warningDescription = {
   noAlphabeticalOrder: 'Keys are not arranged alphabetically',
+  noAmpersandBetweenRequests: 'Ampersand required between two or more requests',
 };
