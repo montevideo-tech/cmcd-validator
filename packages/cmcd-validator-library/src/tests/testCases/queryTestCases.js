@@ -1353,9 +1353,8 @@ export const queryTestCases = [
     'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?qualabsCMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu&hola',
     output:
     {
-      valid: true,
-      errors: [],
-      warnings: [
+      valid: false,
+      errors: [
         {
           type: 'no-ampersand-between-requests:',
           key: undefined,
@@ -1363,6 +1362,7 @@ export const queryTestCases = [
           description: 'Ampersand required between two or more requests'
         }
       ],
+      warnings: [],
       parsedData: {
         cid: '21cf726cfe3d937b5f974f72bb5bd06a',
         ot: 'i',
