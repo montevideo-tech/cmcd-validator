@@ -5,11 +5,13 @@ const testQueryValidator = () => {
   const testCases = queryTestCases;
 
   testCases.forEach((test) => {
-    const error = [];
-    queryValidator(test.query, error);
-    console.log(test.description);
-    console.log(error);
-    console.log('\n');
+    if (test.config !== undefined) {
+      const error = [];
+      queryValidator(test.query, error);
+      console.log(test.description);
+      console.log(error);
+      console.log('\n');
+    }
   });
 };
 
