@@ -3,7 +3,6 @@ import {
 } from '../utils/constants.js';
 import { createError } from '../utils/error.js';
 import { createWarning } from '../utils/warning.js';
-import { warningTypes } from '../utils/constants.js';
 
 export const checkMaxLength = (errors, key, value) => {
   if (value.length > 64) {
