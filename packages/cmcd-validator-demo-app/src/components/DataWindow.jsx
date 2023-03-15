@@ -10,14 +10,14 @@ export function DataWindow({ newData, setValidatorOutput }) {
         0,
         aggregateArray.length - 15 > 0 ? aggregateArray.length - 15 : 0
       );
-      console.log('setting data url', aggregateArray);
+      // console.log('setting data url', aggregateArray);
       setData(aggregateArray);
   }, [newData]) 
 
   const logList = data.map((t,i) => {
     if (Object.keys(t).length > 0) {
       return (
-        <p key={i} style={{ color: t.result.valid ? "green" : "red" }} onClick={() => setValidatorOutput(t)} className="query-url">
+        <p key={i} style={{ color: t?.result?.valid ? "green" : "red" }} onClick={() => setValidatorOutput(t)} className="query-url">
           {t.url}
         </p>
       );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import ShakaPlayer from "shaka-player-react";
 import muxjs from "mux.js";
 import "shaka-player/dist/controls.css";
@@ -7,21 +7,25 @@ import { DataWindow } from "./DataWindow";
 import { ValidatorView } from "./ValidatorView";
 import { CMCDQueryValidator } from "@montevideo-tech/cmcd-validator";
 
+function setNewData (state, newInfo) {
+  return [...state, newInfo]
+}
+
 export function ShakaExample() {
   window.muxjs = muxjs;
   const controllerRef = useRef(null);
-  const [newData, setNewData] = useState([{}]);
-  const newDataRef = useRef(newData);
+  const [newData, dispatch] = useReducer(setNewData, []);
+  // const newDataRef = useRef(newData);
   const [validatorOutput, setValidatorOutput] = useState("");
   const [networkEngineFilterState, setNetworkEngineFilterState] = useState(false);
   const [url, setUrl] = useState(
     "https://demo.unified-streaming.com/k8s/live/stable/scte35-no-splicing.isml/.mpd"
   );
 
-  useEffect(() => {
-    // setNewData(newDataRef.current);
-    console.log('new data', newData);
-  }, [newData]) 
+  // useEffect(() => {
+  //   // setNewData(newDataRef.current);
+  //   console.log('new data', newData);
+  // }, [newData]) 
 
   const handleInput = (input) => {
     setUrl(input.target.value);
@@ -48,11 +52,15 @@ export function ShakaExample() {
         let newUris = [];
         const urisToAdd = [...new Set(request.uris)];
         for (const uri of urisToAdd) {
+          console.log('nuevo push')
           newUris.push({ url: uri, result: CMCDQueryValidator(uri) });
+          dispatch({ url: uri, result: CMCDQueryValidator(uri) })  
         }
-        console.log('new uris', newUris);
-        newDataRef.current = [...newDataRef.current, newUris];
-        setNewData(newDataRef.current);
+        // console.log('new uris', newUris);
+        // newDataRef.current = [...newDataRef.current, newUris];
+        // setNewData(newDataRef.current);
+        // dispatch(newUris)
+        // console.log('newData', newData)
       });
     }
 
