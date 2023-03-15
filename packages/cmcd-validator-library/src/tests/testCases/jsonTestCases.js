@@ -1303,7 +1303,7 @@ export const jsonTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
        ],
        parsedData: {
@@ -1340,7 +1340,7 @@ export const jsonTestCases = [
           type: 'v-value',
           key: 'v',
           value: 1,
-          description: 'Client SHOULD omit this field if the version is 1'
+          description: 'Client should omit this field if the version is 1'
         }
        ],
        parsedData: {

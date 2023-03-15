@@ -78,8 +78,8 @@ export const warningTypes = {
 
 export const warningDescription = {
   noAlphabeticalOrder: 'Keys are not arranged alphabetically',
-  valuePR: 'SHOULD only be sent if not equal to 1.',
-  valueV: 'Client SHOULD omit this field if the version is 1',
+  valuePR: 'should only be sent if not equal to 1.xx',
+  valueV: 'Client should omit this field if the version is 1',
   noSidReceived: 'No sid received from CMCD message',
   blWithWrongOtValue: 'bl key should only be sent with an object type of a, v or av',
 };

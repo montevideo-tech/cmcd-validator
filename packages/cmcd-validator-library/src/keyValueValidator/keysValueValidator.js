@@ -1,7 +1,7 @@
 import {
   checkMaxLength, isEncoded, checkValidNrrFormat, checkRoundToNearest, checkIgnoredParameter,
   isReserved, isPositive, checkBlKey, checkCorrectType, checkOtValidValue, checkSfValidValue,
-  checkPRValue,
+  checkPrValue,
   checkVValue,
   checkStValidValue, checkSidIsPresent,
 } from './validatorFunctions.js';
@@ -61,7 +61,7 @@ const keyValValidator = (cmcdJson, errors, warnings, warningFlag = true) => {
         break;
       case 'pr':
         if(warningFlag) {
-          checkPRValue(cmcdJson, warnings, key, keyValue);
+          checkPrValue(cmcdJson, warnings, key, keyValue);
         }
         break;
       case 'v':

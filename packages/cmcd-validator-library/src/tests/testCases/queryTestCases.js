@@ -380,7 +380,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -417,7 +417,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -454,7 +454,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -498,7 +498,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -535,7 +535,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -572,7 +572,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -609,7 +609,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -652,7 +652,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -697,7 +697,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -742,7 +742,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -786,7 +786,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         },
       ],
       parsedData: {
@@ -831,7 +831,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -883,7 +883,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -927,7 +927,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -971,7 +971,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -1050,7 +1050,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -1088,7 +1088,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -1126,7 +1126,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -1164,7 +1164,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -1209,7 +1209,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -1247,7 +1247,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -1285,7 +1285,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -1331,7 +1331,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
@@ -1442,7 +1442,7 @@ export const queryTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'SHOULD only be sent if not equal to 1.'
+          description: 'should only be sent if not equal to 1.xx'
         }
       ],
       parsedData: {
