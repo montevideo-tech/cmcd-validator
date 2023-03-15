@@ -11,10 +11,18 @@ export function ShakaExample() {
   window.muxjs = muxjs;
   const controllerRef = useRef(null);
   const [newData, setNewData] = useState([{}]);
+  const newDataRef = useRef(newData);
   const [validatorOutput, setValidatorOutput] = useState("");
+  const [networkEngineFilterState, setNetworkEngineFilterState] = useState(false);
   const [url, setUrl] = useState(
     "https://demo.unified-streaming.com/k8s/live/stable/scte35-no-splicing.isml/.mpd"
   );
+
+  useEffect(() => {
+    // setNewData(newDataRef.current);
+    console.log('new data', newData);
+  }, [newData]) 
+
   const handleInput = (input) => {
     setUrl(input.target.value);
   };
@@ -35,14 +43,19 @@ export function ShakaExample() {
       },
     });
     const networkEngine = player.getNetworkingEngine();
-    networkEngine.registerRequestFilter((type, request) => {
-      const newUris = [{}];
-      const urisToAdd = [...new Set(request.uris)];
-      for (const uri of urisToAdd) {
-        newUris.push({ url: uri, result: CMCDQueryValidator(uri) });
-      }
-      setNewData(newUris);
-    });
+    if (!networkEngineFilterState){
+      networkEngine.registerRequestFilter((type, request) => {
+        let newUris = [];
+        const urisToAdd = [...new Set(request.uris)];
+        for (const uri of urisToAdd) {
+          newUris.push({ url: uri, result: CMCDQueryValidator(uri) });
+        }
+        console.log('new uris', newUris);
+        newDataRef.current = [...newDataRef.current, newUris];
+        setNewData(newDataRef.current);
+      });
+    }
+
     async function loadAsset() {
       // Load an asset.
       try {

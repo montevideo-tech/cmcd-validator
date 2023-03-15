@@ -3,14 +3,17 @@ import React, { useEffect, useState } from "react";
 
 export function DataWindow({ newData, setValidatorOutput }) {
   const [data, setData] = useState([])
+
   useEffect(() => {
     const aggregateArray = [...data, ...newData];
       aggregateArray.splice(
         0,
         aggregateArray.length - 15 > 0 ? aggregateArray.length - 15 : 0
       );
+      console.log('setting data url', aggregateArray);
       setData(aggregateArray);
   }, [newData]) 
+
   const logList = data.map((t,i) => {
     if (Object.keys(t).length > 0) {
       return (
@@ -20,6 +23,7 @@ export function DataWindow({ newData, setValidatorOutput }) {
       );
     }
   });
+
   return (
     <div className="data-window-wrapper">
       <div className="data-window">{logList}</div>
