@@ -44,7 +44,6 @@ export const errorTypes = {
   wrongCustomType: 'wrong-custom-type',
   invalidCustomKey: 'invalid-custom-key',
   unknownSpecificKey: 'unknown-specific-key',
-  wrongCustomHeader: 'wrong-custom-header',
 };
 
 export const errorDescription = {
@@ -65,7 +64,6 @@ export const errorDescription = {
   wrongCustomType: 'The type does not mach with CMCD types',
   invalidCustomKey: 'Custom key names MUST carry a hyphenated prefix',
   unknownSpecificKey: 'The key does not mach with CMCD keys',
-  wrongCustomHeader: 'The header does not mach with CMCD headers',
 };
 
 export const cmcdHeader = {
