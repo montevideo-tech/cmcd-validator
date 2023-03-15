@@ -41,6 +41,12 @@ export const errorTypes = {
   noHeader: 'no-header',
   emptyHeader: 'empty-header',
   unnecessaryKey: 'unnecessary-key',
+  wrongCustomType: 'wrong-custom-type',
+  invalidCustomKey: 'invalid-custom-key',
+  unknownSpecificKey: 'unknown-specific-key',
+  wrongCustomHeader: 'wrong-custom-header',
+  queryMalformed: 'query-malformed',
+  noAmpersandBetweenRequests: 'no-ampersand-between-requests:'
 };
 
 export const errorDescription = {
@@ -58,7 +64,12 @@ export const errorDescription = {
   noHeader: 'There is no CMCD headers.',
   emptyHeader: 'There is a header with no content',
   unnecessaryKey: 'This key must not be sent with the current value',
-  duplicateHeader: 'Header is duplicated',
+  wrongCustomType: 'The type does not mach with CMCD types',
+  invalidCustomKey: 'Custom key names MUST carry a hyphenated prefix',
+  unknownSpecificKey: 'The key does not mach with CMCD keys',
+  wrongCustomHeader: 'The header does not mach with CMCD headers',
+  queryMalformed: 'The query is malformed',
+  noAmpersandBetweenRequests: 'Ampersand required between two or more requests',  
 };
 
 export const cmcdHeader = {
