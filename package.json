@@ -19,5 +19,8 @@
     "babel-jest": "^29.5.0",
     "jest": "^29.5.0",
     "lerna": "^6.5.1"
+  },
+  "dependencies": {
+    "winston": "^3.8.2"
   }
 }
