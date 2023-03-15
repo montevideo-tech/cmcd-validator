@@ -643,6 +643,12 @@ export const queryTestCases = [
       errors: [],
       warnings: [
         {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300, 
+        },
+        {
           type: 'pr-value',
           key: 'pr',
           value: 1,
@@ -680,6 +686,13 @@ export const queryTestCases = [
       valid: true,
       errors: [],
       warnings: [
+        {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300, 
+        },
+      
         {
           type: 'pr-value',
           key: 'pr',
@@ -719,6 +732,13 @@ export const queryTestCases = [
       errors: [],
       warnings: [
         {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300, 
+        },
+      
+        {
           type: 'pr-value',
           key: 'pr',
           value: 1,
@@ -755,6 +775,13 @@ export const queryTestCases = [
       valid: true,
       errors: [],
       warnings: [
+        {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300, 
+        },
+      
         {
           type: 'pr-value',
           key: 'pr',
@@ -793,6 +820,13 @@ export const queryTestCases = [
       valid: true,
       errors: [],
       warnings: [
+        {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300, 
+        },
+      
         {
           type: 'pr-value',
           key: 'pr',
@@ -839,6 +873,13 @@ export const queryTestCases = [
       ],
       warnings: [
         {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300, 
+        },
+      
+        {
           type: 'pr-value',
           key: 'pr',
           value: 1,
@@ -868,21 +909,20 @@ export const queryTestCases = [
     },
   },
   {
-    description: 'Test: bl without ot = i',
+    description: 'Test: bl without ot',
     query:
       'https://dash.akamaized.net/akamai/bbb_30fps/bbb_a64k/bbb_a64k_7.m4a?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Dd%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dv%2Csu%2Ctb%3D6000',
     output:
     {
-      valid: false,
-      errors: [
-        {
-          type: 'invalid-value',
-          key: 'bl',
-          value: 21300,
-          description: "The 'bl'key should only be sent with the 'ot' key.",
-        },
-      ],
+      valid: true,
+      errors: [],
       warnings: [
+        {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300, 
+        },
         {
           type: 'pr-value',
           key: 'pr',
@@ -1425,6 +1465,32 @@ export const queryTestCases = [
         tb: 6000
       },
       rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_a64k/bbb_a64k_7.m4a?CMCD=bl%3D21300%2Cbs%2Cbr%3D3200%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Do%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dl%2Csu%2Ctb%3D6000'
+    },
+  },
+  {
+    description: 'Test: Warning no Sid present',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Cst%3Dv%2Csu',
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          type: "no-sid-received",
+          key: undefined,
+          value: undefined,
+          description: "No sid received from CMCD message",
+        }
+      ],
+      parsedData: {
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 'i',
+        sf: 'd',
+        st: 'v',
+        su: true,
+      },
+      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Cst%3Dv%2Csu',
     },
   },
 ];

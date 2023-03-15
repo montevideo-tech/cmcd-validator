@@ -62,11 +62,11 @@ export const isPositive = (errors, key, value) => {
   }
 };
 
-export const checkBlKey = (cmcdJson, errors, key, value) => {
-  if (!('ot' in cmcdJson)) {
-    const description = `The '${key}'key should only be sent with the 'ot' key.`;
-    errors.push(createError(errorTypes.invalidValue, key, value, description));
-  }
+export const checkBlKey = (cmcdJson, warnings, key, value) => {
+  if (!('ot' in cmcdJson) || !['a','v','av'].includes(cmcdJson['ot'])) {
+    const description = `The '${key}'key should only be sent with  ot = a, v or av.`;
+    warnings.push(createWarning(warningTypes.blWithWrongOtValue, key, value, description));
+  }  
 };
 
 export const checkCorrectType = (errors, key, value) => {
@@ -100,3 +100,10 @@ export const checkVValue = (cmcdJson, warnings, key, value) => {
     warnings.push(createWarning(warningTypes.valueV, key, value));
   }
 };
+
+export const checkSidIsPresent = (cmcdJson, warnings) => {
+  if (!('sid' in cmcdJson)) {
+    warnings.push(createWarning(warningTypes.noSidReceived));
+  }
+};
+
