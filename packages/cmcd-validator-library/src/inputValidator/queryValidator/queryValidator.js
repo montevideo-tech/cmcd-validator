@@ -55,7 +55,6 @@ const queryValidator = (queryString, error, config) => {
       || ((value === 'true') && keyTypesModify[key] === cmcdTypes.boolean)
       || ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
       && keyTypesModify[key] === cmcdTypes.boolean)
-      // || (keyTypesModify[key] === cmcdTypes.number && checkQuotes(value))
       || (keyTypesModify[key] === cmcdTypes.number && !Number(value))
     ) {
       valid = false;
