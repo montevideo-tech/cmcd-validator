@@ -20,17 +20,6 @@ const queryValidator = (queryString, error, warnings, config) => {
     error.push(createError(errorTypes.queryMalformed));
     return false;
   }
-  // Catch if the URL is malformed
-  try {
-    // Check if the URL is encoded
-    if (decodeURI(queryString) === queryString) {
-      error.push(createError(errorTypes.parameterEncoding));
-      return false;
-    }    
-  } catch (err) {
-    error.push(createError(errorTypes.queryMalformed));
-    return false;
-  }
 
   if (config?.customKey) {
     config.customKey.forEach((customK) => {
@@ -76,7 +65,6 @@ const queryValidator = (queryString, error, warnings, config) => {
       || ((value === 'true') && keyTypesModify[key] === cmcdTypes.boolean)
       || ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
       && keyTypesModify[key] === cmcdTypes.boolean)
-      // || (keyTypesModify[key] === cmcdTypes.number && checkQuotes(value))
       || (keyTypesModify[key] === cmcdTypes.number && !Number(value))
     ) {
       valid = false;
