@@ -1,7 +1,7 @@
 import { cmcdTypes, keyTypes, errorTypes, cmcdHeader } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 
-export const checkConfig = (config, errors) => {
+export const checkConfig = (config, errors, warnings) => {
   const { customKey, specificKey } = config;
   if (customKey) {
     const types = Object.values(cmcdTypes);
