@@ -79,10 +79,12 @@ export const warningTypes = {
   noAlphabeticalOrder: 'no-alphabetical-order',
   noSidReceived: 'no-sid-received',
   blWithWrongOtValue: 'bl-with-wrong-ot-value',
+  noReverseDnsCustomKey: 'customkey-without-reversedns',
 };
 
 export const warningDescription = {
   noAlphabeticalOrder: 'Keys are not arranged alphabetically',
   noSidReceived: 'No sid received from CMCD message',
   blWithWrongOtValue: 'bl key should only be sent with an object type of a, v or av',
+  noReverseDnsCustomKey: 'Customkey without Reverse DNS, could be: com.example-customkeyname',
 };

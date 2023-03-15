@@ -10,7 +10,7 @@ const CMCDQueryValidator = (query, config, warningFlag = true) => {
   const rawData = query;
   const warnings = [];
   // check config
-  if (config && !checkConfig(config, errors, warnings)) {
+  if (config && !checkConfig(config, errors, warnings, warningFlag = true)) {
     return createOutput(errors, warnings, rawData);
   }
 

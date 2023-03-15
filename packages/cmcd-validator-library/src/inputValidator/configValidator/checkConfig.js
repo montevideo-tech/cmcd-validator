@@ -1,7 +1,8 @@
-import { cmcdTypes, keyTypes, errorTypes, cmcdHeader } from '../../utils/constants.js';
+import { cmcdTypes, keyTypes, errorTypes, cmcdHeader, warningTypes } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
+import { createWarning } from '../../utils/warning.js';
 
-export const checkConfig = (config, errors, warnings) => {
+export const checkConfig = (config, errors, warnings, warningFlag = true) => {
   const { customKey, specificKey } = config;
   if (customKey) {
     const types = Object.values(cmcdTypes);
@@ -16,6 +17,10 @@ export const checkConfig = (config, errors, warnings) => {
       if (customObj.header && !headers.includes(customObj.header)) {
         errors.push(createError(errorTypes.wrongCustomHeader, customObj.key, customObj.header));
       }
+      if (!(/^([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+[a-zA-Z0-9\-]+$/.test(customObj.key)) & warningFlag === true) {
+        warnings.push(createWarning(warningTypes.noReverseDnsCustomKey));
+      }
+
     });
   }
   if (specificKey) {

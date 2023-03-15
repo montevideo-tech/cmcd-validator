@@ -172,11 +172,11 @@ export const queryConfigTestCases = [
   {
     description: "Test: Correct Query with configuration using only customKey",
     query:
-      "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+      "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     config: {
       customKey: [
         {
-          key: "qualabs-br",
+          key: "com.qualabs-br",
           type: "boolean",
         },
       ],
@@ -195,25 +195,25 @@ export const queryConfigTestCases = [
       parsedData: {
         cid: "21cf726cfe3d937b5f974f72bb5bd06a",
         ot: "i",
-        "qualabs-br": false,
+        "com.qualabs-br": false,
         sf: "d",
         sid: "b248658d-1d1a-4039-91d0-8c08ba597da5",
         st: "v",
         su: true,
       },
       rawData:
-        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     },
   },
   {
     description:
       "Test: Correct Query with configuration using customKey and specificKey",
     query:
-      "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+      "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     config: {
       customKey: [
         {
-          key: "qualabs-br",
+          key: "com.qualabs-br",
           type: "boolean",
           header: "CMCD-Object",
         },
@@ -234,29 +234,29 @@ export const queryConfigTestCases = [
       parsedData: {
         cid: "21cf726cfe3d937b5f974f72bb5bd06a",
         ot: "i",
-        "qualabs-br": false,
+        "com.qualabs-br": false,
         sf: "d",
         sid: "b248658d-1d1a-4039-91d0-8c08ba597da5",
         st: "v",
         su: true,
       },
       rawData:
-        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     },
   },
   {
     description:
       "Test: Correct Query with configuration using customKey with two keys",
     query:
-      "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Cqualabs-bs%3D45%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+      "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dfalse%2Ccom.qualabs-bs%3D45%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     config: {
       customKey: [
         {
-          key: "qualabs-br",
+          key: "com.qualabs-br",
           type: "boolean",
         },
         {
-          key: "qualabs-bs",
+          key: "com.qualabs-bs",
           type: "number",
         },
       ],
@@ -275,26 +275,26 @@ export const queryConfigTestCases = [
       parsedData: {
         cid: "21cf726cfe3d937b5f974f72bb5bd06a",
         ot: "i",
-        "qualabs-br": false,
-        "qualabs-bs": 45,
+        "com.qualabs-br": false,
+        "com.qualabs-bs": 45,
         sf: "d",
         sid: "b248658d-1d1a-4039-91d0-8c08ba597da5",
         st: "v",
         su: true,
       },
       rawData:
-        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Cqualabs-bs%3D45%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dfalse%2Ccom.qualabs-bs%3D45%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     },
   },
   {
     description:
       "Test: incorrect Query with configuration using only customKey with wrong type value",
     query:
-      "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+      "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     config: {
       customKey: [
         {
-          key: "qualabs-br",
+          key: "com.qualabs-br",
           type: "qualabs",
         },
       ],
@@ -304,7 +304,7 @@ export const queryConfigTestCases = [
       errors: [
         {
           description: "The type does not mach with CMCD types",
-          key: "qualabs-br",
+          key: "com.qualabs-br",
           type: "wrong-custom-type",
           value: "qualabs",
         },
@@ -312,17 +312,17 @@ export const queryConfigTestCases = [
       warnings: [],
       parsedData: undefined,
       rawData:
-        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     },
   },
   {
     description: "Test: Incorrect Query with configuration using only customKey sending true value",
     query:
-      "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dtrue%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+      "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dtrue%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     config: {
       customKey: [
         {
-          key: "qualabs-br",
+          key: "com.qualabs-br",
           type: "boolean",
         },
       ],
@@ -332,14 +332,14 @@ export const queryConfigTestCases = [
       errors: [
         {
           type: 'wrong-type-value',
-          key: 'qualabs-br',
+          key: 'com.qualabs-br',
           value: 'true',
           description: 'Value type is incorrect'
         }
       ],
       warnings: [],
       parsedData: undefined,
-      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dtrue%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu'
+      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dtrue%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu'
     },
   },
   {
@@ -364,7 +364,14 @@ export const queryConfigTestCases = [
           description: 'Custom key names MUST carry a hyphenated prefix'
         }
       ],
-      warnings: [],
+      warnings: [
+        {
+          description: "Customkey without Reverse DNS, could be: com.example-customkeyname",
+          key: undefined,
+          type: "customkey-without-reversedns",
+          value: undefined,
+        },
+      ],
       parsedData: undefined,
       rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu'
     },
@@ -391,7 +398,14 @@ export const queryConfigTestCases = [
           description: 'Custom key names MUST carry a hyphenated prefix'
         }
       ],
-      warnings: [],
+      warnings: [
+        {
+          description: "Customkey without Reverse DNS, could be: com.example-customkeyname",
+          key: undefined,
+          type: "customkey-without-reversedns",
+          value: undefined,
+        },
+      ],
       parsedData: undefined,
       rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu'
     },
@@ -418,7 +432,14 @@ export const queryConfigTestCases = [
           description: 'Custom key names MUST carry a hyphenated prefix'
         }
       ],
-      warnings: [],
+      warnings: [
+        {
+          description: "Customkey without Reverse DNS, could be: com.example-customkeyname",
+          key: undefined,
+          type: "customkey-without-reversedns",
+          value: undefined,
+        },
+      ],
       parsedData: undefined,
       rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu'
     },
@@ -445,9 +466,58 @@ export const queryConfigTestCases = [
           description: 'Custom key names MUST carry a hyphenated prefix'
         }
       ],
-      warnings: [],
+      warnings: [
+        {
+          description: "Customkey without Reverse DNS, could be: com.example-customkeyname",
+          key: undefined,
+          type: "customkey-without-reversedns",
+          value: undefined,
+        },
+      ],
       parsedData: undefined,
       rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu'
     },
-  },      
+  },
+  {
+    description: "Test: Warning bad Reverse DNS on customKey",
+    query:
+      "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+    config: {
+      customKey: [
+        {
+          key: "qualabs-br",
+          type: "boolean",
+        },
+      ],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          description: "Customkey without Reverse DNS, could be: com.example-customkeyname",
+          key: undefined,
+          type: "customkey-without-reversedns",
+          value: undefined,
+        },
+        {
+          type: 'no-alphabetical-order',
+          key: undefined,
+          value: undefined,
+          description: 'Keys are not arranged alphabetically'
+        }
+      ],
+      parsedData: {
+        cid: "21cf726cfe3d937b5f974f72bb5bd06a",
+        ot: "i",
+        "qualabs-br": false,
+        sf: "d",
+        sid: "b248658d-1d1a-4039-91d0-8c08ba597da5",
+        st: "v",
+        su: true,
+      },
+      rawData:
+        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+    },
+  },
 ];
