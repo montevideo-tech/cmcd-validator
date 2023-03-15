@@ -10,7 +10,7 @@ const CMCDHeaderValidator = (header, warningFlag = true) => {
 
   // Check header
   const valid = headerValidator(header, errors, warnings, warningFlag);
-
+  
   if (!valid) {
     return createOutput(errors, warnings, rawData);
   }
