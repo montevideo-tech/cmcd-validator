@@ -1,7 +1,8 @@
 import {
-  cmcdTypes, errorTypes, keyTypes,
+  cmcdTypes, errorTypes, keyTypes, warningTypes,
 } from '../utils/constants.js';
 import { createError } from '../utils/error.js';
+import { createWarning } from '../utils/warning.js';
 
 export const checkMaxLength = (errors, key, value) => {
   if (value.length > 64) {
@@ -61,11 +62,11 @@ export const isPositive = (errors, key, value) => {
   }
 };
 
-export const checkBlKey = (cmcdJson, errors, key, value) => {
-  if (!('ot' in cmcdJson)) {
-    const description = `The '${key}'key should only be sent with the 'ot' key.`;
-    errors.push(createError(errorTypes.invalidValue, key, value, description));
-  }
+export const checkBlKey = (cmcdJson, warnings, key, value) => {
+  if (!('ot' in cmcdJson) || !['a','v','av'].includes(cmcdJson['ot'])) {
+    const description = `The '${key}'key should only be sent with  ot = a, v or av.`;
+    warnings.push(createWarning(warningTypes.blWithWrongOtValue, key, value, description));
+  }  
 };
 
 export const checkCorrectType = (errors, key, value) => {
@@ -86,5 +87,11 @@ export const checkSfValidValue = (errors, key, value) => {
 
 export const checkStValidValue = (errors, key, value) => {
   checkValidValue(errors, key, value, ['v', 'l']);
+};
+
+export const checkSidIsPresent = (cmcdJson, warnings) => {
+  if (!('sid' in cmcdJson)) {
+    warnings.push(createWarning(warningTypes.noSidReceived));
+  }
 };
 
