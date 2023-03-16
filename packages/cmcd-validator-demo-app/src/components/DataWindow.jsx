@@ -5,13 +5,13 @@ export function DataWindow({ newData, setValidatorOutput }) {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    const aggregateArray = [...data, ...newData];
-      aggregateArray.splice(
-        0,
-        aggregateArray.length - 15 > 0 ? aggregateArray.length - 15 : 0
-      );
-      // console.log('setting data url', aggregateArray);
-      setData(aggregateArray);
+    // const aggregateArray = [...data, ...newData];
+    //   aggregateArray.splice(
+    //     0,
+    //     aggregateArray.length - 15 > 0 ? aggregateArray.length - 15 : 0
+    //   );
+    //   console.log('newData', newData);
+      setData(newData);
   }, [newData]) 
 
   const logList = data.map((t,i) => {

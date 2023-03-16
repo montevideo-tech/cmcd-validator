@@ -8,7 +8,12 @@ import { ValidatorView } from "./ValidatorView";
 import { CMCDQueryValidator } from "@montevideo-tech/cmcd-validator";
 
 function setNewData (state, newInfo) {
-  return [...state, newInfo]
+  const aggregateArray = [...state, newInfo];
+  aggregateArray.splice(
+    0,
+    aggregateArray.length - 15 > 0 ? aggregateArray.length - 15 : 0
+  );
+  return aggregateArray
 }
 
 export function ShakaExample() {
@@ -48,6 +53,7 @@ export function ShakaExample() {
     });
     const networkEngine = player.getNetworkingEngine();
     if (!networkEngineFilterState){
+      setNetworkEngineFilterState(true);
       networkEngine.registerRequestFilter((type, request) => {
         let newUris = [];
         const urisToAdd = [...new Set(request.uris)];
