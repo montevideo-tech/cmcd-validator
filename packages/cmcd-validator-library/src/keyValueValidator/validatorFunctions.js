@@ -91,7 +91,7 @@ export const checkStValidValue = (errors, key, value) => {
 
 export const checkPrValue = (cmcdJson, warnings, key, value) => {
   if (key === 'pr' && value === 1) {
-    warnings.push(createWarning(warningTypes.valuePR, key, value));
+    warnings.push(createWarning(warningTypes.valuePr, key, value));
   }
 };
 

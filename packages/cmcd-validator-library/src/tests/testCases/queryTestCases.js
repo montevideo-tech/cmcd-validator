@@ -375,14 +375,7 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -394,7 +387,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -412,14 +405,7 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -431,7 +417,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -449,14 +435,7 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [
-                {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -468,7 +447,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -493,14 +472,7 @@ export const queryTestCases = [
           description: "'bl' value is not rounded to the nearest100ms.",
         },
       ],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21307,
         br: 3200,
@@ -512,7 +484,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -530,14 +502,7 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -549,7 +514,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -567,14 +532,7 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -586,7 +544,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'a',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -604,14 +562,7 @@ export const queryTestCases = [
     output: {
       valid: true,
       errors: [],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -623,7 +574,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'av',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -648,12 +599,6 @@ export const queryTestCases = [
           type: "bl-with-wrong-ot-value",
           value: 21300, 
         },
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
       ],
       parsedData: {
         bl: 21300,
@@ -666,7 +611,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'i',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -692,13 +637,6 @@ export const queryTestCases = [
           type: "bl-with-wrong-ot-value",
           value: 21300, 
         },
-      
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
       ],
       parsedData: {
         bl: 21300,
@@ -711,7 +649,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'c',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -737,13 +675,6 @@ export const queryTestCases = [
           type: "bl-with-wrong-ot-value",
           value: 21300, 
         },
-      
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
       ],
       parsedData: {
         bl: 21300,
@@ -756,7 +687,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'tt',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -781,13 +712,6 @@ export const queryTestCases = [
           type: "bl-with-wrong-ot-value",
           value: 21300, 
         },
-      
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        },
       ],
       parsedData: {
         bl: 21300,
@@ -800,7 +724,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'k',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -826,13 +750,6 @@ export const queryTestCases = [
           type: "bl-with-wrong-ot-value",
           value: 21300, 
         },
-      
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
       ],
       parsedData: {
         bl: 21300,
@@ -845,7 +762,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'o',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -878,13 +795,6 @@ export const queryTestCases = [
           type: "bl-with-wrong-ot-value",
           value: 21300, 
         },
-      
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
       ],
       parsedData: {
         bl: 21300,
@@ -897,7 +807,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'Qualabs',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -923,12 +833,6 @@ export const queryTestCases = [
           type: "bl-with-wrong-ot-value",
           value: 21300, 
         },
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
       ],
       parsedData: {
         bl: 21300,
@@ -940,7 +844,7 @@ export const queryTestCases = [
         mtp: 48100,
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -966,14 +870,7 @@ export const queryTestCases = [
           description: "Invalid value for key 'cid'. Maximum length is 64 characters.",
         },
       ],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -985,7 +882,7 @@ export const queryTestCases = [
         nor: '%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -1045,14 +942,7 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1064,7 +954,7 @@ export const queryTestCases = [
         nor: '..%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -1083,14 +973,7 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1102,7 +985,7 @@ export const queryTestCases = [
         nor: '..%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'h',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -1121,14 +1004,7 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1140,7 +1016,7 @@ export const queryTestCases = [
         nor: '..%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 's',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -1159,14 +1035,7 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1178,7 +1047,7 @@ export const queryTestCases = [
         nor: '..%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'o',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -1204,14 +1073,7 @@ export const queryTestCases = [
           description: 'sf value does not meet the necessary requirements. Must be one of the following values: d,h,s,o.',
         }
       ],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1223,7 +1085,7 @@ export const queryTestCases = [
         nor: '..%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'Qualabs',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -1242,14 +1104,7 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1261,7 +1116,7 @@ export const queryTestCases = [
         nor: '..%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'o',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -1280,14 +1135,7 @@ export const queryTestCases = [
     {
       valid: true,
       errors: [],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1299,7 +1147,7 @@ export const queryTestCases = [
         nor: '..%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'o',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -1326,14 +1174,7 @@ export const queryTestCases = [
         },
         
       ],
-      warnings: [
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
-      ],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -1345,7 +1186,7 @@ export const queryTestCases = [
         nor: '..%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'o',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
@@ -1438,12 +1279,6 @@ export const queryTestCases = [
           value: undefined,
           description: 'Keys are not arranged alphabetically'
         },
-        {
-          type: 'pr-value',
-          key: 'pr',
-          value: 1,
-          description: 'should only be sent if not equal to 1.xx'
-        }
       ],
       parsedData: {
         bl: 21300,
@@ -1456,7 +1291,7 @@ export const queryTestCases = [
         nor: '..%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
-        pr: 1,
+        pr: 1.08,
         rtp: 12000,
         sf: 'o',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',

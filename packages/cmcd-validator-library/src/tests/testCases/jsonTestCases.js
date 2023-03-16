@@ -1303,7 +1303,7 @@ export const jsonTestCases = [
           type: 'pr-value',
           key: 'pr',
           value: 1,
-          description: 'should only be sent if not equal to 1.xx'
+          description: 'Should only be sent if not equal to 1.00'
         }
        ],
        parsedData: {
