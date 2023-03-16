@@ -13,9 +13,6 @@ export const checkConfig = (config, errors) => {
       if (!types.includes(customObj.type)) {
         errors.push(createError(errorTypes.wrongCustomType, customObj.key, customObj.type));
       }
-      if (customObj.header && !headers.includes(customObj.header)) {
-        errors.push(createError(errorTypes.wrongCustomHeader, customObj.key, customObj.header));
-      }
     });
   }
   if (specificKey) {
