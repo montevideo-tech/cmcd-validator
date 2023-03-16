@@ -1328,4 +1328,62 @@ export const queryTestCases = [
       rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Cst%3Dv%2Csu',
     },
   },
+  {
+    description: 'Test: Warning  v  = 1',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Cst%3Dv%2Cv%3D1',
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          type: "no-sid-received",
+          key: undefined,
+          value: undefined,
+          description: "No sid received from CMCD message",
+        },
+        {
+          description: "Client should omit this field if the version is 1",
+          key: "v",
+          type: "v-value",
+          value: 1
+        }
+      ],
+      parsedData: {
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 'i',
+        sf: 'd',
+        st: 'v',
+        v: 1,
+      },
+      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Cst%3Dv%2Cv%3D1',
+    },
+  },
+  {
+    description: 'Test: Warning  v  != 1',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Cst%3Dv%2Cv%3D2',
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          type: "no-sid-received",
+          key: undefined,
+          value: undefined,
+          description: "No sid received from CMCD message",
+        }
+      ],
+      parsedData: {
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 'i',
+        sf: 'd',
+        st: 'v',
+        v: 2,
+      },
+      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Cst%3Dv%2Cv%3D2',
+    },
+  }
 ];
