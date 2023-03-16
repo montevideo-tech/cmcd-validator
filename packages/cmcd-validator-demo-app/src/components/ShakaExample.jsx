@@ -7,7 +7,15 @@ import { DataWindow } from "./DataWindow";
 import { ValidatorView } from "./ValidatorView";
 import { CMCDQueryValidator } from "@montevideo-tech/cmcd-validator";
 
-function setNewData (state, newInfo) {
+function setNewData (state, action) {
+  switch (action) {
+    case 'reset':
+      
+      break;
+  
+    default:
+      break;
+  }
   const aggregateArray = [...state, newInfo];
   aggregateArray.splice(
     0,
@@ -37,6 +45,7 @@ export function ShakaExample() {
   };
 
   const onButtonClick = () => {
+    dispatch({type: 'reset', payload: {}});
     const {
       /** @type {shaka.Player} */ player,
       /** @type {shaka.ui.Overlay} */ ui,
@@ -60,7 +69,7 @@ export function ShakaExample() {
         for (const uri of urisToAdd) {
           console.log('nuevo push')
           newUris.push({ url: uri, result: CMCDQueryValidator(uri) });
-          dispatch({ url: uri, result: CMCDQueryValidator(uri) })  
+          dispatch({type: 'saveQuery' , payload: { url: uri, result: CMCDQueryValidator(uri) }})  
         }
         // console.log('new uris', newUris);
         // newDataRef.current = [...newDataRef.current, newUris];
