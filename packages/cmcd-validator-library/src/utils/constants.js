@@ -75,12 +75,16 @@ export const cmcdHeader = {
 
 export const warningTypes = {
   noAlphabeticalOrder: 'no-alphabetical-order',
+  valuePr: 'pr-value',
+  valueV: 'v-value',
   noSidReceived: 'no-sid-received',
   blWithWrongOtValue: 'bl-with-wrong-ot-value',
 };
 
 export const warningDescription = {
   noAlphabeticalOrder: 'Keys are not arranged alphabetically',
+  valuePr: 'Should only be sent if not equal to 1.00',
+  valueV: 'Client should omit this field if the version is 1',
   noSidReceived: 'No sid received from CMCD message',
   blWithWrongOtValue: 'bl key should only be sent with an object type of a, v or av',
 };
