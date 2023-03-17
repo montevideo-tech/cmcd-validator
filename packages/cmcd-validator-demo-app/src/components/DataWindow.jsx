@@ -5,12 +5,6 @@ export function DataWindow({ newData, setValidatorOutput }) {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    // const aggregateArray = [...data, ...newData];
-    //   aggregateArray.splice(
-    //     0,
-    //     aggregateArray.length - 15 > 0 ? aggregateArray.length - 15 : 0
-    //   );
-    //   console.log('newData', newData);
       setData(newData);
   }, [newData]) 
 

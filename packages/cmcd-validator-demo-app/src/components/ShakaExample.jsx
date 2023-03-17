@@ -8,19 +8,21 @@ import { ValidatorView } from "./ValidatorView";
 import { CMCDQueryValidator } from "@montevideo-tech/cmcd-validator";
 
 function setNewData (state, action) {
-  switch (action) {
-    case 'reset':
-      
-      break;
+  let aggregateArray = []
+
+  switch (action.type) {
+    case 'saveQuery': 
+      aggregateArray = [...state, action.payload];
+      aggregateArray.splice(
+        0,
+        aggregateArray.length - 15 > 0 ? aggregateArray.length - 15 : 0
+      );
+    break;
   
     default:
       break;
   }
-  const aggregateArray = [...state, newInfo];
-  aggregateArray.splice(
-    0,
-    aggregateArray.length - 15 > 0 ? aggregateArray.length - 15 : 0
-  );
+
   return aggregateArray
 }
 
@@ -28,17 +30,11 @@ export function ShakaExample() {
   window.muxjs = muxjs;
   const controllerRef = useRef(null);
   const [newData, dispatch] = useReducer(setNewData, []);
-  // const newDataRef = useRef(newData);
   const [validatorOutput, setValidatorOutput] = useState("");
   const [networkEngineFilterState, setNetworkEngineFilterState] = useState(false);
   const [url, setUrl] = useState(
     "https://demo.unified-streaming.com/k8s/live/stable/scte35-no-splicing.isml/.mpd"
   );
-
-  // useEffect(() => {
-  //   // setNewData(newDataRef.current);
-  //   console.log('new data', newData);
-  // }, [newData]) 
 
   const handleInput = (input) => {
     setUrl(input.target.value);
@@ -71,11 +67,6 @@ export function ShakaExample() {
           newUris.push({ url: uri, result: CMCDQueryValidator(uri) });
           dispatch({type: 'saveQuery' , payload: { url: uri, result: CMCDQueryValidator(uri) }})  
         }
-        // console.log('new uris', newUris);
-        // newDataRef.current = [...newDataRef.current, newUris];
-        // setNewData(newDataRef.current);
-        // dispatch(newUris)
-        // console.log('newData', newData)
       });
     }
 
