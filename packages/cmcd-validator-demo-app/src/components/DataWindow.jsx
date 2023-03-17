@@ -4,10 +4,6 @@ import React, { useEffect, useState } from "react";
 export function DataWindow({ newData, setValidatorOutput }) {
   const [data, setData] = useState([])
 
-  // useEffect(() => {
-  //     // setData(newData);
-  // }, [newData]) 
-
   const logList = newData.map((t,i) => {
     if (Object.keys(t).length > 0) {
       return (
