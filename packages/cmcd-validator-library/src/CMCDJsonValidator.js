@@ -11,26 +11,26 @@ const CMCDJsonValidator = (jsonString, warningFlag = true) => {
   const warnings = [];
   const requestID = uuidv4();
 
-  logger.info(`Started CMCD Json Validation for '${requestID}'.`);
+  logger.info(`${requestID}: Started CMCD Json Validation.`);
 
   // Check json
-  logger.info('Validating Json format.')
+  logger.info(`${requestID}: Validating Json format.`)
   const valid = jsonIsValid(jsonString, errors, requestID);
 
   if (!valid) {
-    logger.info('Json not valid.');
+    logger.info(`${requestID}: Json not valid.`);
     return createOutput(errors, warnings, rawData);
   }
-  logger.info('Json is valid.');
+  logger.info(`${requestID}: Json is valid.`);
 
   const jsonObj = JSON.parse(jsonString);
 
   if (warningFlag === true) {
-    keySortedAlphabetically(Object.keys(jsonObj), warnings);
+    keySortedAlphabetically(Object.keys(jsonObj), warnings, requestID);
   }
 
   // Check key value
-  logger.info('Validating Json keys.');
+  logger.info(`${requestID}: Validating Json keys.`);
   keyValValidator(jsonObj, errors, requestID);
 
   return createOutput(errors, warnings, rawData, jsonObj, warnings);

@@ -10,7 +10,7 @@ export const createError = (type, requestID, key, value, description) => {
   const error = getKeyByValue(errorTypes, type);
 
   if (description === undefined) {
-    logger.error(new Error(`'${requestID}': Error in '${key}': ${errorDescription[error]}`));
+    logger.info(`${requestID}: Error in '${key}': ${errorDescription[error]}`);
     return {
       type,
       key,
@@ -18,7 +18,7 @@ export const createError = (type, requestID, key, value, description) => {
       description: errorDescription[error],
     };
   }
-  logger.error(new Error(`'${requestID}': Error in '${key}': ${description}`));
+  logger.info(`${requestID}: Error in '${key}': ${description}`);
   return {
     type,
     key,

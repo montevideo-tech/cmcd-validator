@@ -11,25 +11,25 @@ const CMCDHeaderValidator = (header, warningFlag = true) => {
   let warnings = [];
   const requestID = uuidv4();
 
-  logger.info(`Started CMCD Header Validation for '${requestID}'.`);
+  logger.info(`${requestID}: Started CMCD Header Validation.`);
 
   // Check header
-  logger.info('Validating header format.')
+  logger.info(`${requestID}: Validating header format.`)
   const valid = headerValidator(header, errors, requestID, warnings, warningFlag);
 
   if (!valid) {
-    logger.info('Header not valid.');
+    logger.info(`${requestID}: Header not valid.`);
     return createOutput(errors, warnings, rawData);
   }
-  logger.info('Header is valid.');
+  logger.info(`${requestID}: Header is valid.`);
 
   // Parsed to json
-  logger.info('Parsing header.');
+  logger.info(`${requestID}: Parsing header.`);
   const parsedData = parseHeaderToJson(header);
 
   // Check key value
-  logger.info('Validating header keys.');
-  keyValValidator(parsedData, errors);
+  logger.info(`${requestID}: Validating header keys.`);
+  keyValValidator(parsedData, errors, requestID);
 
   return createOutput(errors, warnings, rawData, parsedData);
 };

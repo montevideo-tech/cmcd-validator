@@ -47,7 +47,7 @@ export const checkIgnoredParameter = (errors, key, value, exep, requestID) => {
   }
 };
 
-export const isReserved = (errors, key, value, requestID) => {
+export const isReserved = (errors, requestID, key, value) => {
   if (!(key in keyTypes)) {
     const description = `The key '${key}' is not reserved.`;
     errors.push(createError(errorTypes.unknownKey, requestID, key, value, description));
@@ -76,15 +76,15 @@ export const checkCorrectType = (errors, key, value, requestID) => {
   }
 };
 
-export const checkOtValidValue = (errors, key, value) => {
-  checkValidValue(errors, key, value, ['m', 'a', 'v', 'av', 'i', 'c', 'tt', 'k', 'o']);
+export const checkOtValidValue = (errors, key, value, requestID) => {
+  checkValidValue(errors, key, value, ["m", "a", "v", "av", "i", "c", "tt", "k", "o"], requestID);
 };
 
-export const checkSfValidValue = (errors, key, value) => {
-  checkValidValue(errors, key, value, ['d', 'h', 's', 'o']);
+export const checkSfValidValue = (errors, key, value, requestID) => {
+  checkValidValue(errors, key, value, ['d', 'h', 's', 'o'], requestID);
 };
 
-export const checkStValidValue = (errors, key, value) => {
-  checkValidValue(errors, key, value, ['v', 'l']);
+export const checkStValidValue = (errors, key, value, requestID) => {
+  checkValidValue(errors, key, value, ['v', 'l'], requestID);
 };
 

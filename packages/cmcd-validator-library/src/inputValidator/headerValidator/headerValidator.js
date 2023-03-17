@@ -35,7 +35,7 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
       return false;
     });
     if (warningFlag === true) {
-      keySortedAlphabetically(headerKeys, warnings);
+      keySortedAlphabetically(headerKeys, warnings, requestID);
       headerKeys = [];
     }    
     cmcdHeaders.push(header);

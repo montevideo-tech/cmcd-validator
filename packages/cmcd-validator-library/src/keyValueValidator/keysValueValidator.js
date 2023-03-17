@@ -9,7 +9,7 @@ import {
 const keyValValidator = (cmcdJson, errors, requestID) => {
   Object.keys(cmcdJson).forEach((key) => {
     const keyValue = cmcdJson[key];
-    isReserved(errors, key, requestID);
+    isReserved(errors, requestID, key);
     checkCorrectType(errors, key, keyValue, requestID);
     isPositive(errors, key, keyValue, requestID);
     switch (key) {
@@ -33,19 +33,19 @@ const keyValValidator = (cmcdJson, errors, requestID) => {
         checkValidNrrFormat(errors, key, keyValue, requestID);
         break;
       case 'ot':
-        checkOtValidValue(errors, key, keyValue);
+        checkOtValidValue(errors, key, keyValue, requestID);
         break;
       case 'rtp':
         checkRoundToNearest(errors, key, keyValue, 100, 'kbps', requestID);
         break;
       case 'sf':
-        checkSfValidValue(errors, key, keyValue);
+        checkSfValidValue(errors, key, keyValue, requestID);
         break;
       case 'sid':
         checkMaxLength(errors, key, keyValue, requestID);
         break;
       case 'st':
-        checkStValidValue(errors, key, keyValue);
+        checkStValidValue(errors, key, keyValue, requestID);
         break;
       case 'su':
         checkIgnoredParameter(errors, key, keyValue, false, requestID);

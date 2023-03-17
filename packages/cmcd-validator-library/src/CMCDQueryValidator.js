@@ -12,28 +12,28 @@ const CMCDQueryValidator = (query, warningFlag = true) => {
   const warnings = [];
   const requestID = uuidv4();
 
-  logger.info(`Started CMCD Query Validation for '${requestID}'.`);
+  logger.info(`${requestID}: Started CMCD Query Validation.`);
 
   // Check query
-  logger.info('Validating query format.')
+  logger.info(`${requestID}: Validating query format.`)
   const valid = queryValidator(query, errors, requestID);
 
   if (!valid) {
-    logger.info('Query not valid.');
+    logger.info(`${requestID}: Query not valid.`);
     return createOutput(errors, warnings, rawData);
   }
-  logger.info('Query is valid.');
+  logger.info(`${requestID}: Query is valid.`);
 
   // Parsed to json
-  logger.info('Parsing query.');
+  logger.info(`${requestID}: Parsing query.`);
   const parsedData = parseQueryToJson(query);
 
   if (warningFlag === true) {
-    keySortedAlphabetically(Object.keys(parsedData), warnings);
+    keySortedAlphabetically(Object.keys(parsedData), warnings, requestID);
   }
 
   // Check key value
-  logger.info('Validating query keys.');
+  logger.info(`${requestID}: Validating query keys.`);
   keyValValidator(parsedData, errors, requestID);
 
   return createOutput(errors, warnings, rawData, parsedData);
