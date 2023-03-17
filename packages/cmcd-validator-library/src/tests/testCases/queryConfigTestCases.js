@@ -30,7 +30,7 @@ export const queryConfigTestCases = [
     query:
       "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     config: {
-      specificKey: ["br", "sid"],
+      specificKey: ["sid"],
     },
     output: {
       valid: true,
@@ -186,11 +186,11 @@ export const queryConfigTestCases = [
       errors: [],
       warnings: [
         {
-          type: 'no-alphabetical-order',
+          type: "no-alphabetical-order",
           key: undefined,
           value: undefined,
-          description: 'Keys are not arranged alphabetically'
-        }
+          description: "Keys are not arranged alphabetically",
+        },
       ],
       parsedData: {
         cid: "21cf726cfe3d937b5f974f72bb5bd06a",
@@ -218,18 +218,18 @@ export const queryConfigTestCases = [
           header: "CMCD-Object",
         },
       ],
-      specificKey: ["br", "sid"],
+      specificKey: ["sid"],
     },
     output: {
       valid: true,
       errors: [],
       warnings: [
         {
-          type: 'no-alphabetical-order',
+          type: "no-alphabetical-order",
           key: undefined,
           value: undefined,
-          description: 'Keys are not arranged alphabetically'
-        }
+          description: "Keys are not arranged alphabetically",
+        },
       ],
       parsedData: {
         cid: "21cf726cfe3d937b5f974f72bb5bd06a",
@@ -266,11 +266,11 @@ export const queryConfigTestCases = [
       errors: [],
       warnings: [
         {
-          type: 'no-alphabetical-order',
+          type: "no-alphabetical-order",
           key: undefined,
           value: undefined,
-          description: 'Keys are not arranged alphabetically'
-        }
+          description: "Keys are not arranged alphabetically",
+        },
       ],
       parsedData: {
         cid: "21cf726cfe3d937b5f974f72bb5bd06a",
@@ -316,7 +316,8 @@ export const queryConfigTestCases = [
     },
   },
   {
-    description: "Test: Incorrect Query with configuration using only customKey sending true value",
+    description:
+      "Test: Incorrect Query with configuration using only customKey sending true value",
     query:
       "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dtrue%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     config: {
@@ -331,19 +332,21 @@ export const queryConfigTestCases = [
       valid: false,
       errors: [
         {
-          type: 'wrong-type-value',
-          key: 'qualabs-br',
-          value: 'true',
-          description: 'Value type is incorrect'
-        }
+          type: "wrong-type-value",
+          key: "qualabs-br",
+          value: "true",
+          description: "Value type is incorrect",
+        },
       ],
       warnings: [],
       parsedData: undefined,
-      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dtrue%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu'
+      rawData:
+        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dtrue%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     },
   },
   {
-    description: "Test: Incorrect Query with configuration using customKey with a wrong key name #1",
+    description:
+      "Test: Incorrect Query with configuration using customKey with a wrong key name #1",
     query:
       "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     config: {
@@ -358,19 +361,21 @@ export const queryConfigTestCases = [
       valid: false,
       errors: [
         {
-          type: 'invalid-custom-key',
-          key: '--qualabs-br--',
+          type: "invalid-custom-key",
+          key: "--qualabs-br--",
           value: undefined,
-          description: 'Custom key names MUST carry a hyphenated prefix'
-        }
+          description: "Custom key names MUST carry a hyphenated prefix",
+        },
       ],
       warnings: [],
       parsedData: undefined,
-      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu'
+      rawData:
+        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     },
   },
   {
-    description: "Test: Incorrect Query with configuration using customKey with a wrong key name #2",
+    description:
+      "Test: Incorrect Query with configuration using customKey with a wrong key name #2",
     query:
       "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     config: {
@@ -385,19 +390,21 @@ export const queryConfigTestCases = [
       valid: false,
       errors: [
         {
-          type: 'invalid-custom-key',
-          key: '-qualabs-',
+          type: "invalid-custom-key",
+          key: "-qualabs-",
           value: undefined,
-          description: 'Custom key names MUST carry a hyphenated prefix'
-        }
+          description: "Custom key names MUST carry a hyphenated prefix",
+        },
       ],
       warnings: [],
       parsedData: undefined,
-      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu'
+      rawData:
+        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     },
   },
   {
-    description: "Test: Incorrect Query with configuration using customKey with a wrong key name #3",
+    description:
+      "Test: Incorrect Query with configuration using customKey with a wrong key name #3",
     query:
       "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     config: {
@@ -412,19 +419,21 @@ export const queryConfigTestCases = [
       valid: false,
       errors: [
         {
-          type: 'invalid-custom-key',
-          key: '-',
+          type: "invalid-custom-key",
+          key: "-",
           value: undefined,
-          description: 'Custom key names MUST carry a hyphenated prefix'
-        }
+          description: "Custom key names MUST carry a hyphenated prefix",
+        },
       ],
       warnings: [],
       parsedData: undefined,
-      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu'
+      rawData:
+        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     },
   },
   {
-    description: "Test: Incorrect Query with configuration using customKey with a wrong key name #4",
+    description:
+      "Test: Incorrect Query with configuration using customKey with a wrong key name #4",
     query:
       "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br.com%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     config: {
@@ -439,15 +448,47 @@ export const queryConfigTestCases = [
       valid: false,
       errors: [
         {
-          type: 'invalid-custom-key',
-          key: 'qualabs-br.com',
+          type: "invalid-custom-key",
+          key: "qualabs-br.com",
           value: undefined,
-          description: 'Custom key names MUST carry a hyphenated prefix'
-        }
+          description: "Custom key names MUST carry a hyphenated prefix",
+        },
       ],
       warnings: [],
       parsedData: undefined,
-      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br.com%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu'
+      rawData:
+        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=qualabs-br.com%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
     },
-  },      
+  },
+  {
+    description:
+      "Test: Correct Query with configuration setting two specifickeys but sending just one in the request show a warining",
+    query:
+      "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+    config: {
+      specificKey: ["br", "sid"],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          description: "A specific key was set but not sended",
+          key: "br",
+          type: "specific-keys-not-sended",
+          value: undefined,
+        },
+      ],
+      parsedData: {
+        cid: "21cf726cfe3d937b5f974f72bb5bd06a",
+        ot: "i",
+        sf: "d",
+        sid: "b248658d-1d1a-4039-91d0-8c08ba597da5",
+        st: "v",
+        su: true,
+      },
+      rawData:
+        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+    },
+  },
 ];

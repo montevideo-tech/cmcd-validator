@@ -85,6 +85,7 @@ export const warningTypes = {
   valueV: 'v-value',
   noSidReceived: 'no-sid-received',
   blWithWrongOtValue: 'bl-with-wrong-ot-value',
+  specificKeysNotSended: 'specific-keys-not-sended',
 };
 
 export const warningDescription = {
@@ -93,4 +94,5 @@ export const warningDescription = {
   valueV: 'Client should omit this field if the version is 1',
   noSidReceived: 'No sid received from CMCD message',
   blWithWrongOtValue: 'bl key should only be sent with an object type of a, v or av',
+  specificKeysNotSended: 'A specific key was set but not sended',
 };
