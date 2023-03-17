@@ -6,7 +6,7 @@ const parseQueryToJson = (queryString) => {
   values.forEach((value) => {
     const [key, val] = value.split('=');
     if (keyTypes[key] === cmcdTypes.number) {
-      obj[key] = parseInt(val, 10);
+      obj[key] = parseFloat(val);
     } else if (keyTypes[key] === cmcdTypes.boolean) {
       obj[key] = !(val === 'false');
     } else {

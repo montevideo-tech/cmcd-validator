@@ -29,7 +29,7 @@ const CMCDHeaderValidator = (header, warningFlag = true) => {
 
   // Check key value
   logger.info(`${requestID}: Validating header keys.`);
-  keyValValidator(parsedData, errors, requestID);
+  keyValValidator(parsedData, errors, requestID, warnings, warningFlag);
 
   return createOutput(errors, warnings, rawData, parsedData);
 };

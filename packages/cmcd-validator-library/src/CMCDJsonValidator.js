@@ -31,7 +31,7 @@ const CMCDJsonValidator = (jsonString, warningFlag = true) => {
 
   // Check key value
   logger.info(`${requestID}: Validating Json keys.`);
-  keyValValidator(jsonObj, errors, requestID);
+  keyValValidator(jsonObj, errors, requestID, warnings, warningFlag);
 
   return createOutput(errors, warnings, rawData, jsonObj, warnings);
 };

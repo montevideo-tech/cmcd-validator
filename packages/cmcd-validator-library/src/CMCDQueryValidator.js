@@ -2,11 +2,12 @@ import { queryValidator } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
 import keySortedAlphabetically from './utils/keySortedAlphabetically.js';
 import { parseQueryToJson } from './parser/index.js';
+import { checkConfig } from './inputValidator/configValidator/checkConfig.js';
 import { createOutput } from './utils/output.js';
 import { v4 as uuidv4 } from 'uuid';
 import { logger } from './logger.js';
 
-const CMCDQueryValidator = (query, warningFlag = true) => {
+const CMCDQueryValidator = (query, config, warningFlag = true) => {
   const errors = [];
   const rawData = query;
   const warnings = [];
@@ -14,9 +15,16 @@ const CMCDQueryValidator = (query, warningFlag = true) => {
 
   logger.info(`${requestID}: Started CMCD Query Validation.`);
 
+  // check config
+  logger.info(`${requestID}: Check Configuration.`);
+  if (config && !checkConfig(config, errors)) {
+    logger.info(`${requestID}: Configuration not valid.`);
+    return createOutput(errors, warnings, rawData);
+  }
+
   // Check query
   logger.info(`${requestID}: Validating query format.`)
-  const valid = queryValidator(query, errors, requestID);
+  const valid = queryValidator(query, errors, requestID, warnings, config);
 
   if (!valid) {
     logger.info(`${requestID}: Query not valid.`);
@@ -34,7 +42,7 @@ const CMCDQueryValidator = (query, warningFlag = true) => {
 
   // Check key value
   logger.info(`${requestID}: Validating query keys.`);
-  keyValValidator(parsedData, errors, requestID);
+  keyValValidator(parsedData, errors, requestID, warnings, config, warningFlag);
 
   return createOutput(errors, warnings, rawData, parsedData);
 };
