@@ -14,9 +14,6 @@ export const checkConfig = (config, errors, warnings, warningFlag = true) => {
       if (!types.includes(customObj.type)) {
         errors.push(createError(errorTypes.wrongCustomType, customObj.key, customObj.type));
       }
-      if (customObj.header && !headers.includes(customObj.header)) {
-        errors.push(createError(errorTypes.wrongCustomHeader, customObj.key, customObj.header));
-      }
       if (!(/^([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$/.test(customObj.key.split('-')[0])) & warningFlag === true) {
         warnings.push(createWarning(warningTypes.noReverseDnsCustomKey));
       }

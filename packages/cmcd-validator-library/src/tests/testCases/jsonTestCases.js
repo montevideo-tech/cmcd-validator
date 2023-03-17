@@ -1261,4 +1261,138 @@ export const jsonTestCases = [
       rawData: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"tb":6000}'
     }
   },
+  {
+    description: 'Test: Correct json with pr version != 1',
+    json: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":2.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}',
+    output: 
+    {
+      valid: true,
+      errors: [],
+       warnings: [],
+       parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 2.08,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000
+      },
+      rawData: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":2.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}'
+    }
+  },
+  {
+    description: 'Test: Correct json with pr warning ',
+    json: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}',
+    output: 
+    {
+      valid: true,
+      errors: [],
+       warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'Should only be sent if not equal to 1.00'
+        }
+       ],
+       parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000
+      },
+      rawData: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}'
+    }
+  },
+  {
+    description: 'Test: Correct json with v warning ',
+    json: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000,"v":1}',
+    output: 
+    {
+      valid: true,
+      errors: [],
+       warnings: [
+        {
+          type: 'v-value',
+          key: 'v',
+          value: 1,
+          description: 'Client should omit this field if the version is 1'
+        }
+       ],
+       parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000,
+        v: 1,
+      },
+      rawData: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000,"v":1}'
+    }
+  },
+  {
+    description: 'Test: Correct json with v != 1 ',
+    json: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000,"v":2}',
+    output: 
+    {
+      valid: true,
+      errors: [],
+       warnings: [],
+       parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000,
+        v: 2,
+      },
+      rawData: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000,"v":2}'
+    }
+  },
 ];

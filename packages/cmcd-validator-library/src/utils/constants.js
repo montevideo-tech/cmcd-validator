@@ -44,7 +44,6 @@ export const errorTypes = {
   wrongCustomType: 'wrong-custom-type',
   invalidCustomKey: 'invalid-custom-key',
   unknownSpecificKey: 'unknown-specific-key',
-  wrongCustomHeader: 'wrong-custom-header',
 };
 
 export const errorDescription = {
@@ -65,7 +64,6 @@ export const errorDescription = {
   wrongCustomType: 'The type does not mach with CMCD types',
   invalidCustomKey: 'Custom key names MUST carry a hyphenated prefix',
   unknownSpecificKey: 'The key does not mach with CMCD keys',
-  wrongCustomHeader: 'The header does not mach with CMCD headers',
 };
 
 export const cmcdHeader = {
@@ -77,6 +75,8 @@ export const cmcdHeader = {
 
 export const warningTypes = {
   noAlphabeticalOrder: 'no-alphabetical-order',
+  valuePr: 'pr-value',
+  valueV: 'v-value',
   noSidReceived: 'no-sid-received',
   blWithWrongOtValue: 'bl-with-wrong-ot-value',
   noReverseDnsCustomKey: 'customkey-without-reversedns',
@@ -84,6 +84,8 @@ export const warningTypes = {
 
 export const warningDescription = {
   noAlphabeticalOrder: 'Keys are not arranged alphabetically',
+  valuePr: 'Should only be sent if not equal to 1.00',
+  valueV: 'Client should omit this field if the version is 1',
   noSidReceived: 'No sid received from CMCD message',
   blWithWrongOtValue: 'bl key should only be sent with an object type of a, v or av',
   noReverseDnsCustomKey: 'Customkey without Reverse DNS, could be: com.example-customkeyname',
