@@ -60,11 +60,8 @@ export function ShakaExample() {
     if (!networkEngineFilterState){
       setNetworkEngineFilterState(true);
       networkEngine.registerRequestFilter((type, request) => {
-        let newUris = [];
         const urisToAdd = [...new Set(request.uris)];
         for (const uri of urisToAdd) {
-          console.log('nuevo push')
-          newUris.push({ url: uri, result: CMCDQueryValidator(uri) });
           dispatch({type: 'saveQuery' , payload: { url: uri, result: CMCDQueryValidator(uri) }})  
         }
       });
