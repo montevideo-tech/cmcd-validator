@@ -11,7 +11,7 @@ import {
 const keyValValidator = (cmcdJson, errors, requestID, warnings, config, warningFlag = true) => {
 
   if (warningFlag === true) {
-    checkSidIsPresent(cmcdJson, warnings);
+    checkSidIsPresent(cmcdJson, warnings, requestID);
   }
 
   Object.keys(cmcdJson).forEach((key) => {
@@ -65,12 +65,12 @@ const keyValValidator = (cmcdJson, errors, requestID, warnings, config, warningF
         break;
       case 'pr':
         if(warningFlag) {
-          checkPrValue(cmcdJson, warnings, key, keyValue);
+          checkPrValue(cmcdJson, warnings, key, keyValue, requestID);
         }
         break;
       case 'v':
         if (warningFlag) {
-          checkVValue(cmcdJson, warnings, key, keyValue);
+          checkVValue(cmcdJson, warnings, key, keyValue, requestID);
         }
         break;
       default:

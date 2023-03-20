@@ -31,7 +31,7 @@ const queryValidator = (queryString, error, requestID, warnings, config) => {
   
   //Check if there is another query before CMCD query and is missing a '&' separating them
   if ((requests[0].length > 0) && (requests[0][requests[0].length - 1] !== '&')) {
-    error.push(createError(errorTypes.noAmpersandBetweenRequests));
+    error.push(createError(errorTypes.noAmpersandBetweenRequests, requestID));
     return false;
   }
   

@@ -89,21 +89,21 @@ export const checkStValidValue = (errors, key, value, requestID) => {
   checkValidValue(errors, key, value, ['v', 'l'], requestID);
 };
 
-export const checkPrValue = (cmcdJson, warnings, key, value) => {
+export const checkPrValue = (cmcdJson, warnings, key, value, requestID) => {
   if (key === 'pr' && value === 1) {
-    warnings.push(createWarning(warningTypes.valuePr, key, value));
+    warnings.push(createWarning(warningTypes.valuePr, requestID, key, value));
   }
 };
 
-export const checkVValue = (cmcdJson, warnings, key, value) => {
+export const checkVValue = (cmcdJson, warnings, key, value, requestID) => {
   if ((key === 'v') && cmcdJson['v'] === 1) {
-    warnings.push(createWarning(warningTypes.valueV, key, value));
+    warnings.push(createWarning(warningTypes.valueV, requestID, key, value));
   }
 };
 
-export const checkSidIsPresent = (cmcdJson, warnings) => {
+export const checkSidIsPresent = (cmcdJson, warnings, requestID) => {
   if (!('sid' in cmcdJson)) {
-    warnings.push(createWarning(warningTypes.noSidReceived));
+    warnings.push(createWarning(warningTypes.noSidReceived, requestID));
   }
 };
 
