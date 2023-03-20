@@ -473,9 +473,9 @@ export const queryConfigTestCases = [
       errors: [],
       warnings: [
         {
-          description: "A specific key was set but not sended",
+          description: "A specific key was set but not sent",
           key: "br",
-          type: "specific-keys-not-sended",
+          type: "specific-keys-not-sent",
           value: undefined,
         },
       ],

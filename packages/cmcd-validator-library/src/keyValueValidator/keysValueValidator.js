@@ -21,7 +21,7 @@ const keyValValidator = (cmcdJson, errors, warnings, config, warningFlag = true)
     const keysReceved = Object.keys(cmcdJson);
     config.specificKey.forEach((key) => {
       if (!keysReceved.includes(key)) {
-        warnings.push(createWarning(warningTypes.specificKeysNotSended, key));
+        warnings.push(createWarning(warningTypes.specificKeysNotSent, key));
       }
     })
   }
