@@ -101,7 +101,7 @@ export function ShakaExample() {
         </div>
         <div className="col-6">
           <DataWindow
-            newData={newData}
+            data={newData}
             setValidatorOutput={setValidatorOutput}
           />
         </div>
