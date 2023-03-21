@@ -48,8 +48,8 @@ export const checkIgnoredParameter = (errors, key, value, exep) => {
   }
 };
 
-export const isReserved = (errors, key, value) => {
-  if (!(key in keyTypes)) {
+export const isReserved = (errors, key, value, extendedKeyTypes) => {
+  if (!(key in extendedKeyTypes)) {
     const description = `The key '${key}' is not reserved.`;
     errors.push(createError(errorTypes.unknownKey, key, value, description));
   }

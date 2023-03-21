@@ -2,20 +2,33 @@ import { cmcdTypes, keyTypes, errorTypes, cmcdHeader, warningTypes } from '../..
 import { createError } from '../../utils/error.js';
 import { createWarning } from '../../utils/warning.js';
 
-export const checkConfig = (config, errors, warnings, warningFlag = true) => {
+export const setConfig = (config, errors, warnings, warningFlag = true) => {
+
+  if (!config) {
+    return [true, keyTypes];
+  };
+
   const { customKey, specificKey } = config;
+  var ErrorsCheck = false;
+  const extendedKeyTypes = {...keyTypes};
+
   if (customKey) {
     const types = Object.values(cmcdTypes);
     const headers = Object.keys(cmcdHeader);
     customKey.forEach((customObj) => {
       if (!(/^[a-zA-Z0-9\.]+-[a-zA-Z0-9]+$/.test(customObj.key))) {
         errors.push(createError(errorTypes.invalidCustomKey, customObj.key));
+        ErrorsCheck = true;
       }
       if (!types.includes(customObj.type)) {
         errors.push(createError(errorTypes.wrongCustomType, customObj.key, customObj.type));
+        ErrorsCheck = true;
       }
       if (!(/^([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$/.test(customObj.key.split('-')[0])) & warningFlag === true) {
         warnings.push(createWarning(warningTypes.noReverseDnsCustomKey));
+      }
+      if (ErrorsCheck === false){
+        extendedKeyTypes[customObj.key] = customObj.type;
       }
 
     });
@@ -29,8 +42,8 @@ export const checkConfig = (config, errors, warnings, warningFlag = true) => {
     });
   }
   if (errors.length === 0) {
-    return true;
+    return [true, extendedKeyTypes];
   }
-  return false;
+  return [false, extendedKeyTypes];
 };
 
