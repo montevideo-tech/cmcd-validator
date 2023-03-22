@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 const CMCDHeaderValidator = (header, warningFlag = true) => {
   const errors = [];
   const rawData = header;
-  let warnings = [];
+  const warnings = [];
   const requestID = uuidv4();
 
   logger.info(`${requestID}: Started CMCD Header Validation.`);

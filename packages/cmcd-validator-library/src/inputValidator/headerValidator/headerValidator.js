@@ -11,6 +11,9 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
   const keys = [];
   let headerKeys = [];
 
+  // We comment the following eslint error because we don't want to
+  // return any value in the foreach
+  // eslint-disable-next-line consistent-return
   headers.forEach((element) => {
     const [header, keysArray] = element.split(': ');
     if (!(header in cmcdHeader) || isHeaderRepeated(header, cmcdHeaders, errors, requestID)
@@ -37,7 +40,7 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
     if (warningFlag === true) {
       keySortedAlphabetically(headerKeys, warnings, requestID);
       headerKeys = [];
-    }    
+    }
     cmcdHeaders.push(header);
   });
 

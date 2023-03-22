@@ -1,7 +1,6 @@
 import { cmcdTypes, keyTypes, errorTypes } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 import checkQuotes from '../../utils/checkQuotes.js';
-import { createWarning } from '../../utils/warning.js';
 
 const queryValidator = (queryString, error, requestID, warnings, config) => {
   if (!queryString.includes('CMCD=')) {
@@ -15,7 +14,7 @@ const queryValidator = (queryString, error, requestID, warnings, config) => {
     if (decodeURI(queryString) === queryString) {
       error.push(createError(errorTypes.parameterEncoding, requestID));
       return false;
-    }    
+    }
   } catch (err) {
     error.push(createError(errorTypes.queryMalformed,requestID));
     return false;
@@ -28,15 +27,15 @@ const queryValidator = (queryString, error, requestID, warnings, config) => {
   }
   const query = queryString.split('?').pop();
   const requests = decodeURIComponent(query).split('CMCD=');
-  
-  //Check if there is another query before CMCD query and is missing a '&' separating them
+
+  // Check if there is another query before CMCD query and is missing a '&' separating them
   if ((requests[0].length > 0) && (requests[0][requests[0].length - 1] !== '&')) {
     error.push(createError(errorTypes.noAmpersandBetweenRequests, requestID));
     return false;
   }
-  
+
   // Check if there is more than one CMCD request
-  requests.shift();  
+  requests.shift();
   if (requests.length > 1) {
     error.push(createError(errorTypes.incorrectFormat, requestID));
     return false;

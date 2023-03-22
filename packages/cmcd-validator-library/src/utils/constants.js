@@ -46,7 +46,7 @@ export const errorTypes = {
   unknownSpecificKey: 'unknown-specific-key',
   wrongCustomHeader: 'wrong-custom-header',
   queryMalformed: 'query-malformed',
-  noAmpersandBetweenRequests: 'no-ampersand-between-requests:'
+  noAmpersandBetweenRequests: 'no-ampersand-between-requests:',
 };
 
 export const errorDescription = {
@@ -69,7 +69,7 @@ export const errorDescription = {
   unknownSpecificKey: 'The key does not mach with CMCD keys',
   wrongCustomHeader: 'The header does not mach with CMCD headers',
   queryMalformed: 'The query is malformed',
-  noAmpersandBetweenRequests: 'Ampersand required between two or more requests',  
+  noAmpersandBetweenRequests: 'Ampersand required between two or more requests',
 };
 
 export const cmcdHeader = {

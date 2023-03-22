@@ -1,8 +1,8 @@
 import {
-  cmcdTypes, errorTypes, keyTypes, warningTypes
+  cmcdTypes, errorTypes, keyTypes, warningTypes,
 } from '../utils/constants.js';
 import { createError } from '../utils/error.js';
-import { createWarning } from '../utils/warning.js'
+import { createWarning } from '../utils/warning.js';
 
 export const checkMaxLength = (errors, key, value, requestID) => {
   if (value.length > 64) {
@@ -63,7 +63,7 @@ export const isPositive = (errors, key, value, requestID) => {
 };
 
 export const checkBlKey = (cmcdJson, warnings, key, value, requestID) => {
-  if (!('ot' in cmcdJson) || !['a','v','av'].includes(cmcdJson['ot'])) {
+  if (!('ot' in cmcdJson) || !['a', 'v', 'av'].includes(cmcdJson.ot)) {
     const description = `The '${key}'key should only be sent with  ot = a, v or av.`;
     warnings.push(createWarning(warningTypes.blWithWrongOtValue, requestID, key, value, description));
   }  
@@ -96,7 +96,7 @@ export const checkPrValue = (cmcdJson, warnings, key, value, requestID) => {
 };
 
 export const checkVValue = (cmcdJson, warnings, key, value, requestID) => {
-  if ((key === 'v') && cmcdJson['v'] === 1) {
+  if (key === 'v' && cmcdJson.v === 1) {
     warnings.push(createWarning(warningTypes.valueV, requestID, key, value));
   }
 };
@@ -106,4 +106,3 @@ export const checkSidIsPresent = (cmcdJson, warnings, requestID) => {
     warnings.push(createWarning(warningTypes.noSidReceived, requestID));
   }
 };
-

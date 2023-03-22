@@ -15,9 +15,10 @@ const CMCDQueryValidator = (query, config, warningFlag = true) => {
 
   logger.info(`${requestID}: Started CMCD Query Validation.`);
 
+
   // check config
   logger.info(`${requestID}: Check Configuration.`);
-  if (config && !checkConfig(config, errors, requestID, warnings, warningFlag = true)) {
+  if (config && !checkConfig(config, errors, requestID, warnings, warningFlag)) {
     logger.info(`${requestID}: Configuration not valid.`);
     return createOutput(errors, warnings, rawData);
   }
