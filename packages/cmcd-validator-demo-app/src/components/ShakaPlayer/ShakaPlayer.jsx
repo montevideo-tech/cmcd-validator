@@ -7,7 +7,7 @@ import { DataWindow } from "./DataWindow";
 import { ValidatorView } from "./ValidatorView";
 import { CMCDQueryValidator } from "@montevideo-tech/cmcd-validator";
 
-export function ShakaExample() {
+export function ShakaPlayer() {
   window.muxjs = muxjs;
   const controllerRef = useRef(null);
   const [newData, setNewData] = useState([{}]);

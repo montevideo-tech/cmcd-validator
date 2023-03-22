@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css"
 import "./App.css";
-import { ShakaExample } from "./components/ShakaExample";
+import { ShakaPlayer } from "./components/ShakaPlayer/ShakaPlayer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,7 +20,7 @@ function App() {
         </a>
       </div>
       <div>
-        <ShakaExample />
+        <ShakaPlayer />
       </div>
     </div>
   );
