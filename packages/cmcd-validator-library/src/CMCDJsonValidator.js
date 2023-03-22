@@ -1,24 +1,30 @@
 import { jsonIsValid } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
+import keySortedAlphabetically from './utils/keySortedAlphabetically.js';
 import { createOutput } from './utils/output.js';
 
-const CMCDJsonValidator = (jsonString) => {
+const CMCDJsonValidator = (jsonString, warningFlag = true) => {
   const errors = [];
   const rawData = jsonString;
+  const warnings = [];
 
   // Check json
   const valid = jsonIsValid(jsonString, errors);
 
   if (!valid) {
-    return createOutput(errors, rawData);
+    return createOutput(errors, warnings, rawData);
   }
 
   const jsonObj = JSON.parse(jsonString);
 
-  // Check key value
-  keyValValidator(jsonObj, errors);
+  if (warningFlag === true) {
+    keySortedAlphabetically(Object.keys(jsonObj), warnings);
+  }
 
-  return createOutput(errors, rawData, jsonObj);
+  // Check key value
+  keyValValidator(jsonObj, errors, warnings, warningFlag);
+
+  return createOutput(errors, warnings, rawData, jsonObj, warnings);
 };
 
 export default CMCDJsonValidator;

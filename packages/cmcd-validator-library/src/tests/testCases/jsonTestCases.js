@@ -6,7 +6,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: { sid: '6e2fb550-c457-11e9-bb97-0800200c9a66' },
+       warnings: [],
+       parsedData: { sid: '6e2fb550-c457-11e9-bb97-0800200c9a66' },
       rawData: '{"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}'
     }
   },
@@ -17,7 +18,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         br: 3200,
         bs: true,
         d: 4004,
@@ -37,7 +39,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: { bs: true, rtp: 15000, sid: '6e2fb550-c457-11e9-bb97-0800200c9a66' },
+       warnings: [],
+       parsedData: { bs: true, rtp: 15000, sid: '6e2fb550-c457-11e9-bb97-0800200c9a66' },
       rawData: '{"bs":true,"rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}'
     }
   },
@@ -48,7 +51,15 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: { bs: true, su: true },
+       warnings: [
+        {
+          type: "no-sid-received",
+          key: undefined,
+          value: undefined,
+          description: "No sid received from CMCD message",
+        }
+       ],
+       parsedData: { bs: true, su: true },
       rawData: '{"bs":true,"su":true}'
     }
   },
@@ -59,7 +70,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         nor: '..%2F300kbps%2Fsegment35.m4v',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66'
       },
@@ -73,7 +85,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -110,7 +123,8 @@ export const jsonTestCases = [
           description: 'Json format is not valid'
         }
       ],
-      parsedData: undefined,
+       warnings: [],
+       parsedData: undefined,
       rawData: '{"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}{"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}'
     }
   },
@@ -121,12 +135,20 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: { bs: false, su: true },
+       warnings: [
+        {
+          type: "no-sid-received",
+          key: undefined,
+          value: undefined,
+          description: "No sid received from CMCD message",
+        }
+       ],
+       parsedData: { bs: false, su: true },
       rawData: '{"bs":false,"su":true}'
     }
   },
   {
-    description: 'Test: json with su == false',
+    description: 'Test: Json with su == false',
     json: '{"bs":true,"su":false}',
     output: 
     {
@@ -139,7 +161,15 @@ export const jsonTestCases = [
           description: "The 'su' key should not be sent if the value is false"
         }
       ],
-      parsedData: { bs: true, su: false },
+       warnings: [
+        {
+          type: "no-sid-received",
+          key: undefined,
+          value: undefined,
+          description: "No sid received from CMCD message",
+        }
+       ],
+       parsedData: { bs: true, su: false },
       rawData: '{"bs":true,"su":false}'
     }
   },
@@ -157,7 +187,8 @@ export const jsonTestCases = [
           description: 'Json format is not valid'
         }
       ],
-      parsedData: undefined,
+       warnings: [],
+       parsedData: undefined,
       rawData: '{"sid": 6e2fb550-c457-11e9-bb97-0800200c9a66}'
     }
   },
@@ -175,7 +206,8 @@ export const jsonTestCases = [
           description: 'Json format is not valid'
         }
       ],
-      parsedData: undefined,
+       warnings: [],
+       parsedData: undefined,
       rawData: '{sid: "6e2fb550-c457-11e9-bb97-0800200c9a66"}'
     }
   },
@@ -193,12 +225,13 @@ export const jsonTestCases = [
           description: 'Json format is not valid'
         }
       ],
-      parsedData: undefined,
+       warnings: [],
+       parsedData: undefined,
       rawData: '{"br": 3200,"bs":true "d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}'
     }
   },
   {
-    description: 'Test: json without :',
+    description: 'Test: Json without :',
     json: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp" 15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
     output: 
     {
@@ -211,7 +244,8 @@ export const jsonTestCases = [
           description: 'Json format is not valid'
         }
       ],
-      parsedData: undefined,
+       warnings: [],
+       parsedData: undefined,
       rawData: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp" 15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}'
     }
   },
@@ -229,7 +263,8 @@ export const jsonTestCases = [
           description: 'Json format is not valid'
         }
       ],
-      parsedData: undefined,
+       warnings: [],
+       parsedData: undefined,
       rawData: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1.08,"rtp":12000,"sf":d,"sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"v","su":true,"tb":6000}'
     }
   },
@@ -247,7 +282,8 @@ export const jsonTestCases = [
           description: 'Json format is not valid'
         }
       ],
-      parsedData: undefined,
+       warnings: [],
+       parsedData: undefined,
       rawData: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1.08,"rtp":12000,sf:"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"v","su":true,"tb":6000}'
     }
   },
@@ -265,12 +301,13 @@ export const jsonTestCases = [
           description: 'Key/Keys are not unique'
         }
       ],
-      parsedData: undefined,
+       warnings: [],
+       parsedData: undefined,
       rawData: '{"bs":true,"rtp":15000,"rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}'
     }
   },
   {
-    description: 'Test: json with unknown key',
+    description: 'Test: Json with unknown key',
     json: '{"unknown-key":true,"rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}',
     output: 
     {
@@ -283,7 +320,15 @@ export const jsonTestCases = [
           description: "The key 'unknown-key' is not reserved."
         }
       ],
-      parsedData: {
+       warnings: [
+        {
+          type: "no-alphabetical-order",
+          key: undefined,
+          value: undefined,
+          description: "Keys are not arranged alphabetically",
+        }
+       ],
+       parsedData: {
         'unknown-key': true,
         rtp: 15000,
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66'
@@ -305,7 +350,8 @@ export const jsonTestCases = [
           description: 'Value type is incorrect'
         }
       ],
-      parsedData: undefined,
+       warnings: [],
+       parsedData: undefined,
       rawData: '{"br": "3200","bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}'
     }
   },
@@ -323,7 +369,8 @@ export const jsonTestCases = [
           description: "The 'br' value must greater than 0."
         }
       ],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         br: -3200,
         bs: true,
         d: 4004,
@@ -350,7 +397,8 @@ export const jsonTestCases = [
           description: 'Value type is incorrect'
         }
       ],
-      parsedData: undefined,
+       warnings: [],
+       parsedData: undefined,
       rawData: '{"br": 3200,"bs":true,"d": "4004","mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}'
     }
   },
@@ -361,7 +409,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: { nrr: '12323-48763', sid: '6e2fb550-c457-11e9-bb97-0800200c9a66' },
+       warnings: [],
+       parsedData: { nrr: '12323-48763', sid: '6e2fb550-c457-11e9-bb97-0800200c9a66' },
       rawData: '{"nrr":"12323-48763","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66"}'
     }
   },
@@ -372,7 +421,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: { nrr: '12323-', sid: '6e2fb550-c457-11e9-bb97-0800200c9a66' },
+       warnings: [],
+       parsedData: { nrr: '12323-', sid: '6e2fb550-c457-11e9-bb97-0800200c9a66' },
       rawData: '{"nrr":"12323-","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66"}'
     }
   },
@@ -383,7 +433,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: { nrr: '-48763', sid: '6e2fb550-c457-11e9-bb97-0800200c9a66' },
+       warnings: [],
+       parsedData: { nrr: '-48763', sid: '6e2fb550-c457-11e9-bb97-0800200c9a66' },
       rawData: '{"nrr":"-48763","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66"}'
     }
   },
@@ -401,7 +452,8 @@ export const jsonTestCases = [
           description: "'bl' value is not rounded to the nearest100ms."
         }
       ],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         bl: 21307,
         br: 3200,
         bs: true,
@@ -430,6 +482,7 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -459,6 +512,7 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -488,6 +542,7 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
+      warnings: [],
       parsedData: {
         bl: 21300,
         br: 3200,
@@ -517,7 +572,15 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+       warnings: [
+        {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300,
+        }
+       ],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -546,7 +609,15 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+      warnings: [
+        {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300,
+        }
+       ],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -575,7 +646,15 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+      warnings: [
+        {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300,
+        }
+       ],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -604,7 +683,15 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+      warnings: [
+        {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300,
+        }
+       ],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -633,7 +720,15 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+      warnings: [
+        {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300,
+        }
+       ],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -669,7 +764,15 @@ export const jsonTestCases = [
           description: 'ot value does not meet the necessary requirements. Must be one of the following values: m,a,v,av,i,c,tt,k,o.'
         }
       ],
-      parsedData: {
+      warnings: [
+        {
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
+          value: 21300,
+        }
+       ],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -692,20 +795,21 @@ export const jsonTestCases = [
     }
   },
   {
-    description: 'Test: bl without ot = i',
+    description: 'Test: bl without ot',
     json: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","pr":1.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"v","su":true,"tb":6000}',
     output: 
     {
-      valid: false,
-      errors: [
+      valid: true,
+      errors: [],
+      warnings: [
         {
-          type: 'invalid-value',
-          key: 'bl',
+          description: "bl key should only be sent with an object type of a, v or av",
+          key: "bl",
+          type: "bl-with-wrong-ot-value",
           value: 21300,
-          description: "The 'bl'key should only be sent with the 'ot' key."
         }
-      ],
-      parsedData: {
+       ],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -740,7 +844,8 @@ export const jsonTestCases = [
           description: "Invalid value for key 'cid'. Maximum length is 64 characters."
         }
       ],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -769,7 +874,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         nor: '..%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66'
@@ -791,7 +897,8 @@ export const jsonTestCases = [
           description: "The key: 'nor' with its value: ../300kbps/track.m4v must be URLencoded."
         }
       ],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         nor: '../300kbps/track.m4v',
         nrr: '12323-48763',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66'
@@ -806,7 +913,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -835,7 +943,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -864,7 +973,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -893,7 +1003,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -929,7 +1040,8 @@ export const jsonTestCases = [
           description: 'sf value does not meet the necessary requirements. Must be one of the following values: d,h,s,o.'
         }
       ],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -958,7 +1070,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -987,7 +1100,8 @@ export const jsonTestCases = [
     {
       valid: true,
       errors: [],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -1023,7 +1137,8 @@ export const jsonTestCases = [
           description: 'st value does not meet the necessary requirements. Must be one of the following values: v,l.'
         }
       ],
-      parsedData: {
+       warnings: [],
+       parsedData: {
         bl: 21300,
         br: 3200,
         bs: true,
@@ -1043,6 +1158,241 @@ export const jsonTestCases = [
         tb: 6000
       },
       rawData: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"qualabs","su":true,"tb":6000}'
+    }
+  },
+  {
+    description: 'Test: Warning no alphabetical order #1',
+    json: '{"bl":21300,"bs":true,"br":3200,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}',
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          type: 'no-alphabetical-order',
+          key: undefined,
+          value: undefined,
+          description: 'Keys are not arranged alphabetically'
+        }
+      ],
+      parsedData: {
+        bl: 21300,
+        bs: true,
+        br: 3200,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1.08,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000
+      },
+      rawData: '{"bl":21300,"bs":true,"br":3200,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}'
+    }
+  },
+  {
+    description: 'Test: Warning no alphabetical order #2',
+    json: '{"bl":21300,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","br":3200,"bs":true,"d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}',
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          type: 'no-alphabetical-order',
+          key: undefined,
+          value: undefined,
+          description: 'Keys are not arranged alphabetically'
+        }
+      ],
+      parsedData: {
+        bl: 21300,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        br: 3200,
+        bs: true,
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1.08,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000
+      },
+      rawData: '{"bl":21300,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","br":3200,"bs":true,"d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}'
+    }
+  },
+  {
+    description: 'Test: Warning no Sid present',
+    json: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"tb":6000}',
+    output: 
+    {
+      valid: true,
+      errors: [],
+       warnings: [
+        {
+          type: "no-sid-received",
+          key: undefined,
+          value: undefined,
+          description: "No sid received from CMCD message",
+        }
+       ],
+       parsedData: {
+        br: 3200,
+        bs: true,
+        d: 4004,
+        mtp: 25400,
+        ot: 'v',
+        rtp: 15000,
+        tb: 6000
+      },
+      rawData: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"tb":6000}'
+    }
+  },
+  {
+    description: 'Test: Correct json with pr version != 1',
+    json: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":2.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}',
+    output: 
+    {
+      valid: true,
+      errors: [],
+       warnings: [],
+       parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 2.08,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000
+      },
+      rawData: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":2.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}'
+    }
+  },
+  {
+    description: 'Test: Correct json with pr warning ',
+    json: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}',
+    output: 
+    {
+      valid: true,
+      errors: [],
+       warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'Should only be sent if not equal to 1.00'
+        }
+       ],
+       parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000
+      },
+      rawData: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000}'
+    }
+  },
+  {
+    description: 'Test: Correct json with v warning ',
+    json: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000,"v":1}',
+    output: 
+    {
+      valid: true,
+      errors: [],
+       warnings: [
+        {
+          type: 'v-value',
+          key: 'v',
+          value: 1,
+          description: 'Client should omit this field if the version is 1'
+        }
+       ],
+       parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000,
+        v: 1,
+      },
+      rawData: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000,"v":1}'
+    }
+  },
+  {
+    description: 'Test: Correct json with v != 1 ',
+    json: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000,"v":2}',
+    output: 
+    {
+      valid: true,
+      errors: [],
+       warnings: [],
+       parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000,
+        v: 2,
+      },
+      rawData: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"l","su":true,"tb":6000,"v":2}'
     }
   },
 ];

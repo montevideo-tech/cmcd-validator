@@ -1,25 +1,48 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import ShakaPlayer from "shaka-player-react";
 import muxjs from "mux.js";
 import "shaka-player/dist/controls.css";
-import "./ShakaExample.css";
+import "./Shaka.css";
 import { DataWindow } from "./DataWindow";
 import { ValidatorView } from "./ValidatorView";
 import { CMCDQueryValidator } from "@montevideo-tech/cmcd-validator";
 
-export function ShakaPlayer() {
+
+function setNewData (state, action) {
+  let aggregateArray = []
+
+  switch (action.type) {
+    case 'saveQuery': 
+      aggregateArray = [...state, action.payload];
+      aggregateArray.splice(
+        0,
+        aggregateArray.length - 15 > 0 ? aggregateArray.length - 15 : 0
+      );
+    break;
+  
+    default:
+      break;
+  }
+
+  return aggregateArray
+}
+
+export function Shaka() {
   window.muxjs = muxjs;
   const controllerRef = useRef(null);
-  const [newData, setNewData] = useState([{}]);
+  const [newData, dispatch] = useReducer(setNewData, []);
   const [validatorOutput, setValidatorOutput] = useState("");
+  const [networkEngineFilterState, setNetworkEngineFilterState] = useState(false);
   const [url, setUrl] = useState(
     "https://demo.unified-streaming.com/k8s/live/stable/scte35-no-splicing.isml/.mpd"
   );
+
   const handleInput = (input) => {
     setUrl(input.target.value);
   };
 
   const onButtonClick = () => {
+    dispatch({type: 'reset', payload: {}});
     const {
       /** @type {shaka.Player} */ player,
       /** @type {shaka.ui.Overlay} */ ui,
@@ -35,14 +58,16 @@ export function ShakaPlayer() {
       },
     });
     const networkEngine = player.getNetworkingEngine();
-    networkEngine.registerRequestFilter((type, request) => {
-      const newUris = [{}];
-      const urisToAdd = [...new Set(request.uris)];
-      for (const uri of urisToAdd) {
-        newUris.push({ url: uri, result: CMCDQueryValidator(uri) });
-      }
-      setNewData(newUris);
-    });
+    if (!networkEngineFilterState){
+      setNetworkEngineFilterState(true);
+      networkEngine.registerRequestFilter((type, request) => {
+        const urisToAdd = [...new Set(request.uris)];
+        for (const uri of urisToAdd) {
+          dispatch({type: 'saveQuery' , payload: { url: uri, result: CMCDQueryValidator(uri) }})  
+        }
+      });
+    }
+
     async function loadAsset() {
       // Load an asset.
       try {
@@ -77,7 +102,7 @@ export function ShakaPlayer() {
         </div>
         <div className="col-6">
           <DataWindow
-            newData={newData}
+            data={newData}
             setValidatorOutput={setValidatorOutput}
           />
         </div>
