@@ -1,4 +1,4 @@
-import { cmcdTypes, keyTypes, errorTypes } from '../../utils/constants.js';
+import { cmcdTypes, errorTypes } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 import checkQuotes from '../../utils/checkQuotes.js';
 
@@ -15,7 +15,7 @@ const queryValidator = (queryString, error, requestID, warnings, config, extende
       return false;
     }
   } catch (err) {
-    error.push(createError(errorTypes.queryMalformed,requestID));
+    error.push(createError(errorTypes.queryMalformed, requestID));
     return false;
   }
 

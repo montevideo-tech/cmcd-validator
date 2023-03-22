@@ -1,10 +1,10 @@
+import { v4 as uuidv4 } from 'uuid';
 import { queryValidator } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
 import keySortedAlphabetically from './utils/keySortedAlphabetically.js';
 import { parseQueryToJson } from './parser/index.js';
 import { setConfig } from './inputValidator/configValidator/setConfig.js';
 import { createOutput } from './utils/output.js';
-import { v4 as uuidv4 } from 'uuid';
 import { logger } from './logger.js';
 
 const CMCDQueryValidator = (query, config, warningFlag = true) => {
@@ -15,8 +15,8 @@ const CMCDQueryValidator = (query, config, warningFlag = true) => {
 
   logger.info(`${requestID}: Started CMCD Query Validation.`);
 
-  const [validConfig, extendedKeyTypes] = setConfig(config, errors, requestID,warnings, warningFlag = true);
- 
+  const [validConfig,
+    extendedKeyTypes] = setConfig(config, errors, requestID, warnings, warningFlag);
   // check config
   logger.info(`${requestID}: Check Configuration.`);
   if (!validConfig) {
@@ -25,7 +25,7 @@ const CMCDQueryValidator = (query, config, warningFlag = true) => {
   }
 
   // Check query
-  logger.info(`${requestID}: Validating query format.`)
+  logger.info(`${requestID}: Validating query format.`);
   const valid = queryValidator(query, errors, requestID, warnings, config, extendedKeyTypes);
 
   if (!valid) {

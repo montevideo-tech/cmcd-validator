@@ -1,10 +1,10 @@
+import { v4 as uuidv4 } from 'uuid';
 import { headerValidator } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
 import { parseHeaderToJson } from './parser/index.js';
 import { createOutput } from './utils/output.js';
-import {keyTypes} from './utils/constants.js';
+import { keyTypes } from './utils/constants.js';
 import { logger } from './logger.js';
-import { v4 as uuidv4 } from 'uuid';
 
 const CMCDHeaderValidator = (header, warningFlag = true) => {
   const errors = [];
@@ -15,7 +15,7 @@ const CMCDHeaderValidator = (header, warningFlag = true) => {
   logger.info(`${requestID}: Started CMCD Header Validation.`);
 
   // Check header
-  logger.info(`${requestID}: Validating header format.`)
+  logger.info(`${requestID}: Validating header format.`);
   const valid = headerValidator(header, errors, requestID, warnings, warningFlag);
 
   if (!valid) {

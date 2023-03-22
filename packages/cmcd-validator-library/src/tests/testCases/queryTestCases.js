@@ -286,7 +286,7 @@ export const queryTestCases = [
         {
           type: 'unknown-key',
           key: 'Qualabs',
-          value: "21cf726cfe3d937b5f974f72bb5bd06a",
+          value: '21cf726cfe3d937b5f974f72bb5bd06a',
           description: "The key 'Qualabs' is not reserved.",
         },
       ],

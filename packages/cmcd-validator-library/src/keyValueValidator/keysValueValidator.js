@@ -8,8 +8,8 @@ import {
 
 // keyValValidator takes as a parameter cmcdJson, which is a javascript object.
 // The function iterates through it validating every key value pair.
-const keyValValidator = (cmcdJson, errors, requestID, warnings, config, extendedKeyTypes, warningFlag = true) => {
-
+// eslint-disable-next-line max-len
+const keyValValidator = (cmcdJson, errors, requestID, warnings, config, extendedKeyTypes, warningFlag) => {
   if (warningFlag === true) {
     checkSidIsPresent(cmcdJson, warnings, requestID);
   }

@@ -5,14 +5,13 @@ import { createError } from '../../utils/error.js';
 import { createWarning } from '../../utils/warning.js';
 
 export const setConfig = (config, errors, requestID, warnings, warningFlag = true) => {
-
   if (!config) {
     return [true, keyTypes];
-  };
+  }
 
   const { customKey, specificKey } = config;
-  var ErrorsCheck = false;
-  const extendedKeyTypes = {...keyTypes};
+  let ErrorsCheck = false;
+  const extendedKeyTypes = { ...keyTypes };
 
   if (customKey) {
     const types = Object.values(cmcdTypes);
@@ -23,16 +22,17 @@ export const setConfig = (config, errors, requestID, warnings, warningFlag = tru
         ErrorsCheck = true;
       }
       if (!types.includes(customObj.type)) {
-        errors.push(createError(errorTypes.wrongCustomType, requestID, customObj.key, customObj.type));
+        errors.push(
+          createError(errorTypes.wrongCustomType, requestID, customObj.key, customObj.type),
+        );
         ErrorsCheck = true;
       }
       if (!(/^([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$/.test(customObj.key.split('-')[0])) && warningFlag === true) {
         warnings.push(createWarning(warningTypes.noReverseDnsCustomKey, requestID));
       }
-      if (ErrorsCheck === false){
+      if (ErrorsCheck === false) {
         extendedKeyTypes[customObj.key] = customObj.type;
       }
-
     });
   }
   if (specificKey) {

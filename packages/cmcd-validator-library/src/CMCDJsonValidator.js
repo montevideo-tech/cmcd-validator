@@ -1,9 +1,9 @@
+import { v4 as uuidv4 } from 'uuid';
 import { jsonIsValid } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
 import keySortedAlphabetically from './utils/keySortedAlphabetically.js';
 import { createOutput } from './utils/output.js';
-import {keyTypes} from './utils/constants.js';
-import { v4 as uuidv4 } from 'uuid';
+import { keyTypes } from './utils/constants.js';
 import { logger } from './logger.js';
 
 const CMCDJsonValidator = (jsonString, warningFlag = true) => {
@@ -15,7 +15,7 @@ const CMCDJsonValidator = (jsonString, warningFlag = true) => {
   logger.info(`${requestID}: Started CMCD Json Validation.`);
 
   // Check json
-  logger.info(`${requestID}: Validating Json format.`)
+  logger.info(`${requestID}: Validating Json format.`);
   const valid = jsonIsValid(jsonString, errors, requestID);
 
   if (!valid) {
