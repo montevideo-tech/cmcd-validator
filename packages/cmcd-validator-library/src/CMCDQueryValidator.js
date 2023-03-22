@@ -9,8 +9,9 @@ const CMCDQueryValidator = (query, config, warningFlag = true) => {
   const errors = [];
   const rawData = query;
   const warnings = [];
+
   // check config
-  if (config && !checkConfig(config, errors, warnings, warningFlag = true)) {
+  if (config && !checkConfig(config, errors, warnings, warningFlag)) {
     return createOutput(errors, warnings, rawData);
   }
 

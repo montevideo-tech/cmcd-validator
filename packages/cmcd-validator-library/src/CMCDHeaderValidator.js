@@ -6,7 +6,7 @@ import { createOutput } from './utils/output.js';
 const CMCDHeaderValidator = (header, warningFlag = true) => {
   const errors = [];
   const rawData = header;
-  let warnings = [];
+  const warnings = [];
 
   // Check header
   const valid = headerValidator(header, errors, warnings, warningFlag);

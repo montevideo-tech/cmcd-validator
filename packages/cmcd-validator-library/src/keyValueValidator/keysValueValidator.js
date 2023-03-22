@@ -9,7 +9,6 @@ import {
 // keyValValidator takes as a parameter cmcdJson, which is a javascript object.
 // The function iterates through it validating every key value pair.
 const keyValValidator = (cmcdJson, errors, warnings, config, warningFlag = true) => {
-
   if (warningFlag === true) {
     checkSidIsPresent(cmcdJson, warnings);
   }
@@ -26,7 +25,7 @@ const keyValValidator = (cmcdJson, errors, warnings, config, warningFlag = true)
     switch (key) {
       case 'bl':
         checkRoundToNearest(errors, key, keyValue, 100, 'ms');
-        if (warningFlag == true) {
+        if (warningFlag === true) {
           checkBlKey(cmcdJson, warnings, key, keyValue);
         }
         break;
@@ -64,7 +63,7 @@ const keyValValidator = (cmcdJson, errors, warnings, config, warningFlag = true)
         checkIgnoredParameter(errors, key, keyValue, false);
         break;
       case 'pr':
-        if(warningFlag) {
+        if (warningFlag) {
           checkPrValue(cmcdJson, warnings, key, keyValue);
         }
         break;
