@@ -582,7 +582,7 @@ export const queryConfigTestCases = [
           "description": "The key 'com.qualabs-br' is not reserved.",
           "key": "com.qualabs-br",
           "type": "unknown-key",
-          "value": undefined,
+          "value": "false",
         },
       ],
       warnings: [

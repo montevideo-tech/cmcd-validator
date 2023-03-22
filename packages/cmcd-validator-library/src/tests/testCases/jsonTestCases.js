@@ -316,7 +316,7 @@ export const jsonTestCases = [
         {
           type: 'unknown-key',
           key: 'unknown-key',
-          value: undefined,
+          value: true,
           description: "The key 'unknown-key' is not reserved."
         }
       ],

@@ -20,7 +20,7 @@ const keyValValidator = (cmcdJson, errors, warnings, config, extendedKeyTypes, w
       return;
     }
     const keyValue = cmcdJson[key];
-    isReserved(errors, key, undefined, extendedKeyTypes);
+    isReserved(errors, key, keyValue, extendedKeyTypes);
     checkCorrectType(errors, key, keyValue);
     isPositive(errors, key, keyValue);
     switch (key) {
