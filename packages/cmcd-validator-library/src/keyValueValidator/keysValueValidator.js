@@ -26,7 +26,7 @@ const keyValValidator = (cmcdJson, errors, warnings, config, extendedKeyTypes, w
     switch (key) {
       case 'bl':
         checkRoundToNearest(errors, key, keyValue, 100, 'ms');
-        if (warningFlag == true) {
+        if (warningFlag === true) {
           checkBlKey(cmcdJson, warnings, key, keyValue);
         }
         break;
@@ -64,7 +64,7 @@ const keyValValidator = (cmcdJson, errors, warnings, config, extendedKeyTypes, w
         checkIgnoredParameter(errors, key, keyValue, false);
         break;
       case 'pr':
-        if(warningFlag) {
+        if (warningFlag) {
           checkPrValue(cmcdJson, warnings, key, keyValue);
         }
         break;

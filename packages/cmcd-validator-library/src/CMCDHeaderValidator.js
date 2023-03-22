@@ -7,7 +7,7 @@ import {keyTypes} from './utils/constants.js';
 const CMCDHeaderValidator = (header, warningFlag = true) => {
   const errors = [];
   const rawData = header;
-  let warnings = [];
+  const warnings = [];
 
   // Check header
   const valid = headerValidator(header, errors, warnings, warningFlag);
