@@ -10,7 +10,7 @@ export const setConfig = (config, errors, requestID, warnings, warningFlag = tru
   }
 
   const { customKey, specificKey } = config;
-  let ErrorsCheck = false;
+  let errorsCheck = false;
   const extendedKeyTypes = { ...keyTypes };
 
   if (customKey) {
@@ -19,18 +19,18 @@ export const setConfig = (config, errors, requestID, warnings, warningFlag = tru
     customKey.forEach((customObj) => {
       if (!(/^[a-zA-Z0-9.]+-[a-zA-Z0-9]+$/.test(customObj.key))) {
         errors.push(createError(errorTypes.invalidCustomKey, requestID, customObj.key));
-        ErrorsCheck = true;
+        errorsCheck = true;
       }
       if (!types.includes(customObj.type)) {
         errors.push(
           createError(errorTypes.wrongCustomType, requestID, customObj.key, customObj.type),
         );
-        ErrorsCheck = true;
+        errorsCheck = true;
       }
       if (!(/^([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$/.test(customObj.key.split('-')[0])) && warningFlag === true) {
         warnings.push(createWarning(warningTypes.noReverseDnsCustomKey, requestID));
       }
-      if (ErrorsCheck === false) {
+      if (!errorsCheck) {
         extendedKeyTypes[customObj.key] = customObj.type;
       }
     });
