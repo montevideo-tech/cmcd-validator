@@ -66,11 +66,11 @@ export const checkBlKey = (cmcdJson, warnings, key, value, requestID) => {
   if (!('ot' in cmcdJson) || !['a', 'v', 'av'].includes(cmcdJson.ot)) {
     const description = `The '${key}'key should only be sent with  ot = a, v or av.`;
     warnings.push(createWarning(
-      warningTypes.blWithWrongOtValue, 
-      requestID, 
-      key, 
-      value, 
-      description
+      warningTypes.blWithWrongOtValue,
+      requestID,
+      key,
+      value,
+      description,
     ));
   }
 };
