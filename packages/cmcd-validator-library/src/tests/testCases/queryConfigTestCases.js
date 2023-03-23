@@ -522,7 +522,7 @@ export const queryConfigTestCases = [
   },
   {
     description:
-      'Test: KeyTypes Customkey bug, first stage for test the bug, adding customKey config #1',
+      'Test: first stage checking if custom config is not persited, adding customKey config #1',
     query:
       'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dfalse%2Ccom.qualabs-bs%3D45%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
     config: {
@@ -564,7 +564,7 @@ export const queryConfigTestCases = [
   },
   {
     description:
-      'Test: KeyTypes Customkey bug, second stage for test the bug, with the bug, the error is not reported #2',
+      'Test: Second stage checking if custom config is not persited, without custom key config #2',
     query:
       'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dfalse%2Ccom.qualabs-bs%3D45%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
     config: {
