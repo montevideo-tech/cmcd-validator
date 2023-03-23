@@ -218,7 +218,7 @@ export const headerTestCases = [
         {
           type: 'unknown-key',
           key: '',
-          value: undefined,
+          value: true,
           description: "The key '' is not reserved.",
         },
       ],

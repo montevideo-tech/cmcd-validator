@@ -1,13 +1,12 @@
-import { cmcdTypes, keyTypes, errorTypes } from '../../utils/constants.js';
+import { cmcdTypes, errorTypes } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 import checkQuotes from '../../utils/checkQuotes.js';
 
-const queryValidator = (queryString, error, requestID, warnings, config) => {
+const queryValidator = (queryString, error, requestID, warnings, config, extendedKeyTypes) => {
   if (!queryString.includes('CMCD=')) {
     error.push(createError(errorTypes.noCMCDRequest, requestID));
     return false;
   }
-  const keyTypesModify = keyTypes;
   // Catch if the URL is malformed
   try {
     // Check if the URL is encoded
@@ -16,15 +15,10 @@ const queryValidator = (queryString, error, requestID, warnings, config) => {
       return false;
     }
   } catch (err) {
-    error.push(createError(errorTypes.queryMalformed,requestID));
+    error.push(createError(errorTypes.queryMalformed, requestID));
     return false;
   }
 
-  if (config?.customKey) {
-    config.customKey.forEach((customK) => {
-      keyTypesModify[customK.key] = customK.type;
-    });
-  }
   const query = queryString.split('?').pop();
   const requests = decodeURIComponent(query).split('CMCD=');
 
@@ -53,19 +47,19 @@ const queryValidator = (queryString, error, requestID, warnings, config) => {
     // Check only the keys in the configuration
     // Check: string require ""
     if (
-      (keyTypesModify[key] === cmcdTypes.string && !checkQuotes(value))
-      || (keyTypesModify[key] === cmcdTypes.token && checkQuotes(value))) {
+      (extendedKeyTypes[key] === cmcdTypes.string && !checkQuotes(value))
+      || (extendedKeyTypes[key] === cmcdTypes.token && checkQuotes(value))) {
       valid = false;
       error.push(createError(errorTypes.invalidValue, requestID, key, value));
     }
     // Check: if the key does not have value it must be a bool
     // Check: number does not require ""
     if (
-      (typeof value === 'undefined' && keyTypesModify[key] !== cmcdTypes.boolean)
-      || ((value === 'true') && keyTypesModify[key] === cmcdTypes.boolean)
+      (typeof value === 'undefined' && extendedKeyTypes[key] !== cmcdTypes.boolean)
+      || ((value === 'true') && extendedKeyTypes[key] === cmcdTypes.boolean)
       || ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
-      && keyTypesModify[key] === cmcdTypes.boolean)
-      || (keyTypesModify[key] === cmcdTypes.number && !Number(value))
+      && extendedKeyTypes[key] === cmcdTypes.boolean)
+      || (extendedKeyTypes[key] === cmcdTypes.number && !Number(value))
     ) {
       valid = false;
       error.push(createError(errorTypes.wrongTypeValue, requestID, key, value));

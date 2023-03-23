@@ -48,8 +48,8 @@ export const checkIgnoredParameter = (errors, key, value, exep, requestID) => {
   }
 };
 
-export const isReserved = (errors, requestID, key, value) => {
-  if (!(key in keyTypes)) {
+export const isReserved = (errors, requestID, key, value, extendedKeyTypes) => {
+  if (!(key in extendedKeyTypes)) {
     const description = `The key '${key}' is not reserved.`;
     errors.push(createError(errorTypes.unknownKey, requestID, key, value, description));
   }
@@ -65,8 +65,14 @@ export const isPositive = (errors, key, value, requestID) => {
 export const checkBlKey = (cmcdJson, warnings, key, value, requestID) => {
   if (!('ot' in cmcdJson) || !['a', 'v', 'av'].includes(cmcdJson.ot)) {
     const description = `The '${key}'key should only be sent with  ot = a, v or av.`;
-    warnings.push(createWarning(warningTypes.blWithWrongOtValue, requestID, key, value, description));
-  }  
+    warnings.push(createWarning(
+      warningTypes.blWithWrongOtValue,
+      requestID,
+      key,
+      value,
+      description,
+    ));
+  }
 };
 
 export const checkCorrectType = (errors, key, value, requestID) => {
@@ -78,7 +84,7 @@ export const checkCorrectType = (errors, key, value, requestID) => {
 };
 
 export const checkOtValidValue = (errors, key, value, requestID) => {
-  checkValidValue(errors, key, value, ["m", "a", "v", "av", "i", "c", "tt", "k", "o"], requestID);
+  checkValidValue(errors, key, value, ['m', 'a', 'v', 'av', 'i', 'c', 'tt', 'k', 'o'], requestID);
 };
 
 export const checkSfValidValue = (errors, key, value, requestID) => {
