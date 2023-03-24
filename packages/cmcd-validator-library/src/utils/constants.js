@@ -41,6 +41,12 @@ export const errorTypes = {
   noHeader: 'no-header',
   emptyHeader: 'empty-header',
   unnecessaryKey: 'unnecessary-key',
+  wrongCustomType: 'wrong-custom-type',
+  invalidCustomKey: 'invalid-custom-key',
+  unknownSpecificKey: 'unknown-specific-key',
+  wrongCustomHeader: 'wrong-custom-header',
+  queryMalformed: 'query-malformed',
+  noAmpersandBetweenRequests: 'no-ampersand-between-requests:',
 };
 
 export const errorDescription = {
@@ -58,7 +64,12 @@ export const errorDescription = {
   noHeader: 'There is no CMCD headers.',
   emptyHeader: 'There is a header with no content',
   unnecessaryKey: 'This key must not be sent with the current value',
-  duplicateHeader: 'Header is duplicated',
+  wrongCustomType: 'The type does not mach with CMCD types',
+  invalidCustomKey: 'Custom key names MUST carry a hyphenated prefix',
+  unknownSpecificKey: 'The key does not mach with CMCD keys',
+  wrongCustomHeader: 'The header does not mach with CMCD headers',
+  queryMalformed: 'The query is malformed',
+  noAmpersandBetweenRequests: 'Ampersand required between two or more requests',
 };
 
 export const cmcdHeader = {
@@ -70,12 +81,18 @@ export const cmcdHeader = {
 
 export const warningTypes = {
   noAlphabeticalOrder: 'no-alphabetical-order',
+  valuePr: 'pr-value',
+  valueV: 'v-value',
   noSidReceived: 'no-sid-received',
   blWithWrongOtValue: 'bl-with-wrong-ot-value',
+  noReverseDnsCustomKey: 'customkey-without-reversedns',
 };
 
 export const warningDescription = {
   noAlphabeticalOrder: 'Keys are not arranged alphabetically',
+  valuePr: 'Should only be sent if not equal to 1.00',
+  valueV: 'Client should omit this field if the version is 1',
   noSidReceived: 'No sid received from CMCD message',
   blWithWrongOtValue: 'bl key should only be sent with an object type of a, v or av',
+  noReverseDnsCustomKey: 'Customkey without Reverse DNS, could be: com.example-customkeyname',
 };
