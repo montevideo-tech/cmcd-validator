@@ -46,7 +46,7 @@ export const errorTypes = {
   unknownSpecificKey: 'unknown-specific-key',
   wrongCustomHeader: 'wrong-custom-header',
   queryMalformed: 'query-malformed',
-  noAmpersandBetweenRequests: 'no-ampersand-between-requests:'
+  noAmpersandBetweenRequests: 'no-ampersand-between-requests:',
 };
 
 export const errorDescription = {
@@ -69,7 +69,7 @@ export const errorDescription = {
   unknownSpecificKey: 'The key does not mach with CMCD keys',
   wrongCustomHeader: 'The header does not mach with CMCD headers',
   queryMalformed: 'The query is malformed',
-  noAmpersandBetweenRequests: 'Ampersand required between two or more requests',  
+  noAmpersandBetweenRequests: 'Ampersand required between two or more requests',
 };
 
 export const cmcdHeader = {
@@ -85,6 +85,7 @@ export const warningTypes = {
   valueV: 'v-value',
   noSidReceived: 'no-sid-received',
   blWithWrongOtValue: 'bl-with-wrong-ot-value',
+  noReverseDnsCustomKey: 'customkey-without-reversedns',
   specificKeysNotSent: 'specific-keys-not-sent',
 };
 
@@ -94,5 +95,6 @@ export const warningDescription = {
   valueV: 'Client should omit this field if the version is 1',
   noSidReceived: 'No sid received from CMCD message',
   blWithWrongOtValue: 'bl key should only be sent with an object type of a, v or av',
+  noReverseDnsCustomKey: 'Customkey without Reverse DNS, could be: com.example-customkeyname',
   specificKeysNotSent: 'A specific key was set but not sent',
 };

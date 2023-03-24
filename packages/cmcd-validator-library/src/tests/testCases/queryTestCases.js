@@ -286,7 +286,7 @@ export const queryTestCases = [
         {
           type: 'unknown-key',
           key: 'Qualabs',
-          value: undefined,
+          value: '21cf726cfe3d937b5f974f72bb5bd06a',
           description: "The key 'Qualabs' is not reserved.",
         },
       ],
@@ -594,10 +594,10 @@ export const queryTestCases = [
       errors: [],
       warnings: [
         {
-          description: "bl key should only be sent with an object type of a, v or av",
-          key: "bl",
-          type: "bl-with-wrong-ot-value",
-          value: 21300, 
+          description: 'bl key should only be sent with an object type of a, v or av',
+          key: 'bl',
+          type: 'bl-with-wrong-ot-value',
+          value: 21300,
         },
       ],
       parsedData: {
@@ -632,10 +632,10 @@ export const queryTestCases = [
       errors: [],
       warnings: [
         {
-          description: "bl key should only be sent with an object type of a, v or av",
-          key: "bl",
-          type: "bl-with-wrong-ot-value",
-          value: 21300, 
+          description: 'bl key should only be sent with an object type of a, v or av',
+          key: 'bl',
+          type: 'bl-with-wrong-ot-value',
+          value: 21300,
         },
       ],
       parsedData: {
@@ -670,10 +670,10 @@ export const queryTestCases = [
       errors: [],
       warnings: [
         {
-          description: "bl key should only be sent with an object type of a, v or av",
-          key: "bl",
-          type: "bl-with-wrong-ot-value",
-          value: 21300, 
+          description: 'bl key should only be sent with an object type of a, v or av',
+          key: 'bl',
+          type: 'bl-with-wrong-ot-value',
+          value: 21300,
         },
       ],
       parsedData: {
@@ -707,10 +707,10 @@ export const queryTestCases = [
       errors: [],
       warnings: [
         {
-          description: "bl key should only be sent with an object type of a, v or av",
-          key: "bl",
-          type: "bl-with-wrong-ot-value",
-          value: 21300, 
+          description: 'bl key should only be sent with an object type of a, v or av',
+          key: 'bl',
+          type: 'bl-with-wrong-ot-value',
+          value: 21300,
         },
       ],
       parsedData: {
@@ -745,10 +745,10 @@ export const queryTestCases = [
       errors: [],
       warnings: [
         {
-          description: "bl key should only be sent with an object type of a, v or av",
-          key: "bl",
-          type: "bl-with-wrong-ot-value",
-          value: 21300, 
+          description: 'bl key should only be sent with an object type of a, v or av',
+          key: 'bl',
+          type: 'bl-with-wrong-ot-value',
+          value: 21300,
         },
       ],
       parsedData: {
@@ -790,10 +790,10 @@ export const queryTestCases = [
       ],
       warnings: [
         {
-          description: "bl key should only be sent with an object type of a, v or av",
-          key: "bl",
-          type: "bl-with-wrong-ot-value",
-          value: 21300, 
+          description: 'bl key should only be sent with an object type of a, v or av',
+          key: 'bl',
+          type: 'bl-with-wrong-ot-value',
+          value: 21300,
         },
       ],
       parsedData: {
@@ -828,10 +828,10 @@ export const queryTestCases = [
       errors: [],
       warnings: [
         {
-          description: "bl key should only be sent with an object type of a, v or av",
-          key: "bl",
-          type: "bl-with-wrong-ot-value",
-          value: 21300, 
+          description: 'bl key should only be sent with an object type of a, v or av',
+          key: 'bl',
+          type: 'bl-with-wrong-ot-value',
+          value: 21300,
         },
       ],
       parsedData: {
@@ -1071,7 +1071,7 @@ export const queryTestCases = [
           key: 'sf',
           value: 'Qualabs',
           description: 'sf value does not meet the necessary requirements. Must be one of the following values: d,h,s,o.',
-        }
+        },
       ],
       warnings: [],
       parsedData: {
@@ -1172,7 +1172,6 @@ export const queryTestCases = [
           value: 'Qualabs',
           description: 'st value does not meet the necessary requirements. Must be one of the following values: v,l.',
         },
-        
       ],
       warnings: [],
       parsedData: {
@@ -1250,8 +1249,8 @@ export const queryTestCases = [
           type: 'no-alphabetical-order',
           key: undefined,
           value: undefined,
-          description: 'Keys are not arranged alphabetically'
-        }
+          description: 'Keys are not arranged alphabetically',
+        },
       ],
       parsedData: {
         su: true,
@@ -1259,9 +1258,9 @@ export const queryTestCases = [
         ot: 'i',
         sf: 'd',
         sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
-        st: 'v'
+        st: 'v',
       },
-      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=su%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv'
+      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=su%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv',
     },
   },
   {
@@ -1277,7 +1276,7 @@ export const queryTestCases = [
           type: 'no-alphabetical-order',
           key: undefined,
           value: undefined,
-          description: 'Keys are not arranged alphabetically'
+          description: 'Keys are not arranged alphabetically',
         },
       ],
       parsedData: {
@@ -1297,9 +1296,9 @@ export const queryTestCases = [
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
         st: 'l',
         su: true,
-        tb: 6000
+        tb: 6000,
       },
-      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_a64k/bbb_a64k_7.m4a?CMCD=bl%3D21300%2Cbs%2Cbr%3D3200%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Do%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dl%2Csu%2Ctb%3D6000'
+      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_a64k/bbb_a64k_7.m4a?CMCD=bl%3D21300%2Cbs%2Cbr%3D3200%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Do%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dl%2Csu%2Ctb%3D6000',
     },
   },
   {
@@ -1312,11 +1311,11 @@ export const queryTestCases = [
       errors: [],
       warnings: [
         {
-          type: "no-sid-received",
+          type: 'no-sid-received',
           key: undefined,
           value: undefined,
-          description: "No sid received from CMCD message",
-        }
+          description: 'No sid received from CMCD message',
+        },
       ],
       parsedData: {
         cid: '21cf726cfe3d937b5f974f72bb5bd06a',
@@ -1338,17 +1337,17 @@ export const queryTestCases = [
       errors: [],
       warnings: [
         {
-          type: "no-sid-received",
+          type: 'no-sid-received',
           key: undefined,
           value: undefined,
-          description: "No sid received from CMCD message",
+          description: 'No sid received from CMCD message',
         },
         {
-          description: "Client should omit this field if the version is 1",
-          key: "v",
-          type: "v-value",
-          value: 1
-        }
+          description: 'Client should omit this field if the version is 1',
+          key: 'v',
+          type: 'v-value',
+          value: 1,
+        },
       ],
       parsedData: {
         cid: '21cf726cfe3d937b5f974f72bb5bd06a',
@@ -1370,11 +1369,11 @@ export const queryTestCases = [
       errors: [],
       warnings: [
         {
-          type: "no-sid-received",
+          type: 'no-sid-received',
           key: undefined,
           value: undefined,
-          description: "No sid received from CMCD message",
-        }
+          description: 'No sid received from CMCD message',
+        },
       ],
       parsedData: {
         cid: '21cf726cfe3d937b5f974f72bb5bd06a',
@@ -1398,12 +1397,12 @@ export const queryTestCases = [
           type: 'query-malformed',
           key: undefined,
           value: undefined,
-          description: 'The query is malformed'
-        }
+          description: 'The query is malformed',
+        },
       ],
       warnings: [],
       parsedData: undefined,
-      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?sdfsdfCMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu%0x26qualabs'
+      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?sdfsdfCMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu%0x26qualabs',
     },
   },
   {
@@ -1418,12 +1417,12 @@ export const queryTestCases = [
           type: 'no-ampersand-between-requests:',
           key: undefined,
           value: undefined,
-          description: 'Ampersand required between two or more requests'
-        }
+          description: 'Ampersand required between two or more requests',
+        },
       ],
       warnings: [],
       parsedData: undefined,
-      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?qualabsCMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu&hola'
+      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?qualabsCMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu&hola',
     },
   },
   {
@@ -1441,9 +1440,9 @@ export const queryTestCases = [
         sf: 'd',
         sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
         st: 'v',
-        su: true
+        su: true,
       },
-      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?qualabs&CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu&hola'
+      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?qualabs&CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu&hola',
     },
   },
 ];
