@@ -21,5 +21,6 @@
         "import/prefer-default-export": "off",
         "valid-typeof": "off"
     },
-    "plugins": ["jest"]
+    "plugins": ["jest"],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
 }

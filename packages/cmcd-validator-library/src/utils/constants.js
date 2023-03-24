@@ -96,5 +96,5 @@ export const warningDescription = {
   noSidReceived: 'No sid received from CMCD message',
   blWithWrongOtValue: 'bl key should only be sent with an object type of a, v or av',
   noReverseDnsCustomKey: 'Customkey without Reverse DNS, could be: com.example-customkeyname',
-  specificKeysNotSent: 'A specific key was set but not sent',
+  specificKeysNotSent: 'A specific/custom key was set but not sent',
 };
