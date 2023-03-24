@@ -68,6 +68,7 @@ Each of these functions receive the following parameters in the following order:
   * `custom keys`: personal customizable keys that you want to validate.
     * `key`: name of the key
     * `type`: type of the key (*bool, string, token, number*)
+    * `header`: in which CMCD header will your custom key be sent in case you use header.
 * `warningFlag:` this flag needs to be true if you want to see the warnings in the output of the library.
 
 ### Output of the library
