@@ -34,34 +34,28 @@ function App() {
   const [requestList, dispatch] = useReducer(setRequestList, []);
   const [validatorOutput, setValidatorOutput] = useState("");
   const [manifestURI, setManifestURI] = useState('');
-  const [manifestImput, setManifestImput] = useState('');
 
   useEffect(() => {
     console.log('changing manifest', manifestURI)
-  }, [manifestImput, manifestURI])
+  }, [manifestURI])
 
   const handleSelect = (player) => {
     setPlayerSelected(player);
     dispatch({type: 'reset', payload: {}});
-    setManifestURI('asd');
+    setManifestURI('');
   };
 
   const handleDispatch = (value) => {
     dispatch({...value});
   }
 
-  const handleInput = (input) => {
-    setManifestImput(input.target.value);
-  };
-
-  const handlePlay = () => {
-    console.log('play');
-    setManifestURI(manifestImput);
+  const handlePlay = (event) => {
+    event.preventDefault();
+    setManifestURI(event.target.manifest.value);
   }
 
   return (
     <div className="App">
-
       <a href="https://montevideotech.dev/" target="_blank">
         <img
           href="https://montevideotech.dev/"
@@ -72,18 +66,10 @@ function App() {
       </a>
       <Form onSubmit={handlePlay}>
         <Form.Group className="d-flex m-2">
-          <Form.Control required placeholder='Manifest URL'/>
+          <Form.Control name="manifest" required placeholder='Manifest URL'/>
           <Button variant="primary" type="submit">Play</Button>
         </Form.Group>
       </Form>
-      <input
-        className="text ms-2"
-        placeholder="Manifest URL"
-        onChange={handleInput}
-      ></input>
-      <button className="btn btn-primary" onClick={handlePlay}>
-        Start
-      </button>
       <PlayerSelector setPlayerSelected={handleSelect} />
       <PlayerWrapper playerSelected={playerSelected} playerDispatch={handleDispatch} manifestURI={manifestURI}/>
       <DataWindow

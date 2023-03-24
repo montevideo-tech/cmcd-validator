@@ -4,6 +4,10 @@ import ShakaPlayer from '../Players/Shaka/Shaka'
 const PlayerWrapper = ({playerSelected, playerDispatch, manifestURI}) => {
   const [palyerDisplayed, setPlayerDisplayed] = useState(<div></div>)
 
+  useEffect(() => {
+    console.log('changing manifest wrapper', manifestURI)
+  }, [manifestURI])
+
   useEffect(()=>{
     console.log(playerSelected)
     switch(playerSelected) {
@@ -14,10 +18,10 @@ const PlayerWrapper = ({playerSelected, playerDispatch, manifestURI}) => {
       case 'DASH': 
         return setPlayerDisplayed(<div>DASH</div>)
       default: 
-        return setPlayerDisplayed(<div>Select Player</div>)
+        return setPlayerDisplayed(<div></div>)
     }
 
-  },[playerSelected])
+  },[playerSelected, manifestURI])
 
   return (
       palyerDisplayed
