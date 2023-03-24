@@ -1,7 +1,7 @@
 import { cmcdTypes, errorTypes, keyTypes } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 
-const jsonIsValid = (jsonString, errors) => {
+const jsonIsValid = (jsonString, errors, requestID) => {
   let valid = true;
   const keyvalue = jsonString.split(',');
   const keys = [];
@@ -12,7 +12,7 @@ const jsonIsValid = (jsonString, errors) => {
   });
 
   if ((new Set(keys)).size !== keys.length) {
-    errors.push(createError(errorTypes.duplicateKey));
+    errors.push(createError(errorTypes.duplicateKey, requestID));
     return false;
   }
 
@@ -25,11 +25,11 @@ const jsonIsValid = (jsonString, errors) => {
         && keyTypes[key] === cmcdTypes.number
       ) {
         valid = false;
-        errors.push(createError(errorTypes.wrongTypeValue, key, obj[key]));
+        errors.push(createError(errorTypes.wrongTypeValue, requestID, key, obj[key]));
       }
     });
   } catch (error) {
-    errors.push(createError(errorTypes.invalidJson));
+    errors.push(createError(errorTypes.invalidJson, requestID));
     valid = false;
   }
   return valid;
