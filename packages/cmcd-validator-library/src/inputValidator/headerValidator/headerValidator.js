@@ -4,7 +4,6 @@ import {
   isKeyInCorrectHeader, isBooleanCorrect, isSeparetedCorrectly,
   isStringCorrect, isHeaderRepeated, isKeyRepeated, isHeader, isEmptyHeader,
 } from './formatFunctions.js';
-import { logger } from '../../logger.js';
 
 const headerValidator = (headerString, errors, requestID, warnings, warningFlag = true) => {
   const headers = headerString.split('\n');
@@ -18,8 +17,13 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
   // eslint-disable-next-line consistent-return
   headers.forEach((element) => {
     const [header, keysArray] = element.split(': ');
-    if (!(header in cmcdHeader) || isHeaderRepeated(header, cmcdHeaders, errors, requestID)
-      || isEmptyHeader(keysArray, header, errors, requestID)) {
+    if (!(header in cmcdHeader)) {
+      return false;
+    }
+
+    if (isHeaderRepeated(header, cmcdHeaders, errors, requestID)
+    || isEmptyHeader(keysArray, header, errors, requestID)) {
+      valid = false;
       return false;
     }
 
