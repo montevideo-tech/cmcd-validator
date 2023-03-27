@@ -10,6 +10,7 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
   const cmcdHeaders = [];
   const keys = [];
   let headerKeys = [];
+  let valid = true;
 
   // We comment the following eslint error because we don't want to
   // return any value in the foreach
@@ -17,8 +18,13 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
   headers.forEach((element) => {
     console.log(element);
     const [header, keysArray] = element.split(': ');
-    if (!(header in cmcdHeader) || isHeaderRepeated(header, cmcdHeaders, errors, requestID)
-      || isEmptyHeader(keysArray, header, errors, requestID)) {
+    if (!(header in cmcdHeader)) {
+      return false;
+    }
+
+    if (isHeaderRepeated(header, cmcdHeaders, errors, requestID)
+    || isEmptyHeader(keysArray, header, errors, requestID)) {
+      valid = false;
       return false;
     }
 
@@ -26,17 +32,18 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
       if (isSeparetedCorrectly(keyVal, errors, requestID)) {
         const [key, value] = keyVal.split('=');
         if (isKeyRepeated(key, keys, errors, requestID)) {
-          return false;
+          valid = false;
         }
         if (!isKeyInCorrectHeader(header, key, errors, requestID)
         || !isStringCorrect(key, value, errors, requestID)
         || !isBooleanCorrect(key, value, errors, requestID)) {
-          return false;
+          valid = false;
         }
         keys.push(key);
         headerKeys.push(key);
+      } else {
+        valid = false;
       }
-      return false;
     });
     if (warningFlag === true) {
       keySortedAlphabetically(headerKeys, warnings, requestID);
@@ -48,7 +55,7 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
   if (!isHeader(cmcdHeaders, errors, requestID)) {
     return false;
   }
-  return true;
+  return valid;
 };
 
 export default headerValidator;
