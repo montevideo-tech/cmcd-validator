@@ -64,12 +64,11 @@ Each of these functions receive the following parameters in the following order:
 * `query, header or json:` string where there are the CMCD parameters to check. 
 * `config:` json where you can define:
   * `specific keys`: the list of CMCD keys that you want to check for any errors.
-    
   * `custom keys`: personal customizable keys that you want to validate.
-    * `key`: name of the key
-    * `type`: type of the key (*bool, string, token, number*)
-    * `header`: in which CMCD header will your custom key be sent in case you use header.
-* `warningFlag:` this flag needs to be true if you want to see the warnings in the output of the library.
+    * `key`: name of the key.
+    * `type`: type of the key (*bool, string, token, number*).
+    * `header`: which CMCD header your custom key will be sent in, in case a header request is used.
+* `warningFlag:` this flag needs to be true in order to see the warnings in the library output..
 
 ### Output of the library
 On the other hand, these functions have the same output:
