@@ -17,10 +17,10 @@ const keyValValidator = (cmcdJson, errors, requestID, warnings, config, extended
   }
 
   // Check if all the specifickey have been received in the request
-  const keysReceved = Object.keys(cmcdJson);
+  const keysReceived = Object.keys(cmcdJson);
   if (config?.specificKey && warningFlag) {
     config.specificKey.forEach((key) => {
-      if (!keysReceved.includes(key)) {
+      if (!keysReceived.includes(key)) {
         warnings.push(createWarning(warningTypes.specificKeysNotSent, requestID, key));
       }
     });
@@ -28,7 +28,7 @@ const keyValValidator = (cmcdJson, errors, requestID, warnings, config, extended
 
   if (config?.customKey && warningFlag) {
     config.customKey.forEach((cKey) => {
-      if (!keysReceved.includes(cKey.key)) {
+      if (!keysReceived.includes(cKey.key)) {
         warnings.push(createWarning(warningTypes.specificKeysNotSent, requestID, cKey.key));
       }
     });
