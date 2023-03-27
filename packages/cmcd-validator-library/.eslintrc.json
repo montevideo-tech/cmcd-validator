@@ -19,8 +19,8 @@
             }
         ],
         "import/prefer-default-export": "off",
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
         "valid-typeof": "off"
     },
-    "plugins": ["jest"],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    "plugins": ["jest"]    
 }
