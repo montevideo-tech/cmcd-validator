@@ -3,16 +3,26 @@ import { headerValidator } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
 import { parseHeaderToJson } from './parser/index.js';
 import { createOutput } from './utils/output.js';
-import { keyTypes } from './utils/constants.js';
+//import { keyTypes } from './utils/constants.js';
 import { logger } from './logger.js';
+import { setConfig } from './inputValidator/configValidator/setConfig.js';
 
-const CMCDHeaderValidator = (header, warningFlag = true) => {
+const CMCDHeaderValidator = (header, config, warningFlag = true) => {
   const errors = [];
   const rawData = header;
   const warnings = [];
   const requestID = uuidv4();
 
   logger.info(`${requestID}: Started CMCD Header Validation.`);
+
+  const [validConfig,
+    extendedKeyTypes] = setConfig(config, errors, requestID, warnings, warningFlag);
+  // check config
+  logger.info(`${requestID}: Check Configuration.`);
+  if (!validConfig) {
+    logger.info(`${requestID}: Configuration not valid.`);
+    return createOutput(errors, warnings, rawData);
+  }
 
   // Check header
   logger.info(`${requestID}: Validating header format.`);
@@ -30,7 +40,7 @@ const CMCDHeaderValidator = (header, warningFlag = true) => {
 
   // Check key value
   logger.info(`${requestID}: Validating header keys.`);
-  keyValValidator(parsedData, errors, requestID, warnings, null, keyTypes, warningFlag);
+  keyValValidator(parsedData, errors, requestID, warnings, config, extendedKeyTypes, warningFlag);
 
   return createOutput(errors, warnings, rawData, parsedData);
 };

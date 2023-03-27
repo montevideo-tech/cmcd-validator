@@ -15,6 +15,7 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
   // return any value in the foreach
   // eslint-disable-next-line consistent-return
   headers.forEach((element) => {
+    console.log(element);
     const [header, keysArray] = element.split(': ');
     if (!(header in cmcdHeader) || isHeaderRepeated(header, cmcdHeaders, errors, requestID)
       || isEmptyHeader(keysArray, header, errors, requestID)) {
