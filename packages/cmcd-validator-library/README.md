@@ -1,12 +1,27 @@
-<h3 align="right">
+<h3 align="center">
 	<b>
 	  <a  href="https://montevideotech.dev/summer-camp-2023/"><img decoding="async" width="300"  src="https://montevideotech.dev/wp-content/uploads/2020/09/mvd-tech-02-1024x653.png" ></a><br>
   </b>
 </h3>
 
-# cmcd-validator
+# cmcd-validator-library
 
-The cmcd-validator is an easy-to-use npm package that enables video developers to set up a service for validating the Common-Media-Client-Data (CMCD) standard implementation of any player in real-time, with any type of content. It supports queries, headers and JSON formats through this three functions:
+## Table of contents
+
+* [Introduction](#introduction)
+* [Install](#install)
+* [Usage](#usage)
+  * [How to import the library](#how-to-import-the-library)
+  * [How to call the functions to validate CMCD](#how-to-call-the-functions-to-validate-cmcd)
+  * [Input of the library](#input-of-the-library)
+  * [Output of the library](#output-of-the-library)
+  * [Example](#example)
+* [Contributing](#contributing)
+* [License](#license)
+
+## Introduction
+
+Welcome to cmcd-validator-library. The cmcd-validator is an easy-to-use npm package that enables video developers to set up a service for validating the Common-Media-Client-Data (CMCD) standard implementation of any player in real-time, with any type of content. It supports queries, headers and JSON formats through this three functions:
 
 - **CMCDQueryValidator**
 - **CMCDHeaderValidator**
@@ -22,57 +37,153 @@ You can install the package using npm:
 npm install @montevideo-tech/cmcd-validator
 ```
 
-### Usage
+## Usage
 
-Example with **CMCDQueryValidator**, **CMCDHeaderValidator**, **CMCDJsonValidator** functions:
+### How to import the library
+To import this library in your project, you can do it in the following way:
 
-```javascript
+```js
 import { CMCDQueryValidator, CMCDHeaderValidator, CMCDJsonValidator } from "@montevideo-tech/cmcd-validator";
-
-
-const cmcdQueryString = 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu';
-
-const cmcdHeaderString = 'GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1\nAccept: */*\nAccept-Encoding: gzip, deflate, br\nAccept-Language: es-ES,es;q=0.9\nCMCD-Object: br=67,d=4011,ot=a,tb=67\nCMCD-Request: bl=31700,dl=31700,mtp=10600,nor="bbb_a64k_11.m4a"\nCMCD-Session: sf=d,sid="b62ac932-1967-4368-8e9a-31df70ef2bc5",st=v\nCMCD-Status: rtp=100\nConnection: keep-alive\nHost: dash.akamaized.net\nOrigin: https://reference.dashif.org\nReferer: https://reference.dashif.org/\nSec-Fetch-Dest: empty\nSec-Fetch-Mode: cors\nSec-Fetch-Site: cross-site\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36\nsec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"\nsec-ch-ua-mobile: ?0\nsec-ch-ua-platform: "Linux"\n';
-
-const cmcdJSONString = '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}';
-
-
-const queryValidatorOutput = CMCDQueryValidator(cmcdQueryString);
-
-const headerValidatorOutput = CMCDQueryValidator(cmcdHeaderString);
-
-const jsonValidatorOutput = CMCDQueryValidator(cmcdJSONString);
 ```
 
-#### **Validator output format:**
+### How to call the functions to validate CMCD
+The media client data can be sent by one of three means:
+* As a custom HTTP request header,
+* As a HTTP query argument,
+* As a JSON object independent of the HTTP object request.
 
+It is for this reason that the library has three main functions:
+
+* CMCDHeaderValidator
+* CMCDQueryValidator
+* CMCDJsonValidator
+
+### Input of the library
+Each of these functions receive the following parameters in the following order:
+
+* `query, header or json:` string where there are the CMCD parameters to check. 
+* `config:` json where you can define:
+  * `specific keys`: the list of CMCD keys that you want to check for any errors.
+  * `custom keys`: personal customizable keys that you want to validate.
+    * `key`: name of the key.
+    * `type`: type of the key (*bool, string, token, number*).
+    * `header`: which CMCD header your custom key will be sent in, in case a header request is used.
+* `warningFlag:` this flag needs to be true in order to see the warnings in the library output.
+
+### Output of the library
+On the other hand, these functions have the same output:
 ```json
 {
  "valid": <bool>,
  "errors": [
     {
-      "type": <missing-header|parameter-value|parameter-encoding|missing-parameter|invalid-header|unknown-parameter|invalid-header-encoding|invalid-json|etc...>,
-      "key": <string>
-      "value": <any-type>
-      "description": <string>
+      "type": <string>,
+      "key": <string>,
+      "value": <any-type>,
+      "description": <string>,
     },
     {...},
-  ]
-  "parsedData": <json>
+  ],
+  "warnings": [
+    {
+      "type": <string>,
+      "key": <string>,
+      "value": <any-type>,
+      "description": <string>
+    }
+    {...},
+  ],
+  "parsedData": <json>,
   "rawData": <string>
+},
+```
+
+Where:
+
+- `valid`:  `true`  when there are no errors;  `false`  otherwise.
+- `errors`: an array of the errors present in the CMCD data that was sent, each object is a different error with the following structure:
+  - `type`: the type of error encountered. This is a string that describes the error. 
+  - `key`: the key of the CMCD data that has the error.
+  - `value`: the value of the CMCD data for that key.
+  - `description`: a brief description of the error.
+- `warnings`: an array of the warnings present in the CMCD data that was sent, each object is a different warning with the following structure:
+  - `type`: the type of warning encountered. This is a string that describes the warning. 
+  - `key`: the key of the CMCD data that has the warning.
+  - `value`: the value of the CMCD data for that key.
+  - `description`: a brief description of the warning. 
+- `parsedData`: the CMCD data that was sent but in JSON format. 
+- `rawData`: the library input.
+
+
+### Example
+In this section we will give an example of how to use the library.
+
+Imagine we have the following query:
+
+`https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-bs%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu`
+
+Our goal is to test all the CMCD's keys plus a personal custome key called `com.qualabs-bs` which is a bool. So if we want the library to include this custome key, we need to set the cofiguration as following:
+
+```json
+config = 
+{
+  "customKey": [
+    {
+      "key": 'com.qualabs-bs',
+      "type": 'boolean',
+    },
+  ],
 }
 ```
 
-**Where:**
+So the code should look like the next:
 
--   `valid`:  `true`  when there are no errors;  `false`  otherwise.
--   `errors`: an array of the errors present in the CMCD data that was sent, each object is a different error with the following structure:
-    -   `type`: the type of error encountered. This is a string that describes the error. 
-    -   `key`: the key of the CMCD data that has the error.
-    -   `value`: the value of the CMCD data for that key.
-    -   `description`: a brief description of the error.
--   `parsedData`: the CMCD data that was sent but in JSON format. 
--   `rawData`: the library input.
+```js
+const cmcdQueryString = 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-bs%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu';
+
+const config = 
+{
+  "customKey": [
+    {
+      "key": 'com.qualabs-bs',
+      "type": 'boolean',
+    },
+  ],
+}
+
+const output = CMCDQueryValidator(cmcdQueryString, config, true)
+```
+
+For this case, our output is going to be:
+
+```json
+output: {
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        {
+          "type": "no-alphabetical-order",
+          "key": undefined,
+          "value": undefined,
+          "description": "Keys are not arranged alphabetically",
+        },
+      ],
+      "parsedData": {
+        "com.qualabs-bs": false,
+        "cid": "21cf726cfe3d937b5f974f72bb5bd06a",
+        "ot": "i",
+        "sf": "d",
+        "sid": "b248658d-1d1a-4039-91d0-8c08ba597da5",
+        "st": "v",
+        "su": true,
+      },
+      "rawData":
+        "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-bs%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu",
+    },
+``` 
+
+In this case we can see that we don't have any errors which means the query is valid. Even thought there's a warning telling us that *Keys are not arranged alphabetically*, this not affect the validity of the query. This can be seen in the **paresedData**.
+
 
 ## Contributing
 
