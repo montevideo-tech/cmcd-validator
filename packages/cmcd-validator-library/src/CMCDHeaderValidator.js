@@ -3,7 +3,6 @@ import { headerValidator } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
 import { parseHeaderToJson } from './parser/index.js';
 import { createOutput } from './utils/output.js';
-//import { keyTypes } from './utils/constants.js';
 import { logger } from './logger.js';
 import { setConfig } from './inputValidator/configValidator/setConfig.js';
 
