@@ -36,7 +36,7 @@ To build all packages run:
 $ npm run build
 ```
 
-### [cmcd-validator-library]((https://github.com/montevideo-tech/cmcd-validator/tree/develop/packages/cmcd-validator-library))
+### [cmcd-validator-library](https://github.com/montevideo-tech/cmcd-validator/tree/develop/packages/cmcd-validator-library)
 
 To build only the library run:
 ```bash
@@ -44,7 +44,7 @@ $ npm run build-library
 ```
 You can find the npm 
 
-### [cmcd-validator-demo-app]((https://github.com/montevideo-tech/cmcd-validator/tree/develop/packages/cmcd-validator-demo-app))
+### [cmcd-validator-demo-app](https://github.com/montevideo-tech/cmcd-validator/tree/develop/packages/cmcd-validator-demo-app)
 
 
 To launch the demo app first you need to build the **cmcd-validator-library** and then  launch the following command:
