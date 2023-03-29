@@ -1,4 +1,4 @@
-name: :ladybug: Bug
+name: Bug
 description: File a bug/issue
 title: "[BUG] <title>"
 labels: [Bug, Needs Triage]
