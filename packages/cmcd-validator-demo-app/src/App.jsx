@@ -35,10 +35,6 @@ function App() {
   const [validatorOutput, setValidatorOutput] = useState("");
   const [manifestURI, setManifestURI] = useState('');
 
-  useEffect(() => {
-    console.log('changing manifest', manifestURI)
-  }, [manifestURI])
-
   const handleSelect = (player) => {
     setPlayerSelected(player);
     dispatch({type: 'reset', payload: {}});

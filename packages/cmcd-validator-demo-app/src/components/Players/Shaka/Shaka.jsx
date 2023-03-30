@@ -3,8 +3,6 @@ import ShakaPlayer from "shaka-player-react";
 import muxjs from "mux.js";
 import "shaka-player/dist/controls.css";
 import "./Shaka.css";
-import { DataWindow } from "../../DataWindow/DataWindow";
-import { ValidatorView } from "../../ValidatorView/ValidatorView";
 import { CMCDQueryValidator } from "@montevideo-tech/cmcd-validator";
 
 function Shaka({dispatchReqList, manifestURI}) {
