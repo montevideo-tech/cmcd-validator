@@ -1,7 +1,7 @@
 import { errorTypes, errorDescription } from './constants.js';
 import getKeyByValue from './getKeyByValue.js';
 
-export const createError = (type, requestID, key, value, description) => {
+export const createError = (type, key, value, description) => {
   if (!Object.values(errorTypes).includes(type)) {
     return -1;
   }
