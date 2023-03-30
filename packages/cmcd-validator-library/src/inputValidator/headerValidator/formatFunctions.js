@@ -24,7 +24,10 @@ export const isStringCorrect = (key, value, errors, requestID) => {
 };
 
 export const isBooleanCorrect = (key, value, errors, requestID) => {
-  if ((keyTypes[key] === cmcdTypes.boolean) && value === 'true') {
+  // console.log(key);
+  // console.log(value);
+  if (((keyTypes[key] === cmcdTypes.boolean) && value === 'true')
+    || (typeof value === 'undefined' && keyTypes[key] !== cmcdTypes.boolean)) {
     const description = 'If the value is TRUE, the = and the value must be omitted';
     errors.push(createError(errorTypes.incorrectFormat, requestID, key, value, description));
     return false;
@@ -35,7 +38,7 @@ export const isBooleanCorrect = (key, value, errors, requestID) => {
 export const isSeparetedCorrectly = (keyVal, errors, requestID) => {
   if ((keyVal.split('=').length > 2) || ((keyVal.split('=').length === 1) && (keyTypes[keyVal] !== cmcdTypes.boolean))) {
     const description = 'key-value pair not separated by =.';
-    errors.push(createError(errorTypes.incorrectFormat, requestID, keyVal, description));
+    errors.push(createError(errorTypes.incorrectFormat, requestID, keyVal, null, description));
     return false;
   }
   return true;

@@ -1,6 +1,7 @@
 import { cmcdTypes, errorTypes } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
-import checkQuotes from '../../utils/checkQuotes.js';
+// import checkQuotes from '../../utils/checkQuotes.js';
+import { isBooleanCorrect, isStringCorrect } from '../headerValidator/formatFunctions.js';
 
 const queryValidator = (queryString, error, requestID, warnings, config, extendedKeyTypes) => {
   if (!queryString.includes('CMCD=')) {
@@ -46,18 +47,17 @@ const queryValidator = (queryString, error, requestID, warnings, config, extende
     keys.push(key);
     // Check only the keys in the configuration
     // Check: string require ""
-    if (
-      (extendedKeyTypes[key] === cmcdTypes.string && !checkQuotes(value))
-      || (extendedKeyTypes[key] === cmcdTypes.token && checkQuotes(value))) {
+    if (!isStringCorrect(key, value, error, requestID)
+      || !isBooleanCorrect(key, value, error, requestID)) {
       valid = false;
-      error.push(createError(errorTypes.invalidValue, requestID, key, value));
     }
     // Check: if the key does not have value it must be a bool
     // Check: number does not require ""
+
     if (
-      (typeof value === 'undefined' && extendedKeyTypes[key] !== cmcdTypes.boolean)
-      || ((value === 'true') && extendedKeyTypes[key] === cmcdTypes.boolean)
-      || ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
+      // (typeof value === 'undefined' && extendedKeyTypes[key] !== cmcdTypes.boolean)
+      // || ((value === 'true') && extendedKeyTypes[key] === cmcdTypes.boolean)
+      ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
       && extendedKeyTypes[key] === cmcdTypes.boolean)
       || (extendedKeyTypes[key] === cmcdTypes.number && !Number(value))
     ) {
