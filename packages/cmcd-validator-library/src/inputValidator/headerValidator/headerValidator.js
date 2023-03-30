@@ -1,11 +1,19 @@
 import keySortedAlphabetically from '../../utils/keySortedAlphabetically.js';
-import { cmcdHeader } from '../../utils/constants.js';
 import {
   isKeyInCorrectHeader, isBooleanCorrect, isSeparetedCorrectly,
   isStringCorrect, isHeaderRepeated, isKeyRepeated, isHeader, isEmptyHeader,
 } from './formatFunctions.js';
 
-const headerValidator = (headerString, errors, requestID, warnings, warningFlag = true) => {
+const headerValidator = (
+  headerString,
+  errors,
+  requestID,
+  warnings,
+  config,
+  extendedcmcdHeader,
+  extendedKeyTypes,
+  warningFlag = true,
+) => {
   const headers = headerString.split('\n');
   const cmcdHeaders = [];
   const keys = [];
@@ -16,9 +24,8 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
   // return any value in the foreach
   // eslint-disable-next-line consistent-return
   headers.forEach((element) => {
-    console.log(element);
     const [header, keysArray] = element.split(': ');
-    if (!(header in cmcdHeader)) {
+    if (!(header in extendedcmcdHeader)) {
       return false;
     }
 
@@ -29,14 +36,17 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
     }
 
     keysArray.split(',').forEach((keyVal) => {
-      if (isSeparetedCorrectly(keyVal, errors, requestID)) {
+      if (config?.specificKey && !config.specificKey?.includes(keyVal)) {
+        return;
+      }
+      if (isSeparetedCorrectly(keyVal, errors, requestID, extendedKeyTypes)) {
         const [key, value] = keyVal.split('=');
         if (isKeyRepeated(key, keys, errors, requestID)) {
           valid = false;
         }
-        if (!isKeyInCorrectHeader(header, key, errors, requestID)
-        || !isStringCorrect(key, value, errors, requestID)
-        || !isBooleanCorrect(key, value, errors, requestID)) {
+        if (!isKeyInCorrectHeader(header, key, errors, requestID, extendedcmcdHeader)
+        || !isStringCorrect(key, value, errors, requestID, extendedKeyTypes)
+        || !isBooleanCorrect(key, value, errors, requestID, extendedKeyTypes)) {
           valid = false;
         }
         keys.push(key);

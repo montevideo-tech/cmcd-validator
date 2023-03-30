@@ -7,5 +7,5 @@ const {
 export const logger = winston.createLogger({
   level: 'info',
   format: combine(errors({ stack: true }), timestamp(), json()),
-  transports: [new winston.transports.Console()],
+  transports: [new winston.transports.File({ filename: 'combined.log' })],
 });

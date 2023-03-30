@@ -15,7 +15,8 @@ const CMCDHeaderValidator = (header, config, warningFlag = true) => {
   logger.info(`${requestID}: Started CMCD Header Validation.`);
 
   const [validConfig,
-    extendedKeyTypes] = setConfig(config, errors, requestID, warnings, warningFlag);
+    extendedKeyTypes,
+    extendedcmcdHeader] = setConfig(config, errors, requestID, warnings, warningFlag);
   // check config
   logger.info(`${requestID}: Check Configuration.`);
   if (!validConfig) {
@@ -25,7 +26,16 @@ const CMCDHeaderValidator = (header, config, warningFlag = true) => {
 
   // Check header
   logger.info(`${requestID}: Validating header format.`);
-  const valid = headerValidator(header, errors, requestID, warnings, warningFlag);
+  const valid = headerValidator(
+    header,
+    errors,
+    requestID,
+    warnings,
+    config,
+    extendedcmcdHeader,
+    extendedKeyTypes,
+    warningFlag,
+  );
 
   if (!valid) {
     logger.info(`${requestID}: Header not valid.`);
@@ -35,7 +45,7 @@ const CMCDHeaderValidator = (header, config, warningFlag = true) => {
 
   // Parsed to json
   logger.info(`${requestID}: Parsing header.`);
-  const parsedData = parseHeaderToJson(header);
+  const parsedData = parseHeaderToJson(header, extendedcmcdHeader, extendedKeyTypes);
 
   // Check key value
   logger.info(`${requestID}: Validating header keys.`);
