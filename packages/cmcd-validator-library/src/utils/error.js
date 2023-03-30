@@ -1,6 +1,5 @@
 import { errorTypes, errorDescription } from './constants.js';
 import getKeyByValue from './getKeyByValue.js';
-// import { logger } from '../logger.js';
 
 export const createError = (type, requestID, key, value, description) => {
   if (!Object.values(errorTypes).includes(type)) {
@@ -10,7 +9,6 @@ export const createError = (type, requestID, key, value, description) => {
   const error = getKeyByValue(errorTypes, type);
 
   if (description === undefined) {
-    // logger.info(`${requestID}: Error in '${key}': ${errorDescription[error]}`);
     return {
       type,
       key,
@@ -18,7 +16,6 @@ export const createError = (type, requestID, key, value, description) => {
       description: errorDescription[error],
     };
   }
-  // logger.info(`${requestID}: Error in '${key}': ${description}`);
   return {
     type,
     key,
