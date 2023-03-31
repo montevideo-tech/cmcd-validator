@@ -7,7 +7,6 @@ import {
 const headerValidator = (
   headerString,
   errors,
-  requestID,
   warnings,
   config,
   extendedcmcdHeader,
@@ -29,8 +28,8 @@ const headerValidator = (
       return false;
     }
 
-    if (isHeaderRepeated(header, cmcdHeaders, errors, requestID)
-    || isEmptyHeader(keysArray, header, errors, requestID)) {
+    if (isHeaderRepeated(header, cmcdHeaders, errors)
+    || isEmptyHeader(keysArray, header, errors)) {
       valid = false;
       return false;
     }
@@ -39,14 +38,14 @@ const headerValidator = (
       if (config?.specificKey && !config.specificKey?.includes(keyVal)) {
         return;
       }
-      if (isSeparetedCorrectly(keyVal, errors, requestID, extendedKeyTypes)) {
+      if (isSeparetedCorrectly(keyVal, errors, extendedKeyTypes)) {
         const [key, value] = keyVal.split('=');
-        if (isKeyRepeated(key, keys, errors, requestID)) {
+        if (isKeyRepeated(key, keys, errors)) {
           valid = false;
         }
-        if (!isKeyInCorrectHeader(header, key, errors, requestID, extendedcmcdHeader)
-        || !isStringCorrect(key, value, errors, requestID, extendedKeyTypes)
-        || !isBooleanCorrect(key, value, errors, requestID, extendedKeyTypes)) {
+        if (!isKeyInCorrectHeader(header, key, errors, extendedcmcdHeader)
+        || !isStringCorrect(key, value, errors, extendedKeyTypes)
+        || !isBooleanCorrect(key, value, errors, extendedKeyTypes)) {
           valid = false;
         }
         keys.push(key);
@@ -56,13 +55,13 @@ const headerValidator = (
       }
     });
     if (warningFlag === true) {
-      keySortedAlphabetically(headerKeys, warnings, requestID);
+      keySortedAlphabetically(headerKeys, warnings);
       headerKeys = [];
     }
     cmcdHeaders.push(header);
   });
 
-  if (!isHeader(cmcdHeaders, errors, requestID)) {
+  if (!isHeader(cmcdHeaders, errors)) {
     return false;
   }
   return valid;
