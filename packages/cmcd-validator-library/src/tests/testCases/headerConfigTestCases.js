@@ -103,8 +103,15 @@ export const headerConfigTestCases = [
     output:
       {
         valid: true,
-        errors: [], // its ok doesen't have any error here?
-        warnings: [],
+        errors: [],
+        warnings: [
+          {
+            description: 'A specific/custom key was set but not sent',
+            key: 'br',
+            type: 'specific-keys-not-sent',
+            value: undefined,
+          },
+        ],
         parsedData: {
           d: 4011,
           ot: 'a',
