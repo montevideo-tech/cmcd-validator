@@ -54,16 +54,16 @@ const queryValidator = (queryString, error, requestID, warnings, config, extende
     // Check: if the key does not have value it must be a bool
     // Check: number does not require ""
 
-    if (
-      // (typeof value === 'undefined' && extendedKeyTypes[key] !== cmcdTypes.boolean)
-      // || ((value === 'true') && extendedKeyTypes[key] === cmcdTypes.boolean)
-      ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
-      && extendedKeyTypes[key] === cmcdTypes.boolean)
-      || (extendedKeyTypes[key] === cmcdTypes.number && !Number(value))
-    ) {
-      valid = false;
-      error.push(createError(errorTypes.wrongTypeValue, requestID, key, value));
-    }
+    // if (
+    //   // (typeof value === 'undefined' && extendedKeyTypes[key] !== cmcdTypes.boolean)
+    //   // || ((value === 'true') && extendedKeyTypes[key] === cmcdTypes.boolean)
+    //   ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
+    //   && extendedKeyTypes[key] === cmcdTypes.boolean)
+    //   || (extendedKeyTypes[key] === cmcdTypes.number && !Number(value))
+    // ) {
+    //   valid = false;
+    //   error.push(createError(errorTypes.wrongTypeValue, requestID, key, value));
+    // }
   });
   if ((new Set(keys)).size !== keys.length) {
     error.push(createError(errorTypes.duplicateKey, requestID));
