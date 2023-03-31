@@ -4,7 +4,6 @@ import { CMCDQueryValidator, CMCDHeaderValidator, CMCDJsonValidator } from '../.
 for (let i = 0; i < genericTestCases.length; i += 1) {
   it(genericTestCases[i].description, () => {
     let res = CMCDQueryValidator(genericTestCases[i].query);
-    // console.log(res);
     expect(res.valid).toStrictEqual(genericTestCases[i].output.valid);
     expect(res.errors).toStrictEqual(genericTestCases[i].output.errors);
     expect(res.warnings).toStrictEqual(genericTestCases[i].output.warnings);

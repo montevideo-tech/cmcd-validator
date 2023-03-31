@@ -1,7 +1,9 @@
-import { cmcdTypes, errorTypes } from '../../utils/constants.js';
+import { errorTypes } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 // import checkQuotes from '../../utils/checkQuotes.js';
-import { isBooleanCorrect, isStringCorrect } from '../headerValidator/formatFunctions.js';
+import {
+  isBooleanCorrect, isNumberCorrect, isStringCorrect, isKeyRepeated, isSeparetedCorrectly,
+} from '../headerValidator/formatFunctions.js';
 
 const queryValidator = (queryString, error, warnings, config, extendedKeyTypes) => {
   if (!queryString.includes('CMCD=')) {
@@ -43,32 +45,23 @@ const queryValidator = (queryString, error, warnings, config, extendedKeyTypes) 
 
   // Check: key/value is separated by =
   values.forEach((val) => {
-    const [key, value] = val.split('=');
-    keys.push(key);
-    // Check only the keys in the configuration
-    // Check: string require ""
-    if (!isStringCorrect(key, value, error)
-      || !isBooleanCorrect(key, value, error)) {
-      valid = false;
-      error.push(createError(errorTypes.invalidValue, key, value));
+    if (isSeparetedCorrectly(val, error)) {
+      const [key, value] = val.split('=');
+
+      if (isKeyRepeated(key, keys, error)) {
+        valid = false;
+      }
+      // Check only the keys in the configuration
+      // Check: string require ""
+      if (!isStringCorrect(key, value, error, extendedKeyTypes)
+        || !isBooleanCorrect(key, value, error, extendedKeyTypes)
+        || !isNumberCorrect(key, value, error, extendedKeyTypes)) {
+        valid = false;
+      }
+      keys.push(key);
     }
-    // Check: if the key does not have value it must be a bool
-    // Check: number does not require ""
-    // if (
-    //   (typeof value === 'undefined' && extendedKeyTypes[key] !== cmcdTypes.boolean)
-    //   || ((value === 'true') && extendedKeyTypes[key] === cmcdTypes.boolean)
-    //   || ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
-    //   && extendedKeyTypes[key] === cmcdTypes.boolean)
-    //   || (extendedKeyTypes[key] === cmcdTypes.number && !Number(value))
-    // ) {
-    //   valid = false;
-    //   error.push(createError(errorTypes.wrongTypeValue, key, value));
-    // }
   });
-  if ((new Set(keys)).size !== keys.length) {
-    error.push(createError(errorTypes.duplicateKey));
-    return false;
-  }
+
   return valid;
 };
 

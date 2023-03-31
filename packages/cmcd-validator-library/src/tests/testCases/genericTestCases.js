@@ -863,6 +863,731 @@ sec-ch-ua-platform: "Linux"`,
       },
     },
   },
+  // Correct input bl without ot
+  {
+    description: 'Correct input bl without ot',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Dd%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dv%2Csu%2Ctb%3D6000',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="..%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=d,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=v
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+    {
+        "bl": 21300,
+        "br": 3200,
+        "bs": true,
+        "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
+        "d": 4004,
+        "dl": 18500,
+        "mtp": 48100,
+        "nor": "..%2F300kbps%2Ftrack.m4v",
+        "nrr": "12323-48763",
+        "pr": 1.08,
+        "rtp": 12000,
+        "sf": "d",
+        "sid": "6e2fb550-c457-11e9-bb97-0800200c9a66",
+        "st": "v",
+        "su": true,
+        "tb": 6000
+    }`,
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          description: 'bl key should only be sent with an object type of a, v or av',
+          key: 'bl',
+          type: 'bl-with-wrong-ot-value',
+          value: 21300,
+        },
+      ],
+      parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        pr: 1.08,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'v',
+        su: true,
+        tb: 6000,
+      },
+    },
+  },
+  // Correct input sf = h
+  {
+    description: 'Correct input sf = h',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Dh%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dv%2Csu%2Ctb%3D6000',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="..%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,ot=v,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=h,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=v
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+    {
+        "bl": 21300,
+        "br": 3200,
+        "bs": true,
+        "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
+        "d": 4004,
+        "dl": 18500,
+        "mtp": 48100,
+        "nor": "..%2F300kbps%2Ftrack.m4v",
+        "nrr": "12323-48763",
+        "ot": "v",
+        "pr": 1.08,
+        "rtp": 12000,
+        "sf": "h",
+        "sid": "6e2fb550-c457-11e9-bb97-0800200c9a66",
+        "st": "v",
+        "su": true,
+        "tb": 6000
+    }`,
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1.08,
+        rtp: 12000,
+        sf: 'h',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'v',
+        su: true,
+        tb: 6000,
+      },
+    },
+  },
+  // Correct input sf = s
+  {
+    description: 'Correct input sf = s',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Ds%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dv%2Csu%2Ctb%3D6000',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="..%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,ot=v,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=s,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=v
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+        {
+            "bl": 21300,
+            "br": 3200,
+            "bs": true,
+            "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
+            "d": 4004,
+            "dl": 18500,
+            "mtp": 48100,
+            "nor": "..%2F300kbps%2Ftrack.m4v",
+            "nrr": "12323-48763",
+            "ot": "v",
+            "pr": 1.08,
+            "rtp": 12000,
+            "sf": "s",
+            "sid": "6e2fb550-c457-11e9-bb97-0800200c9a66",
+            "st": "v",
+            "su": true,
+            "tb": 6000
+        }`,
+    output:
+        {
+          valid: true,
+          errors: [],
+          warnings: [],
+          parsedData: {
+            bl: 21300,
+            br: 3200,
+            bs: true,
+            cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+            d: 4004,
+            dl: 18500,
+            mtp: 48100,
+            nor: '..%2F300kbps%2Ftrack.m4v',
+            nrr: '12323-48763',
+            ot: 'v',
+            pr: 1.08,
+            rtp: 12000,
+            sf: 's',
+            sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+            st: 'v',
+            su: true,
+            tb: 6000,
+          },
+        },
+  },
+  // Correct input sf = o
+  {
+    description: 'Correct input sf = o',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Do%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dv%2Csu%2Ctb%3D6000',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="..%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,ot=v,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=o,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=v
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+        {
+            "bl": 21300,
+            "br": 3200,
+            "bs": true,
+            "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
+            "d": 4004,
+            "dl": 18500,
+            "mtp": 48100,
+            "nor": "..%2F300kbps%2Ftrack.m4v",
+            "nrr": "12323-48763",
+            "ot": "v",
+            "pr": 1.08,
+            "rtp": 12000,
+            "sf": "o",
+            "sid": "6e2fb550-c457-11e9-bb97-0800200c9a66",
+            "st": "v",
+            "su": true,
+            "tb": 6000
+        }`,
+    output:
+        {
+          valid: true,
+          errors: [],
+          warnings: [],
+          parsedData: {
+            bl: 21300,
+            br: 3200,
+            bs: true,
+            cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+            d: 4004,
+            dl: 18500,
+            mtp: 48100,
+            nor: '..%2F300kbps%2Ftrack.m4v',
+            nrr: '12323-48763',
+            ot: 'v',
+            pr: 1.08,
+            rtp: 12000,
+            sf: 'o',
+            sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+            st: 'v',
+            su: true,
+            tb: 6000,
+          },
+        },
+  },
+  // Correct input st = l
+  {
+    description: 'Correct input st = l',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Dd%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dl%2Csu%2Ctb%3D6000',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="..%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,ot=v,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=d,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=l
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+    {
+        "bl": 21300,
+        "br": 3200,
+        "bs": true,
+        "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
+        "d": 4004,
+        "dl": 18500,
+        "mtp": 48100,
+        "nor": "..%2F300kbps%2Ftrack.m4v",
+        "nrr": "12323-48763",
+        "ot": "v",
+        "pr": 1.08,
+        "rtp": 12000,
+        "sf": "d",
+        "sid": "6e2fb550-c457-11e9-bb97-0800200c9a66",
+        "st": "l",
+        "su": true,
+        "tb": 6000
+    }`,
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1.08,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000,
+      },
+    },
+  },
+  // Correct input v != 1
+  {
+    description: 'Correct input v != 1',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Dd%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dl%2Csu%2Ctb%3D6000%2Cv%3D2',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="..%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,ot=v,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=d,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=l,v=2
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+    {
+        "bl": 21300,
+        "br": 3200,
+        "bs": true,
+        "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
+        "d": 4004,
+        "dl": 18500,
+        "mtp": 48100,
+        "nor": "..%2F300kbps%2Ftrack.m4v",
+        "nrr": "12323-48763",
+        "ot": "v",
+        "pr": 1.08,
+        "rtp": 12000,
+        "sf": "d",
+        "sid": "6e2fb550-c457-11e9-bb97-0800200c9a66",
+        "st": "l",
+        "su": true,
+        "tb": 6000,
+        "v": 2
+    }`,
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1.08,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000,
+        v: 2,
+      },
+    },
+  },
+  // Correct input warning no sid
+  {
+    description: 'Correct input warning no sid',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Dd%2Cst%3Dl%2Csu%2Ctb%3D6000',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="..%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,ot=v,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=d,st=l
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+    {
+        "bl": 21300,
+        "br": 3200,
+        "bs": true,
+        "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
+        "d": 4004,
+        "dl": 18500,
+        "mtp": 48100,
+        "nor": "..%2F300kbps%2Ftrack.m4v",
+        "nrr": "12323-48763",
+        "ot": "v",
+        "pr": 1.08,
+        "rtp": 12000,
+        "sf": "d",
+        "st": "l",
+        "su": true,
+        "tb": 6000
+    }`,
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          type: 'no-sid-received',
+          key: undefined,
+          value: undefined,
+          description: 'No sid received from CMCD message',
+        },
+      ],
+      parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1.08,
+        rtp: 12000,
+        sf: 'd',
+        st: 'l',
+        su: true,
+        tb: 6000,
+      },
+    },
+  },
+  // Correct input warning v = 1
+  {
+    description: 'Correct input warning v = 1',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Dd%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dl%2Csu%2Ctb%3D6000%2Cv%3D1',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="..%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,ot=v,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=d,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=l,v=1
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+    {
+        "bl": 21300,
+        "br": 3200,
+        "bs": true,
+        "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
+        "d": 4004,
+        "dl": 18500,
+        "mtp": 48100,
+        "nor": "..%2F300kbps%2Ftrack.m4v",
+        "nrr": "12323-48763",
+        "ot": "v",
+        "pr": 1.08,
+        "rtp": 12000,
+        "sf": "d",
+        "sid": "6e2fb550-c457-11e9-bb97-0800200c9a66",
+        "st": "l",
+        "su": true,
+        "tb": 6000,
+        "v": 1
+    }`,
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          description: 'Client should omit this field if the version is 1',
+          key: 'v',
+          type: 'v-value',
+          value: 1,
+        },
+      ],
+      parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1.08,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'l',
+        su: true,
+        tb: 6000,
+        v: 1,
+      },
+    },
+  },
+  // Correct input warning pr = 1
+  {
+    description: 'Correct input warning pr = 1',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1%2Crtp%3D12000%2Csf%3Dd%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dv%2Csu%2Ctb%3D6000',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="..%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,ot=v,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1,sf=d,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=v
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+    {
+        "bl": 21300,
+        "br": 3200,
+        "bs": true,
+        "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
+        "d": 4004,
+        "dl": 18500,
+        "mtp": 48100,
+        "nor": "..%2F300kbps%2Ftrack.m4v",
+        "nrr": "12323-48763",
+        "ot": "v",
+        "pr": 1,
+        "rtp": 12000,
+        "sf": "d",
+        "sid": "6e2fb550-c457-11e9-bb97-0800200c9a66",
+        "st": "v",
+        "su": true,
+        "tb": 6000
+    }`,
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          type: 'pr-value',
+          key: 'pr',
+          value: 1,
+          description: 'Should only be sent if not equal to 1.00',
+        },
+      ],
+      parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'v',
+        su: true,
+        tb: 6000,
+      },
+    },
+  },
+  // Incorrect input sf = Qualabs
+  {
+    description: 'Incorrect input sf = Qualabs',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3DQualabs%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dv%2Csu%2Ctb%3D6000',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="..%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,ot=v,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=Qualabs,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=v
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+        {
+            "bl": 21300,
+            "br": 3200,
+            "bs": true,
+            "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
+            "d": 4004,
+            "dl": 18500,
+            "mtp": 48100,
+            "nor": "..%2F300kbps%2Ftrack.m4v",
+            "nrr": "12323-48763",
+            "ot": "v",
+            "pr": 1.08,
+            "rtp": 12000,
+            "sf": "Qualabs",
+            "sid": "6e2fb550-c457-11e9-bb97-0800200c9a66",
+            "st": "v",
+            "su": true,
+            "tb": 6000
+        }`,
+    output:
+        {
+          valid: false,
+          errors: [
+            {
+              type: 'invalid-value',
+              key: 'sf',
+              value: 'Qualabs',
+              description: 'sf value does not meet the necessary requirements. Must be one of the following values: d,h,s,o.',
+            },
+          ],
+          warnings: [],
+          parsedData: {
+            bl: 21300,
+            br: 3200,
+            bs: true,
+            cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+            d: 4004,
+            dl: 18500,
+            mtp: 48100,
+            nor: '..%2F300kbps%2Ftrack.m4v',
+            nrr: '12323-48763',
+            ot: 'v',
+            pr: 1.08,
+            rtp: 12000,
+            sf: 'Qualabs',
+            sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+            st: 'v',
+            su: true,
+            tb: 6000,
+          },
+        },
+  },
   // Incorrect input ot = Qualabs
   {
     description: 'Incorrect input ot = Qualabs',
@@ -941,6 +1666,82 @@ sec-ch-ua-platform: "Linux"`,
         sf: 'd',
         sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
         st: 'v',
+        su: true,
+        tb: 6000,
+      },
+    },
+  },
+  // Incorrect input st = Qualabs
+  {
+    description: 'Incorrect input st = Qualabs',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Dd%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3DQualabs%2Csu%2Ctb%3D6000',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="..%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,ot=v,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=d,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=Qualabs
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+    {
+        "bl": 21300,
+        "br": 3200,
+        "bs": true,
+        "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
+        "d": 4004,
+        "dl": 18500,
+        "mtp": 48100,
+        "nor": "..%2F300kbps%2Ftrack.m4v",
+        "nrr": "12323-48763",
+        "ot": "v",
+        "pr": 1.08,
+        "rtp": 12000,
+        "sf": "d",
+        "sid": "6e2fb550-c457-11e9-bb97-0800200c9a66",
+        "st": "Qualabs",
+        "su": true,
+        "tb": 6000
+    }`,
+    output:
+    {
+      valid: false,
+      errors: [
+        {
+          type: 'invalid-value',
+          key: 'st',
+          value: 'Qualabs',
+          description: 'st value does not meet the necessary requirements. Must be one of the following values: v,l.',
+        },
+      ],
+      warnings: [],
+      parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1.08,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'Qualabs',
         su: true,
         tb: 6000,
       },
@@ -1162,6 +1963,158 @@ sec-ch-ua-platform: "Linux"`,
         dl: 18500,
         mtp: 48100,
         nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1.08,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'v',
+        su: true,
+        tb: 6000,
+      },
+    },
+  },
+  // Incorrect input cid overlength
+  {
+    description: 'Incorrect input cid overlength',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22..%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Dd%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dv%2Csu%2Ctb%3D6000',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="..%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,ot=v,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=d,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=v
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+    {
+        "bl": 21300,
+        "br": 3200,
+        "bs": true,
+        "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002",
+        "d": 4004,
+        "dl": 18500,
+        "mtp": 48100,
+        "nor": "..%2F300kbps%2Ftrack.m4v",
+        "nrr": "12323-48763",
+        "ot": "v",
+        "pr": 1.08,
+        "rtp": 12000,
+        "sf": "d",
+        "sid": "6e2fb550-c457-11e9-bb97-0800200c9a66",
+        "st": "v",
+        "su": true,
+        "tb": 6000
+    }`,
+    output:
+    {
+      valid: false,
+      errors: [
+        {
+          type: 'invalid-value',
+          key: 'cid',
+          value: 'faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002',
+          description: "Invalid value for key 'cid'. Maximum length is 64 characters.",
+        },
+      ],
+      warnings: [],
+      parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '..%2F300kbps%2Ftrack.m4v',
+        nrr: '12323-48763',
+        ot: 'v',
+        pr: 1.08,
+        rtp: 12000,
+        sf: 'd',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        st: 'v',
+        su: true,
+        tb: 6000,
+      },
+    },
+  },
+  // Incorrect input nor unencoded
+  {
+    description: 'Incorrect input nor unencoded',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cmtp%3D48100%2Cnor%3D%22../300kbps/track.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Dd%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dv%2Csu%2Ctb%3D6000',
+    header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+CMCD-Request: bl=21300,dl=18500,mtp=48100,nor="../300kbps/track.m4v",nrr="12323-48763",su
+CMCD-Object: br=3200,d=4004,ot=v,tb=6000
+CMCD-Status: bs,rtp=12000
+CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=d,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=v
+Connection: keep-alive
+Host: dash.akamaized.net
+Origin: https://reference.dashif.org
+Referer: https://reference.dashif.org/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"`,
+    json: `
+    {
+        "bl": 21300,
+        "br": 3200,
+        "bs": true,
+        "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
+        "d": 4004,
+        "dl": 18500,
+        "mtp": 48100,
+        "nor": "../300kbps/track.m4v",
+        "nrr": "12323-48763",
+        "ot": "v",
+        "pr": 1.08,
+        "rtp": 12000,
+        "sf": "d",
+        "sid": "6e2fb550-c457-11e9-bb97-0800200c9a66",
+        "st": "v",
+        "su": true,
+        "tb": 6000
+    }`,
+    output:
+    {
+      valid: false,
+      errors: [
+        {
+          type: 'parameter-encoding',
+          key: 'nor',
+          value: '../300kbps/track.m4v',
+          description: "The key: 'nor' with its value: ../300kbps/track.m4v must be URLencoded.",
+        },
+      ],
+      warnings: [],
+      parsedData: {
+        bl: 21300,
+        br: 3200,
+        bs: true,
+        cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
+        d: 4004,
+        dl: 18500,
+        mtp: 48100,
+        nor: '../300kbps/track.m4v',
         nrr: '12323-48763',
         ot: 'v',
         pr: 1.08,
