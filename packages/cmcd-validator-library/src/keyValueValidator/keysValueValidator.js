@@ -13,7 +13,7 @@ const keyValValidator = (cmcdJson, errors, warnings, config, extendedKeyTypes, w
   if (warningFlag === true) {
     checkSidIsPresent(cmcdJson, warnings);
   }
-
+  // test
   Object.keys(cmcdJson).forEach((key) => {
     // Check if we received a configuration
     if (config?.specificKey && !config.specificKey?.includes(key)) {
