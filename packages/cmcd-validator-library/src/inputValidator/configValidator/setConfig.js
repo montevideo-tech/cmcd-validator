@@ -4,7 +4,7 @@ import {
 import { createError } from '../../utils/error.js';
 import { createWarning } from '../../utils/warning.js';
 
-export const setConfig = (config, errors, requestID, warnings, warningFlag = true) => {
+export const setConfig = (config, errors, warnings, warningFlag = true) => {
   if (!config) {
     return [true, keyTypes];
   }
@@ -18,17 +18,17 @@ export const setConfig = (config, errors, requestID, warnings, warningFlag = tru
 
     customKey.forEach((customObj) => {
       if (!(/^[a-zA-Z0-9.]+-[a-zA-Z0-9]+$/.test(customObj.key))) {
-        errors.push(createError(errorTypes.invalidCustomKey, requestID, customObj.key));
+        errors.push(createError(errorTypes.invalidCustomKey, customObj.key));
         errorsCheck = true;
       }
       if (!types.includes(customObj.type)) {
         errors.push(
-          createError(errorTypes.wrongCustomType, requestID, customObj.key, customObj.type),
+          createError(errorTypes.wrongCustomType, customObj.key, customObj.type),
         );
         errorsCheck = true;
       }
       if (!(/^([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$/.test(customObj.key.split('-')[0])) && warningFlag === true) {
-        warnings.push(createWarning(warningTypes.noReverseDnsCustomKey, requestID));
+        warnings.push(createWarning(warningTypes.noReverseDnsCustomKey));
       }
       if (!errorsCheck) {
         extendedKeyTypes[customObj.key] = customObj.type;
@@ -39,7 +39,7 @@ export const setConfig = (config, errors, requestID, warnings, warningFlag = tru
     const cmcdKeyTypes = Object.keys(keyTypes);
     specificKey.forEach((key) => {
       if (!cmcdKeyTypes.includes(key)) {
-        errors.push(createError(errorTypes.unknownSpecificKey, requestID, key));
+        errors.push(createError(errorTypes.unknownSpecificKey, key));
       }
     });
   }

@@ -3,20 +3,20 @@ import { createError } from '../../utils/error.js';
 // import checkQuotes from '../../utils/checkQuotes.js';
 import { isBooleanCorrect, isStringCorrect } from '../headerValidator/formatFunctions.js';
 
-const queryValidator = (queryString, error, requestID, warnings, config, extendedKeyTypes) => {
+const queryValidator = (queryString, error, warnings, config, extendedKeyTypes) => {
   if (!queryString.includes('CMCD=')) {
-    error.push(createError(errorTypes.noCMCDRequest, requestID));
+    error.push(createError(errorTypes.noCMCDRequest));
     return false;
   }
   // Catch if the URL is malformed
   try {
     // Check if the URL is encoded
     if (decodeURI(queryString) === queryString) {
-      error.push(createError(errorTypes.parameterEncoding, requestID));
+      error.push(createError(errorTypes.parameterEncoding));
       return false;
     }
   } catch (err) {
-    error.push(createError(errorTypes.queryMalformed, requestID));
+    error.push(createError(errorTypes.queryMalformed));
     return false;
   }
 
@@ -25,14 +25,14 @@ const queryValidator = (queryString, error, requestID, warnings, config, extende
 
   // Check if there is another query before CMCD query and is missing a '&' separating them
   if ((requests[0].length > 0) && (requests[0][requests[0].length - 1] !== '&')) {
-    error.push(createError(errorTypes.noAmpersandBetweenRequests, requestID));
+    error.push(createError(errorTypes.noAmpersandBetweenRequests));
     return false;
   }
 
   // Check if there is more than one CMCD request
   requests.shift();
   if (requests.length > 1) {
-    error.push(createError(errorTypes.incorrectFormat, requestID));
+    error.push(createError(errorTypes.incorrectFormat));
     return false;
   }
 
@@ -47,26 +47,26 @@ const queryValidator = (queryString, error, requestID, warnings, config, extende
     keys.push(key);
     // Check only the keys in the configuration
     // Check: string require ""
-    if (!isStringCorrect(key, value, error, requestID)
-      || !isBooleanCorrect(key, value, error, requestID)) {
+    if (!isStringCorrect(key, value, error)
+      || !isBooleanCorrect(key, value, error)) {
       valid = false;
+      error.push(createError(errorTypes.invalidValue, key, value));
     }
     // Check: if the key does not have value it must be a bool
     // Check: number does not require ""
-
     // if (
-    //   // (typeof value === 'undefined' && extendedKeyTypes[key] !== cmcdTypes.boolean)
-    //   // || ((value === 'true') && extendedKeyTypes[key] === cmcdTypes.boolean)
-    //   ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
+    //   (typeof value === 'undefined' && extendedKeyTypes[key] !== cmcdTypes.boolean)
+    //   || ((value === 'true') && extendedKeyTypes[key] === cmcdTypes.boolean)
+    //   || ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
     //   && extendedKeyTypes[key] === cmcdTypes.boolean)
     //   || (extendedKeyTypes[key] === cmcdTypes.number && !Number(value))
     // ) {
     //   valid = false;
-    //   error.push(createError(errorTypes.wrongTypeValue, requestID, key, value));
+    //   error.push(createError(errorTypes.wrongTypeValue, key, value));
     // }
   });
   if ((new Set(keys)).size !== keys.length) {
-    error.push(createError(errorTypes.duplicateKey, requestID));
+    error.push(createError(errorTypes.duplicateKey));
     return false;
   }
   return valid;
