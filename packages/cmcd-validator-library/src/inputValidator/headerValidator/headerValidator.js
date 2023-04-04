@@ -35,11 +35,11 @@ const headerValidator = (
     }
 
     keysArray.split(',').forEach((keyVal) => {
-      if (config?.specificKey && !config.specificKey?.includes(keyVal)) {
-        return;
-      }
       if (isSeparetedCorrectly(keyVal, errors, extendedKeyTypes)) {
         const [key, value] = keyVal.split('=');
+        if (config?.specificKey && !config.specificKey?.includes(key)) {
+          return;
+        }
         if (isKeyRepeated(key, keys, errors)) {
           valid = false;
         }
