@@ -48,7 +48,7 @@ You can find the npm
 ### [cmcd-validator-demo-app](https://github.com/montevideo-tech/cmcd-validator/tree/develop/packages/cmcd-validator-demo-app)
 
 
-To launch the demo app first you need to build the **cmcd-validator-library** and then  launch the following command:
+To launch the demo app first you need to build the **cmcd-validator-library** and then run the following command:
 
 ```bash
 $ npm run demo
@@ -57,7 +57,7 @@ $ npm run demo
 ## General information
 ### Objective of the CMCD Validator tool
 
-We want to create a open-source service that, in less that 7 steps, sets up a local or a cloud environment tool that enables video developers to validate the CMCD implementation of any player in real time with any type of content.
+We want to create an open-source service that, in less than 7 steps, sets up a local or a cloud environment tool that enables video developers to validate the CMCD implementation of any player in real time with any type of content.
 
 ​
 
@@ -65,7 +65,7 @@ We want to create a open-source service that, in less that 7 steps, sets up a lo
 
 * **M1:  (Publish  a  library):**  Publish  in  NPM  a  CMCD  validator  library  (for  Node)  that  can  be  used  by  a  video  developer  in  a  testing  script,  an  automated  testing  environment,  or  to  batch  a  analysis  of  already  collected  data.
 
-* **M2:  (A  simple  web  validator):**  Create  a  simple  node  application  using  the  library  that  also  serves  a  web  page  where  any  tester  or  video  developer  can  copy-paste  the  CMCD  headers/queryparams/json  from  some  CDN  or  Web  server  log  and  have  a  visual  response  saying  if  there  are  errors,  missing  parameters,  extra  parameters,  encoding  errors,  etc...
+* **M2:  (A  simple  web  validator):**  Create  a  simple  node  application  using  the  library  that  also  serves  a  web  page  where  any  tester  or  video  developer  can  copy-paste  the  CMCD  headers/queryparams/json  from  some  CDN  or  Web  server  log  and  have  a  visual  response  displaying any errors,  missing  parameters,  extra  parameters,  encoding  errors,  etc...
 
 * **M3  (a  service):**  create  or  integrate  complete  ETL  solution  in  order  to  achieve: 
 

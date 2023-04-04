@@ -21,7 +21,7 @@
 
 ## Introduction
 
-Welcome to cmcd-validator-library. The cmcd-validator is an easy-to-use [npm package](https://www.npmjs.com/package/@montevideo-tech/cmcd-validator) that enables video developers to set up a service for validating the Common-Media-Client-Data (CMCD) standard implementation of any player in real-time, with any type of content. It supports queries, headers and JSON formats through this three functions:
+Welcome to cmcd-validator-library. The cmcd-validator is an easy-to-use [npm package](https://www.npmjs.com/package/@montevideo-tech/cmcd-validator) that enables video developers to set up a service for validating the Common-Media-Client-Data (CMCD) standard implementation of any player in real-time, with any type of content. It supports queries, headers and JSON formats through these three functions:
 
 - **CMCDQueryValidator**
 - **CMCDHeaderValidator**
