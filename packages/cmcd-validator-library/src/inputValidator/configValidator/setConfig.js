@@ -31,6 +31,10 @@ export const setConfig = (config, errors, warnings, warningFlag = true) => {
       if (!(/^([a-zA-Z0-9]+\.[a-zA-Z0-9]+)+$/.test(customObj.key.split('-')[0])) && warningFlag === true) {
         warnings.push(createWarning(warningTypes.noReverseDnsCustomKey));
       }
+      if (!(customObj.headerType in cmcdHeader)) {
+        errors.push(createError(errorTypes.invalidHeader, customObj.key, customObj.type));
+        errorsCheck = true;
+      }
       if (!errorsCheck) {
         extendedKeyTypes[customObj.key] = customObj.type;
         if (customObj.headerType) {
