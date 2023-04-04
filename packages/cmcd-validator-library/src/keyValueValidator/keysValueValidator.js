@@ -21,7 +21,7 @@ const keyValValidator = (cmcdJson, errors, warnings, config, extendedKeyTypes, w
   if (config?.specificKey && warningFlag) {
     config.specificKey.forEach((key) => {
       if (!keysReceived.includes(key)) {
-        warnings.push(createWarning(warningTypes.specificKeysNotSent, requestID, key));
+        warnings.push(createWarning(warningTypes.specificKeysNotSent, key));
       }
     });
   }
@@ -29,7 +29,7 @@ const keyValValidator = (cmcdJson, errors, warnings, config, extendedKeyTypes, w
   if (config?.customKey && warningFlag) {
     config.customKey.forEach((cKey) => {
       if (!keysReceived.includes(cKey.key)) {
-        warnings.push(createWarning(warningTypes.specificKeysNotSent, requestID, cKey.key));
+        warnings.push(createWarning(warningTypes.specificKeysNotSent, cKey.key));
       }
     });
   }
