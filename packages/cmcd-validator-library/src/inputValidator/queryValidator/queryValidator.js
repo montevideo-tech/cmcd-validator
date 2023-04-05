@@ -59,6 +59,8 @@ const queryValidator = (queryString, error, warnings, config, extendedKeyTypes) 
         valid = false;
       }
       keys.push(key);
+    } else {
+      valid = false;
     }
   });
 

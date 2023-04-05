@@ -49,7 +49,7 @@ export const isNumberCorrect = (key, value, errors, extendedKeyTypes) => {
 export const isSeparetedCorrectly = (keyVal, errors) => {
   if ((keyVal.split('=').length > 2) || ((keyVal.split('=').length === 1) && (keyTypes[keyVal] !== cmcdTypes.boolean))) {
     const description = 'key-value pair not separated by =.';
-    errors.push(createError(errorTypes.incorrectFormat, keyVal, description));
+    errors.push(createError(errorTypes.incorrectFormat, keyVal, undefined, description));
     return false;
   }
   return true;

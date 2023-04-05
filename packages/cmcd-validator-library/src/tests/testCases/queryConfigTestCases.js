@@ -85,10 +85,10 @@ export const queryConfigTestCases = [
       valid: false,
       errors: [
         {
-          type: 'wrong-type-value',
+          type: 'incorrect-format',
           key: 'br',
           value: 'qualabs',
-          description: 'Value type is incorrect',
+          description: 'The value for the key "br" must be a number',
         },
       ],
       warnings: [],
@@ -133,9 +133,9 @@ export const queryConfigTestCases = [
       valid: false,
       errors: [
         {
-          description: 'Value type is incorrect',
+          type: 'incorrect-format',
           key: 'su',
-          type: 'wrong-type-value',
+          description: 'If the value is TRUE, the = and the value must be omitted',
           value: '23',
         },
       ],
@@ -331,10 +331,10 @@ export const queryConfigTestCases = [
       valid: false,
       errors: [
         {
-          type: 'wrong-type-value',
+          type: 'incorrect-format',
           key: 'com.qualabs-br',
           value: 'true',
-          description: 'Value type is incorrect',
+          description: 'If the value is TRUE, the = and the value must be omitted',
         },
       ],
       warnings: [],
