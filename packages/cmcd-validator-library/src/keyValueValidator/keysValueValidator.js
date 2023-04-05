@@ -35,7 +35,7 @@ const keyValValidator = (cmcdJson, errors, warnings, config, extendedKeyTypes, w
   }
 
   Object.keys(cmcdJson).forEach((key) => {
-    // Chech if we recived a configuration
+    // Check if we received a configuration
     if (config?.specificKey && !config.specificKey?.includes(key)) {
       return;
     }
