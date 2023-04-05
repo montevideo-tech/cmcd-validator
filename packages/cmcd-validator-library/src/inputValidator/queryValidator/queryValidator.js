@@ -45,7 +45,7 @@ const queryValidator = (queryString, error, warnings, config, extendedKeyTypes) 
 
   // Check: key/value is separated by =
   values.forEach((val) => {
-    if (isSeparetedCorrectly(val, error)) {
+    if (isSeparetedCorrectly(val, error, extendedKeyTypes)) {
       const [key, value] = val.split('=');
 
       if (isKeyRepeated(key, keys, error)) {
