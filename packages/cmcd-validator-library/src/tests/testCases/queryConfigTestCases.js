@@ -661,4 +661,29 @@ export const queryConfigTestCases = [
         'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-br%3Dfalse%2Ccom.qualabs-bs%3D45%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
     },
   },
+  {
+    description:
+      'Test: Correct Query with configuration using only specifickey',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3D34%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['br', 'sid'],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        br: 3200,
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: '34',
+        sf: 'd',
+        sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
+        st: 'v',
+        su: true,
+      },
+      rawData:
+        'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3D34%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    },
+  },
 ];

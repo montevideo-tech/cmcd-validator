@@ -1,11 +1,11 @@
 import checkQuotes from '../../utils/checkQuotes.js';
 import {
-  cmcdHeader, cmcdTypes, errorTypes, keyTypes,
+  cmcdTypes, errorTypes,
 } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 
-export const isKeyInCorrectHeader = (header, key, errors) => {
-  if (!cmcdHeader[header].includes(key)) {
+export const isKeyInCorrectHeader = (header, key, errors, extendedcmcdHeader) => {
+  if (!extendedcmcdHeader[header].includes(key)) {
     const description = `The key ${key} does not go under the header ${header}`;
     errors.push(createError(errorTypes.incorrectFormat, key, description));
     return false;
@@ -13,9 +13,9 @@ export const isKeyInCorrectHeader = (header, key, errors) => {
   return true;
 };
 
-export const isStringCorrect = (key, value, errors, extendedKeyTypes) => {
-  if ((extendedKeyTypes[key] === cmcdTypes.string && !checkQuotes(value))
-  || (extendedKeyTypes[key] === cmcdTypes.token && checkQuotes(value))) {
+export const isStringCorrect = (key, value, errors, extendedkeyTypes) => {
+  if ((extendedkeyTypes[key] === cmcdTypes.string && !checkQuotes(value))
+  || (extendedkeyTypes[key] === cmcdTypes.token && checkQuotes(value))) {
     const description = `Incorrect format for key: ${key}`;
     errors.push(createError(errorTypes.incorrectFormat, key, value, description));
     return false;
@@ -23,13 +23,11 @@ export const isStringCorrect = (key, value, errors, extendedKeyTypes) => {
   return true;
 };
 
-export const isBooleanCorrect = (key, value, errors, extendedKeyTypes) => {
-  // console.log(key);
-  // console.log(value);
-  if (((extendedKeyTypes[key] === cmcdTypes.boolean) && value === 'true')
-    || (typeof value === 'undefined' && extendedKeyTypes[key] !== cmcdTypes.boolean)
+export const isBooleanCorrect = (key, value, errors, extendedkeyTypes) => {
+  if (((extendedkeyTypes[key] === cmcdTypes.boolean) && value === 'true')
+    || (typeof value === 'undefined' && extendedkeyTypes[key] !== cmcdTypes.boolean)
     || ((typeof value === cmcdTypes.number || (typeof value === cmcdTypes.string && value !== 'false'))
-    && extendedKeyTypes[key] === cmcdTypes.boolean)) {
+    && extendedkeyTypes[key] === cmcdTypes.boolean)) {
     const description = 'If the value is TRUE, the = and the value must be omitted';
     errors.push(createError(errorTypes.incorrectFormat, key, value, description));
     return false;
@@ -37,8 +35,8 @@ export const isBooleanCorrect = (key, value, errors, extendedKeyTypes) => {
   return true;
 };
 
-export const isNumberCorrect = (key, value, errors, extendedKeyTypes) => {
-  if ((extendedKeyTypes[key] === cmcdTypes.number && !Number(value))) {
+export const isNumberCorrect = (key, value, errors, extendedkeyTypes) => {
+  if ((extendedkeyTypes[key] === cmcdTypes.number && !Number(value))) {
     const description = `The value for the key "${key}" must be a number`;
     errors.push(createError(errorTypes.incorrectFormat, key, value, description));
     return false;
@@ -46,8 +44,8 @@ export const isNumberCorrect = (key, value, errors, extendedKeyTypes) => {
   return true;
 };
 
-export const isSeparetedCorrectly = (keyVal, errors) => {
-  if ((keyVal.split('=').length > 2) || ((keyVal.split('=').length === 1) && (keyTypes[keyVal] !== cmcdTypes.boolean))) {
+export const isSeparetedCorrectly = (keyVal, errors, extendedkeyTypes) => {
+  if ((keyVal.split('=').length > 2) || ((keyVal.split('=').length === 1) && (extendedkeyTypes[keyVal] !== cmcdTypes.boolean))) {
     const description = 'key-value pair not separated by =.';
     errors.push(createError(errorTypes.incorrectFormat, keyVal, undefined, description));
     return false;
