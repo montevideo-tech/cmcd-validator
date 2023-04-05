@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ShakaPlayer from '../Players/Shaka/Shaka'
+import DashPlayer from '../Players/Dash/Dash'
+import Dash from '../Players/Dash/Dash'
 
 const PlayerWrapper = ({playerSelected, playerDispatch, manifestURI}) => {
   const [palyerDisplayed, setPlayerDisplayed] = useState(<div></div>)
@@ -12,7 +14,7 @@ const PlayerWrapper = ({playerSelected, playerDispatch, manifestURI}) => {
       case 'HLS':
         return setPlayerDisplayed(<div>HLS</div>)
       case 'DASH': 
-        return setPlayerDisplayed(<div>DASH</div>)
+        return setPlayerDisplayed(<div><Dash/></div>)
       default: 
         return setPlayerDisplayed(<div></div>)
     }
