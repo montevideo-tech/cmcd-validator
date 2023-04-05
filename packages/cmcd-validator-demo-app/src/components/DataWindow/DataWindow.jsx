@@ -1,14 +1,19 @@
+import RequestMessage from "../RequestMessage/RequestMessage";
 import "./DataWindow.css";
 import React from "react";
 
 export function DataWindow({ data, setValidatorOutput }) {
 
-  const logList = data.map((t,i) => {
-    if (Object.keys(t).length > 0) {
+  const logList = data.map((value,index) => {
+    const type = value?.result?.valid? value?.result?.warnings != []? 'success' : 'warning' : 'danger';
+    if (Object.keys(value).length > 0) {
       return (
-        <p key={i} style={{ color: t?.result?.valid ? "green" : "red" }} onClick={() => setValidatorOutput(t)} className="query-url">
-          {t.url}
-        </p>
+        <div className="py-1">
+          <RequestMessage key={index} message={value.url} type={'danger'} onClick={() => setValidatorOutput(value)}/>
+          {/* <p key={i} style={{ color: value?.result?.valid ? "green" : "red" }} onClick={() => setValidatorOutput(t)} className="query-url">
+            {t.url}
+          </p> */}
+        </div>
       );
     }
   });

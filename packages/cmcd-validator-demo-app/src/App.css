@@ -1,18 +1,17 @@
 #root {
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
   background-color: transparent;
 }
 
 body {
   background-color: #2d1674;
-  background-image: url(https://stage.montevideotech.dev/static/media/background.bd8912f09753f045d141.jpg);
+  background: url(https://stage.montevideotech.dev/static/media/background.bd8912f09753f045d141.jpg) no-repeat;
+  background-size: cover;
 }
 
 .logo {
-  height: 12em;
-  padding: 1.5em;
+  height: 10em;
+  width: 18em;
   will-change: filter;
   transition: filter 300ms;
 }
