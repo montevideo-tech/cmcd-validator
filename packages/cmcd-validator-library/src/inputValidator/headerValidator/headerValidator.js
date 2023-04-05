@@ -1,11 +1,18 @@
 import keySortedAlphabetically from '../../utils/keySortedAlphabetically.js';
-import { cmcdHeader } from '../../utils/constants.js';
 import {
   isKeyInCorrectHeader, isBooleanCorrect, isSeparetedCorrectly,
   isStringCorrect, isHeaderRepeated, isKeyRepeated, isHeader, isEmptyHeader,
 } from './formatFunctions.js';
 
-const headerValidator = (headerString, errors, warnings, warningFlag = true) => {
+const headerValidator = (
+  headerString,
+  errors,
+  warnings,
+  config,
+  extendedcmcdHeader,
+  extendedKeyTypes,
+  warningFlag = true,
+) => {
   const headers = headerString.split('\n');
   const cmcdHeaders = [];
   const keys = [];
@@ -17,7 +24,7 @@ const headerValidator = (headerString, errors, warnings, warningFlag = true) => 
   // eslint-disable-next-line consistent-return
   headers.forEach((element) => {
     const [header, keysArray] = element.split(': ');
-    if (!(header in cmcdHeader)) {
+    if (!(header in extendedcmcdHeader)) {
       return false;
     }
 
@@ -28,14 +35,17 @@ const headerValidator = (headerString, errors, warnings, warningFlag = true) => 
     }
 
     keysArray.split(',').forEach((keyVal) => {
-      if (isSeparetedCorrectly(keyVal, errors)) {
+      if (isSeparetedCorrectly(keyVal, errors, extendedKeyTypes)) {
         const [key, value] = keyVal.split('=');
+        if (config?.specificKey && !config.specificKey?.includes(key)) {
+          return;
+        }
         if (isKeyRepeated(key, keys, errors)) {
           valid = false;
         }
-        if (!isKeyInCorrectHeader(header, key, errors)
-        || !isStringCorrect(key, value, errors)
-        || !isBooleanCorrect(key, value, errors)) {
+        if (!isKeyInCorrectHeader(header, key, errors, extendedcmcdHeader)
+        || !isStringCorrect(key, value, errors, extendedKeyTypes)
+        || !isBooleanCorrect(key, value, errors, extendedKeyTypes)) {
           valid = false;
         }
         keys.push(key);
