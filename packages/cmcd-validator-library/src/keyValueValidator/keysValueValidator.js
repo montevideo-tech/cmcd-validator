@@ -5,6 +5,8 @@ import {
   checkVValue,
   checkStValidValue, checkSidIsPresent,
 } from './validatorFunctions.js';
+import { warningTypes } from '../utils/constants.js';
+import { createWarning } from '../utils/warning.js';
 
 // keyValValidator takes as a parameter cmcdJson, which is a javascript object.
 // The function iterates through it validating every key value pair.
@@ -14,11 +16,30 @@ const keyValValidator = (cmcdJson, errors, warnings, config, extendedKeyTypes, w
     checkSidIsPresent(cmcdJson, warnings);
   }
 
+  // Check if all the specifickey have been received in the request
+  const keysReceived = Object.keys(cmcdJson);
+  if (config?.specificKey && warningFlag) {
+    config.specificKey.forEach((key) => {
+      if (!keysReceived.includes(key)) {
+        warnings.push(createWarning(warningTypes.specificKeysNotSent, key));
+      }
+    });
+  }
+
+  if (config?.customKey && warningFlag) {
+    config.customKey.forEach((cKey) => {
+      if (!keysReceived.includes(cKey.key)) {
+        warnings.push(createWarning(warningTypes.specificKeysNotSent, cKey.key));
+      }
+    });
+  }
+
   Object.keys(cmcdJson).forEach((key) => {
     // Chech if we recived a configuration
     if (config?.specificKey && !config.specificKey?.includes(key)) {
       return;
     }
+
     const keyValue = cmcdJson[key];
     isReserved(errors, key, keyValue, extendedKeyTypes);
     checkCorrectType(errors, key, keyValue);

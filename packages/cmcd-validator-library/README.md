@@ -21,7 +21,7 @@
 
 ## Introduction
 
-Welcome to cmcd-validator-library. The cmcd-validator is an easy-to-use npm package that enables video developers to set up a service for validating the Common-Media-Client-Data (CMCD) standard implementation of any player in real-time, with any type of content. It supports queries, headers and JSON formats through this three functions:
+Welcome to cmcd-validator-library. The cmcd-validator is an easy-to-use [npm package](https://www.npmjs.com/package/@montevideo-tech/cmcd-validator) that enables video developers to set up a service for validating the Common-Media-Client-Data (CMCD) standard implementation of any player in real-time, with any type of content. It supports queries, headers and JSON formats through these three functions:
 
 - **CMCDQueryValidator**
 - **CMCDHeaderValidator**
@@ -29,7 +29,7 @@ Welcome to cmcd-validator-library. The cmcd-validator is an easy-to-use npm pack
 
 Whether you're building a video player from scratch or updating an existing one, this package is an essential addition to any video developer's toolkit.
 
-## Install
+## Installation
 
 You can install the package using npm:
 
@@ -122,7 +122,7 @@ Imagine we have the following query:
 
 `https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-bs%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu`
 
-Our goal is to test all the CMCD's keys plus a personal custome key called `com.qualabs-bs` which is a bool. So if we want the library to include this custome key, we need to set the cofiguration as following:
+Our goal is to test all the CMCD's keys plus a personal custom key called `com.qualabs-bs` which is a bool. So if we want the library to include this custom key, we need to set the cofiguration as following:
 
 ```json
 config = 
@@ -136,7 +136,7 @@ config =
 }
 ```
 
-So the code should look like the next:
+So the code should look like this:
 
 ```js
 const cmcdQueryString = 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=com.qualabs-bs%3Dfalse%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu';
