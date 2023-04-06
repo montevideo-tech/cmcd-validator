@@ -44,7 +44,7 @@ export const isSeparetedCorrectly = (keyVal, errors, extendedkeyTypes) => {
 export const isKeyRepeated = (key, keys, errors) => {
   if (keys.includes(key)) {
     const description = `The key '${key}' is repeated.`;
-    errors.push(createError(errorTypes.duplicateKey, key, description));
+    errors.push(createError(errorTypes.duplicateKey, key, undefined, description));
     return true;
   }
   return false;

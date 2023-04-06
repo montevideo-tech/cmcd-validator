@@ -296,9 +296,9 @@ export const jsonTestCases = [
       errors: [
         {
           type: 'duplicate-key',
-          key: undefined,
+          key: 'rtp',
           value: undefined,
-          description: 'Key/Keys are not unique',
+          description: "The key 'rtp' is repeated.",
         },
       ],
       warnings: [],
