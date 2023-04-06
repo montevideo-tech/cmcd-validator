@@ -14,7 +14,7 @@ const PlayerWrapper = ({playerSelected, playerDispatch, manifestURI}) => {
       case 'HLS':
         return setPlayerDisplayed(<div>HLS</div>)
       case 'DASH': 
-        return setPlayerDisplayed(<div><Dash/></div>)
+        return setPlayerDisplayed(<div><DashPlayer dispatchReqList={playerDispatch} manifestURI={manifestURI}/></div>)
       default: 
         return setPlayerDisplayed(<div></div>)
     }
