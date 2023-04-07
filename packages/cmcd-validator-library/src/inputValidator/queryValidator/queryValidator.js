@@ -35,7 +35,9 @@ const queryValidator = (queryString, error, warnings, config, extendedKeyTypes) 
   values.forEach((val) => {
     if (isSeparetedCorrectly(val, error, extendedKeyTypes)) {
       const [key, value] = val.split('=');
-
+      if (config?.specificKey && !config.specificKey?.includes(key)) {
+        return;
+      }
       if (isKeyRepeated(key, keys, error)) {
         valid = false;
       }
