@@ -1,24 +1,14 @@
-import { errorTypes } from '../../utils/constants.js';
-import { createError } from '../../utils/error.js';
-// import checkQuotes from '../../utils/checkQuotes.js';
 import {
-  isBooleanCorrect, isNumberCorrect, isStringCorrect, isKeyRepeated, isSeparetedCorrectly,
-} from '../headerValidator/formatFunctions.js';
+  isBooleanCorrect, isNumberCorrect, isStringCorrect,
+  isKeyRepeated, isSeparetedCorrectly, includesCMCDRequest,
+  isURLMalformed,
+  areRequestsSeparated,
+  multipleCMCDReq,
+} from '../../utils/formatFunctions.js';
 
 const queryValidator = (queryString, error, warnings, config, extendedKeyTypes) => {
-  if (!queryString.includes('CMCD=')) {
-    error.push(createError(errorTypes.noCMCDRequest));
-    return false;
-  }
-  // Catch if the URL is malformed
-  try {
-    // Check if the URL is encoded
-    if (decodeURI(queryString) === queryString) {
-      error.push(createError(errorTypes.parameterEncoding));
-      return false;
-    }
-  } catch (err) {
-    error.push(createError(errorTypes.queryMalformed));
+  // Check if there is a CMCD request in the queryString and Catch if the URL is malformed
+  if (!includesCMCDRequest(queryString, error) || isURLMalformed(queryString, error)) {
     return false;
   }
 
@@ -26,15 +16,13 @@ const queryValidator = (queryString, error, warnings, config, extendedKeyTypes) 
   const requests = decodeURIComponent(query).split('CMCD=');
 
   // Check if there is another query before CMCD query and is missing a '&' separating them
-  if ((requests[0].length > 0) && (requests[0][requests[0].length - 1] !== '&')) {
-    error.push(createError(errorTypes.noAmpersandBetweenRequests));
+  if (!areRequestsSeparated(requests, error)) {
     return false;
   }
 
   // Check if there is more than one CMCD request
   requests.shift();
-  if (requests.length > 1) {
-    error.push(createError(errorTypes.incorrectFormat));
+  if (multipleCMCDReq(requests, error)) {
     return false;
   }
 

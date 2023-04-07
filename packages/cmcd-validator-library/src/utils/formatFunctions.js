@@ -1,8 +1,8 @@
-import checkQuotes from '../../utils/checkQuotes.js';
+import checkQuotes from './checkQuotes.js';
 import {
   cmcdTypes, errorTypes,
-} from '../../utils/constants.js';
-import { createError } from '../../utils/error.js';
+} from './constants.js';
+import { createError } from './error.js';
 
 export const isKeyInCorrectHeader = (header, key, errors, extendedcmcdHeader) => {
   if (!extendedcmcdHeader[header].includes(key)) {
@@ -84,6 +84,45 @@ export const isEmptyHeader = (keyVal, header, errors) => {
   if (keyVal === '') {
     const description = `Empty header detected! Header: ${header}`;
     errors.push(createError(errorTypes.emptyHeader, header, description));
+    return true;
+  }
+  return false;
+};
+
+export const includesCMCDRequest = (queryString, errors) => {
+  if (!queryString.includes('CMCD=')) {
+    errors.push(createError(errorTypes.noCMCDRequest));
+    return false;
+  }
+  return true;
+};
+
+export const isURLMalformed = (queryString, errors) => {
+  let valid = false;
+  try {
+    // Check if the URL is encoded
+    if (decodeURI(queryString) === queryString) {
+      errors.push(createError(errorTypes.parameterEncoding));
+      valid = true;
+    }
+  } catch (err) {
+    errors.push(createError(errorTypes.queryMalformed));
+    valid = true;
+  }
+  return valid;
+};
+
+export const areRequestsSeparated = (requests, errors) => {
+  if ((requests[0].length > 0) && (requests[0][requests[0].length - 1] !== '&')) {
+    errors.push(createError(errorTypes.noAmpersandBetweenRequests));
+    return false;
+  }
+  return true;
+};
+
+export const multipleCMCDReq = (requests, errors) => {
+  if (requests.length > 1) {
+    errors.push(createError(errorTypes.incorrectFormat));
     return true;
   }
   return false;
