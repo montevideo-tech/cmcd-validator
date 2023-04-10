@@ -22,12 +22,9 @@ function DashPlayer({dispatchReqList, manifestURI }) {
     player.on(dashjs.MediaPlayer.events.FRAGMENT_LOADING_COMPLETED, function(e) {
         dispatchReqList({type: 'saveQuery' , payload: { url: e.request.url, result: CMCDQueryValidator(e.request.url) }})
       });
-    // player.on(dashjs.MediaPlayer.events.MANIFEST_LOADED, function(e) {
-    //     dispatchReqList({type: 'saveQuery' , payload: { url: e.request.url, result: CMCDQueryValidator(e.request.url) }})
-    //   });
-    // player.on(dashjs.MediaPlayer.events.EVENT_MODE_ON_START, function(e) {
-    //     dispatchReqList({type: 'saveQuery' , payload: { url: e.request.url, result: CMCDQueryValidator(e.request.url) }})
-    // });
+    player.on(dashjs.MediaPlayer.events.MANIFEST_LOADED, function(e) {
+        dispatchReqList({type: 'saveQuery' , payload: { url: e.data.url, result: CMCDQueryValidator(e.data.url) }})
+      });
 
 
 
