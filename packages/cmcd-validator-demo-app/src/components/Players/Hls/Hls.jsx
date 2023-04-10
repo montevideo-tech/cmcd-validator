@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, RefObject, useState } from 'react'
-import Hls, { Config, hlsConfig } from 'hls.js'
+import Hls, { hlsConfig } from 'hls.js'
 import { CMCDQueryValidator } from '@montevideo-tech/cmcd-validator';
+import Alert from 'react-bootstrap/Alert';
 
 function HlsPlayer({
   manifestURI,
@@ -17,6 +18,7 @@ function HlsPlayer({
 
   useEffect(() => {
     let hls;
+    const video = videoRef.current;
 
     function _initPlayer() {
         if (hls != null) {
@@ -91,12 +93,19 @@ function HlsPlayer({
             hls.destroy();
         }
     };
-  },[autoPlay,videoRef, manifestURI]);
+  },[autoPlay, videoRef, manifestURI]);
 
   if(Hls.isSupported()) return <video ref={videoRef} autoPlay={autoPlay} controls/>;
 
   //change this return for Hls not supported.
-  return <video ref={videoRef} manifestURI={manifestURI} autoPlay={autoPlay} controls/>;
+  return (
+    <Alert variant="danger">
+      <Alert.Heading>Oh snap! HLS is not supported!</Alert.Heading>
+      <p>
+        Sorry, your browser does not support HLS video playback. Try with another player or switching browsers!
+      </p>
+    </Alert>
+  );
 }
 
 export default HlsPlayer;
