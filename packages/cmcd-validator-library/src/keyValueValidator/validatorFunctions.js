@@ -22,7 +22,7 @@ export const isEncoded = (errors, key, value) => {
 
 export const checkValidNrrFormat = (errors, key, value) => {
   if (!(/^(\d*-\d*)$/.test(value)) && !(/^\d*-$/.test(value)) && !(/^-\d*$/.test(value))) {
-    const description = 'Invalid Nrr fromat';
+    const description = 'Invalid Nrr format';
     errors.push(createError(errorTypes.incorrectFormat, key, value, description));
   }
 };
@@ -57,7 +57,7 @@ export const isReserved = (errors, key, value, extendedKeyTypes) => {
 
 export const isPositive = (errors, key, value) => {
   if ((keyTypes[key] === cmcdTypes.number) && (value < 0)) {
-    const description = `The '${key}' value must greater than 0.`;
+    const description = `The '${key}' value must be greater than 0.`;
     errors.push(createError(errorTypes.invalidValue, key, value, description));
   }
 };

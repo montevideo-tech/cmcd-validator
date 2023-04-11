@@ -169,7 +169,7 @@ export const headerConfigTestCases = [
         valid: false,
         errors: [
           {
-            description: "The 'br' value must greater than 0.",
+            description: "The 'br' value must be greater than 0.",
             key: 'br',
             type: 'invalid-value',
             value: -2300,
