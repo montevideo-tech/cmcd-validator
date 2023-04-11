@@ -2,7 +2,7 @@ import keySortedAlphabetically from '../../utils/keySortedAlphabetically.js';
 import {
   isKeyInCorrectHeader, isBooleanCorrect, isSeparetedCorrectly,
   isStringCorrect, isHeaderRepeated, isKeyRepeated, isHeader, isEmptyHeader,
-} from './formatFunctions.js';
+} from '../../utils/formatFunctions';
 
 const headerValidator = (
   headerString,
