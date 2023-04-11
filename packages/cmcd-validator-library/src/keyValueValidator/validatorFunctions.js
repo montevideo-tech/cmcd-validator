@@ -12,7 +12,7 @@ export const checkMaxLength = (errors, key, value) => {
 };
 
 export const isEncoded = (errors, key, value) => {
-  if (decodeURIComponent(value) === value) {
+  if (decodeURIComponent(value) === value && encodeURIComponent(value) !== value) {
     const description = `The key: '${key}' with its value: ${value} must be URLencoded.`;
     errors.push(createError(errorTypes.parameterEncoding, key, value, description));
     return false;
