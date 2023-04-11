@@ -36,7 +36,7 @@ export const checkValidValue = (errors, key, value, array) => {
 
 export const checkRoundToNearest = (errors, key, value, num, unit) => {
   if ((value % num) !== 0) {
-    const description = `'${key}' value is not rounded to the nearest${num}${unit}.`;
+    const description = `'${key}' value is not rounded to the nearest ${num}${unit}.`;
     errors.push(createError(errorTypes.invalidValue, key, value, description));
   }
 };
