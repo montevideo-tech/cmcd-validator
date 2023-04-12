@@ -19,6 +19,7 @@
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
     "react-json-pretty": "^2.2.0",
+    "sass": "^1.61.0",
     "shaka-player-react": "^1.1.5"
   },
   "devDependencies": {

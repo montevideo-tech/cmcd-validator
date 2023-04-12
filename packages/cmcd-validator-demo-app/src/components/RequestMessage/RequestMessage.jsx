@@ -4,9 +4,11 @@ import Button from 'react-bootstrap/esm/Button';
 import warningImg from '../../assets/warning.svg'
 import errorImg from '../../assets/error.svg'
 import successImg from '../../assets/success.svg'
+import useRenderSize from '../../hooks/useRenderSize';
 
 const RequestMessage = (props) => {
     const {message, type, onClick} = props;
+    const { widthSize, device } = useRenderSize();
 
     const renderImage = () => {
         switch (type) {
@@ -28,7 +30,7 @@ const RequestMessage = (props) => {
     return (
         <Button variant={type} onClick={onClick}> 
             {renderImage()}
-            {`${message?.slice(0, 50)}...`}
+            {`${message?.slice(0, device === 'mobile'? 35 : 20 + widthSize/50)}...`}
         </Button>
     )
 }

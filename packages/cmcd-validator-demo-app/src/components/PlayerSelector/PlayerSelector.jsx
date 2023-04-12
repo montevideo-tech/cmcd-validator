@@ -13,13 +13,12 @@ const PlayerSelector = ({setPlayerSelected}) => {
   const [selected, setSelected] = useState({});
   const handleSelect = (key) => {
     setPlayerSelected(playerList[key].key);
-    setSelected({ key, value: playerList[key].value });
+    setSelected({ key, value: 'Player: ' + playerList[key].value });
   };
 
   return (
     <DropdownButton
       id="dropdown-basic-button"
-      variant="secondary"
       className="floatRight"
       onSelect={handleSelect}
       title={selected?.value || 'Select Player'}

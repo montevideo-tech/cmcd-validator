@@ -1,6 +1,6 @@
 import RequestMessage from "../RequestMessage/RequestMessage";
-import "./DataWindow.css";
 import React from "react";
+import "./DataWindow.css";
 
 export function DataWindow({ data, setValidatorOutput }) {
 
@@ -9,10 +9,7 @@ export function DataWindow({ data, setValidatorOutput }) {
     if (Object.keys(value).length > 0) {
       return (
         <div className="py-1">
-          <RequestMessage key={index} message={value.url} type={'danger'} onClick={() => setValidatorOutput(value)}/>
-          {/* <p key={i} style={{ color: value?.result?.valid ? "green" : "red" }} onClick={() => setValidatorOutput(t)} className="query-url">
-            {t.url}
-          </p> */}
+          <RequestMessage key={index} message={value.url} type={type} onClick={() => setValidatorOutput(value)}/>
         </div>
       );
     }
