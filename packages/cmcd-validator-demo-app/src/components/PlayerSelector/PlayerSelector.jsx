@@ -11,9 +11,13 @@ const playerList = [
 const PlayerSelector = ({setPlayerSelected}) => {  
 
   const [selected, setSelected] = useState({});
+
   const handleSelect = (key) => {
-    setPlayerSelected(playerList[key].key);
-    setSelected({ key, value: 'Player: ' + playerList[key].value });
+    if (key !== selected.key)
+    {
+      setPlayerSelected(playerList[key].key);
+      setSelected({ key, value: 'Player: ' + playerList[key].value });
+    }
   };
 
   return (
