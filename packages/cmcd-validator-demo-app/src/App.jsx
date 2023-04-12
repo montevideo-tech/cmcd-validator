@@ -81,10 +81,10 @@ function App() {
       <Row className='mainContainer'>{/* main container */}
         <Col sm={8}> {/* player container */}
           <Row className='justify-content-between'> {/* nav bar */}
-            <Col md="auto">
+            <Col className="mb-3" md="auto">
               <PlayerSelector setPlayerSelected={handleSelect} />
             </Col>
-            <Col >
+            <Col>
               <Form onSubmit={handlePlay}>
                 <InputGroup className="mb-3">
                   <Form.Control
@@ -99,7 +99,7 @@ function App() {
               </Form>
             </Col>            
           </Row>
-          <Row className="py-3"> {/* Player */}
+          <Row className="mb-3"> {/* Player */}
             <PlayerWrapper playerSelected={playerSelected} playerDispatch={handleDispatch} manifestURI={manifestURI}/>
           </Row>
           <Row className="mb-3"> {/* Render on mobile */}

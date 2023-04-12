@@ -28,7 +28,7 @@ const RequestMessage = (props) => {
     }
 
     return (
-        <Button variant={type} onClick={onClick}> 
+        <Button variant={type} onClick={onClick} style={{width: '100%'}}> 
             {renderImage()}
             {`${message?.slice(0, device === 'mobile'? 35 : 20 + widthSize/50)}...`}
         </Button>
