@@ -8,7 +8,7 @@ const PlayerWrapper = ({playerSelected, playerDispatch, manifestURI}) => {
     
     switch(playerSelected) {
       case 'SHAKA':
-        return setPlayerDisplayed(<div><ShakaPlayer dispatchReqList={playerDispatch} manifestURI={manifestURI}/></div>)
+        return setPlayerDisplayed(<div  className='vh-40'><ShakaPlayer dispatchReqList={playerDispatch} manifestURI={manifestURI}/></div>)
       case 'HLS':
         return setPlayerDisplayed(<div>HLS</div>)
       case 'DASH': 
