@@ -5,7 +5,7 @@ import { CMCDQueryValidator } from "@montevideo-tech/cmcd-validator";
 
 function DashPlayer({dispatchReqList, manifestURI }) {
   const videoRef = useRef(null);
-    useEffect(() => {
+  useEffect(() => {
     var CMCD_MODE_QUERY = 'query';
     const player = dashjs.MediaPlayer().create();
     player.initialize(videoRef.current, manifestURI, true);
@@ -28,8 +28,8 @@ function DashPlayer({dispatchReqList, manifestURI }) {
     <video
       ref={videoRef}
       controls
-      width="640"
-      height="360"
+      width="100%"
+      height="100%"
     />
   );
 }
