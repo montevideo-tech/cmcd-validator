@@ -97,7 +97,6 @@ function HlsPlayer({
 
   if(Hls.isSupported()) return <video ref={videoRef} autoPlay={autoPlay} controls/>;
 
-  //change this return for Hls not supported.
   return (
     <Alert variant="danger">
       <Alert.Heading>Oh snap! HLS is not supported!</Alert.Heading>
