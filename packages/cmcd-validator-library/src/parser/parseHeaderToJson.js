@@ -1,12 +1,10 @@
-import { keyTypes, cmcdHeader } from '../utils/constants.js';
-
-const parseHeaderToJSON = (headerString) => {
+const parseHeaderToJSON = (headerString, extendedcmcdHeader, extendedKeyTypes) => {
   const pairs = headerString.split('\n');
   const result = {};
   pairs.forEach((pair) => {
     // eslint-disable-next-line prefer-const
     let [key, value] = pair.split(':');
-    if (!cmcdHeader[key]) {
+    if (!extendedcmcdHeader[key]) {
       return;
     }
     value = value.replace(/ /g, '');
@@ -18,7 +16,7 @@ const parseHeaderToJSON = (headerString) => {
         // eslint-disable-next-line prefer-const
         let [subKey, subValue] = subPair.split('=');
         subValue = Number.isNaN(Number(subValue)) ? subValue.replace(/"/g, '') : Number(subValue);
-        if (keyTypes[subKey] === 'boolean' && subValue === 'false') subValue = false;
+        if (extendedKeyTypes[subKey] === 'boolean' && subValue === 'false') subValue = false;
         result[subKey] = subValue;
       }
     });

@@ -1,28 +1,34 @@
-import { cmcdTypes, errorTypes, keyTypes } from '../../utils/constants.js';
+import { cmcdTypes, errorTypes } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 
-const jsonIsValid = (jsonString, errors) => {
+const jsonIsValid = (jsonString, errors, config, extendedKeyTypes) => {
   let valid = true;
   const keyvalue = jsonString.split(',');
   const keys = [];
 
   // Check if there's double key
-  keyvalue.forEach((key) => {
-    keys.push(key.split(':')[0]);
+  keyvalue.forEach((keyVal) => {
+    const key = keyVal.split(':')[0].replace(/{|"/g, '');
+    if (config?.specificKey && !config.specificKey?.includes(key)) {
+      return;
+    }
+    if (keys.includes(key)) {
+      const description = `The key '${key}' is repeated.`;
+      errors.push(createError(errorTypes.duplicateKey, key, undefined, description));
+      valid = false;
+    }
+    keys.push(key);
   });
-
-  if ((new Set(keys)).size !== keys.length) {
-    errors.push(createError(errorTypes.duplicateKey));
-    return false;
-  }
 
   try {
     const obj = JSON.parse(jsonString);
-
     Object.keys(obj).forEach((key) => {
+      if (config?.specificKey && !config.specificKey?.includes(key)) {
+        return;
+      }
       if (
         typeof obj[key] === cmcdTypes.string
-        && keyTypes[key] === cmcdTypes.number
+        && extendedKeyTypes[key] === cmcdTypes.number
       ) {
         valid = false;
         errors.push(createError(errorTypes.wrongTypeValue, key, obj[key]));
