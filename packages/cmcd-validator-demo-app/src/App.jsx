@@ -21,8 +21,8 @@ function setRequestList (state, action) {
     case 'saveQuery': 
       aggregateArray = [action.payload, ...state];
       aggregateArray.splice(
-        5,
-        aggregateArray.length - 5 > 0 ? aggregateArray.length - 5 : 0
+        30,
+        aggregateArray.length - 30 > 0 ? aggregateArray.length - 30 : 0
       );
       console.log(aggregateArray);
     break;
