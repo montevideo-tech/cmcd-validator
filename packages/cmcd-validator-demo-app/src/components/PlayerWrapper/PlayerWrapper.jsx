@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ShakaPlayer from '../Players/Shaka/Shaka'
+import VideoJS from '../Players/VideoJs/VideoJs'
 
 const PlayerWrapper = ({playerSelected, playerDispatch, manifestURI}) => {
   const [palyerDisplayed, setPlayerDisplayed] = useState(<div></div>)
@@ -13,6 +14,8 @@ const PlayerWrapper = ({playerSelected, playerDispatch, manifestURI}) => {
         return setPlayerDisplayed(<div>HLS</div>)
       case 'DASH': 
         return setPlayerDisplayed(<div>DASH</div>)
+      case 'VIDEOJS': 
+        return setPlayerDisplayed(<div><VideoJS dispatchReqList={playerDispatch} manifestURI={manifestURI}/></div>)
       default: 
         return setPlayerDisplayed(<div></div>)
     }
