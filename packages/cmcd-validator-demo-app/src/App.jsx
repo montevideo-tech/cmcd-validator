@@ -18,7 +18,7 @@ function setRequestList (state, action) {
       aggregateArray = [...state, action.payload];
       aggregateArray.splice(
         0,
-        aggregateArray.length - 15 > 0 ? aggregateArray.length - 15 : 0
+        aggregateArray.length - 30 > 0 ? aggregateArray.length - 30 : 0
       );
     break;
   
