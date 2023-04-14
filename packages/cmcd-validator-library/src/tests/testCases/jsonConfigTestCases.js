@@ -54,7 +54,7 @@ export const jsonConfigTestCases = [
         },
   },
   {
-    description: 'Test JSON Correct with configuration using only specifickey, ingoring the error in st key',
+    description: 'Test JSON Correct with configuration using only specifickey, ingoring the error in mtp key',
     json: '{"br": 3200,"bs":true,"d": 4004,"mtp": "qualabs", "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
     config: {
       specificKey: ['br', 'sid'],
