@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, RefObject, useState } from 'react'
-import Hls, { hlsConfig } from 'hls.js'
+import Hls from 'hls.js'
 import { CMCDQueryValidator } from '@montevideo-tech/cmcd-validator';
 import Alert from 'react-bootstrap/Alert';
 
@@ -27,8 +27,7 @@ function HlsPlayer({
 
         const newHls = new Hls({
             enableWorker: false,
-            cmcd: true,
-            ...hlsConfig,
+            cmcd: true
         });
 
         newHls.on(Hls.Events.MANIFEST_LOADED, function(event, data) {
