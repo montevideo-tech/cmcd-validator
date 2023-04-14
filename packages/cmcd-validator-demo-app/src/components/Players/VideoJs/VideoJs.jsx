@@ -32,7 +32,7 @@ export const VideoJS = (props) => {
       videoRef.current.appendChild(videoElement);
 
       const player = playerRef.current = videojs(videoElement, options, () => {
-        console.log('player is ready');
+        
       });
 
       player.cmcd();
