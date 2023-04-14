@@ -24,7 +24,6 @@ function setRequestList (state, action) {
         30,
         aggregateArray.length - 30 > 0 ? aggregateArray.length - 30 : 0
       );
-      console.log(aggregateArray);
     break;
   
     default:
