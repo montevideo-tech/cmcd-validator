@@ -94,7 +94,7 @@ function HlsPlayer({
     };
   },[autoPlay, videoRef, manifestURI]);
 
-  if(Hls.isSupported()) return <video ref={videoRef} autoPlay={autoPlay} controls/>;
+  if(Hls.isSupported()) return <video width="100%" height="100%" ref={videoRef} autoPlay={autoPlay} controls/>;
 
   return (
     <Alert variant="danger">
