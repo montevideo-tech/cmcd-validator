@@ -19,10 +19,11 @@ function setRequestList (state, action) {
 
   switch (action.type) {
     case 'saveQuery': 
+      // console.log("HTTP request intercepted ", action);
       aggregateArray = [action.payload, ...state];
       aggregateArray.splice(
-        30,
-        aggregateArray.length - 30 > 0 ? aggregateArray.length - 30 : 0
+        1000,
+        aggregateArray.length - 1000 > 0 ? aggregateArray.length - 1000 : 0
       );
     break;
   

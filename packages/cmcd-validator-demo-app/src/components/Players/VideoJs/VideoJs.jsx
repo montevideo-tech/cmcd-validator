@@ -34,6 +34,12 @@ export const VideoJS = (props) => {
       const player = playerRef.current = videojs(videoElement, options);
 
       player.cmcd();
+      
+      var origOpen = XMLHttpRequest.prototype.open;
+      XMLHttpRequest.prototype.open = function(method, url) {
+        dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
+        origOpen.apply(this, arguments);
+      };
 
     // You could update an existing player in the `else` block here
     // on prop change, for example:
@@ -45,9 +51,8 @@ export const VideoJS = (props) => {
       player.cmcd();
 
       var origOpen = XMLHttpRequest.prototype.open;
-      XMLHttpRequest.prototype.open = function() {
-        const uri = arguments[1]
-        dispatchReqList({type: 'saveQuery' , payload: { url: uri, result: CMCDQueryValidator(uri) }})
+      XMLHttpRequest.prototype.open = function(method, url) {
+        dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
         origOpen.apply(this, arguments);
       };
       
