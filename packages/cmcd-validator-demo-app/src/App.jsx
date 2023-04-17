@@ -42,7 +42,9 @@ function App() {
   const [predefinedURLs] = useState([
     { label: 'https://dxclj9vp3m44c.cloudfront.net/hls/Costa_Rica_144.m3u8 - NOT FOR DASH', url: 'https://dxclj9vp3m44c.cloudfront.net/hls/Costa_Rica_144.m3u8' },
     { label: 'https://livesim.dashif.org/livesim/scte35_2/testpic_2s/Manifest.mpd - NOT FOR HLS', url: 'https://livesim.dashif.org/livesim/scte35_2/testpic_2s/Manifest.mpd' },
-    { label: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd - NOT FOR HLS', url: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd' }
+    { label: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd - NOT FOR HLS', url: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd' },
+    { label: 'https://dash.akamaized.net/digitalprimates/fraunhofer/480p_video/heaac_2_0_with_video/Sintel/sintel_480p_heaac2_0.mpd - NOT FOR HLS', url: 'https://dash.akamaized.net/digitalprimates/fraunhofer/480p_video/heaac_2_0_with_video/Sintel/sintel_480p_heaac2_0.mpd' },
+    { label: 'https://cmafref.akamaized.net/cmaf/live-ull/2006350/akambr/out.m - NOT FOR HLS', url: 'https://cmafref.akamaized.net/cmaf/live-ull/2006350/akambr/out.mpd' }
 
   ]);
 
@@ -103,7 +105,6 @@ function App() {
     <Form.Control
       as="select"
       name="manifest"
-      required
       onChange={(e) => setManifestURI(e.target.value)}
     >
       <option value="">Select a manifest</option>
