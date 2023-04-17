@@ -1,7 +1,7 @@
 import keySortedAlphabetically from '../../utils/keySortedAlphabetically.js';
 import {
   isKeyInCorrectHeader, isBooleanCorrect, isSeparetedCorrectly,
-  isStringCorrect, isHeaderRepeated, isKeyRepeated, isHeader, isEmptyHeader,
+  isStringCorrect, isHeaderRepeated, isKeyRepeated, isHeader, isEmptyHeader, isNumberCorrect,
 } from '../../utils/formatFunctions';
 
 const headerValidator = (
@@ -40,12 +40,11 @@ const headerValidator = (
         if (config?.specificKey && !config.specificKey?.includes(key)) {
           return;
         }
-        if (isKeyRepeated(key, keys, errors)) {
-          valid = false;
-        }
-        if (!isKeyInCorrectHeader(header, key, errors, extendedcmcdHeader)
+        if (isKeyRepeated(key, keys, errors)
+        || !isKeyInCorrectHeader(header, key, errors, extendedcmcdHeader)
         || !isStringCorrect(key, value, errors, extendedKeyTypes)
-        || !isBooleanCorrect(key, value, errors, extendedKeyTypes)) {
+        || !isBooleanCorrect(key, value, errors, extendedKeyTypes)
+        || !isNumberCorrect(key, value, errors, extendedKeyTypes)) {
           valid = false;
         }
         keys.push(key);

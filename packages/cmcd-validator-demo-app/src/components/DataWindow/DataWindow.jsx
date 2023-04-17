@@ -1,15 +1,8 @@
 import RequestMessage from "../RequestMessage/RequestMessage";
-import React, { useRef, useEffect} from "react";
+import React from "react";
 import "./DataWindow.css";
 
 export function DataWindow({ data, setValidatorOutput }) {
-
-  const bottomRef = useRef(null);
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({behavior: 'smooth'})  
-  }, [data])
-  
 
   const logList = data.map((value,index) => {
     const type = value?.result?.valid? value?.result?.warnings != []? 'success' : 'warning' : 'danger';
@@ -26,7 +19,6 @@ export function DataWindow({ data, setValidatorOutput }) {
     <div className="data-window-wrapper">
       <div className="data-window">
         {logList}
-        <div ref={bottomRef} />
       </div>
     </div>
   );

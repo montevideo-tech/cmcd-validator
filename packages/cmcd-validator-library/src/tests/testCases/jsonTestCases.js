@@ -1,6 +1,85 @@
 export const jsonTestCases = [
   {
-    description: 'Test: Json with bool == true.',
+    description: 'Test JSON Correct',
+    json: '{"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}',
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: { sid: '6e2fb550-c457-11e9-bb97-0800200c9a66' },
+      rawData: '{"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}',
+    },
+  },
+  {
+    description: 'Test JSON Correct',
+    json: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        br: 3200,
+        bs: true,
+        d: 4004,
+        mtp: 25400,
+        ot: 'v',
+        rtp: 15000,
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+        tb: 6000,
+      },
+      rawData: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
+    },
+  },
+  {
+    description: 'Test JSON Correct',
+    json: '{"bs":true,"rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}',
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: { bs: true, rtp: 15000, sid: '6e2fb550-c457-11e9-bb97-0800200c9a66' },
+      rawData: '{"bs":true,"rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}',
+    },
+  },
+  {
+    description: 'Test JSON Correct',
+    json: '{"bs":true,"su":true}',
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          type: 'no-sid-received',
+          key: undefined,
+          value: undefined,
+          description: 'No sid received from CMCD message',
+        },
+      ],
+      parsedData: { bs: true, su: true },
+      rawData: '{"bs":true,"su":true}',
+    },
+  },
+  {
+    description: 'Test JSON Correct',
+    json: '{"nor":"..%2F300kbps%2Fsegment35.m4v","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66"}',
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        nor: '..%2F300kbps%2Fsegment35.m4v',
+        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+      },
+      rawData: '{"nor":"..%2F300kbps%2Fsegment35.m4v","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66"}',
+    },
+  },
+  {
+    description: 'Test JSON Correct',
     json: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"v","su":true,"tb":6000}',
     output:
     {
@@ -29,6 +108,7 @@ export const jsonTestCases = [
       rawData: '{"bl":21300,"br":3200,"bs":true,"cid":"faec5fc2-ac30-11ea-bb37-0242ac130002","d":4004,"dl":18500,"mtp":48100,"nor":"..%2F300kbps%2Ftrack.m4v","nrr":"12323-48763","ot":"v","pr":1.08,"rtp":12000,"sf":"d","sid":"6e2fb550-c457-11e9-bb97-0800200c9a66","st":"v","su":true,"tb":6000}',
     },
   },
+
   {
     description: 'Test: Double JSON',
     json: '{"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}{"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}',
@@ -46,6 +126,25 @@ export const jsonTestCases = [
       warnings: [],
       parsedData: undefined,
       rawData: '{"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}{"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}',
+    },
+  },
+  {
+    description: 'Test: Correct json with bool == false',
+    json: '{"bs":false,"su":true}',
+    output:
+    {
+      valid: true,
+      errors: [],
+      warnings: [
+        {
+          type: 'no-sid-received',
+          key: undefined,
+          value: undefined,
+          description: 'No sid received from CMCD message',
+        },
+      ],
+      parsedData: { bs: false, su: true },
+      rawData: '{"bs":false,"su":true}',
     },
   },
   {
@@ -171,44 +270,14 @@ export const jsonTestCases = [
       errors: [
         {
           type: 'duplicate-key',
-          key: undefined,
+          key: 'rtp',
           value: undefined,
-          description: 'Key/Keys are not unique',
+          description: "The key 'rtp' is repeated.",
         },
       ],
       warnings: [],
       parsedData: undefined,
       rawData: '{"bs":true,"rtp":15000,"rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}',
-    },
-  },
-  {
-    description: 'Test: Json with unknown key',
-    json: '{"unknown-key":true,"rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}',
-    output:
-    {
-      valid: false,
-      errors: [
-        {
-          type: 'unknown-key',
-          key: 'unknown-key',
-          value: true,
-          description: "The key 'unknown-key' is not reserved.",
-        },
-      ],
-      warnings: [
-        {
-          type: 'no-alphabetical-order',
-          key: undefined,
-          value: undefined,
-          description: 'Keys are not arranged alphabetically',
-        },
-      ],
-      parsedData: {
-        'unknown-key': true,
-        rtp: 15000,
-        sid: '6e2fb550-c457-11e9-bb97-0800200c9a66',
-      },
-      rawData: '{"unknown-key":true,"rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66"}',
     },
   },
   {

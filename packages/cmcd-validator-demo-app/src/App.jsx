@@ -19,10 +19,10 @@ function setRequestList (state, action) {
 
   switch (action.type) {
     case 'saveQuery': 
-      aggregateArray = [...state, action.payload];
+      aggregateArray = [action.payload, ...state];
       aggregateArray.splice(
-        0,
-        aggregateArray.length - 50 > 0 ? aggregateArray.length - 50 : 0
+        30,
+        aggregateArray.length - 30 > 0 ? aggregateArray.length - 30 : 0
       );
     break;
   
