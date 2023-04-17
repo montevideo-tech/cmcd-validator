@@ -95,7 +95,7 @@ function App() {
                     aria-label="Recipient's username"
                     aria-describedby="basic-addon2"
                   />
-                  <Button variant="primary" type="submit">start</Button>
+                  <Button variant="primary" type="submit">Start</Button>
               </InputGroup>
               </Form>
             </Col>            
