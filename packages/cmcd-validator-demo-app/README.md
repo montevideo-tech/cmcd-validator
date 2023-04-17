@@ -6,9 +6,43 @@
 
 # cmcd-react-test-app
 
-The cmcd-react-test-app allows you to run an instance of shaka player and see CMCD messages on a display text box.
+##  Table  of  contents
 
-## Before start
+- [cmcd-react-test-app](#cmcd-react-test-app)
+	- [Table  of  contents](#table--of--contents)
+	- [Overview](#overview)
+	- [Usage](#usage)
+	- [Setup](#setup)
+		- [Before start](#before-start)
+		- [Run local](#run-local)
+	- [Troubleshooting](#troubleshooting)
+  
+## Overview
+
+This React app is designed to validate CMCD (Common Media Client Data) requests from different players. It provides a user-friendly interface to enter a manifest URL and view the requests made by the player, along with their validation status.
+
+
+## Usage
+To validate CMCD requests using this app, follow these steps:
+
+1. Select a player.
+   
+![](images/select-player.png)
+
+2. Enter the manifest URL and click "Play" to start playback.
+   
+![](images/content-playing.png)
+> **_NOTE:_** The requests made by the player will be displayed in the panel on the right-hand side. The color of the request indicates its validation status: green for valid, red for invalid, and yellow for warnings.
+
+3. To view the validation output for a request, click on it and scroll down.
+   
+![](images/validation-datail.png)
+
+
+
+## Setup 
+
+### Before start
 
 Make sure of run the install and build of npm before run the local server:
 
@@ -17,26 +51,17 @@ npm i
 npm run build
 ```
 
-## Run the local server
+### Run local
 
 
 ```console
-npm run demo
+npm run dev
 ```
-The player will be available on: localhost:5173
+The web will be available on: localhost:5173
 
-Press "Start Shaka" and you will see the player working with the CMCD messages on the right side.
+## Troubleshooting
+If you encounter any issues with the CMCD Request Validator, you can try the following troubleshooting steps:
 
-## Contributing
-
-We welcome contributions from the community. To contribute to the project, follow these steps:
-
-1. Fork the repository.
-2. Check the active issues and project board to see what we're working on.
-3. Create a new branch for your feature or bug fix.
-4. Make your changes.
-5. Submit a pull request.
-
-## License
-
-The CMCD Validator is licensed under the Apache License, Version 2.0.
+- Ensure that you have entered a valid manifest URL.
+- Check the console for any error messages.
+- Verify that you have the necessary dependencies installed.
