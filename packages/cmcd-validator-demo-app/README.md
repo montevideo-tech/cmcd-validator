@@ -29,12 +29,12 @@ To validate CMCD requests using this app, follow these steps:
    
 ![](images/select-player.png)
 
-2. Enter the manifest URL and click "Play" to start playback.
+2. Enter the manifest URL and click "Start" to start playback.
    
 ![](images/content-playing.png)
 > **_NOTE:_** The requests made by the player will be displayed in the panel on the right-hand side. The color of the request indicates its validation status: green for valid, red for invalid, and yellow for warnings.
 
-3. To view the validation output for a request, click on it and scroll down.
+3. To view the validation output of a request, click on it and scroll down.
    
 ![](images/validation-datail.png)
 
@@ -44,7 +44,7 @@ To validate CMCD requests using this app, follow these steps:
 
 ### Before start
 
-Make sure of run the install and build of npm before run the local server:
+Make sure to run the install and build of npm before run the local server:
 
 ```console
 npm i
