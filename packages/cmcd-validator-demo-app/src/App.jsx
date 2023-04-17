@@ -39,6 +39,12 @@ function App() {
   const [validatorOutput, setValidatorOutput] = useState("");
   const [manifestURI, setManifestURI] = useState('');
   const { device } = useRenderSize();
+  const [predefinedURLs] = useState([
+    { label: 'https://dxclj9vp3m44c.cloudfront.net/hls/Costa_Rica_144.m3u8 - NOT FOR DASH', url: 'https://dxclj9vp3m44c.cloudfront.net/hls/Costa_Rica_144.m3u8' },
+    { label: 'https://livesim.dashif.org/livesim/scte35_2/testpic_2s/Manifest.mpd - NOT FOR HLS', url: 'https://livesim.dashif.org/livesim/scte35_2/testpic_2s/Manifest.mpd' },
+    { label: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd - NOT FOR HLS', url: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd' }
+
+  ]);
 
   const handleSelect = (player) => {
     setPlayerSelected(player);
@@ -50,10 +56,6 @@ function App() {
     dispatch({...value});
   }
 
-  const handlePlay = (event) => {
-    event.preventDefault();
-    setManifestURI(event.target.manifest.value);
-  }
 
   const renderDataWindow = (type) =>{
     if (device === type) {
@@ -65,6 +67,17 @@ function App() {
       )
     }
   }
+
+  const handlePlay = (event) => {
+    event.preventDefault();
+    const manifestInput = event.target.manifest.value;
+    const manualManifestInput = event.target.manualManifest.value;
+    if (manualManifestInput) {
+      setManifestURI(manualManifestInput);
+    } else if (manifestInput) {
+      setManifestURI(manifestInput);
+    }
+  };
 
 
   return (
@@ -85,18 +98,26 @@ function App() {
               <PlayerSelector setPlayerSelected={handleSelect} />
             </Col>
             <Col>
-              <Form onSubmit={handlePlay}>
-                <InputGroup className="mb-3">
-                  <Form.Control
-                    name="manifest"
-                    required 
-                    placeholder='Manifest URL'
-                    aria-label="Recipient's username"
-                    aria-describedby="basic-addon2"
-                  />
-                  <Button variant="primary" type="submit">start</Button>
-              </InputGroup>
-              </Form>
+<Form onSubmit={handlePlay}>
+  <InputGroup className="mb-3">
+    <Form.Control
+      as="select"
+      name="manifest"
+      required
+      onChange={(e) => setManifestURI(e.target.value)}
+    >
+      <option value="">Select a manifest</option>
+      {predefinedURLs.map((url) => (
+        <option key={url.url} value={url.url}>{url.label}</option>
+      ))}
+    </Form.Control>
+    <Form.Control
+      name="manualManifest"
+      placeholder="Or enter the manifest URL manually"
+    />
+    <Button variant="primary" type="submit">Start</Button>
+  </InputGroup>
+</Form>
             </Col>            
           </Row>
           <Row className="mb-3"> {/* Player */}
