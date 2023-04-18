@@ -1,4 +1,4 @@
-const parseHeaderToJSON = (headerString, extendedcmcdHeader, extendedKeyTypes, config) => {
+const parseHeaderToJSON = (headerString, extendedcmcdHeader, extendedKeyTypes) => {
   const pairs = headerString.split('\n');
   const result = {};
   pairs.forEach((pair) => {
@@ -10,13 +10,12 @@ const parseHeaderToJSON = (headerString, extendedcmcdHeader, extendedKeyTypes, c
     value = value.replace(/ /g, '');
     const subPairs = value.split(',');
     subPairs.forEach((subPair) => {
-      const keyNotInConfig = (config?.specificKey && !config.specificKey?.includes(subPair.split('=')[1]));
       if (!subPair.includes('=')) {
-        result[subPair] = keyNotInConfig ? true : undefined;
+        result[subPair] = true;
       } else {
         // eslint-disable-next-line prefer-const
         let [subKey, subValue] = subPair.split('=');
-        subValue = (keyNotInConfig && Number.isNaN(Number(subValue))) ? subValue.replace(/"/g, '') : Number(subValue);
+        subValue = (Number.isNaN(Number(subValue))) ? subValue.replace(/"/g, '') : Number(subValue);
         if (extendedKeyTypes[subKey] === 'boolean' && subValue === 'false') subValue = false;
         result[subKey] = subValue;
       }

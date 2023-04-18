@@ -676,7 +676,7 @@ export const queryConfigTestCases = [
       parsedData: {
         br: 3200,
         cid: '21cf726cfe3d937b5f974f72bb5bd06a',
-        ot: '34',
+        ot: 34,
         sf: 'd',
         sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
         st: 'v',
@@ -699,7 +699,7 @@ export const queryConfigTestCases = [
       errors: [],
       warnings: [],
       parsedData: {
-        br: NaN,
+        br: 'qualabs',
         cid: '21cf726cfe3d937b5f974f72bb5bd06a',
         ot: 'i',
         sf: 'd',
@@ -733,6 +733,262 @@ export const queryConfigTestCases = [
       parsedData: undefined,
       rawData:
         'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D%22qualabs%22%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    },
+  },
+  {
+    description:
+      'Test: Correct Query with configuration using specifickey with error in ot (token with quotes)',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3D%22i%22%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['br', 'sid'],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        br: 3200,
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 'i',
+        sf: 'd',
+        sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
+        st: 'v',
+        su: true,
+      },
+      rawData:
+        'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3D%22i%22%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    },
+  },
+  {
+    description:
+      'Test: Correct Query with configuration using specifickey with error in ot (not a string)',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3D12345%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['br', 'sid'],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        br: 3200,
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 12345,
+        sf: 'd',
+        sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
+        st: 'v',
+        su: true,
+      },
+      rawData:
+        'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3D12345%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    },
+  },
+  {
+    description:
+      'Test: Correct Header with configuration using specifickey with error in ot (token with quotes)',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3D%22i%22%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['br', 'sid'],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        br: 3200,
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 'i',
+        sf: 'd',
+        sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
+        st: 'v',
+        su: true,
+      },
+      rawData:
+        'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3D%22i%22%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    },
+  },
+  {
+    description:
+      'Test: Correct Query with configuration using specifickey with error in ot (not a string)',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3D12345%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['br', 'sid'],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        br: 3200,
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 12345,
+        sf: 'd',
+        sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
+        st: 'v',
+        su: true,
+      },
+      rawData:
+        'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3D12345%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    },
+  },
+  {
+    description:
+      'Test: Correct Header with configuration using specifickey with error in bs (=true)',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Cbs%3Dtrue%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['br', 'sid'],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        br: 3200,
+        bs: 'true',
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 'i',
+        sf: 'd',
+        sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
+        st: 'v',
+        su: true,
+      },
+      rawData:
+        'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Cbs%3Dtrue%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    },
+  },
+  {
+    description:
+      'Test: Correct Header with configuration using specifickey with error in bs (value string != false)',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Cbs%3D%22qualabs%22%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['br', 'sid'],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        br: 3200,
+        bs: 'qualabs',
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 'i',
+        sf: 'd',
+        sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
+        st: 'v',
+        su: true,
+      },
+      rawData:
+        'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Cbs%3D%22qualabs%22%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    },
+  },
+  {
+    description:
+      'Test: Correct Header with configuration using specifickey with error in bs (value number)',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Cbs%3D12345%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['br', 'sid'],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        br: 3200,
+        bs: 12345,
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 'i',
+        sf: 'd',
+        sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
+        st: 'v',
+        su: true,
+      },
+      rawData:
+        'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=br%3D3200%2Cbs%3D12345%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    },
+  },
+  {
+    description:
+      'Test: Correct Header with configuration using specifickey with error in bl (number with quotes)',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D%2212345%22%2Cbr%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['br', 'sid'],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        bl: '12345',
+        br: 3200,
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 'i',
+        sf: 'd',
+        sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
+        st: 'v',
+        su: true,
+      },
+      rawData:
+        'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D%2212345%22%2Cbr%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    },
+  },
+  {
+    description:
+      'Test: Correct Header with configuration using specifickey with error in bl (not a number)',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D%22qualabs%22%2Cbr%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['br', 'sid'],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        bl: 'qualabs',
+        br: 3200,
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 'i',
+        sf: 'd',
+        sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
+        st: 'v',
+        su: true,
+      },
+      rawData:
+        'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D%22qualabs%22%2Cbr%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    },
+  },
+  {
+    description:
+      'Test: Correct Header with configuration using specifickey with error in bl (not a number) #2',
+    query:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3Dtrue%2Cbr%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
+    config: {
+      specificKey: ['br', 'sid'],
+    },
+    output: {
+      valid: true,
+      errors: [],
+      warnings: [],
+      parsedData: {
+        bl: 'true',
+        br: 3200,
+        cid: '21cf726cfe3d937b5f974f72bb5bd06a',
+        ot: 'i',
+        sf: 'd',
+        sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',
+        st: 'v',
+        su: true,
+      },
+      rawData:
+      'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3Dtrue%2Cbr%3D3200%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
     },
   },
 ];
