@@ -13,7 +13,7 @@ const jsonIsValid = (jsonString, errors, config, extendedKeyTypes) => {
       return;
     }
     if (keys.includes(key)) {
-      const description = `The key '${key}' is repeated.`;
+      const description = `The key ${key} is repeated.`;
       errors.push(createError(errorTypes.duplicateKey, key, undefined, description));
       valid = false;
     }

@@ -54,7 +54,7 @@ export const headerTestCases = [
         {
           type: 'duplicated-header',
           key: 'CMCD-Object',
-          value: "This header 'CMCD-Object' is repeated.",
+          value: 'This header CMCD-Object is repeated.',
           description: 'Header is duplicated',
         },
       ],
@@ -410,7 +410,7 @@ export const headerTestCases = [
       valid: false,
       errors: [
         {
-          description: 'The value for the key "br" must be a number',
+          description: 'The value for the key br must be a number',
           key: 'br',
           type: 'incorrect-format',
           value: 'true',
