@@ -7,7 +7,7 @@ import successImg from '../../assets/success.svg'
 import useRenderSize from '../../hooks/useRenderSize';
 
 const RequestMessage = (props) => {
-    const {message, type, onClick} = props;
+    const {message, type, onClick, reqId } = props;
     const { widthSize, device } = useRenderSize();
 
     const renderImage = () => {
@@ -28,9 +28,10 @@ const RequestMessage = (props) => {
     }
 
     return (
-        <Button variant={type} onClick={onClick} style={{width: '100%'}}> 
+        <Button className="btn" variant={type} onClick={onClick} style={{width: '100%'}}> 
             {renderImage()}
             {`${message?.slice(0, device === 'mobile'? 35 : 20 + widthSize/50)}...`}
+            <span className="badge bg-secondary me-2">{reqId}</span>
         </Button>
     )
 }
