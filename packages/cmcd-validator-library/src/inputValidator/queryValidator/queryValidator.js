@@ -1,26 +1,28 @@
-import { cmcdTypes, keyTypes, errorTypes } from '../../utils/constants.js';
-import { createError } from '../../utils/error.js';
-import checkQuotes from '../../utils/checkQuotes.js';
+import {
+  isBooleanCorrect, isNumberCorrect, isStringCorrect,
+  isKeyRepeated, isSeparetedCorrectly, includesCMCDRequest,
+  isURLMalformed,
+  areRequestsSeparated,
+  multipleCMCDReq,
+} from '../../utils/formatFunctions.js';
 
-const queryValidator = (queryString, error) => {
-  if (!queryString.includes('CMCD=')) {
-    error.push(createError(errorTypes.noCMCDRequest));
+const queryValidator = (queryString, error, warnings, config, extendedKeyTypes) => {
+  // Check if there is a CMCD request in the queryString and Catch if the URL is malformed
+  if (!includesCMCDRequest(queryString, error) || isURLMalformed(queryString, error)) {
     return false;
   }
 
-  // Check if the URL is encoded
-  if (decodeURI(queryString) === queryString) {
-    error.push(createError(errorTypes.parameterEncoding));
+  const query = queryString.split('?').pop();
+  const requests = decodeURIComponent(query).split('CMCD=');
+
+  // Check if there is another query before CMCD query and is missing a '&' separating them
+  if (!areRequestsSeparated(requests, error)) {
     return false;
   }
 
   // Check if there is more than one CMCD request
-  const query = queryString.split('?').pop();
-  const requests = decodeURIComponent(query).split('CMCD=');
   requests.shift();
-
-  if (requests.length > 1) {
-    error.push(createError(errorTypes.incorrectFormat));
+  if (multipleCMCDReq(requests, error)) {
     return false;
   }
 
@@ -31,33 +33,27 @@ const queryValidator = (queryString, error) => {
 
   // Check: key/value is separated by =
   values.forEach((val) => {
-    const [key, value] = val.split('=');
-    keys.push(key);
-
-    // Check: string require ""
-    if ((keyTypes[key] === cmcdTypes.string && !checkQuotes(value))
-      || (keyTypes[key] === cmcdTypes.token && checkQuotes(value))
-    ) {
+    if (isSeparetedCorrectly(val, error, extendedKeyTypes)) {
+      const [key, value] = val.split('=');
+      if (config?.specificKey && !config.specificKey?.includes(key)) {
+        return;
+      }
+      if (isKeyRepeated(key, keys, error)) {
+        valid = false;
+      }
+      // Check only the keys in the configuration
+      // Check: string require ""
+      if (!isStringCorrect(key, value, error, extendedKeyTypes)
+        || !isBooleanCorrect(key, value, error, extendedKeyTypes)
+        || !isNumberCorrect(key, value, error, extendedKeyTypes)) {
+        valid = false;
+      }
+      keys.push(key);
+    } else {
       valid = false;
-      error.push(createError(errorTypes.invalidValue, key, value));
-    }
-
-    // Check: if the key does not have value it must be a bool
-    // Check: number does not require ""
-    if (
-      (typeof value === 'undefined' && keyTypes[key] !== cmcdTypes.boolean)
-      || (value === 'true' && keyTypes[key] === cmcdTypes.boolean)
-      || (keyTypes[key] === cmcdTypes.number && checkQuotes(value))
-    ) {
-      valid = false;
-      error.push(createError(errorTypes.wrongTypeValue, key, value));
     }
   });
 
-  if ((new Set(keys)).size !== keys.length) {
-    error.push(createError(errorTypes.duplicateKey));
-    return false;
-  }
   return valid;
 };
 

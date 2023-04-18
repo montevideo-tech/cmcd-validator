@@ -1,0 +1,21 @@
+name: Run Tests
+run-name: ${{ github.actor }} launch the Tests 🩺
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+jobs:
+  Run-the-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: "Run the tests"
+        run: |
+          npm install
+          npm run lint
+          npm run build
+          npm run test

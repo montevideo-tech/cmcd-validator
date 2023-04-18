@@ -1,0 +1,11 @@
+.validatorBox {
+    text-align: left;
+    background-color: #1e1e1e;
+    overflow-wrap: break-word;
+  }
+
+.validatorBoxHeader {
+  font-weight: bold;
+  text-align: left;
+  overflow-wrap: break-word;
+}

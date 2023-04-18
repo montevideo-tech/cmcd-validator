@@ -1,0 +1,54 @@
+
+$primary: #4dbaac;
+$danger: #A84343;
+$warning: #dac137;
+
+
+@import 'bootstrap/scss/bootstrap.scss';
+
+#root {
+  text-align: center;
+  background-color: transparent;
+}
+
+body {
+  background-color: #2d1674;
+  background: url(https://stage.montevideotech.dev/static/media/background.bd8912f09753f045d141.jpg) no-repeat;
+  background-size: cover;
+}
+
+.logo {
+  height: 10em;
+  width: 18em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #959affaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
