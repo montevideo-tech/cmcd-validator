@@ -32,9 +32,8 @@ function DashPlayer({dispatchReqList, manifestURI }) {
       });
 
       var origOpen = XMLHttpRequest.prototype.open;
-      console.log('request intercept event initialized')
+      
       XMLHttpRequest.prototype.open = function(method, url) {
-        console.log(url);
         dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
         origOpen.apply(this, arguments);
       };
