@@ -5,6 +5,8 @@ import keySortedAlphabetically from './utils/keySortedAlphabetically.js';
 import { createOutput } from './utils/output.js';
 import { keyTypes } from './utils/constants.js';
 import { logger } from './logger.js';
+// import * as log from 'loglevel';
+// import log from 'loglevel';
 
 const CMCDJsonValidator = (jsonString, warningFlag = true) => {
   const errors = [];
@@ -12,6 +14,7 @@ const CMCDJsonValidator = (jsonString, warningFlag = true) => {
   const warnings = [];
   const requestID = uuidv4();
 
+  // log.setLevel('debug');
   logger.info(`${requestID}: Started CMCD Json Validation.`);
 
   // Check json

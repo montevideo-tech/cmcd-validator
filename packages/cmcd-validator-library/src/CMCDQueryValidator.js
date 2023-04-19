@@ -6,6 +6,8 @@ import { parseQueryToJson } from './parser/index.js';
 import { setConfig } from './inputValidator/configValidator/setConfig.js';
 import { createOutput } from './utils/output.js';
 import { logger } from './logger.js';
+// import * as log from 'loglevel';
+// import log from 'loglevel';
 
 const CMCDQueryValidator = (query, config, warningFlag = true) => {
   const errors = [];
@@ -13,6 +15,7 @@ const CMCDQueryValidator = (query, config, warningFlag = true) => {
   const warnings = [];
   const requestID = uuidv4();
 
+  // logger.setLevel('debug');
   logger.info(`${requestID}: Started CMCD Query Validation.`);
 
   const [validConfig,

@@ -5,7 +5,7 @@ import "shaka-player/dist/controls.css";
 import "./ShakaExample.css";
 import { DataWindow } from "./DataWindow";
 import { ValidatorView } from "./ValidatorView";
-import { CMCDQueryValidator } from "@montevideo-tech/cmcd-validator";
+import { CMCDQueryValidator } from "@montevideo-tech/cmcd-validator/src/index";
 
 function setNewData (state, action) {
   let aggregateArray = []

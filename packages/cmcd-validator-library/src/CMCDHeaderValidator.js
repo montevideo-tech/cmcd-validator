@@ -5,13 +5,17 @@ import { parseHeaderToJson } from './parser/index.js';
 import { createOutput } from './utils/output.js';
 import { keyTypes } from './utils/constants.js';
 import { logger } from './logger.js';
+// import * as log from 'loglevel';
+// import log from 'loglevel';
 
-const CMCDHeaderValidator = (header, warningFlag = true) => {
+
+ const CMCDHeaderValidator = (header, warningFlag = true) => {
   const errors = [];
   const rawData = header;
   const warnings = [];
   const requestID = uuidv4();
 
+  // log.setLevel('debug');
   logger.info(`${requestID}: Started CMCD Header Validation.`);
 
   // Check header
