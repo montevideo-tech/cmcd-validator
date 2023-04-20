@@ -169,7 +169,7 @@ export const headerConfigTestCases = [
         valid: false,
         errors: [
           {
-            description: "The 'br' value must be greater than 0.",
+            description: 'The br value must be greater than 0.',
             key: 'br',
             type: 'invalid-value',
             value: -2300,
@@ -606,7 +606,7 @@ export const headerConfigTestCases = [
       valid: false,
       errors: [
         {
-          description: "The key 'com.qualabs-br' is not reserved.",
+          description: 'The key com.qualabs-br is not reserved.',
           key: 'com.qualabs-br',
           type: 'unknown-key',
           value: 20,

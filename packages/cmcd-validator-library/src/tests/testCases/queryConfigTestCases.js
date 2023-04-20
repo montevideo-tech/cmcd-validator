@@ -95,7 +95,7 @@ export const queryConfigTestCases = [
           type: 'incorrect-format',
           key: 'br',
           value: 'qualabs',
-          description: 'The value for the key "br" must be a number',
+          description: 'The value for the key br must be a number',
         },
       ],
       warnings: [],
@@ -633,7 +633,7 @@ export const queryConfigTestCases = [
       valid: false,
       errors: [
         {
-          description: "The key 'com.qualabs-br' is not reserved.",
+          description: 'The key com.qualabs-br is not reserved.',
           key: 'com.qualabs-br',
           type: 'unknown-key',
           value: 'false',
@@ -723,7 +723,7 @@ export const queryConfigTestCases = [
       valid: false,
       errors: [
         {
-          description: 'The value for the key "br" must be a number',
+          description: 'The value for the key br must be a number',
           type: 'incorrect-format',
           key: 'br',
           value: '"qualabs"',

@@ -37,7 +37,7 @@ export const isBooleanCorrect = (key, value, errors, extendedkeyTypes) => {
 
 export const isNumberCorrect = (key, value, errors, extendedkeyTypes) => {
   if ((extendedkeyTypes[key] === cmcdTypes.number && !Number(value))) {
-    const description = `The value for the key "${key}" must be a number`;
+    const description = `The value for the key ${key} must be a number`;
     errors.push(createError(errorTypes.incorrectFormat, key, value, description));
     return false;
   }
@@ -55,7 +55,7 @@ export const isSeparetedCorrectly = (keyVal, errors, extendedkeyTypes) => {
 
 export const isKeyRepeated = (key, keys, errors) => {
   if (keys.includes(key)) {
-    const description = `The key '${key}' is repeated.`;
+    const description = `The key ${key} is repeated.`;
     errors.push(createError(errorTypes.duplicateKey, key, undefined, description));
     return true;
   }
@@ -64,7 +64,7 @@ export const isKeyRepeated = (key, keys, errors) => {
 
 export const isHeaderRepeated = (header, headers, errors) => {
   if (headers.includes(header)) {
-    const description = `This header '${header}' is repeated.`;
+    const description = `This header ${header} is repeated.`;
     errors.push(createError(errorTypes.duplicatedHeader, header, description));
     return true;
   }
