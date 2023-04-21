@@ -29,9 +29,9 @@ const RequestMessage = (props) => {
 
     return (
         <Button className="btn" variant={type} onClick={onClick} style={{width: '100%'}}> 
+            <span className="badge bg-secondary me-2">{reqId}</span>
             {renderImage()}
             {`${message?.slice(0, device === 'mobile'? 35 : 20 + widthSize/50)}...`}
-            <span className="badge bg-secondary me-2">{reqId}</span>
         </Button>
     )
 }
