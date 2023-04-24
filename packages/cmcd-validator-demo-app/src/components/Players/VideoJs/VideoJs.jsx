@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import videojs from 'video.js';
 import { CMCDQueryValidator } from '@montevideo-tech/cmcd-validator';
 import 'video.js/dist/video-js.css';
 import '@montevideo-tech/videojs-cmcd'
 
 export const VideoJS = (props) => {
-  const videoRef = React.useRef(null);
-  const playerRef = React.useRef(null);
+  const videoRef = useRef(null);
+  const playerRef = useRef(null);
   const {manifestURI, dispatchReqList } = props;
   
-  React.useEffect(() => {
+  useEffect(() => {
 
     const options = {
       autoplay: true,
@@ -34,13 +34,6 @@ export const VideoJS = (props) => {
       const player = playerRef.current = videojs(videoElement, options);
 
       player.cmcd();
-      
-      var origOpen = XMLHttpRequest.prototype.open;
-      XMLHttpRequest.prototype.open = function(method, url) {
-        dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
-        origOpen.apply(this, arguments);
-      };
-
     // You could update an existing player in the `else` block here
     // on prop change, for example:
     } else {
@@ -48,19 +41,12 @@ export const VideoJS = (props) => {
       
       player.autoplay(options.autoplay);
       player.src(options.sources);
-      player.cmcd();
-
-      var origOpen = XMLHttpRequest.prototype.open;
-      XMLHttpRequest.prototype.open = function(method, url) {
-        dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
-        origOpen.apply(this, arguments);
-      };
-      
+      player.cmcd();      
     }
   }, [videoRef, manifestURI]);
 
   // Dispose the Video.js player when the functional component unmounts
-  React.useEffect(() => {
+  useEffect(() => {
     const player = playerRef.current;
 
     return () => {
@@ -70,6 +56,15 @@ export const VideoJS = (props) => {
       }
     };
   }, [playerRef]);
+
+  useEffect(()=> {
+    console.log("useEffect")
+    var origOpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function(method, url) {
+      dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
+      origOpen.apply(this, arguments);
+    };
+  }, [])
 
   return (
     <div data-vjs-player>
