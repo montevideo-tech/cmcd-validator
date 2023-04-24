@@ -140,9 +140,9 @@ export const queryConfigTestCases = [
       valid: false,
       errors: [
         {
-          type: 'incorrect-format',
+          type: 'wrong-type-value',
           key: 'su',
-          description: 'If the value is TRUE, the = and the value must be omitted',
+          description: 'The value for the key su must be a boolean.',
           value: '23',
         },
       ],
