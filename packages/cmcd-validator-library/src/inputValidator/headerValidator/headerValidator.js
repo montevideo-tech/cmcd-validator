@@ -1,11 +1,18 @@
 import keySortedAlphabetically from '../../utils/keySortedAlphabetically.js';
-import { cmcdHeader } from '../../utils/constants.js';
 import {
   isKeyInCorrectHeader, isBooleanCorrect, isSeparetedCorrectly,
-  isStringCorrect, isHeaderRepeated, isKeyRepeated, isHeader, isEmptyHeader,
-} from './formatFunctions.js';
+  isStringCorrect, isHeaderRepeated, isKeyRepeated, isHeader, isEmptyHeader, isNumberCorrect,
+} from '../../utils/formatFunctions';
 
-const headerValidator = (headerString, errors, requestID, warnings, warningFlag = true) => {
+const headerValidator = (
+  headerString,
+  errors,
+  warnings,
+  config,
+  extendedcmcdHeader,
+  extendedKeyTypes,
+  warningFlag = true,
+) => {
   const headers = headerString.split('\n');
   const cmcdHeaders = [];
   const keys = [];
@@ -17,25 +24,27 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
   // eslint-disable-next-line consistent-return
   headers.forEach((element) => {
     const [header, keysArray] = element.split(': ');
-    if (!(header in cmcdHeader)) {
+    if (!(header in extendedcmcdHeader)) {
       return false;
     }
 
-    if (isHeaderRepeated(header, cmcdHeaders, errors, requestID)
-    || isEmptyHeader(keysArray, header, errors, requestID)) {
+    if (isHeaderRepeated(header, cmcdHeaders, errors)
+    || isEmptyHeader(keysArray, header, errors)) {
       valid = false;
       return false;
     }
 
     keysArray.split(',').forEach((keyVal) => {
-      if (isSeparetedCorrectly(keyVal, errors, requestID)) {
+      if (isSeparetedCorrectly(keyVal, errors, extendedKeyTypes)) {
         const [key, value] = keyVal.split('=');
-        if (isKeyRepeated(key, keys, errors, requestID)) {
-          valid = false;
+        if (config?.specificKey && !config.specificKey?.includes(key)) {
+          return;
         }
-        if (!isKeyInCorrectHeader(header, key, errors, requestID)
-        || !isStringCorrect(key, value, errors, requestID)
-        || !isBooleanCorrect(key, value, errors, requestID)) {
+        if (isKeyRepeated(key, keys, errors)
+        || !isKeyInCorrectHeader(header, key, errors, extendedcmcdHeader)
+        || !isStringCorrect(key, value, errors, extendedKeyTypes)
+        || !isBooleanCorrect(key, value, errors, extendedKeyTypes)
+        || !isNumberCorrect(key, value, errors, extendedKeyTypes)) {
           valid = false;
         }
         keys.push(key);
@@ -45,13 +54,13 @@ const headerValidator = (headerString, errors, requestID, warnings, warningFlag 
       }
     });
     if (warningFlag === true) {
-      keySortedAlphabetically(headerKeys, warnings, requestID);
+      keySortedAlphabetically(headerKeys, warnings);
       headerKeys = [];
     }
     cmcdHeaders.push(header);
   });
 
-  if (!isHeader(cmcdHeaders, errors, requestID)) {
+  if (!isHeader(cmcdHeaders, errors)) {
     return false;
   }
   return valid;

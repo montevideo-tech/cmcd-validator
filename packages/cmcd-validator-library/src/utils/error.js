@@ -3,8 +3,8 @@ import getKeyByValue from './getKeyByValue.js';
 import jsLogger from 'js-logger';
 
 export const createError = (type, requestID, key, value, description) => {
-  jsLogger.useDefaults({ defaultLevel: jsLogger.TRACE })
-  
+  jsLogger.useDefaults({ defaultLevel: jsLogger.TRACE });
+
   if (!Object.values(errorTypes).includes(type)) {
     return -1;
   }
