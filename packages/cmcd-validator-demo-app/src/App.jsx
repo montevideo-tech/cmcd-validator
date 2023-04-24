@@ -20,7 +20,6 @@ function setRequestList (state, action) {
   switch (action.type) {
     case 'saveQuery': 
       action.payload.reqId = state[0]? state[0]?.reqId + 1 : 1;
-      console.log(action.payload)
       aggregateArray = [action.payload, ...state];
       aggregateArray.splice(
         30,
