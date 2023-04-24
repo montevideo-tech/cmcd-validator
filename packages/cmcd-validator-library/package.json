@@ -7,6 +7,7 @@
     "access": "public"
   },
   "browser": "dist/cmcd-validator.umd.js",
+  "module": "dist/cmcd-validator.esm.js",
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
@@ -46,7 +47,6 @@
     "rollup-plugin-node-polyfills": "^0.2.1"
   },
   "dependencies": {
-    "bunyan": "^1.8.15",
     "uuid": "^9.0.0"
   }
 }

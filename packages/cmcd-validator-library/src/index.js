@@ -1,12 +1,12 @@
-// import CMCDQueryValidator from './CMCDQueryValidator.js';
-// import CMCDJsonValidator from './CMCDJsonValidator.js';
-// import CMCDHeaderValidator from './CMCDHeaderValidator.js';
+// import CMCDQueryValidator from './CMCDQueryValidator';
+// import CMCDJsonValidator from './CMCDJsonValidator';
+// import CMCDHeaderValidator from './CMCDHeaderValidator';
 
 // export {
 //   CMCDQueryValidator,
 //   CMCDJsonValidator,
-//   CMCDHeaderValidator
-// }
+//   CMCDHeaderValidator,
+// };
 
 // export { CMCDQueryValidator as CMCDQueryValidator };
 
