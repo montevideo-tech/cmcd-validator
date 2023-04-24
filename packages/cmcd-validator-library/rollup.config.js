@@ -7,6 +7,8 @@ import cleanup from 'rollup-plugin-cleanup';
 import filesize from 'rollup-plugin-filesize';
 import json from '@rollup/plugin-json';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
+import globals from 'rollup-plugin-node-globals';
+import builtins from 'rollup-plugin-node-builtins';
 
 export default [
   {
@@ -14,10 +16,17 @@ export default [
     output: {
       name: 'cmcd-validator-library',
       file: pkg.browser,
-      format: 'umd'
+      format: 'umd',
+      globals: {
+        process: 'process' 
+      } 
     },
     plugins: [
-      nodeResolve({ browser: true, preferBuiltins: false }),
+      nodeResolve({
+        jsnext: true,
+        main: true,
+        module: true
+      }),
       commonjs({
         include: [/node_modules/, /src/],
         transformMixedEsModules: true
@@ -31,8 +40,9 @@ export default [
             '@babel/preset-env',
             {
               targets: {
+                chrome: '100',
                 safari: '11',
-                firefox: '66'
+                firefox: '100'
               },
               useBuiltIns: 'usage',
               corejs: {
@@ -45,6 +55,8 @@ export default [
         exclude: ['/node_modules/**'],
         plugins: ['@babel/plugin-transform-runtime']
       }),
+      globals(),
+      builtins(),
       terser(),
       cleanup({
         comments: 'none',
@@ -52,119 +64,5 @@ export default [
       }),
       filesize()
     ]
-  },
-
-
-  // {
-  //   input: './src/index.js',
-  //   output: {
-  //     name: 'cmcd-validator',
-  //     file: pkg.browser,
-  //     format: 'umd',
-  //     extend: true,
-  //     globals: {
-  //       winston: 'winston',
-  //       loglevel: 'loglevel',
-  //     },
-  //     // umdNamedDefine: true,
-  //   },
-  //   plugins: [
-  //     // nodeResolve(),
-  //     // nodeResolve({
-  //     // //   preferBuiltins: true,
-  //     // }),
-  //     nodeResolve({ browser: true, preferBuiltins: true }),
-  //     // commonjs(),
-  //     commonjs({
-  //       include: ['./node_modules/*', './src/*'],
-  //       transformMixedEsModules: true,
-  //     }),
-  //     // json(),
-  //     babel({
-  //       babelHelpers: 'bundled',
-  //       presets: [
-  //         [
-  //           '@babel/preset-env',
-  //           {
-  //             targets: {
-  //               node: 'current',
-  //             },
-  //           },
-  //         ],
-  //       ],
-  //       // plugins: [
-  //       //   '@babel/plugin-transform-modules-commonjs',
-  //       // ],
-  //       exclude: './node_modules/*',
-  //     }),
-  //   ],
-  //   external: [
-  //     'winston',
-  //     '@montevideo-tech/cmcd-validator',
-  //     // 'loglevel',
-  //   ],
-  // },
-  // {
-  //   input: './src/index.js',
-  //   output: [
-  //     { file: pkg.main, format: 'cjs' },
-  //     { file: pkg.module, format: 'es' },
-  //   ],
-  //   plugins: [
-  //     nodeResolve({ browser: true, preferBuiltins: false }),
-  //     commonjs({
-  //       include: ['./node_modules/*', './src/*'],
-  //       transformMixedEsModules: true,
-  //     }),
-  //     json(),
-  //     babel({
-  //       babelHelpers: 'bundled',
-  //       presets: [
-  //         [
-  //           '@babel/preset-env',
-  //           {
-  //             targets: {
-  //               node: 6,
-  //               chrome: '100',
-  //               firefox: '100',
-  //             },
-  //           },
-  //         ],
-  //       ],
-  //       exclude: './node_modules/*',
-  //     }),
-  //   ],
-  // },
-  // {
-  //   input: './src/index.js',
-  //   output: {
-  //     name: 'cmcd-validator-debug',
-  //     file: pkg.browser,
-  //     format: 'umd',
-  //     sourcemap: true,
-  //   },
-  //   plugins: [
-  //     nodeResolve({ browser: true, preferBuiltins: false }),
-  //     commonjs({
-  //       include: ['./node_modules/*', './src/*'],
-  //       transformMixedEsModules: true,
-  //     }),
-  //     json(),
-  //     babel({
-  //       babelHelpers: 'bundled',
-  //       presets: [
-  //         [
-  //           '@babel/preset-env',
-  //           {
-  //             targets: {
-  //               chrome: '100',
-  //               firefox: '100',
-  //             },
-  //           },
-  //         ],
-  //       ],
-  //       exclude: './node_modules/*',
-  //     }),
-  //   ],
-  // },
+  }
 ];

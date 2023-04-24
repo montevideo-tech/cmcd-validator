@@ -4,36 +4,33 @@ import { keyValValidator } from './keyValueValidator/index.js';
 import { parseHeaderToJson } from './parser/index.js';
 import { createOutput } from './utils/output.js';
 import { keyTypes } from './utils/constants.js';
-import { logger } from './logger.js';
-// import * as log from 'loglevel';
-// import log from 'loglevel';
+import jsLogger from 'js-logger'
 
-
- const CMCDHeaderValidator = (header, warningFlag = true) => {
+const CMCDHeaderValidator = (header, warningFlag = true) => {
   const errors = [];
   const rawData = header;
   const warnings = [];
   const requestID = uuidv4();
 
-  // log.setLevel('debug');
-  logger.info(`${requestID}: Started CMCD Header Validation.`);
+  jsLogger.useDefaults({ defaultLevel: jsLogger.TRACE })
+  jsLogger.info(`${requestID}: Started CMCD Header Validation.`);
 
   // Check header
-  logger.info(`${requestID}: Validating header format.`);
+  jsLogger.info(`${requestID}: Validating header format.`);
   const valid = headerValidator(header, errors, requestID, warnings, warningFlag);
 
   if (!valid) {
-    logger.info(`${requestID}: Header not valid.`);
+    jsLogger.info(`${requestID}: Header not valid.`);
     return createOutput(errors, warnings, rawData);
   }
-  logger.info(`${requestID}: Header is valid.`);
+  jsLogger.info(`${requestID}: Header is valid.`);
 
   // Parsed to json
-  logger.info(`${requestID}: Parsing header.`);
+  jsLogger.info(`${requestID}: Parsing header.`);
   const parsedData = parseHeaderToJson(header);
 
   // Check key value
-  logger.info(`${requestID}: Validating header keys.`);
+  jsLogger.info(`${requestID}: Validating header keys.`);
   keyValValidator(parsedData, errors, requestID, warnings, null, keyTypes, warningFlag);
 
   return createOutput(errors, warnings, rawData, parsedData);

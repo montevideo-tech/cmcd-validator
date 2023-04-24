@@ -4,9 +4,7 @@ import { keyValValidator } from './keyValueValidator/index.js';
 import keySortedAlphabetically from './utils/keySortedAlphabetically.js';
 import { createOutput } from './utils/output.js';
 import { keyTypes } from './utils/constants.js';
-import { logger } from './logger.js';
-// import * as log from 'loglevel';
-// import log from 'loglevel';
+import jsLogger from 'js-logger'
 
 const CMCDJsonValidator = (jsonString, warningFlag = true) => {
   const errors = [];
@@ -14,18 +12,18 @@ const CMCDJsonValidator = (jsonString, warningFlag = true) => {
   const warnings = [];
   const requestID = uuidv4();
 
-  // log.setLevel('debug');
-  logger.info(`${requestID}: Started CMCD Json Validation.`);
+  jsLogger.useDefaults({ defaultLevel: jsLogger.TRACE })
+  jsLogger.info(`${requestID}: Started CMCD Json Validation.`);
 
   // Check json
-  logger.info(`${requestID}: Validating Json format.`);
+  jsLogger.info(`${requestID}: Validating Json format.`);
   const valid = jsonIsValid(jsonString, errors, requestID);
 
   if (!valid) {
-    logger.info(`${requestID}: Json not valid.`);
+    jsLogger.info(`${requestID}: Json not valid.`);
     return createOutput(errors, warnings, rawData);
   }
-  logger.info(`${requestID}: Json is valid.`);
+  jsLogger.info(`${requestID}: Json is valid.`);
 
   const jsonObj = JSON.parse(jsonString);
 
@@ -34,7 +32,7 @@ const CMCDJsonValidator = (jsonString, warningFlag = true) => {
   }
 
   // Check key value
-  logger.info(`${requestID}: Validating Json keys.`);
+  jsLogger.info(`${requestID}: Validating Json keys.`);
   keyValValidator(jsonObj, errors, requestID, warnings, null, keyTypes, warningFlag);
 
   return createOutput(errors, warnings, rawData, jsonObj, warnings);
