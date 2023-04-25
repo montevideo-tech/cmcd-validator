@@ -9,13 +9,8 @@ export const VideoJS = (props) => {
   const playerRef = useRef(null);
   const {manifestURI, dispatchReqList } = props;
   
-<<<<<<< HEAD
   useEffect(() => {
 
-=======
-  React.useEffect(() => {
-    
->>>>>>> develop
     const options = {
       autoplay: true,
       controls: false,
