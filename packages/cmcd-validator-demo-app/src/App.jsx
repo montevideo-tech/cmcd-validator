@@ -62,7 +62,6 @@ function App() {
       <DataWindow
         data={requestList}
         setValidatorOutput={setValidatorOutput}
-        contador
         />
       )
     }
