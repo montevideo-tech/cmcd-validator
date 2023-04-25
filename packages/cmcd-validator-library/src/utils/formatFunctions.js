@@ -39,7 +39,7 @@ export const isBooleanCorrect = (key, value, errors, extendedkeyTypes) => {
 };
 
 export const isNumberCorrect = (key, value, errors, extendedkeyTypes) => {
-  if ((extendedkeyTypes[key] === cmcdTypes.number && !Number(value))) {
+  if (extendedkeyTypes[key] === cmcdTypes.number && Number.isNaN(parseInt(value, 10))) {
     const description = `The value for the key ${key} must be a number`;
     errors.push(createError(errorTypes.incorrectFormat, key, value, description));
     return false;
