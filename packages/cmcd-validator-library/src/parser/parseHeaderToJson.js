@@ -15,7 +15,7 @@ const parseHeaderToJSON = (headerString, extendedcmcdHeader, extendedKeyTypes) =
       } else {
         // eslint-disable-next-line prefer-const
         let [subKey, subValue] = subPair.split('=');
-        subValue = Number.isNaN(Number(subValue)) ? subValue.replace(/"/g, '') : Number(subValue);
+        subValue = (Number.isNaN(Number(subValue))) ? subValue.replace(/"/g, '') : Number(subValue);
         if (extendedKeyTypes[subKey] === 'boolean' && subValue === 'false') subValue = false;
         result[subKey] = subValue;
       }
