@@ -58,7 +58,6 @@ export const VideoJS = (props) => {
   }, [playerRef]);
 
   useEffect(()=> {
-    console.log("useEffect")
     var origOpen = XMLHttpRequest.prototype.open;
     XMLHttpRequest.prototype.open = function(method, url) {
       dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
