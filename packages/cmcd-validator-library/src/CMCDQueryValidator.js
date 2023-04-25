@@ -17,7 +17,7 @@ const CMCDQueryValidator = (query, config, warningFlag = true) => {
   jsLogger.info(`${requestID}: Started CMCD Query Validation.`);
 
   const [validConfig,
-    extendedKeyTypes] = setConfig(config, errors, warnings, warningFlag);
+    extendedKeyTypes] = setConfig(config, errors, requestID, warnings, warningFlag);
   // check config
   jsLogger.info(`${requestID}: Check Configuration.`);
   if (!validConfig) {
@@ -45,7 +45,7 @@ const CMCDQueryValidator = (query, config, warningFlag = true) => {
 
   // Check key value
   jsLogger.info(`${requestID}: Validating query keys.`);
-  keyValValidator(parsedData, errors, warnings, config, extendedKeyTypes, warningFlag);
+  keyValValidator(parsedData, errors, requestID, warnings, config, extendedKeyTypes, warningFlag);
 
   return createOutput(errors, warnings, rawData, parsedData);
 };

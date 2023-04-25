@@ -17,7 +17,7 @@ const CMCDHeaderValidator = (header, config, warningFlag = true) => {
 
   const [validConfig,
     extendedKeyTypes,
-    extendedcmcdHeader] = setConfig(config, errors, warnings, warningFlag);
+    extendedcmcdHeader] = setConfig(config, errors, requestID, warnings, warningFlag);
   // check config
   if (!validConfig) {
     return createOutput(errors, warnings, rawData);

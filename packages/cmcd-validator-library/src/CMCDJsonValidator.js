@@ -16,11 +16,14 @@ const CMCDJsonValidator = (jsonString, config, warningFlag = true) => {
   jsLogger.info(`${requestID}: Started CMCD Json Validation.`);
 
   const [validConfig,
-    extendedKeyTypes] = setConfig(config, errors, warnings, warningFlag);
+    extendedKeyTypes] = setConfig(config, errors, requestID, warnings, warningFlag);
   // check config
   if (!validConfig) {
+    jsLogger.info(`${requestID}: Configuration is not valid.`);
     return createOutput(errors, warnings, rawData);
   }
+
+  jsLogger.info(`${requestID}: Confiuration es valid.`);
 
   // Check json
   jsLogger.info(`${requestID}: Validating Json format.`);
@@ -41,7 +44,7 @@ const CMCDJsonValidator = (jsonString, config, warningFlag = true) => {
   const jsonObj = JSON.parse(jsonString);
 
   if (warningFlag === true) {
-    keySortedAlphabetically(Object.keys(jsonObj), warnings);
+    keySortedAlphabetically(Object.keys(jsonObj), warnings, requestID);
   }
 
   // Check key value
