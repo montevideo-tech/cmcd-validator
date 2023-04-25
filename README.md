@@ -4,15 +4,17 @@
 
 ##  Table  of  contents
 <!-- * [CMCD  Validation  Library  usage](#cmcd-validation-library-usage) -->
-* [Repository content](#repository-content)
-* [Setup](#setup)
-  * [cmcd-validator-library](#cmcd-validator-library)
-  * [cmcd-validator-demo-app](#cmcd-validator-demo-app)
-* [General information](#general-information)
-	* [Objective  of  the  CMCD  Validator  tool](#objective-of-the-cmcd-validator-tool)
-    * [The  main  Milestones](#the-main-milestones-we-would-like-to-cover-to-achieve-the-cmcd-validator-are:)
-* [How to report a bug](#how-to-report-a-bug)
-* [Technologies](#technologies)
+- [CMCD-Validator](#cmcd-validator)
+  - [Table  of  contents](#table--of--contents)
+  - [Repository content](#repository-content)
+  - [Setup](#setup)
+    - [cmcd-validator-library](#cmcd-validator-library)
+    - [cmcd-validator-demo-app](#cmcd-validator-demo-app)
+  - [General information](#general-information)
+    - [Objective of the CMCD Validator tool](#objective-of-the-cmcd-validator-tool)
+    - [The  main  Milestones  we  would  like  to  cover  to  achieve  the  CMCD  validator  are:](#the--main--milestones--we--would--like--to--cover--to--achieve--the--cmcd--validator--are)
+  - [How to report a bug](#how-to-report-a-bug)
+  - [Technologies](#technologies)
 
 ## Repository content
 

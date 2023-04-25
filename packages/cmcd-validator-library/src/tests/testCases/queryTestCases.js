@@ -277,10 +277,10 @@ export const queryTestCases = [
       valid: false,
       errors: [
         {
-          type: 'incorrect-format',
+          type: 'wrong-type-value',
           key: 'su',
           value: '"Qualabs"',
-          description: 'If the value is TRUE, the = and the value must be omitted',
+          description: 'The value for the key su must be a boolean.',
         },
       ],
       warnings: [],
@@ -297,10 +297,10 @@ export const queryTestCases = [
       valid: false,
       errors: [
         {
-          type: 'incorrect-format',
+          type: 'wrong-type-value',
           key: 'su',
           value: '23',
-          description: 'If the value is TRUE, the = and the value must be omitted',
+          description: 'The value for the key su must be a boolean.',
         },
       ],
       warnings: [],
