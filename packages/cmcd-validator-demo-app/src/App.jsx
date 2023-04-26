@@ -22,8 +22,8 @@ function setRequestList (state, action) {
       action.payload.reqId = state[0]? state[0]?.reqId + 1 : 1;
       aggregateArray = [action.payload, ...state];
       aggregateArray.splice(
-        30,
-        aggregateArray.length - 30 > 0 ? aggregateArray.length - 30 : 0
+        100,
+        aggregateArray.length - 100 > 0 ? aggregateArray.length - 100 : 0
       );
     break;
   
@@ -95,7 +95,7 @@ function App() {
                     aria-label="Recipient's username"
                     aria-describedby="basic-addon2"
                   />
-                  <Button variant="primary" type="submit">start</Button>
+                  <Button variant="primary" type="submit">Start</Button>
               </InputGroup>
               </Form>
             </Col>            

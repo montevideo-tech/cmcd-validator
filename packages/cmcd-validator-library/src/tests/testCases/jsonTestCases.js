@@ -272,7 +272,7 @@ export const jsonTestCases = [
           type: 'duplicate-key',
           key: 'rtp',
           value: undefined,
-          description: "The key 'rtp' is repeated.",
+          description: 'The key rtp is repeated.',
         },
       ],
       warnings: [],
