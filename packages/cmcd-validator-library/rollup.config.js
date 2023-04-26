@@ -9,13 +9,14 @@ import json from '@rollup/plugin-json';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
 import globals from 'rollup-plugin-node-globals';
 import builtins from 'rollup-plugin-node-builtins';
+// eslint-disable-next-line import/extensions
 import pkg from './package.json';
 
 export default [
   {
     input: 'src/index.js',
     output: {
-      name: 'cmcd-validator-library',
+      name: 'CMCDValidator',
       file: pkg.browser,
       format: 'umd',
       globals: {

@@ -1,10 +1,10 @@
+import { v4 as uuidv4 } from 'uuid';
+import jsLogger from 'js-logger';
 import { headerValidator } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
 import { parseHeaderToJson } from './parser/index.js';
 import { createOutput } from './utils/output.js';
-import { v4 as uuidv4 } from 'uuid';
 import { setConfig } from './inputValidator/configValidator/setConfig.js';
-import jsLogger from 'js-logger';
 
 const CMCDHeaderValidator = (header, config, warningFlag = true) => {
   const errors = [];

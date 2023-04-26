@@ -1,10 +1,10 @@
+import { v4 as uuidv4 } from 'uuid';
+import jsLogger from 'js-logger';
 import { jsonIsValid } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
 import keySortedAlphabetically from './utils/keySortedAlphabetically.js';
 import { createOutput } from './utils/output.js';
 import { setConfig } from './inputValidator/configValidator/setConfig.js';
-import jsLogger from 'js-logger';
-import { v4 as uuidv4 } from 'uuid';
 
 const CMCDJsonValidator = (jsonString, config, warningFlag = true) => {
   const errors = [];
