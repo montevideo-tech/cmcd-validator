@@ -6,7 +6,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "browser": "dist/cmcd-validator.umd.js",
+  "browser": "dist/cmcd-validator.min.js",
   "module": "dist/cmcd-validator.esm.js",
   "scripts": {
     "build": "rollup -c",

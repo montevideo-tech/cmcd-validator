@@ -19,7 +19,6 @@ export default [
       name: 'CMCDValidator',
       file: pkg.browser,
       format: 'umd',
-      sourcemap: true,
       globals: {
         process: 'process',
       },
