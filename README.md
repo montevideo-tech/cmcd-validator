@@ -25,7 +25,7 @@ If you just want to paly with with this library, you can try the [demo app](http
 
 You can use the CDN verison of the validator adding this tag to your document's `<head>`. Then the `window.CMCDValidator` object will be avaialbe to use it
 ```html
-<script src='https://cdn.jsdelivr.net/npm/@montevideo-tech/cmcd-validator@latest/dist/cmcd-validator.umd.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@montevideo-tech/cmcd-validator@latest/dist/cmcd-validator.min.js'></script>
 ```
 
 Or install it with npm if you are creating a Node.js application
@@ -45,7 +45,7 @@ This simple example shows how to check a CMCD request in standard JavaScript usi
 <html>
   <head>
     <!-- Import the cmcd-validator library-->
-    <script src="https://cdn.jsdelivr.net/npm/@montevideo-tech/cmcd-validator@latest/dist/cmcd-validator.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@montevideo-tech/cmcd-validator@latest/dist/cmcd-validator.min.js"></script>
   </head>
 
   <body>
