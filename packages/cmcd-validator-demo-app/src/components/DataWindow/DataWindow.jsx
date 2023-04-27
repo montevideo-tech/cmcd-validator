@@ -9,7 +9,7 @@ export function DataWindow({ data, setValidatorOutput }) {
     if (Object.keys(value).length > 0) {
       return (
         <div className="py-1">
-          <RequestMessage key={index} message={value.url} type={type} onClick={() => setValidatorOutput(value)}/>
+          <RequestMessage key={index} message={value.url} reqId={value.reqId} type={type} onClick={() => setValidatorOutput(value)}/>
         </div>
       );
     }

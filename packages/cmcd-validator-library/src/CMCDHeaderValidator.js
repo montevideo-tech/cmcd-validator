@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+import jsLogger from 'js-logger';
 import { headerValidator } from './inputValidator/index.js';
 import { keyValValidator } from './keyValueValidator/index.js';
 import { parseHeaderToJson } from './parser/index.js';
@@ -8,19 +10,25 @@ const CMCDHeaderValidator = (header, config, warningFlag = true) => {
   const errors = [];
   const rawData = header;
   const warnings = [];
+  const requestID = uuidv4();
+
+  jsLogger.useDefaults({ defaultLevel: jsLogger.TRACE });
+  jsLogger.info(`${requestID}: Started CMCD Header Validation.`);
 
   const [validConfig,
     extendedKeyTypes,
-    extendedcmcdHeader] = setConfig(config, errors, warnings, warningFlag);
+    extendedcmcdHeader] = setConfig(config, errors, requestID, warnings, warningFlag);
   // check config
   if (!validConfig) {
     return createOutput(errors, warnings, rawData);
   }
 
   // Check header
+  jsLogger.info(`${requestID}: Validating header format.`);
   const valid = headerValidator(
     header,
     errors,
+    requestID,
     warnings,
     config,
     extendedcmcdHeader,
@@ -29,14 +37,17 @@ const CMCDHeaderValidator = (header, config, warningFlag = true) => {
   );
 
   if (!valid) {
+    jsLogger.info(`${requestID}: Header not valid.`);
     return createOutput(errors, warnings, rawData);
   }
+  jsLogger.info(`${requestID}: Header is valid.`);
 
   // Parsed to json
+  jsLogger.info(`${requestID}: Parsing header.`);
   const parsedData = parseHeaderToJson(header, extendedcmcdHeader, extendedKeyTypes);
 
   // Check key value
-  keyValValidator(parsedData, errors, warnings, config, extendedKeyTypes, warningFlag);
+  keyValValidator(parsedData, errors, requestID, warnings, config, extendedKeyTypes, warningFlag);
 
   return createOutput(errors, warnings, rawData, parsedData);
 };
