@@ -49,7 +49,6 @@ export default [
           ],
         ],
         exclude: ['/node_modules/**'],
-        // plugins: ['@babel/plugin-transform-runtime'],
       }),
       globals(),
       builtins(),
