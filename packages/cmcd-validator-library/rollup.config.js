@@ -24,44 +24,30 @@ export default [
       },
     },
     plugins: [
-      nodeResolve({
-        jsnext: true,
-        main: true,
-        module: true,
-      }),
+      nodeResolve({ browser: true, preferBuiltins: false }),
       commonjs({
         include: [
           /node_modules/,
           /src/,
-          '../../node_modules/@montevideo-tech/cmcd-validator/dist/cmcd-validator.umd.js'],
-        nameExports: {
-          '../../node_modules/@montevideo-tech/cmcd-validator/dist/cmcd-validator.umd.js': ['cmcd-validator'],
-        },
+        ],
         transformMixedEsModules: true,
       }),
       json(),
       nodePolyfills(),
       babel({
-        babelHelpers: 'runtime',
+        babelHelpers: 'bundled',
         presets: [
           [
             '@babel/preset-env',
             {
               targets: {
                 chrome: '100',
-                safari: '11',
                 firefox: '100',
-              },
-              useBuiltIns: 'usage',
-              corejs: {
-                version: pkg.devDependencies['core-js'],
-                proposals: false,
               },
             },
           ],
         ],
         exclude: ['/node_modules/**'],
-        plugins: ['@babel/plugin-transform-runtime'],
       }),
       globals(),
       builtins(),
