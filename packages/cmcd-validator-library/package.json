@@ -1,14 +1,15 @@
 {
   "name": "@montevideo-tech/cmcd-validator",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "This is a library created to validate CMCD",
   "private": false,
   "readme": "../../README.md",
   "publishConfig": {
     "access": "public"
   },
-  "browser": "dist/cmcd-validator.min.js",
+  "main": "dist/cmcd-validator.cjs.js",
   "module": "dist/cmcd-validator.esm.js",
+  "browser": "dist/cmcd-validator.min.js",
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
