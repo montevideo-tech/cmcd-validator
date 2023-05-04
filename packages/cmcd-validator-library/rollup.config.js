@@ -63,6 +63,7 @@ export default [
     input: './src/index.js',
     output: [
       { file: pkg.module, format: 'es' },
+      { file: pkg.main, format: 'cjs' },
     ],
     plugins: [
       nodeResolve({ browser: true, preferBuiltins: true }),

@@ -7,8 +7,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "browser": "dist/cmcd-validator.min.js",
+  "main": "dist/cmcd-validator.cjs.js",
   "module": "dist/cmcd-validator.esm.js",
+  "browser": "dist/cmcd-validator.min.js",
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
