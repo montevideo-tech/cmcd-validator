@@ -1,4 +1,4 @@
-import { useState, useReducer, useEffect } from "react";
+import { useState, useReducer } from "react";
 import PlayerWrapper from "./components/PlayerWrapper/PlayerWrapper";
 import PlayerSelector from "./components/PlayerSelector/PlayerSelector";
 import { DataWindow } from "./components/DataWindow/DataWindow";

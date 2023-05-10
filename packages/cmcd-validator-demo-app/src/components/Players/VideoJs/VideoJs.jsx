@@ -3,7 +3,6 @@ import videojs from 'video.js';
 import { CMCDQueryValidator } from '@montevideo-tech/cmcd-validator';
 import 'video.js/dist/video-js.css';
 import '@montevideo-tech/videojs-cmcd'
-import { setupXhrInterceptor } from '../../../utils/setupXhrInterceptor';
 
 export const VideoJS = (props) => {
   const videoRef = useRef(null);
