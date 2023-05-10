@@ -3,6 +3,7 @@ import videojs from 'video.js';
 import { CMCDQueryValidator } from '@montevideo-tech/cmcd-validator';
 import 'video.js/dist/video-js.css';
 import '@montevideo-tech/videojs-cmcd'
+import { setupXhrInterceptor } from '../../../utils/setupXhrInterceptor';
 
 export const VideoJS = (props) => {
   const videoRef = useRef(null);
@@ -64,6 +65,9 @@ export const VideoJS = (props) => {
     XMLHttpRequest.prototype.open = function(method, url) {
       dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
       origOpen.apply(this, arguments);
+    };
+    return () => {
+      XMLHttpRequest.prototype.open = origOpen;
     };
   }, [])
 

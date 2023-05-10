@@ -30,16 +30,17 @@ function DashPlayer({dispatchReqList, manifestURI }) {
           }
         }
       });
-
-      var origOpen = XMLHttpRequest.prototype.open;
-      
-      XMLHttpRequest.prototype.open = function(method, url) {
-        dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
-        origOpen.apply(this, arguments);
-      };
     }
 
+    var origOpen = XMLHttpRequest.prototype.open;
+      
+    XMLHttpRequest.prototype.open = function(method, url) {
+      dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
+      origOpen.apply(this, arguments);
+    };
+
     return () => {
+      XMLHttpRequest.prototype.open = origOpen;
       if (playerRef.current) {
         playerRef.current.destroy();
         playerRef.current = null;
