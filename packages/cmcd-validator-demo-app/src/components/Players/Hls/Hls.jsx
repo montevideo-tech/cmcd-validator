@@ -10,11 +10,17 @@ function HlsPlayer({
   
   const autoPlay = true;
   const videoRef = useRef(null);
-  const [req,setReq] = useState('');
 
-  useEffect(() => {
-    dispatchReqList(req);
-  },[req])
+  useEffect(()=> {
+    var origOpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function(method, url) {
+      dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
+      origOpen.apply(this, arguments);
+    };
+    return () => {
+      XMLHttpRequest.prototype.open = origOpen;
+    };
+  }, [])
 
   useEffect(() => {
     let hls;
@@ -28,21 +34,6 @@ function HlsPlayer({
         const newHls = new Hls({
             enableWorker: false,
             cmcd: true
-        });
-
-        newHls.on(Hls.Events.MANIFEST_LOADED, function(event, data) {
-          setReq({type: 'saveQuery' , payload: { url: data.url, result: CMCDQueryValidator(data.url) }});
-          // dispatchReqList({type: 'saveQuery' , payload: { url: uri, result: CMCDQueryValidator(data.url) }});
-        })
-        
-        newHls.on(Hls.Events.FRAG_LOADED, function(event, data) {
-          setReq({type: 'saveQuery' , payload: { url: data.networkDetails.responseURL, result: CMCDQueryValidator(data.networkDetails.responseURL) }});
-          // dispatchReqList({type: 'saveQuery' , payload: { url: uri, result: CMCDQueryValidator(data.networkDetails.responseURL) }});
-        });
-
-        newHls.on(Hls.Events.LEVEL_LOADED, function(event, data) {
-          setReq({type: 'saveQuery' , payload: { url: data.networkDetails.responseURL, result: CMCDQueryValidator(data.networkDetails.responseURL) }});
-          // dispatchReqList({type: 'saveQuery' , payload: { url: uri, result: CMCDQueryValidator(data.networkDetails.responseURL) }});
         });
 
         if(videoRef.current != null){

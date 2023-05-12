@@ -65,6 +65,9 @@ export const VideoJS = (props) => {
       dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
       origOpen.apply(this, arguments);
     };
+    return () => {
+      XMLHttpRequest.prototype.open = origOpen;
+    };
   }, [])
 
   return (
