@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import videojs from 'video.js';
 import { CMCDQueryValidator } from '@montevideo-tech/cmcd-validator';
 import 'video.js/dist/video-js.css';
 import '@montevideo-tech/videojs-cmcd'
 
 export const VideoJS = (props) => {
-  const videoRef = React.useRef(null);
-  const playerRef = React.useRef(null);
+  const videoRef = useRef(null);
+  const playerRef = useRef(null);
   const {manifestURI, dispatchReqList } = props;
   
-  React.useEffect(() => {
+  useEffect(() => {
 
     const options = {
       autoplay: true,
-      controls: true,
+      controls: false,
       responsive: true,
       plugins: {cmcd: {}},
       fluid: true,
@@ -27,35 +27,28 @@ export const VideoJS = (props) => {
     if (!playerRef.current) {
       // The Video.js player needs to be _inside_ the component el for React 18 Strict Mode. 
       const videoElement = document.createElement("video-js");
-
+      
       videoElement.classList.add('vjs-big-play-centered');
       videoRef.current.appendChild(videoElement);
-
+      
       const player = playerRef.current = videojs(videoElement, options);
-
+      
       player.cmcd();
-
-    // You could update an existing player in the `else` block here
-    // on prop change, for example:
+      
+      player.on('ready', () => {player.controls(true);});
+      // You could update an existing player in the `else` block here
+      // on prop change, for example:
     } else {
       const player = playerRef.current;
       
       player.autoplay(options.autoplay);
       player.src(options.sources);
-      player.cmcd();
-
-      var origOpen = XMLHttpRequest.prototype.open;
-      XMLHttpRequest.prototype.open = function() {
-        const uri = arguments[1]
-        dispatchReqList({type: 'saveQuery' , payload: { url: uri, result: CMCDQueryValidator(uri) }})
-        origOpen.apply(this, arguments);
-      };
-      
+      player.cmcd();      
     }
   }, [videoRef, manifestURI]);
 
   // Dispose the Video.js player when the functional component unmounts
-  React.useEffect(() => {
+  useEffect(() => {
     const player = playerRef.current;
 
     return () => {
@@ -65,6 +58,17 @@ export const VideoJS = (props) => {
       }
     };
   }, [playerRef]);
+
+  useEffect(()=> {
+    var origOpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function(method, url) {
+      dispatchReqList({type: 'saveQuery' , payload: { url: url, result: CMCDQueryValidator(url) }})
+      origOpen.apply(this, arguments);
+    };
+    return () => {
+      XMLHttpRequest.prototype.open = origOpen;
+    };
+  }, [])
 
   return (
     <div data-vjs-player>

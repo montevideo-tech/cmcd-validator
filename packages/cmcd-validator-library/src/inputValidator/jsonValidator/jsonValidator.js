@@ -1,7 +1,7 @@
 import { cmcdTypes, errorTypes } from '../../utils/constants.js';
 import { createError } from '../../utils/error.js';
 
-const jsonIsValid = (jsonString, errors, config, extendedKeyTypes) => {
+const jsonIsValid = (jsonString, errors, requestID, config, extendedKeyTypes) => {
   let valid = true;
   const keyvalue = jsonString.split(',');
   const keys = [];
@@ -13,8 +13,8 @@ const jsonIsValid = (jsonString, errors, config, extendedKeyTypes) => {
       return;
     }
     if (keys.includes(key)) {
-      const description = `The key '${key}' is repeated.`;
-      errors.push(createError(errorTypes.duplicateKey, key, undefined, description));
+      const description = `The key ${key} is repeated.`;
+      errors.push(createError(errorTypes.duplicateKey, requestID, key, undefined, description));
       valid = false;
     }
     keys.push(key);
@@ -31,11 +31,11 @@ const jsonIsValid = (jsonString, errors, config, extendedKeyTypes) => {
         && extendedKeyTypes[key] === cmcdTypes.number
       ) {
         valid = false;
-        errors.push(createError(errorTypes.wrongTypeValue, key, obj[key]));
+        errors.push(createError(errorTypes.wrongTypeValue, requestID, key, obj[key]));
       }
     });
   } catch (error) {
-    errors.push(createError(errorTypes.invalidJson));
+    errors.push(createError(errorTypes.invalidJson, requestID));
     valid = false;
   }
   return valid;

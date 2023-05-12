@@ -1,26 +1,42 @@
-name: Create Release
-run-name: ${{ github.actor }} launch the release to NPM 🚀
 on:
-  pull_request:
-    types: [closed]
+  release:
+    types: [created]
     branches:
       - main
 jobs:
-  Release-to-npm:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - name: "Version and publish"
+      
+      - name: Install and Build 🔧
+        run: |
+          npm install
+          npm run build
+      
+      - name: Test
+        run: npm run test
+      
+  Release-to-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Add Readme to package
+        run: cp README.md packages/cmcd-validator-library/README.md
+
+      - name: "Publish"
+        working-directory: './packages/cmcd-validator-library'
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor}}@users.noreply.github.com"
-          npm run version
-          npm run publish
-          
-
+          npm install
+          npm run build
+          npm publish --access public
