@@ -3,7 +3,7 @@ import PlayerWrapper from "./components/PlayerWrapper/PlayerWrapper";
 import PlayerSelector from "./components/PlayerSelector/PlayerSelector";
 import { DataWindow } from "./components/DataWindow/DataWindow";
 import { ValidatorView } from "./components/ValidatorView/ValidatorView";
-import DropdownManifests from "./components/Dropdown/Dropdown";
+import DropdownManifests from "./components/DropdownManifests/DropdownManifests";
 import useRenderSize from "./hooks/useRenderSize";
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
