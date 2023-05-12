@@ -3,7 +3,7 @@ import PlayerWrapper from "./components/PlayerWrapper/PlayerWrapper";
 import PlayerSelector from "./components/PlayerSelector/PlayerSelector";
 import { DataWindow } from "./components/DataWindow/DataWindow";
 import { ValidatorView } from "./components/ValidatorView/ValidatorView";
-import SegmentedButtonDropdownsExample from "./components/Dropdown/Dropdown";
+import DropdownManifests from "./components/Dropdown/Dropdown";
 import useRenderSize from "./hooks/useRenderSize";
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -86,7 +86,7 @@ function App() {
             </Col>
             <Col>
               <Form onSubmit={handlePlay}>
-                  <SegmentedButtonDropdownsExample playerSelected={playerSelected}></SegmentedButtonDropdownsExample>
+                  <DropdownManifests playerSelected={playerSelected}></DropdownManifests>
               </Form>
             </Col>            
           </Row>

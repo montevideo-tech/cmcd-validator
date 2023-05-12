@@ -14,7 +14,7 @@ const uris = [
     { type: 'DASH', value: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd' },
   ];
   
-const SegmentedButtonDropdownsExample = (props) => {
+const DropdownManifests = (props) => {
 
     const { playerSelected } = props;
     const [items, setItems] = useState([]);
@@ -64,4 +64,4 @@ const SegmentedButtonDropdownsExample = (props) => {
   );
 }
 
-export default SegmentedButtonDropdownsExample;
+export default DropdownManifests;
