@@ -13,13 +13,17 @@ import Image from 'react-bootstrap/Image'
 import "./App.scss";
 
 
+
 function setRequestList (state, action) {
   let aggregateArray = []
   switch (action.type) {
     case 'saveQuery': 
       action.payload.reqId = state[0]? state[0]?.reqId + 1 : 1;
+      action.payload.reqId = state[0]? state[0]?.reqId + 1 : 1;
       aggregateArray = [action.payload, ...state];
       aggregateArray.splice(
+        100,
+        aggregateArray.length - 100 > 0 ? aggregateArray.length - 100 : 0
         100,
         aggregateArray.length - 100 > 0 ? aggregateArray.length - 100 : 0
       );
