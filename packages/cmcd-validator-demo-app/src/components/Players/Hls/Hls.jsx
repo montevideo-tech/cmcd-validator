@@ -36,7 +36,7 @@ function HlsPlayer({
             cmcd: true
         });
 
-        if(videoRef.current != null){
+        if(videoRef.current != null && manifestURI){
             newHls.attachMedia(videoRef.current);
         }
 
