@@ -6,8 +6,7 @@ const playerList = [
   { key: "SHAKA", value: "Shaka" },
   { key: "HLS", value: "hls.js" },
   { key: "VIDEOJS", value: "VideoJs" },
-  { key: "DASH", value: "Dash.js" },
-  { key: "BITMOVIN", value: "Bitmovin" }
+  { key: "DASH", value: "Dash.js" }
 ];
 
 const PlayerSelector = ({setPlayerSelected}) => {  

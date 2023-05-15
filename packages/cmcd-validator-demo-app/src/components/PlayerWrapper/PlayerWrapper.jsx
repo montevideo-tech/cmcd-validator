@@ -3,13 +3,11 @@ import ShakaPlayer from '../Players/Shaka/Shaka'
 import VideoJS from '../Players/VideoJs/VideoJs'
 import DashPlayer from '../Players/Dash/Dash'
 import HlsPlayer from '../Players/Hls/Hls'
-import BitmovinPlayer from '../Players/Bitmovin/Bitmovin'
 
 const PlayerWrapper = ({playerSelected, playerDispatch, manifestURI}) => {
   const [palyerDisplayed, setPlayerDisplayed] = useState(<div></div>)
 
   useEffect(()=>{
-    console.log('manifest updated 1');
     
     switch(playerSelected) {
       case 'SHAKA':
@@ -20,8 +18,6 @@ const PlayerWrapper = ({playerSelected, playerDispatch, manifestURI}) => {
         return setPlayerDisplayed(<div><DashPlayer dispatchReqList={playerDispatch} manifestURI={manifestURI}/></div>)
       case 'VIDEOJS': 
         return setPlayerDisplayed(<div><VideoJS dispatchReqList={playerDispatch} manifestURI={manifestURI}/></div>)
-      case 'BITMOVIN': 
-        return setPlayerDisplayed(<div><BitmovinPlayer dispatchReqList={playerDispatch} manifestURI={manifestURI}/></div>)
       default: 
         return setPlayerDisplayed(<div></div>)
     }
