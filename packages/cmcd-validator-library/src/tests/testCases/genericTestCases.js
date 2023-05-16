@@ -2549,7 +2549,7 @@ sec-ch-ua-platform: "Linux"`,
           key: 'mtp',
           value: 0,
           description: 'The mtp key should not be sent if the value is 0',
-        }
+        },
       ],
       warnings: [],
       parsedData: {
