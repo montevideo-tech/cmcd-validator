@@ -1,95 +1,87 @@
 import React, {useEffect, useRef} from 'react'
-import { Player } from 'bitmovin-player';
+import { Player, PlayerConfig, SourceConfig } from "bitmovin-player";
+import { UIFactory } from "bitmovin-player-ui";
+import { CmcdConfig, CmcdIntegration } from "@bitmovin/player-web-integration-cmcd";
+import { CMCDQueryValidator } from '@montevideo-tech/cmcd-validator';
 import 'bitmovin-player/bitmovinplayer-ui.css';
 
-const DELIMITER = '&nbsp;'
-const CMCD_KEYS = {
-  EncodedBitrate: 'br',
-  BufferLength: 'bl',
-  BufferStarvation: 'bs',
-  ContentId: 'cid',
-  ObjectDuration: 'd',
-  Deadline: 'dl',
-  MeasuredThroughput: 'mtp',
-  NextObjectRequest: 'nor',
-  NextRangeRequest: 'nrr',
-  ObjectType: 'ot',
-  PlaybackRate: 'pr',
-  RequestedMaximumThroughput: 'rtp',
-  StreamingFormat: 'sf',
-  SessionId: 'sid',
-  StreamType: 'st',
-  Startup: 'su',
-  TopBitrate: 'tb',
-  CmcdVersion: 'v',
-}
 
-export const Bitmovin = ({manifestURI}) => {
+export const Bitmovin = ({manifestURI, dispatchReqList}) => {
     
     const playerRef = useRef(null);
 
     useEffect(() => {
-        // cmcdSessionId = uuidv4();
-
-        // const cmcdConfig = {
-        //     useQueryArgs: true,
-        //     sessionId: cmcdSessionId,
-        //     contentId: '1111-111111-111111-11111',
-        // };
-
+        
         const playerConfig = {
             key: '29ba4a30-8b5e-4336-a7dd-c94ff3b25f30',
-            analytics: {
-              key: '45adcf9b-8f7c-4e28-91c5-50ba3d442cd4',
-              videoId: 'cmcd'
-            },
             playback: {
-              muted: true,
-              autoplay: true,
-            // },
-            // network: {
-                
-            //   preprocessHttpRequest: (type, request) => {
-            //     const cmcdRequest =  cmcdIntegration.preprocessHttpRequest(type, request);
-            //     cmcdRequest.then((result)=>{
-            //       logValidator(CmcdQueryValidator(result.url))
-            //     })
-            //     return cmcdRequest},
-        
-            //   preprocessHttpResponse: cmcdIntegration.preprocessHttpResponse,
-            // },
-            // adaptation: {
-            //   onVideoAdaptation: cmcdIntegration.onVideoAdaptation,
-            //   onAudioAdaptation: cmcdIntegration.onAudioAdaptation,
-            }
+                autoplay: true,
+                muted: true,
+            },
         };
+        
+        const cmcdConfig = {
+            useQueryArgs: true,
+            sessionId: '6e2fb550-c457-11e9-bb97-0800200c9a66',
+            contentId: '1111-111111-111111-11111',
+        };
+
+        const cmcdIntegration = new CmcdIntegration(cmcdConfig);
+
+        playerConfig.network = {
+            preprocessHttpRequest: (type, request) => {
+                const cmcdRequest =  cmcdIntegration.preprocessHttpRequest(type, request);
+                cmcdRequest.then((result)=>{
+                    dispatchReqList({type: 'saveQuery' , payload: { url: result.url, result: CMCDQueryValidator(result.url) }});
+                })
+                return cmcdRequest
+            },
+            preprocessHttpResponse: cmcdIntegration.preprocessHttpResponse,
+        }
+
+        playerConfig.adaptation = {
+            desktop: {
+                onVideoAdaptation: cmcdIntegration.onVideoAdaptation,
+                onAudioAdaptation: cmcdIntegration.onAudioAdaptation,
+            },
+            mobile: {
+                onVideoAdaptation: cmcdIntegration.onVideoAdaptation,
+                onAudioAdaptation: cmcdIntegration.onAudioAdaptation,
+            },
+        }
+
         const playerContainer = document.getElementById('player-container');
 
         const player = new Player(playerContainer, playerConfig);
+
+        UIFactory.buildDefaultUI(player);
         
         playerRef.current = player;
+
+        cmcdIntegration.setPlayer(player);
 
         return () => {      
             playerRef.current.destroy();
         }
     }, [])
     
+
     useEffect(() => {
-        console.log('manifest updated');
         if (playerRef.current) {
-            console.log('manifest:', manifestURI);
-            playerRef.current.load({
-                hls: manifestURI,
-            });
+            const mediaType = manifestURI.endsWith('.m3u8') ? 'hls' 
+            : (manifestURI.endsWith('.mpd') ? 'dash' : null);
+            
+            if (mediaType) {
+                playerRef.current.load({
+                    [mediaType]: manifestURI,
+                });
+            }
         }
     }, [manifestURI])
 
 
     return (
-        <div id="player" className="tv-frame" >
-            <div id="player-container" className='bitmovinplayer-container aspect-16x9'></div>
-        </div>
-        // <div id="player-container" className='bitmovinplayer-container aspect-16x9'></div>
+        <div id="player-container" className='bitmovinplayer-container aspect-16x9'></div>
     )
 }
 

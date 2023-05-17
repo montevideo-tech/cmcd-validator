@@ -27,11 +27,13 @@
     "videojs": "^1.0.0"
   },
   "devDependencies": {
+    "@bitmovin/player-web-integration-cmcd": "github:bitmovin/bitmovin-player-web-integration-cmcd",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
     "bitmovin-analytics": "^2.29.2",
     "bitmovin-player": "^8.116.0",
+    "bitmovin-player-ui": "^3.47.0",
     "gh-pages": "^5.0.0",
     "vite": "^4.1.0"
   }

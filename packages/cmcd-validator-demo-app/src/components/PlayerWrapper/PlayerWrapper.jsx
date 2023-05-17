@@ -9,8 +9,7 @@ const PlayerWrapper = ({playerSelected, playerDispatch, manifestURI}) => {
   const [palyerDisplayed, setPlayerDisplayed] = useState(<div></div>)
 
   useEffect(()=>{
-    console.log('manifest updated 1');
-    
+        
     switch(playerSelected) {
       case 'SHAKA':
         return setPlayerDisplayed(<div><ShakaPlayer dispatchReqList={playerDispatch} manifestURI={manifestURI}/></div>)
