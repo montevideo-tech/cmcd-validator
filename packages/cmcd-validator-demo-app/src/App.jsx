@@ -3,15 +3,13 @@ import PlayerWrapper from "./components/PlayerWrapper/PlayerWrapper";
 import PlayerSelector from "./components/PlayerSelector/PlayerSelector";
 import { DataWindow } from "./components/DataWindow/DataWindow";
 import { ValidatorView } from "./components/ValidatorView/ValidatorView";
+import DropdownManifests from "./components/DropdownManifests/DropdownManifests";
 import useRenderSize from "./hooks/useRenderSize";
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
-
 import "./App.scss";
 
 
@@ -23,10 +21,9 @@ function setRequestList (state, action) {
       aggregateArray = [action.payload, ...state];
       aggregateArray.splice(
         100,
-        aggregateArray.length - 100 > 0 ? aggregateArray.length - 100 : 0
+        aggregateArray.length - 100 > 0 ? aggregateArray.length - 100 : 0,
       );
     break;
-  
     default:
       break;
   }
@@ -51,10 +48,6 @@ function App() {
     dispatch({...value});
   }
 
-  const handlePlay = (event) => {
-    event.preventDefault();
-    setManifestURI(event.target.manifest.value);
-  }
 
   const renderDataWindow = (type) =>{
     if (device === type) {
@@ -67,6 +60,12 @@ function App() {
     }
   }
 
+  const handlePlay = (event) => {
+    event.preventDefault();
+    const manifestInput = event.target.manifest.value;
+    setManifestURI(manifestInput);
+    
+  };
 
   return (
     <Container fluid className="px-5">
@@ -87,16 +86,7 @@ function App() {
             </Col>
             <Col>
               <Form onSubmit={handlePlay}>
-                <InputGroup className="mb-3">
-                  <Form.Control
-                    name="manifest"
-                    required 
-                    placeholder='Manifest URL'
-                    aria-label="Recipient's username"
-                    aria-describedby="basic-addon2"
-                  />
-                  <Button variant="primary" type="submit">Start</Button>
-              </InputGroup>
+                  <DropdownManifests playerSelected={playerSelected}></DropdownManifests>
               </Form>
             </Col>            
           </Row>

@@ -58,6 +58,7 @@ const keyValValidator = (cmcdJson, errors, requestID, warnings, config, extended
         checkRoundToNearest(errors, key, keyValue, 100, 'ms', requestID);
         break;
       case 'mtp':
+        checkIgnoredParameter(errors, key, keyValue, 0, requestID);
         checkRoundToNearest(errors, key, keyValue, 100, 'kbps', requestID);
         break;
       case 'nor':
