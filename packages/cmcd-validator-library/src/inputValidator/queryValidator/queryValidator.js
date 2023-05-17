@@ -1,3 +1,4 @@
+import { decodeQuery } from '../../utils/decodeQuery.js';
 import {
   isBooleanCorrect, isNumberCorrect, isStringCorrect,
   isKeyRepeated, isSeparetedCorrectly, includesCMCDRequest,
@@ -28,7 +29,9 @@ const queryValidator = (queryString, error, requestID, warnings, config, extende
     return false;
   }
 
-  const values = decodeURIComponent(query).split('CMCD=')[1].split('&')[0].split(',');
+  const decodedQuery = decodeQuery(query);
+
+  const values = decodedQuery.split('CMCD=')[1].split('&')[0].split(',');
 
   const keys = [];
   let valid = true;

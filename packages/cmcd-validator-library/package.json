@@ -13,7 +13,7 @@
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
-    "test": "jest --verbose",
+    "test": "jest GenericTest",
     "lint": "eslint src"
   },
   "repository": {

@@ -1,5 +1,8 @@
+import { decodeQuery } from '../utils/decodeQuery';
+
 const parseQueryToJson = (queryString, extendedKeyTypes) => {
-  const values = decodeURIComponent(queryString).split('CMCD=')[1].split('&')[0].split(',');
+  const decodedQuery = decodeQuery(queryString);
+  const values = decodedQuery.split('CMCD=')[1].split('&')[0].split(',');
   const obj = {};
   values.forEach((value) => {
     if (!value.includes('=')) {
