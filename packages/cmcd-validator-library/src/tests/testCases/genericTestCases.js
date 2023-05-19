@@ -2582,12 +2582,12 @@ sec-ch-ua-platform: "Linux"`,
   },
   {
     description: 'Incorrect query with nor not being a relative path',
-    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cnor%3D%22%252Fabsolute%252Fpath%252Ffile%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Dd%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dv%2Csu%2Ctb%3D6000',
+    query: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?CMCD=bl%3D21300%2Cbr%3D3200%2Cbs%2Ccid%3D%22faec5fc2-ac30-11ea-bb37-0242ac130002%22%2Cd%3D4004%2Cdl%3D18500%2Cnor%3D%22https%253A%252F%252Fdash.akamaized.net%252Fakamai%252Fbbb_30fps%252Fbbb_30fps_3840x2160_12000k%252F300kbps%252Ftrack.m4v%22%2Cnrr%3D%2212323-48763%22%2Cot%3Dv%2Cpr%3D1.08%2Crtp%3D12000%2Csf%3Dd%2Csid%3D%226e2fb550-c457-11e9-bb97-0800200c9a66%22%2Cst%3Dv%2Csu%2Ctb%3D6000',
     header: `GET /akamai/bbb_30fps/bbb_a64k/bbb_a64k_10.m4a HTTP/1.1
 Accept: */*
 Accept-Encoding: gzip, deflate, br
 Accept-Language: es-ES,es;q=0.9
-CMCD-Request: bl=21300,dl=18500,nor="%2Fabsolute%2Fpath%2Ffile",nrr="12323-48763",su
+CMCD-Request: bl=21300,dl=18500,nor="https%3A%2F%2Fdash.akamaized.net%2Fakamai%2Fbbb_30fps%2Fbbb_30fps_3840x2160_12000k%2F300kbps%2Ftrack.m4v",nrr="12323-48763",su
 CMCD-Object: br=3200,d=4004,ot=v,tb=6000
 CMCD-Status: bs,rtp=12000
 CMCD-Session: cid="faec5fc2-ac30-11ea-bb37-0242ac130002",pr=1.08,sf=d,sid="6e2fb550-c457-11e9-bb97-0800200c9a66",st=v
@@ -2610,7 +2610,7 @@ sec-ch-ua-platform: "Linux"`,
         "cid": "faec5fc2-ac30-11ea-bb37-0242ac130002",
         "d": 4004,
         "dl": 18500,
-        "nor": "%2Fabsolute%2Fpath%2Ffile",
+        "nor": "https%3A%2F%2Fdash.akamaized.net%2Fakamai%2Fbbb_30fps%2Fbbb_30fps_3840x2160_12000k%2F300kbps%2Ftrack.m4v",
         "nrr": "12323-48763",
         "ot": "v",
         "pr": 1.08,
@@ -2628,7 +2628,7 @@ sec-ch-ua-platform: "Linux"`,
         {
           type: 'incorrect-format',
           key: 'nor',
-          value: '%2Fabsolute%2Fpath%2Ffile',
+          value: 'https%3A%2F%2Fdash.akamaized.net%2Fakamai%2Fbbb_30fps%2Fbbb_30fps_3840x2160_12000k%2F300kbps%2Ftrack.m4v',
           description: 'The key: nor must be a relative path.',
         },
       ],
@@ -2640,7 +2640,7 @@ sec-ch-ua-platform: "Linux"`,
         cid: 'faec5fc2-ac30-11ea-bb37-0242ac130002',
         d: 4004,
         dl: 18500,
-        nor: '%2Fabsolute%2Fpath%2Ffile',
+        nor: 'https%3A%2F%2Fdash.akamaized.net%2Fakamai%2Fbbb_30fps%2Fbbb_30fps_3840x2160_12000k%2F300kbps%2Ftrack.m4v',
         nrr: '12323-48763',
         ot: 'v',
         pr: 1.08,
