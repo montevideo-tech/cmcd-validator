@@ -3,7 +3,7 @@ import {
   isReserved, isPositive, checkBlKey, checkCorrectType, checkOtValidValue, checkSfValidValue,
   checkPrValue,
   checkVValue,
-  checkStValidValue, checkSidIsPresent,
+  checkStValidValue, checkSidIsPresent, isRelativePath,
 } from './validatorFunctions.js';
 import { warningTypes } from '../utils/constants.js';
 import { createWarning } from '../utils/warning.js';
@@ -62,7 +62,9 @@ const keyValValidator = (cmcdJson, errors, requestID, warnings, config, extended
         checkRoundToNearest(errors, key, keyValue, 100, 'kbps', requestID);
         break;
       case 'nor':
-        isEncoded(errors, key, keyValue, requestID);
+        if (isEncoded(errors, key, keyValue, requestID)) {
+          isRelativePath(errors, key, keyValue, requestID);
+        }
         break;
       case 'nrr':
         checkValidNrrFormat(errors, key, keyValue, requestID);

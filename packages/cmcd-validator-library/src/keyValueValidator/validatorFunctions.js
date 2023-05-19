@@ -13,8 +13,17 @@ export const checkMaxLength = (errors, key, value, requestID) => {
 
 export const isEncoded = (errors, key, value, requestID) => {
   if (decodeURIComponent(value) === value && encodeURIComponent(value) !== value) {
-    const description = `The key: ${key} with its value: ${value} must be URLencoded.`;
+    const description = `The key: ${key} must be URLencoded.`;
     errors.push(createError(errorTypes.parameterEncoding, requestID, key, value, description));
+    return false;
+  }
+  return true;
+};
+
+export const isRelativePath = (errors, key, value, requestID) => {
+  if (!(/^(\.\/|\.\.\/)/.test(decodeURIComponent(value)))) {
+    const description = `The key: ${key} must be a relative path.`;
+    errors.push(createError(errorTypes.incorrectFormat, requestID, key, value, description));
     return false;
   }
   return true;
