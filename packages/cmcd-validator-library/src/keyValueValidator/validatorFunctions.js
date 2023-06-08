@@ -21,7 +21,7 @@ export const isEncoded = (errors, key, value, requestID) => {
 };
 
 export const isRelativePath = (errors, key, value, requestID) => {
-  if (!(/^(\.\/|\.\.\/{0,1})/.test(decodeURIComponent(value)))) {
+  if ((/^(http:\/\/|https:\/\/)/.test(decodeURIComponent(value)))) {
     const description = `The key: ${key} must be a relative path.`;
     errors.push(createError(errorTypes.incorrectFormat, requestID, key, value, description));
     return false;
