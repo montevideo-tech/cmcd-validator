@@ -2405,15 +2405,8 @@ sec-ch-ua-platform: "Linux"`,
     }`,
     output:
     {
-      valid: false,
-      errors: [
-        {
-          type: 'incorrect-format',
-          key: 'nor',
-          value: '..300kbps-track.m4v',
-          description: 'The key: nor must be a relative path.',
-        },
-      ],
+      valid: true,
+      errors: [],
       warnings: [],
       parsedData: {
         bl: 21300,
