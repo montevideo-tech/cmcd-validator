@@ -29,9 +29,18 @@ To validate CMCD requests using this app, follow these steps:
    
 ![](images/select-player.png)
 
-2. Enter the manifest URL and click "Start" to start playback.
-   
+2. To initiate playback, there are two options:
+
+- Enter the manifest URL: If you have a specific URL in mind, simply type or paste it into the designated field.
+
 ![](images/content-playing.png)
+
+- Choose from the dropdown: Alternatively, select a pre-defined URL from the provided dropdown menu.
+
+![](images/url-dropdown.png)
+
+Once you've entered the manifest URL or made a selection from the dropdown, click the "Start" button to begin playback.
+
 > **_NOTE:_** The requests made by the player will be displayed in the panel on the right-hand side. The color of the request indicates its validation status: green for valid, red for invalid, and yellow for warnings.
 
 3. To view the validation output of a request, click on it and scroll down.
