@@ -1,16 +1,17 @@
 name: Test (single)
 
-on: [push]
-  workflow_dispatch:
-    inputs:
-      browser:
-        type: choice
-        description: Which browser to test
-        required: true
-        options:
-          - chrome
-          - firefox
-          - edge
+on:
+  push:
+    workflow_dispatch:
+      inputs:
+        browser:
+          type: choice
+          description: Which browser to test
+          required: true
+          options:
+            - chrome
+            - firefox
+            - edge
 
 jobs:
   test:
