@@ -32,6 +32,7 @@ jobs:
         with:
           node-version: '19'
           cache: 'npm'
+      - run: npm install
       - run: npm ci
       - run: npm run test-selenium
         env:
