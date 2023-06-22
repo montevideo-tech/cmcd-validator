@@ -1,6 +1,6 @@
 name: Test (single)
 
-on: [push]
+on:
   workflow_dispatch:
     inputs:
       browser:
