@@ -24,6 +24,6 @@ services:
   node:
     image: node:19
     volumes:
-      - ./../:/project
+      - ./../../:/project
     working_dir: /project
     tty: true
