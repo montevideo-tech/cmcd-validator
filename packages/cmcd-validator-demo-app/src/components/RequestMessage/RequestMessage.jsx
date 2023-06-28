@@ -5,6 +5,7 @@ import warningImg from '../../assets/warning.svg'
 import errorImg from '../../assets/error.svg'
 import successImg from '../../assets/success.svg'
 import useRenderSize from '../../hooks/useRenderSize';
+import "./RequestMessage.css";
 
 const RequestMessage = (props) => {
     const {message, type, onClick, reqId } = props;
@@ -28,10 +29,10 @@ const RequestMessage = (props) => {
     }
 
     return (
-        <Button className="btn" variant={type} onClick={onClick} style={{width: '100%'}}> 
+        <Button className="btn data-btn" variant={type} onClick={onClick}> 
             <span className="badge bg-secondary me-2">{reqId}</span>
             {renderImage()}
-            {`${message?.slice(0, device === 'mobile'? 35 : 20 + widthSize/50)}...`}
+            {message}
         </Button>
     )
 }
