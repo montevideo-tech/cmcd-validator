@@ -31,7 +31,7 @@ describe('search', async function () {
         .sendKeys(Key.ENTER)
         .perform()
         const inputElement = await driver.findElement(By.name('manifest'));
-        await inputElement.sendKeys('https://dash.akamaized.net/digitalprimates/fraunhofer/480p_video/heaac_2_0_with_video/Sintel/sintel_480p_heaac2_0.mpd');
+        await inputElement.sendKeys('https://dxclj9vp3m44c.cloudfront.net/hls/Costa_Rica_144.m3u8');
         await inputElement.sendKeys(Key.ENTER);
         await new Promise(resolve => setTimeout(resolve, 6000));
         // await driver.findElement({id: 'dropdown-basic-button'}).sendKeys('Shaka').click();
