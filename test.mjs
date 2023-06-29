@@ -6,6 +6,13 @@ describe('search', async function () {
     this.timeout(10000);
     let driver;
 
+      // A helper function to check if an element with the given class exists
+  const checkElementExists = async (className) => {
+    const elements = await driver.findElements(By.className(className));
+    console.log(elements)
+    return elements.length > 0;
+  };
+
     if (!fs.existsSync('./screenshots')){
         fs.mkdirSync('./screenshots');
     }
@@ -24,7 +31,7 @@ describe('search', async function () {
         .sendKeys(Key.ENTER)
         .perform()
         const inputElement = await driver.findElement(By.name('manifest'));
-        await inputElement.sendKeys('https://dxclj9vp3m44c.cloudfront.net/hls/Costa_Rica_144.m3u8');
+        await inputElement.sendKeys('https://dash.akamaized.net/digitalprimates/fraunhofer/480p_video/heaac_2_0_with_video/Sintel/sintel_480p_heaac2_0.mpd');
         await inputElement.sendKeys(Key.ENTER);
         await new Promise(resolve => setTimeout(resolve, 6000));
         // await driver.findElement({id: 'dropdown-basic-button'}).sendKeys('Shaka').click();
@@ -43,6 +50,11 @@ describe('search', async function () {
         // // Return page content
         // const body = await driver.findElement(By.tagName('body'));
         // return await body.getText();
+
+        const elementExists = await checkElementExists('btn btn btn-danger');
+        assert.isFalse(elementExists, 'Element with class "btn btn-danger" is present');
+
+
         const result = true;
         return result;
     };
