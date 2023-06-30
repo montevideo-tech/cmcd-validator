@@ -32,8 +32,8 @@ jobs:
         with:
           node-version: '19'
           cache: 'npm'
-      - run: cd testing
       - run: npm install
+        working-directory: ./testing
       - run: npm ci
       - run: npm run test
         env:
