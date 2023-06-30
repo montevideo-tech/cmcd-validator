@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: node:19
+      image: node:18
 
     services:
       selenium:
@@ -30,7 +30,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '19'
+          node-version: '18'
           cache: 'npm'
       - run: npm i
         working-directory: ./packages/cmcd-validator-demo-app
