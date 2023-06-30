@@ -32,6 +32,10 @@ jobs:
         with:
           node-version: '19'
           cache: 'npm'
+      - run: npm i
+        working-directory: ./packages/cmcd-validator-demo-app
+      - run: npm run build
+        working-directory: ./packages/cmcd-validator-demo-app
       - run: nohup npm run dev &
         working-directory: ./packages/cmcd-validator-demo-app
       - run: npm install
