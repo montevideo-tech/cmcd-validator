@@ -9,6 +9,7 @@
     "deploy": "gh-pages -d dist",
     "dev": "vite --host",
     "build": "vite build --base=/cmcd-validator/",
+    "build1": "vite build --base=./",
     "preview": "vite preview"
   },
   "dependencies": {
