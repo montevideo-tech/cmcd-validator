@@ -13,7 +13,7 @@ export const Bitmovin = ({manifestURI, dispatchReqList}) => {
     useEffect(() => {
         
         const playerConfig = {
-            licenseKey: import.meta.env.VITE_BITMOVIN_LICENSE,
+            key: 'a123ef80-bd55-4d1f-9572-efb1a4064a27',
             playback: {
                 autoplay: true,
                 muted: true,
