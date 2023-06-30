@@ -34,7 +34,7 @@ jobs:
           cache: 'npm'
       - uses: isbang/compose-action@v1.4.1
         with:
-          compose-file: "./testing/dev/docker-composqe.yml"
+          compose-file: "./testing/dev/docker-compose.yml"
       - run: npm install
         working-directory: ./testing
       - run: npm ci
