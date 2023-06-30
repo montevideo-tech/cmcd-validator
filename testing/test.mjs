@@ -20,7 +20,7 @@ describe('search', async function () {
     // A helper function to start a web search
     const search = async (term) => {
         // Automate DuckDuckGo search
-        await driver.get('https://montevideo-tech.github.io/cmcd-validator/');
+        await driver.get('http://node-demo-app:5173');
         const searchBox = await driver.findElement(
             By.id('dropdown-basic-button'));
         searchBox.click();

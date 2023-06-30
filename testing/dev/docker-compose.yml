@@ -7,23 +7,22 @@ services:
       - 4444:4444 # Selenium service
       - 5900:5900 # VNC server
       - 7900:7900 # VNC browser client
-  firefox:
-    image: selenium/standalone-firefox
-    shm_size: '2gb'
-    ports:
-      - 4445:4444 # Selenium service
-      - 5901:5900 # VNC server
-      - 7901:7900 # VNC browser client
-  edge:
-    image: selenium/standalone-edge
-    shm_size: '2gb'
-    ports:
-      - 4446:4444 # Selenium service
-      - 5902:5900 # VNC server
-      - 7902:7900 # VNC browser client
   node:
     image: node:19
+    #command: bash -c "sleep 30 && npm i && BROWSER=chrome SELENIUM=chrome npm run test"
     volumes:
-      - ./../../:/project
+      - ./../../testing/:/project
     working_dir: /project
     tty: true
+    depends_on:
+      - chrome
+  node-demo-app:
+    image: node:19
+    command: bash -c "npm i && npm run build && npm run dev"
+    volumes:
+      - ./../../packages/cmcd-validator-demo-app/:/code
+    working_dir: /code
+    tty: true
+    ports:
+      - 5173:5173
+
