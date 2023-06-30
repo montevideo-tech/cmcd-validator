@@ -35,7 +35,9 @@ jobs:
       - run: npm install
         working-directory: ./testing
       - run: npm ci
+        working-directory: ./testing
       - run: npm run test
+        working-directory: ./testing
         env:
           BROWSER: chrome
       - uses: actions/upload-artifact@v3
