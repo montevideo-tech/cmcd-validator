@@ -36,8 +36,7 @@ jobs:
         with:
           compose-file: "./testing/dev/docker-compose.yml"
           up-flags: "--detach"
-          services: |
-            node-demo-app
+          services: node-demo-app
       - run: npm install
         working-directory: ./testing
       - run: npm ci
