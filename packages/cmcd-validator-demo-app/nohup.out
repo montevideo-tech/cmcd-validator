@@ -42,3 +42,4 @@ Port 5173 is in use, trying another one...
   ➜  Local:   http://localhost:5174/
   ➜  Network: http://192.168.0.108:5174/
   ➜  Network: http://192.168.32.1:5174/
+6:40:57 PM [vite] page reload dist/index.html
