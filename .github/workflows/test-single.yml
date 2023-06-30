@@ -32,9 +32,8 @@ jobs:
         with:
           node-version: '19'
           cache: 'npm'
-      - uses: isbang/compose-action@v1.4.1
-        with:
-          compose-file: "./testing/dev/docker-compose.yml"
+      - run: nohup sudo npm run dev &
+        working-directory: ./packages/cmcd-validator-demo-app
       - run: npm install
         working-directory: ./testing
       - run: npm ci
