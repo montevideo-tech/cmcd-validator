@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: '19'
           cache: 'npm'
-      - run: docker-compose up -d node-demo-app
+      - run: docker compose up -d node-demo-app
         working-directory: ./testing/dev/
       - run: npm install
         working-directory: ./testing
