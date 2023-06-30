@@ -35,7 +35,7 @@ jobs:
       - uses: isbang/compose-action@v1.4.1
         with:
           compose-file: "./testing/dev/docker-compose.yml"
-          down-flags: "--volumes"
+          up-flags: "--detach"
           services: |
             node-demo-app
       - run: npm install
