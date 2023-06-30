@@ -32,8 +32,12 @@ jobs:
         with:
           node-version: '19'
           cache: 'npm'
-      - run: docker compose up -d node-demo-app
-        working-directory: ./testing/dev/
+      - uses: isbang/compose-action@v1.4.1
+        with:
+          compose-file: "./testing/dev/docker-compose.yml"
+          down-flags: "--volumes"
+          services: |
+            node-demo-app
       - run: npm install
         working-directory: ./testing
       - run: npm ci
