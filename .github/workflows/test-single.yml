@@ -25,16 +25,15 @@ jobs:
       selenium:
         image: selenium/standalone-chrome
         options: --shm-size=2gb
-      additional-service:
-        image: node:19
 
     steps:
-      - run: docker exec additional-service npm i && npm run build && npm run dev 
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '19'
           cache: 'npm'
+      - run: docker-compose up -d node-demo-app
+        working-directory: ./testing/dev/
       - run: npm install
         working-directory: ./testing
       - run: npm ci
