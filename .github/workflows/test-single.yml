@@ -28,15 +28,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '19'
-          cache: 'npm'
       - uses: isbang/compose-action@v1.4.1
         with:
           compose-file: "./testing/dev/docker-compose.yml"
           up-flags: "--detach"
           services: node-demo-app
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '19'
+          cache: 'npm'
       - run: npm install
         working-directory: ./testing
       - run: npm ci
