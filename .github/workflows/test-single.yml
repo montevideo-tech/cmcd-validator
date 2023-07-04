@@ -32,6 +32,11 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+
+      - run: npm install
+        working-directory: ./packages/cmcd-validator-demo-app
+      - run: npm run dev
+        working-directory: ./packages/cmcd-validator-demo-app
       - run: npm ci
         working-directory: ./testing
       - run: npm run test
