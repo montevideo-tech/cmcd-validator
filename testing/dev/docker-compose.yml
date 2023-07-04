@@ -8,7 +8,7 @@ services:
       - 5900:5900 # VNC server
       - 7900:7900 # VNC browser client
   node:
-    image: node:19
+    image: node:20
     #command: bash -c "sleep 30 && npm i && BROWSER=chrome SELENIUM=chrome npm run test"
     volumes:
       - ./../../testing/:/project
@@ -17,7 +17,7 @@ services:
     depends_on:
       - chrome
   node-demo-app:
-    image: node:19
+    image: node:20
     command: bash -c "npm i && npm run build && npm run dev"
     volumes:
       - ./../../packages/cmcd-validator-demo-app/:/code
