@@ -18,7 +18,6 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
 
-
     services:
       selenium:
         image: selenium/standalone-chrome
@@ -30,12 +29,6 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
-      - run: npm i
-        working-directory: ./packages/cmcd-validator-demo-app
-      - run: npm run build1
-        working-directory: ./packages/cmcd-validator-demo-app
-      - run: nohup npm run dev &
-        working-directory: ./packages/cmcd-validator-demo-app
       - run: npm install
         working-directory: ./testing
       - run: npm ci
