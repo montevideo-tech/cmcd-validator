@@ -23,7 +23,7 @@ const CMCDJsonValidator = (jsonString, config, warningFlag = true) => {
     return createOutput(errors, warnings, rawData);
   }
 
-  jsLogger.info(`${requestID}: Confiuration es valid.`);
+  jsLogger.info(`${requestID}: Configuration es valid.`);
 
   // Check json
   jsLogger.info(`${requestID}: Validating Json format.`);

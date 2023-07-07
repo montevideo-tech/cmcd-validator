@@ -91,7 +91,7 @@ export const jsonConfigTestCases = [
               type: 'wrong-type-value',
               key: 'br',
               value: 'qualabs',
-              description: 'Value type is incorrect',
+              description: 'The value for the key br must be a number',
             },
           ],
           warnings: [],

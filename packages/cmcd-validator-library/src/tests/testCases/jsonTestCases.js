@@ -291,7 +291,7 @@ export const jsonTestCases = [
           type: 'wrong-type-value',
           key: 'br',
           value: '3200',
-          description: 'Value type is incorrect',
+          description: 'The value for the key br must be a number',
         },
       ],
       warnings: [],
@@ -300,22 +300,136 @@ export const jsonTestCases = [
     },
   },
   {
-    description: 'Test: Check Type d as string',
-    json: '{"br": 3200,"bs":true,"d": "4004","mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
+    description: 'Test: Check Type br as bool',
+    json: '{"br": true,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
     output:
     {
       valid: false,
       errors: [
         {
           type: 'wrong-type-value',
-          key: 'd',
-          value: '4004',
-          description: 'Value type is incorrect',
+          key: 'br',
+          value: true,
+          description: 'The value for the key br must be a number',
         },
       ],
       warnings: [],
       parsedData: undefined,
-      rawData: '{"br": 3200,"bs":true,"d": "4004","mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
+      rawData: '{"br": true,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
+    },
+  },
+  {
+    description: 'Test: Check Type sid as bool',
+    json: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": true,"tb":6000}',
+    output:
+    {
+      valid: false,
+      errors: [
+        {
+          type: 'wrong-type-value',
+          key: 'sid',
+          value: true,
+          description: 'The value for the key sid must be a string.',
+        },
+      ],
+      warnings: [],
+      parsedData: undefined,
+      rawData: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": true,"tb":6000}',
+    },
+  },
+  {
+    description: 'Test: Check Type d as string',
+    json: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": true, "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
+    output:
+    {
+      valid: false,
+      errors: [
+        {
+          type: 'wrong-type-value',
+          key: 'ot',
+          value: true,
+          description: 'The value for the key ot must be a token.',
+        },
+      ],
+      warnings: [],
+      parsedData: undefined,
+      rawData: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": true, "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
+    },
+  },
+  {
+    description: 'Test: Check Type sid as num',
+    json: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": 1234,"tb":6000}',
+    output:
+    {
+      valid: false,
+      errors: [
+        {
+          type: 'wrong-type-value',
+          key: 'sid',
+          value: 1234,
+          description: 'The value for the key sid must be a string.',
+        },
+      ],
+      warnings: [],
+      parsedData: undefined,
+      rawData: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": 1234,"tb":6000}',
+    },
+  },
+  {
+    description: 'Test: Check Type d as num',
+    json: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": 1234, "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
+    output:
+    {
+      valid: false,
+      errors: [
+        {
+          type: 'wrong-type-value',
+          key: 'ot',
+          value: 1234,
+          description: 'The value for the key ot must be a token.',
+        },
+      ],
+      warnings: [],
+      parsedData: undefined,
+      rawData: '{"br": 3200,"bs":true,"d": 4004,"mtp": 25400, "ot": 1234, "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
+    },
+  },
+  {
+    description: 'Test: Check Type bs as string',
+    json: '{"br": 3200,"bs": "true","d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
+    output:
+    {
+      valid: false,
+      errors: [
+        {
+          type: 'wrong-type-value',
+          key: 'bs',
+          value: 'true',
+          description: 'The value for the key bs must be a boolean.',
+        },
+      ],
+      warnings: [],
+      parsedData: undefined,
+      rawData: '{"br": 3200,"bs": "true","d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
+    },
+  },
+  {
+    description: 'Test: Check Type bs as num',
+    json: '{"br": 3200,"bs": 1234,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
+    output:
+    {
+      valid: false,
+      errors: [
+        {
+          type: 'wrong-type-value',
+          key: 'bs',
+          value: 1234,
+          description: 'The value for the key bs must be a boolean.',
+        },
+      ],
+      warnings: [],
+      parsedData: undefined,
+      rawData: '{"br": 3200,"bs": 1234,"d": 4004,"mtp": 25400, "ot": "v", "rtp":15000,"sid": "6e2fb550-c457-11e9-bb97-0800200c9a66","tb":6000}',
     },
   },
   {
