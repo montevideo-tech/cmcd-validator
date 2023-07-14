@@ -13,7 +13,7 @@ export const Bitmovin = ({manifestURI, dispatchReqList}) => {
     useEffect(() => {
         
         const playerConfig = {
-            key: '29ba4a30-8b5e-4336-a7dd-c94ff3b25f30',
+            key: 'a123ef80-bd55-4d1f-9572-efb1a4064a27',
             playback: {
                 autoplay: true,
                 muted: true,
