@@ -32,8 +32,5 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-      - name: "Run the tests"
-          run: |
-            npm ci
-            npm run playerTests
-          
+      - run: npm ci
+      - run: npm run seleniumTests          
