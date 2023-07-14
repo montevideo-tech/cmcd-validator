@@ -16,9 +16,5 @@
   "devDependencies": {
     "@lerna/publish": "^6.5.1",
     "lerna": "^6.5.1"
-  },
-  "dependencies": {
-    "@montevideo-tech/videojs-cmcd": "^1.0.7",
-    "video.js": "^8.5.0"
   }
 }
