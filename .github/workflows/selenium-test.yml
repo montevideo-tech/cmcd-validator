@@ -1,4 +1,4 @@
-name: Test (single)
+name: Selenium Test
 
 on:
   push:
@@ -33,14 +33,8 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - run: npm install
-        working-directory: ./packages/cmcd-validator-demo-app
-      - run: npm run dev
-        working-directory: ./packages/cmcd-validator-demo-app
       - run: npm ci
-        working-directory: ./testing
+        working-directory: ./packages/cmcd-selenium-testing
       - run: npm run test
-        working-directory: ./testing
-        env:
-          BROWSER: chrome
+        working-directory: ./packages/cmcd-selenium-testing
           

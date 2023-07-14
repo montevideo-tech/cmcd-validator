@@ -1,0 +1,19 @@
+version: '3'
+services:
+  chrome:
+    image: selenium/standalone-chrome:latest
+    shm_size: '2gb'
+    ports:
+      - 4444:4444 # Selenium service
+      - 5900:5900 # VNC server
+      - 7900:7900 # VNC browser client
+
+  node:
+    image: node:20
+    command: bash -c "npm i && ./wait-for-selenium.sh chrome:4444 && SELENIUM=chrome npm run test"
+    volumes:
+      - ./:/project
+    working_dir: /project
+    tty: true
+    depends_on:
+      - chrome
