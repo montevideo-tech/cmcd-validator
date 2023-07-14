@@ -68,7 +68,7 @@ describe('search', function () {
     try {
       // Set up the Selenium WebDriver before each test
 
-      const host = process.env.SELENIUM || '127.0.0.1';
+      const host = process.env.SELENIUM || 'localhost';
       const server = `http://${host}:4444`;
       driver = await new Builder().usingServer(server).forBrowser('chrome').build();
     } catch (error) {
