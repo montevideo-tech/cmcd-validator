@@ -32,9 +32,8 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-
-      - run: npm ci
-        working-directory: ./packages/cmcd-selenium-testing
-      - run: npm run test
-        working-directory: ./packages/cmcd-selenium-testing
+      - name: "Run the tests"
+          run: |
+            npm ci
+            npm run playerTests
           
