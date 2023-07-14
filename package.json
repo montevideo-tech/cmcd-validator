@@ -7,7 +7,7 @@
     "start": "lerna run start --parallel",
     "demo": "lerna run dev --scope=cmcd-validator-demo-app",
     "clean": "lerna clean",
-    "test": "lerna run test --scope=cmcd-validator-library",
+    "test": "lerna run test --scope=@montevideo-tech/cmcd-validator",
     "seleniumTests": "lerna run test --scope=cmcd-selenium-testing",
     "lint": "lerna run lint"
   },
