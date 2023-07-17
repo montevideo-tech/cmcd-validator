@@ -15,9 +15,9 @@
     "@montevideo-tech/cmcd-validator": "*",
     "@montevideo-tech/videojs-cmcd": "^1.0.7",
     "bootstrap": "^5.2.3",
-    "dashjs": "^4.6.0",
+    "dashjs": "^4.7.1",
     "dotenv": "^16.3.1",
-    "hls.js": "^1.4.0",
+    "hls.js": "^1.4.6",
     "mux.js": "^6.3.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
@@ -25,7 +25,6 @@
     "react-json-pretty": "^2.2.0",
     "sass": "^1.61.0",
     "shaka-player-react": "^1.1.5",
-    "video.js": "^8.5.0",
     "videojs": "^1.0.0"
   },
   "devDependencies": {
