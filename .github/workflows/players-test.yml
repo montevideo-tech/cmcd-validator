@@ -1,4 +1,4 @@
-name: Selenium Test
+name: Players Test
 
 on:
   workflow_dispatch:

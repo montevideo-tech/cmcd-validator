@@ -1,5 +1,5 @@
 {
-  "name": "cmcd-selenium-testing",
+  "name": "cmcd-player-testing",
   "private": true,
   "scripts": {
     "test": "mocha test.mjs",
