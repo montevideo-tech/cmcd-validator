@@ -16,34 +16,25 @@ export const VideoJS = (props) => {
       controls: false,
       responsive: true,
       plugins: {cmcd: {}},
-      fluid: true,
-      
-      sources: [{
-        src: manifestURI
-      }]
-
+      fluid: true
     }
     // Make sure Video.js player is only initialized once
-    if (!playerRef.current) {
-      // The Video.js player needs to be _inside_ the component el for React 18 Strict Mode. 
+    if (!playerRef.current) { 
+
       const videoElement = document.createElement("video-js");
-      
+
       videoElement.classList.add('vjs-big-play-centered');
       videoRef.current.appendChild(videoElement);
-      
+
       const player = playerRef.current = videojs(videoElement, options);
-      
-      player.cmcd();
-      
+
       player.on('ready', () => {player.controls(true);});
-      // You could update an existing player in the `else` block here
-      // on prop change, for example:
+
     } else {
       const player = playerRef.current;
-      
+
       player.autoplay(options.autoplay);
-      player.src(options.sources);
-      player.cmcd();      
+      player.src(manifestURI);    
     }
   }, [videoRef, manifestURI]);
 

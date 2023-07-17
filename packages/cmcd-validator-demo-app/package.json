@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@montevideo-tech/cmcd-validator": "*",
-    "@montevideo-tech/videojs-cmcd": "^1.0.2",
+    "@montevideo-tech/videojs-cmcd": "^1.0.7",
     "bootstrap": "^5.2.3",
     "dashjs": "^4.7.1",
     "dotenv": "^16.3.1",
