@@ -1,17 +1,18 @@
 name: Selenium Test
 
 on:
-  push:
-    workflow_dispatch:
-      inputs:
-        browser:
-          type: choice
-          description: Which browser to test
-          required: true
-          options:
-            - chrome
-            - firefox
-            - edge
+  workflow_dispatch:
+    inputs:
+      player:
+        type: choice
+        description: Which player to test
+        required: true
+        options:
+          - Bitmovin
+          - Shaka
+          - hls.js
+          - Dash.js
+          - VideoJs
 
 jobs:
   test:
@@ -34,4 +35,4 @@ jobs:
           cache: 'npm'
       - run: npm install
       - run: npm run build
-      - run: SELENIUM=selenium npm run seleniumTests          
+      - run: SELENIUM=selenium npm run seleniumTests

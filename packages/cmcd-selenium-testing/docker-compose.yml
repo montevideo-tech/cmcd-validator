@@ -1,6 +1,6 @@
 version: '3'
 services:
-  chrome:
+  selenium:
     image: selenium/standalone-chrome:latest
     shm_size: '2gb'
     ports:
@@ -10,10 +10,10 @@ services:
 
   node:
     image: node:20
-    command: bash -c "npm i && ./wait-for-selenium.sh chrome:4444 && SELENIUM=chrome npm run test"
+    command: bash -c "npm i && ./wait-for-selenium.sh selenium:4444 && SELENIUM=selenium PLAYER=Bitmovin npm run test"
     volumes:
       - ./:/project
     working_dir: /project
     tty: true
     depends_on:
-      - chrome
+      - selenium

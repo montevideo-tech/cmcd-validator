@@ -26,7 +26,7 @@ describe('search', function () {
     await driver.get('https://montevideo-tech.github.io/cmcd-validator/');
 
     // Select the desired player from the dropdown
-    await selectPlayer('Bitmovin');
+    await selectPlayer(process.env.PLAYER);
 
     // Enter the manifest URL
     const inputElement = await driver.findElement(By.name('manifest'));
