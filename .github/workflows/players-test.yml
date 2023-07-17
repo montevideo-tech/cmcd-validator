@@ -1,0 +1,38 @@
+name: Players Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      player:
+        type: choice
+        description: Which player to test
+        required: true
+        options:
+          - Bitmovin
+          - Shaka
+          - hls.js
+          - Dash.js
+          - VideoJs
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    
+    container:
+      image: node:20
+      
+    services:
+      selenium:
+        image: selenium/standalone-chrome
+        options: --shm-size=2gb
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm install
+      - run: npm run build
+      - run: SELENIUM=selenium npm run seleniumTests

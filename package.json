@@ -7,7 +7,8 @@
     "start": "lerna run start --parallel",
     "demo": "lerna run dev --scope=cmcd-validator-demo-app",
     "clean": "lerna clean",
-    "test": "lerna run test",
+    "test": "lerna run test --scope=@montevideo-tech/cmcd-validator",
+    "seleniumTests": "lerna run test --scope=cmcd-player-testing",
     "lint": "lerna run lint"
   },
   "workspaces": [
@@ -15,6 +16,11 @@
   ],
   "devDependencies": {
     "@lerna/publish": "^6.5.1",
-    "lerna": "^6.5.1"
+    "lerna": "^6.5.1",
+    "@testmo/testmo-cli": "^1.2.0",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "mocha-junit-reporter": "^2.2.0",
+    "selenium-webdriver": "^4.8.0"
   }
 }
