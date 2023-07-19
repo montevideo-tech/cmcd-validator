@@ -2109,12 +2109,14 @@ sec-ch-ua-platform: "Linux"`,
     output:
     {
       valid: false,
-      errors: [{
-        description: 'The bs key should not be sent if the value is false',
-        type: 'unnecessary-key',
-        key: 'bs',
-        value: false,
-      },],
+      errors: [
+        {
+          description: 'The bs key should not be sent if the value is false',
+          type: 'unnecessary-key',
+          key: 'bs',
+          value: false,
+        },
+      ],
       warnings: [],
       parsedData: {
         bl: 21300,

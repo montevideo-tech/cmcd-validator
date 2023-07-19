@@ -129,25 +129,6 @@ export const jsonTestCases = [
     },
   },
   {
-    description: 'Test: Correct json with bool == false',
-    json: '{"bs":false,"su":true}',
-    output:
-    {
-      valid: true,
-      errors: [],
-      warnings: [
-        {
-          type: 'no-sid-received',
-          key: undefined,
-          value: undefined,
-          description: 'No sid received from CMCD message',
-        },
-      ],
-      parsedData: { bs: false, su: true },
-      rawData: '{"bs":false,"su":true}',
-    },
-  },
-  {
     description: 'Test: String without ""',
     json: '{"sid": 6e2fb550-c457-11e9-bb97-0800200c9a66}',
     output:
