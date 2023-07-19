@@ -19,6 +19,25 @@ export const queryTestCases = [
     },
   },
   {
+    description: 'Test: Query with bs key bool == true',
+    query:
+    'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?Test&CMCD=bs%3Dtrue%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu&Test2',
+    output: {
+      valid: false,
+      errors: [
+        {
+          type: 'incorrect-format',
+          key: 'bs',
+          value: 'true',
+          description: 'If the value is TRUE, the = and the value must be omitted',
+        },
+      ],
+      warnings: [],
+      parsedData: undefined,
+      rawData: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?Test&CMCD=bs%3Dtrue%2Ccid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu&Test2',
+    },
+  },
+  {
     description: 'Test: Query without CMCD=',
     query:
       'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps_3840x2160_12000k/bbb_30fps_3840x2160_12000k_0.m4v?Qualabs=cid%3D%2221cf726cfe3d937b5f974f72bb5bd06a%22%2Cot%3Di%2Csf%3Dd%2Csid%3D%22b248658d-1d1a-4039-91d0-8c08ba597da5%22%2Cst%3Dv%2Csu',
