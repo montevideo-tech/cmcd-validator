@@ -87,6 +87,9 @@ const keyValValidator = (cmcdJson, errors, requestID, warnings, config, extended
       case 'su':
         checkIgnoredParameter(errors, key, keyValue, false, requestID);
         break;
+      case 'bs':
+        checkIgnoredParameter(errors, key, keyValue, false, requestID);
+        break;
       case 'pr':
         if (warningFlag) {
           checkPrValue(cmcdJson, warnings, key, keyValue, requestID);
