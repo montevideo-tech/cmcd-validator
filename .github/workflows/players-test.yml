@@ -35,4 +35,7 @@ jobs:
           cache: 'npm'
       - run: npm install
       - run: npm run build
-      - run: SELENIUM=selenium npm run seleniumTests
+      - run: npm run seleniumTests
+        env:
+          SELENIUM: selenium
+          PLAYER: ${{ github.event.inputs.player }}
