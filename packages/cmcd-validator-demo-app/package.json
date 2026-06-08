@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@castlabs/prestoplay": "6.32.0",
     "@montevideo-tech/cmcd-validator": "*",
     "@montevideo-tech/videojs-cmcd": "^1.0.8",
     "bootstrap": "^5.2.3",

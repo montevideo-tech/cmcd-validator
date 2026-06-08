@@ -68,7 +68,7 @@ function App() {
   };
 
   return (
-    <Container fluid className="px-5">
+    <Container className="px-5">
       <Row className="justify-content-md-center pb-4">
         <a className="logo" href="https://montevideotech.dev/">
           <Image

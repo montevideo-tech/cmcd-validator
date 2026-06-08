@@ -8,7 +8,7 @@ export function DataWindow({ data, setValidatorOutput }) {
     const type = value?.result?.valid? value?.result?.warnings != []? 'success' : 'warning' : 'danger';
     if (Object.keys(value).length > 0) {
       return (
-        <div className="py-1">
+        <div className="py-1" key={value.reqId}>
           <RequestMessage key={index} message={value.url} reqId={value.reqId} type={type} onClick={() => setValidatorOutput(value)}/>
         </div>
       );
